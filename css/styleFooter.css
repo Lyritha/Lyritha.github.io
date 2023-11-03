@@ -1,0 +1,36 @@
+/*footer styling*/
+footer {
+    color: white;
+    margin: 15px 0px;
+    text-align: center;
+    /*create gradient effect*/
+    background: linear-gradient(to right, transparent 0%, #333333 30%, #333333 70%, transparent 100%) transparent;
+}
+    /*set link text color*/
+    footer a {
+        color: white;
+    }
+
+    /*add fancy underlining under head*/
+    footer h2 {
+        border-bottom: 3px solid white;
+    }
+
+/*container that holds all the text, and limit it's width*/
+.footer-container {
+    width: 50%;
+    height: fit-content;
+    margin: 20px auto auto auto;
+    padding: 10px;
+    transition: ease-in-out 200ms;
+}
+
+    /*adds light animation to hover*/
+    .footer-container:hover {
+        width: 55%;
+    }
+
+/* remove list styling */
+footer ul {
+    list-style-type: none;
+}
