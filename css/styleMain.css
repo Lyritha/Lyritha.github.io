@@ -102,3 +102,15 @@ main img {
         width: 90%;
     }
 }
+
+@media (pointer: coarse)  {
+	/* mobile device */
+    .flex-container {
+        flex-flow: column;
+    }
+
+    .container {
+        margin: 10px auto;
+        width: 90%;
+    }
+}

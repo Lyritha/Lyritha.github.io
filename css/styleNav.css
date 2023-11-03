@@ -82,3 +82,15 @@ nav a {
         padding: 0px;
     }
 }
+
+@media (pointer: coarse) {
+    /* mobile device */
+    #nav-container {
+        justify-content: space-between;
+    }
+
+    #nav-main, #nav-navigation {
+        margin: auto;
+        padding: 0px;
+    }
+}
