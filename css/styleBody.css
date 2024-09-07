@@ -1,8 +1,8 @@
 :root {
     --primary: #333333;
     --secondary: #1D1D1D;
-    --gradientOverlayPrimary: #ff0000;
-    --gradientOverlaySecondary: #7735FF;
+    --gradientPrimary: hsla(0, 100%, 50%, 1);
+    --gradientSecondary: hsla(260, 100%, 60%, 1);
 }
 
 html, * {

@@ -5,18 +5,51 @@ main {
     align-items: center;
 }
 
-.item-container {
+.main-container, .main-container-backgroundImg {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.item-container, .item-container-backgroundImg {
     margin: 20px 0px;
     display: flex;
     max-width: 1400px;
     justify-content: center;
     align-items: center;
-
 }
 
-.item {
-    margin: 20px;
+.item-container-backgroundImg, .main-container-backgroundImg {
     width: 100%;
+    height: 100%;
+    background-image: url('../img/hero.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    color: white;
+}
+
+.item-100 {
+    width: 100%;
+}
+.item-75 {
+    width: 75%;
+}
+.item-66 {
+    width: 66%;
+}
+.item-50 {
+    width: 50%;
+}
+.item-33 {
+    width: 33%;
+}
+.item-25 {
+    width: 25%;
+}
+
+.item-100, .item-75, .item-66, .item-50, .item-33, .item-25 {
+    margin: 20px;
     background: linear-gradient(to top, transparent, var(--primary) 5%, var(--primary) 10%, transparent 40%, transparent 100%) transparent;
 }
 
@@ -29,4 +62,35 @@ main {
 p {
     margin: 20px;
     font-size: 1.5em;
+}
+
+button {
+    background: linear-gradient(270deg, var(--gradientPrimary), var(--gradientSecondary));
+    border:none;
+    border-radius: 100px;
+    padding: 5px;
+    margin: 5px;
+    cursor: pointer;
+
+    width: 300px;
+    height: auto;
+
+    transition: 0.5s;
+}
+
+    button:hover {
+        width: 320px;
+    }
+
+.button-container {
+    padding: 5px 0px 20px 0px;
+    display:flex;
+    justify-content:center;
+}
+
+.button-text {
+    padding: 0px;
+    margin: 5px;
+    font-size: 2em;
+    font-weight: bold;
 }
