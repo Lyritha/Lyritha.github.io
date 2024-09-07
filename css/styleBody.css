@@ -1,0 +1,12 @@
+/* set font*/
+html * {
+    font-family: sans-serif;
+    color: white;
+}
+
+body {
+    /* sets background and removes margin*/
+    background-image: linear-gradient(270deg, #ff0000, #7735FF);
+    background-attachment: fixed;
+    margin: 0px;
+}

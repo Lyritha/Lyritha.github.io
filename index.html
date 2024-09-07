@@ -5,6 +5,8 @@
 <head>
     <link href="img/header.png" rel="icon" />
     <title>Collin's Portfolio</title>
+
+    <link href="css/styleBody.css" rel="stylesheet" />
     <link href="css/styleNav.css" rel="stylesheet" />
     <link href="css/styleMain.css" rel="stylesheet" />
     <link href="css/styleFooter.css" rel="stylesheet" />
@@ -13,107 +15,51 @@
 <body>
 
     <nav>
-        <div class="nav-container">
-            <a id="nav-main" href="/">
-                <img src="img/header.png" alt="Home icon" />
-                Home
-            </a>
-
-            <ul id="nav-navigation">
-                <li><a href="/code-examples">Code Examples</a></li>
-                <li><a href="/3d-modeling">3D Modeling Examples</a></li>
-            </ul>
+        <div class="navbar">
+            <div class="nav-container">
+                <h1>navbar</h1>
+            </div>
+        </div>
+        <div class="hero-container">
+            <div class="hero">
+                <div class="hero-item-container">
+                    <hi>test text</hi>
+                </div>
+            </div>
         </div>
     </nav>
 
+    <div class="spacer"></div>
+
     <main>
-        <div class="flex-container">
-
-            <div class="container">
-                <div class="text-container">
-                    <h1>Who am I?</h1>
-                    <p>
-                        I am Collin Kloppenburg, a first-year software development student with a passion to work at Cloud Imperium Games in the future. I would also be very happy with work that allows me to express my creativity.
-                    </p>
-                    <h4>Some basic information about me:</h4>
-                    <ul>
-                        <li>Name: Collin Kloppenburg</li>
-                        <li>Age: 21 years</li>
-                        <li>Birth Date: 17/06/2002</li>
-                    </ul>
-                    <p>If you want to know more about me, you can always contact me through the links at the bottom of this page.</p>
-                </div>
-
-                <div class="text-container">
-                    <h1>What can I do?</h1>
-                    <h4>Coding languages I know (rated on a comparative scale)</h4>
-                    <table>
-                        <tr>
-                            <th><img class="svg" src="img/svg/csharp.svg" alt="C# logo" /></th>
-                            <th>C#</th>
-                            <td><img class="svg" src="img/svg/star-icon.svg" alt="star icon" /></td>
-                            <td><img class="svg" src="img/svg/star-icon.svg" alt="star icon" /></td>
-                            <td><img class="svg" src="img/svg/star-icon.svg" alt="star icon" /></td>
-                            <td><img class="svg" src="img/svg/star-icon.svg" alt="star icon" /></td>
-                            <td><img class="svg" src="img/svg/star-empty-icon.svg" alt="empty star icon" /></td>
-                        </tr>
-                        <tr>
-                            <th><img class="svg" src="img/svg/html.svg" alt="HTML logo" /></th>
-                            <th>HTML</th>
-                            <td><img class="svg" src="img/svg/star-icon.svg" alt="star icon" /></td>
-                            <td><img class="svg" src="img/svg/star-icon.svg" alt="star icon" /></td>
-                            <td><img class="svg" src="img/svg/star-icon.svg" alt="star icon" /></td>
-                            <td><img class="svg" src="img/svg/star-empty-icon.svg" alt="empty star icon" /></td>
-                            <td><img class="svg" src="img/svg/star-empty-icon.svg" alt="empty star icon" /></td>
-                        </tr>
-                        <tr>
-                            <th><img class="svg" src="img/svg/css.svg" alt="CSS logo" /></th>
-                            <th>CSS</th>
-                            <td><img class="svg" src="img/svg/star-icon.svg" alt="star icon" /></td>
-                            <td><img class="svg" src="img/svg/star-icon.svg" alt="star icon" /></td>
-                            <td><img class="svg" src="img/svg/star-empty-icon.svg" alt="empty star icon" /></td>
-                            <td><img class="svg" src="img/svg/star-empty-icon.svg" alt="empty star icon" /></td>
-                            <td><img class="svg" src="img/svg/star-empty-icon.svg" alt="empty star icon" /></td>
-                        </tr>
-                        <tr>
-                            <th><img class="svg" src="img/svg/javascript.svg" alt="JavaScript logo" /></th>
-                            <th>Javascript</th>
-                            <td><img class="svg" src="img/svg/star-icon.svg" alt="star icon" /></td>
-                            <td><img class="svg" src="img/svg/star-empty-icon.svg" alt="empty star icon" /></td>
-                            <td><img class="svg" src="img/svg/star-empty-icon.svg" alt="empty star icon" /></td>
-                            <td><img class="svg" src="img/svg/star-empty-icon.svg" alt="empty star icon" /></td>
-                            <td><img class="svg" src="img/svg/star-empty-icon.svg" alt="empty star icon" /></td>
-                        </tr>
-                    </table>
-
-                    <h4>Software I use</h4>
-                    <table>
-                        <tr>
-                            <th><img class="svg" src="img/svg/blender.svg" alt="Blender logo" /></th>
-                            <th>Blender</th>
-                            <th>~1900 hours</th>
-                        </tr>
-                        <tr>
-                            <th><img class="svg" src="img/svg/unity.svg" alt="Unity logo" /></th>
-                            <th>Unity</th>
-                            <th>~550 hours</th>
-                        </tr>
-                        <tr>
-                            <th><img class="svg" src="img/svg/substance-painter.svg" alt="Substance Painter logo" /></th>
-                            <th>Substance Painter</th>
-                            <th>~250 hours</th>
-                        </tr>
-                    </table>
-                </div>
-
+        <div class="item-container">
+            <div class="item">
+                <h1>Text Text</h1>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer facilisis dignissim odio et dictum. Sed in ultricies ligula, porta convallis elit. Quisque tortor felis, convallis a fermentum a, accumsan sodales risus. Nulla lacinia lorem a justo dapibus, ac facilisis eros venenatis. Nunc sit amet dictum ipsum, sit amet pretium dui. Nam venenatis, orci vel hendrerit malesuada, turpis diam iaculis neque, a euismod diam risus sit amet mi. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec porttitor turpis eget nunc dictum interdum non sit amet mauris. Suspendisse dignissim nisi eget ante eleifend, eget tincidunt felis lobortis. Morbi nec nisl in lacus tristique volutpat.</p>
             </div>
-
-            <div class="container">
-                <div class="text-container">
-                    <h1>HTML Example</h1>
-                    <img src="img/code/htmlexample.png" alt="HTML example" />
-                    <p>For more examples, visit the code examples page on the navigation bar.</p>
-                </div>
+            <div class="item">
+                <h1>Text Text</h1>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer facilisis dignissim odio et dictum. Sed in ultricies ligula, porta convallis elit. Quisque tortor felis, convallis a fermentum a, accumsan sodales risus. Nulla lacinia lorem a justo dapibus, ac facilisis eros venenatis. Nunc sit amet dictum ipsum, sit amet pretium dui. Nam venenatis, orci vel hendrerit malesuada, turpis diam iaculis neque, a euismod diam risus sit amet mi. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec porttitor turpis eget nunc dictum interdum non sit amet mauris. Suspendisse dignissim nisi eget ante eleifend, eget tincidunt felis lobortis. Morbi nec nisl in lacus tristique volutpat.</p>
+            </div>
+        </div>
+        <div class="item-container">
+            <div class="item">
+                <h1>Text Text</h1>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer facilisis dignissim odio et dictum. Sed in ultricies ligula, porta convallis elit. Quisque tortor felis, convallis a fermentum a, accumsan sodales risus. Nulla lacinia lorem a justo dapibus, ac facilisis eros venenatis. Nunc sit amet dictum ipsum, sit amet pretium dui. Nam venenatis, orci vel hendrerit malesuada, turpis diam iaculis neque, a euismod diam risus sit amet mi. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec porttitor turpis eget nunc dictum interdum non sit amet mauris. Suspendisse dignissim nisi eget ante eleifend, eget tincidunt felis lobortis. Morbi nec nisl in lacus tristique volutpat.</p>
+            </div>
+            <div class="item">
+                <h1>Text Text</h1>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer facilisis dignissim odio et dictum. Sed in ultricies ligula, porta convallis elit. Quisque tortor felis, convallis a fermentum a, accumsan sodales risus. Nulla lacinia lorem a justo dapibus, ac facilisis eros venenatis. Nunc sit amet dictum ipsum, sit amet pretium dui. Nam venenatis, orci vel hendrerit malesuada, turpis diam iaculis neque, a euismod diam risus sit amet mi. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec porttitor turpis eget nunc dictum interdum non sit amet mauris. Suspendisse dignissim nisi eget ante eleifend, eget tincidunt felis lobortis. Morbi nec nisl in lacus tristique volutpat.</p>
+            </div>
+        </div>
+        <div class="item-container">
+            <div class="item">
+                <h1>Text Text</h1>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer facilisis dignissim odio et dictum. Sed in ultricies ligula, porta convallis elit. Quisque tortor felis, convallis a fermentum a, accumsan sodales risus. Nulla lacinia lorem a justo dapibus, ac facilisis eros venenatis. Nunc sit amet dictum ipsum, sit amet pretium dui. Nam venenatis, orci vel hendrerit malesuada, turpis diam iaculis neque, a euismod diam risus sit amet mi. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec porttitor turpis eget nunc dictum interdum non sit amet mauris. Suspendisse dignissim nisi eget ante eleifend, eget tincidunt felis lobortis. Morbi nec nisl in lacus tristique volutpat.</p>
+            </div>
+            <div class="item">
+                <h1>Text Text</h1>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer facilisis dignissim odio et dictum. Sed in ultricies ligula, porta convallis elit. Quisque tortor felis, convallis a fermentum a, accumsan sodales risus. Nulla lacinia lorem a justo dapibus, ac facilisis eros venenatis. Nunc sit amet dictum ipsum, sit amet pretium dui. Nam venenatis, orci vel hendrerit malesuada, turpis diam iaculis neque, a euismod diam risus sit amet mi. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec porttitor turpis eget nunc dictum interdum non sit amet mauris. Suspendisse dignissim nisi eget ante eleifend, eget tincidunt felis lobortis. Morbi nec nisl in lacus tristique volutpat.</p>
             </div>
         </div>
     </main>

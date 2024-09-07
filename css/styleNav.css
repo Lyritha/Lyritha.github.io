@@ -1,96 +1,39 @@
+/*navbar styling*/
 nav {
-    position: sticky;
-    top: 0px;
-    /*make navbar fit page*/
-    margin: auto;
-    width: 90%;
-    height: 40px;
-    /* set color*/
-    background-color: #333333;
-    outline: solid #242424 5px;
-    border-radius: 0px 0px 5px 5px;
+    width: 100%;
+    height: auto;
 }
 
-.nav-container, #nav-main, #nav-navigation {
-    /*make everything flex and fit proper height*/
-    display: flex;
-    height: 100%;
+.navbar {
+    text-align: center;
+    /*create gradient effect*/
+    background: linear-gradient(to right, transparent 0%, #333333 10%, #333333 90%, transparent 100%) transparent;
 }
 
+
+/*container that holds all the text, and limit it's width*/
 .nav-container {
-    /*space nav-main and nav-navigation properly*/
-    justify-content: space-between;
+    width: 50%;
+    height: fit-content;
+    margin: 0px auto auto auto;
+    padding: 10px;
 }
 
-#nav-main, #nav-navigation {
-    /*add slight margin to make things look less crowded, and to make space-between work as intended*/
-    margin: 0px 10px;
+.hero-item-container {
+    width: 80%;
+    height: 90%;
 }
 
-    #nav-main img {
-        /*make image fit nav bar*/
-        height: 100%;
-        width: auto;
-        border-radius: 7px;
-        padding: 0px 5px;
-    }
-
-#nav-navigation {
-    /* cleans up the look of the list*/
-    list-style: none;
-}
-
-/*adjust nav bar contents to fit properly and add spacing between them*/
-nav li, #nav-main {
+.hero {
     display: flex;
+    justify-content: center;
     align-items: center;
-    margin: auto 10px;
-    padding: 0px 5px;
-    height: 100%;
-}
-
-/*set outline color*/
-nav li, #nav-main {
-    outline: solid #242424 5px;
-    transition: ease-in-out 200ms;
-}
-
-    /*hover expand effect with background*/
-    nav li:hover, #nav-main:hover {
-        padding: 0px 15px;
-        background-color: #545454;
-    }
-
-nav a {
-    /*removes link styling*/
-    text-decoration: none;
+    width: 100%;
+    height: 400px;
+    background-image: url('../img/Hero.png');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
     color: white;
-    display: flex;
-    align-items: center;
-    height: 100%;
-}
-
-/*adjust content to fit mobile devices*/
-@media screen and (max-width: 800px) {
-
-    #nav-container{
-        justify-content: space-between;
-    }
-
-    #nav-main, #nav-navigation {
-        margin: auto;
-        padding: 0px;
-    }
-}
-
-@media (pointer: coarse) {
-    /* mobile device */
-    #nav-container {
-        justify-content: space-between;
-    }
-
-    #nav-main, #nav-navigation {
-        margin: auto;
-        padding: 0px;
-    }
+    text-align: center;
 }
