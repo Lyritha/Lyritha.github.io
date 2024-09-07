@@ -4,7 +4,7 @@ footer {
     margin: 15px 0px;
     text-align: center;
     /*create gradient effect*/
-    background: linear-gradient(to right, transparent 0%, #333333 30%, #333333 70%, transparent 100%) transparent;
+    background: linear-gradient(to right, transparent 0%, var(--primary) 30%, var(--primary) 70%, transparent 100%) transparent;
 }
     /*set link text color*/
     footer a {

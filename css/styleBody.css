@@ -1,12 +1,17 @@
-/* set font*/
-html * {
+:root {
+    --primary: #333333;
+    --secondary: #1D1D1D;
+    --gradientOverlayPrimary: #ff0000;
+    --gradientOverlaySecondary: #7735FF;
+}
+
+html, * {
     font-family: sans-serif;
     color: white;
 }
 
 body {
     /* sets background and removes margin*/
-    background-image: linear-gradient(270deg, #ff0000, #7735FF);
-    background-attachment: fixed;
+    background: var(--secondary);
     margin: 0px;
 }

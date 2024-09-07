@@ -8,22 +8,25 @@ main {
 .item-container {
     margin: 20px 0px;
     display: flex;
-    width: 70%;
+    max-width: 1400px;
     justify-content: center;
     align-items: center;
+
 }
 
 .item {
     margin: 20px;
     width: 100%;
-    outline: solid 1px;
-}
-
-.spacer {
-    width: auto;
-    height: 20px;
+    background: linear-gradient(to top, transparent, var(--primary) 5%, var(--primary) 10%, transparent 40%, transparent 100%) transparent;
 }
 
 .pHeader {
-    
+    text-align:center;
+    border-bottom: 3px solid white;
+    font-size: 3em;
+}
+
+p {
+    margin: 20px;
+    font-size: 1.5em;
 }
