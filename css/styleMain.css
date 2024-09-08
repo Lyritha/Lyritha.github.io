@@ -32,18 +32,23 @@ main {
 .item-100 {
     width: 100%;
 }
+
 .item-75 {
     width: 75%;
 }
+
 .item-66 {
     width: 66%;
 }
+
 .item-50 {
     width: 50%;
 }
+
 .item-33 {
     width: 33%;
 }
+
 .item-25 {
     width: 25%;
 }
@@ -54,7 +59,7 @@ main {
 }
 
 .pHeader {
-    text-align:center;
+    text-align: center;
     border-bottom: 3px solid white;
     font-size: 3em;
 }
@@ -66,15 +71,13 @@ p {
 
 button {
     background: linear-gradient(270deg, var(--gradientPrimary), var(--gradientSecondary));
-    border:none;
+    border: none;
     border-radius: 100px;
     padding: 5px;
     margin: 5px;
     cursor: pointer;
-
     width: 300px;
     height: auto;
-
     transition: 0.5s;
 }
 
@@ -84,8 +87,8 @@ button {
 
 .button-container {
     padding: 5px 0px 20px 0px;
-    display:flex;
-    justify-content:center;
+    display: flex;
+    justify-content: center;
 }
 
 .button-text {
@@ -95,17 +98,41 @@ button {
     font-weight: bold;
 }
 
-img {
+.center-div-items {
+    display:flex;
+    justify-content:center;
+}
+
+.img-container {
+    display: flex;
+    width: 70%;
     margin: 20px;
-    max-width: 70%;
-    max-height: 70%;
+}
+
+.img-container img {
+    width: 100%;
+    object-fit: cover;
 }
 
 .img-border {
     outline: solid 5px var(--primary);
 }
 
-.img-container {
-    display:flex;
-    justify-content: center;
+.aspect-ratio-16-9 {
+    aspect-ratio: 16/9;
+}
+
+.aspect-ratio-1-1 {
+    aspect-ratio: 1/1;
+}
+
+.video-container {
+    width: 90%; /* 90% of the parent width */
+    margin: 0 auto; /* Center the video */
+}
+
+iframe {
+    width: 100%;
+    aspect-ratio: 16 / 9; /* Maintain 16:9 aspect ratio */
+    border: 0;
 }
