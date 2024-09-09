@@ -2,11 +2,13 @@
   "ExpandedNodes": [
     "",
     "\\css",
+    "\\css\\components",
+    "\\css\\segments",
     "\\img",
     "\\img\\code",
     "\\img\\modeling",
     "\\scripts"
   ],
-  "SelectedNode": "\\css\\styleImageModal.css",
+  "SelectedNode": "\\scripts\\FullscreenImages.js",
   "PreviewInSolutionExplorer": false
 }
