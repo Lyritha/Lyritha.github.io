@@ -9,6 +9,7 @@ const thumbnails = document.querySelectorAll('.thumbnail');
 thumbnails.forEach(thumbnail => {
     thumbnail.addEventListener('click', function () {
         modal.style.display = 'flex';
+        ModalAnimation(1);
         modalImg.src = this.src;
     });
 });
@@ -16,6 +17,21 @@ thumbnails.forEach(thumbnail => {
 // Close the modal when clicking outside of the image
 window.addEventListener('click', function (event) {
     if (event.target === modal) {
-        modal.style.display = 'none';
+        ModalAnimation(0);
+
     }
 });
+
+function ModalAnimation(target) {
+
+    setTimeout(() => {
+        modal.style.opacity = target;
+        modalImg.style.transform = 'scale(' + target + ')';
+    }, 0);
+
+    if (target == 0) {
+        setTimeout(() => {
+            modal.style.display = 'none';
+        }, 300);
+    }
+}
