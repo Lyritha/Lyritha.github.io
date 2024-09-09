@@ -60,7 +60,6 @@ nav {
     flex-flow: column;
     justify-content: center;
     z-index: 1;
-    pointer-events: none;
     padding: 30px;
 }
 
