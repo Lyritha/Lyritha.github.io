@@ -1,22 +1,49 @@
 const letters = "abcdefghijklmnopqrstuvwxyz";
-const targets = document.querySelectorAll(".glitch-effect");
+GlitchOnLoad();
 
-for (let i = 0; i < targets.length; i++) {
-    let iterations = 0;
+function GlitchOnLoad() {
+    const targets = document.querySelectorAll(".glitch-effect-load");
+    const targetsValues = Array.from(targets).map(element => element.innerText);
 
-    const interval = setInterval(() => {
-        targets[i].innerText = targets[i].innerText.split("")
-            .map((letter, index) => {
-                if (index < iterations) {
-                    return targets[i].dataset.value[index];
-                }
+    for (let i = 0; i < targets.length; i++) {
+        let iterations = 0;
 
-                return letters[Math.floor(Math.random() * 26)]
-            })
-            .join("");
+        const interval = setInterval(() => {
+            targets[i].innerText = targets[i].innerText.split("")
+                .map((letter, index) => {
+                    if (index < iterations || letter == ' ') {
+                        return targetsValues[i][index];
+                    }
 
-        if (iterations >= targets[i].dataset.value.length) clearInterval(interval);
+                    return letters[Math.floor(Math.random() * 26)]
+                })
+                .join("");
 
-        iterations += 1;
-    }, 30);
+            if (iterations >= targetsValues[i].length) clearInterval(interval);
+
+            iterations += 1 / targets[i].dataset.steps;
+        }, targets[i].dataset.speed);
+    }
 }
+
+document.querySelectorAll(".glitch-effect-hover").forEach(element => {
+    element.onmouseover = event => {
+        let iterations = 0;
+
+        const interval = setInterval(() => {
+            event.target.innerText = event.target.innerText.split("")
+                .map((letter, index) => {
+                    if (index < iterations || letter == ' ') {
+                        return event.target.dataset.value[index];
+                    }
+
+                    return letters[Math.floor(Math.random() * 26)];
+                })
+                .join("");
+
+            if (iterations >= event.target.dataset.value.length) clearInterval(interval);
+
+            iterations += 1 / event.target.dataset.steps;
+        }, event.target.dataset.speed);
+    };
+});

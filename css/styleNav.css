@@ -25,21 +25,24 @@ nav {
     align-items: center;
 }
 
-.nav-button {
+.nav-button, .nav-button-selected {
     padding: 10px 15px 20px 15px;
     margin: 0px;
     transition: 0.3s;
     text-decoration: none;
-    font-size: 1.5em;
+    font-size: 2em;
     font-weight: bold;
     color: white;
-    
 }
 
     .nav-button:hover {
         color: red;
-        font-size: 1.6em;
+        font-size: 2.1em;
     }
+
+.nav-button-selected {
+    color: red;
+}
 
 .hero {
     position: relative;
@@ -60,7 +63,8 @@ nav {
     flex-flow: column;
     justify-content: center;
     z-index: 1;
-    padding: 30px;
+    padding: 100px 0px;
+    pointer-events: none;
 }
 
 .hero-title {

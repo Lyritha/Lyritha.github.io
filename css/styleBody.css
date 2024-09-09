@@ -6,7 +6,8 @@
 }
 
 html, * {
-    font-family: sans-serif;
+    font-family: monospace;
+    font-weight: bold;
     color: white;
 }
 

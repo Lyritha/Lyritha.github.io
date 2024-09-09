@@ -55,10 +55,29 @@ main {
 
 .item-100, .item-75, .item-66, .item-50, .item-33, .item-25 {
     margin: 20px;
-    background: linear-gradient(to top, transparent, var(--primary) 5%, var(--primary) 10%, transparent 40%, transparent 100%) transparent;
 }
 
+.div-background-gradient {
+    border-radius: 20px;
+    background: linear-gradient(to top, var(--primary) 0%, transparent 50%);
+}
+
+.div-background-fill {
+    border-radius: 20px;
+    background: linear-gradient(to bottom, #121212 0%, #121212 50%, #151515 100%);
+    background-size: 200% 200%;
+    background-position: 0% 0%;
+    transition: background-position 0.5s ease-in-out;
+}
+
+    .div-background-fill:hover {
+        background-position: 100% 100%;
+        border-radius: 21px;
+    }
+
 .pHeader {
+    width: 80%;
+    margin: 30px auto;
     text-align: center;
     border-bottom: 3px solid white;
     font-size: 3em;
