@@ -11,12 +11,14 @@ main {
     justify-content: center;
 }
 
-.item-container {
+.item-container-horizontal, .item-container-vertical {
     margin: 20px 0px;
     display: flex;
     max-width: 1400px;
-    justify-content: center;
-    align-items: center;
+}
+
+.item-container-vertical {
+    flex-flow: column;
 }
 
 .item-100 {
@@ -43,8 +45,18 @@ main {
     width: 25%;
 }
 
-.item-100, .item-75, .item-66, .item-50, .item-33, .item-25 {
+.item-10 {
+    width: 10%;
+}
+
+.item-100, .item-75, .item-66, .item-50, .item-33, .item-25, .item-10 {
+    height: 90%;
+    padding: 10px;
     margin: 20px;
+}
+
+.width.content {
+    width: fit-content;
 }
 
 .center-content {
@@ -61,6 +73,11 @@ main {
 }
 
 p {
+    margin: 20px;
+    font-size: 1.5em;
+}
+
+ul {
     margin: 20px;
     font-size: 1.5em;
 }

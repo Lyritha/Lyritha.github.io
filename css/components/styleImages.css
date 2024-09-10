@@ -1,20 +1,38 @@
 .img-container {
     display: flex;
-    width: 70%;
+    max-width: fit-content;
+    height: 100%;
     margin: 20px;
 }
 
     .img-container img {
-        width: 100%;
+        margin: 20px;
+        max-width: 100%;
         object-fit: cover;
     }
 
-.img-border {
+.img-border-thin {
     outline: solid 5px var(--primary);
+}
+
+.img-border-medium {
+    outline: solid 10px var(--primary);
+}
+
+.img-border-thick {
+    outline: solid 10px var(--primary);
+}
+
+.img-rounder {
+    border-radius: 20px;
 }
 
 .aspect-ratio-16-9 {
     aspect-ratio: 16/9;
+}
+
+.aspect-ratio-9-16 {
+    aspect-ratio: 9/16;
 }
 
 .aspect-ratio-1-1 {
