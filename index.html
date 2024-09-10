@@ -1,126 +1,244 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 
 <html>
 
 <head>
     <link href="img/header.png" rel="icon" />
     <title>Collin's Portfolio</title>
-    <link href="css/styleNav.css" rel="stylesheet" />
-    <link href="css/styleMain.css" rel="stylesheet" />
-    <link href="css/styleFooter.css" rel="stylesheet" />
+
+    <link href="css/styleSheet.css" rel="stylesheet" />
+
+    <script src="https://kit.fontawesome.com/4887ae04c6.js" crossorigin="anonymous"></script>
 </head>
 
 <body>
-
     <nav>
-        <div class="nav-container">
-            <a id="nav-main" href="/">
-                <img src="img/header.png" alt="Home icon" />
-                Home
-            </a>
-
-            <ul id="nav-navigation">
-                <li><a href="/code-examples">Code Examples</a></li>
-                <li><a href="/3d-modeling">3D Modeling Examples</a></li>
-            </ul>
+        <div class="navbar">
+            <div class="nav-container">
+                <div class="nav-alligned-left">
+                    <a href="#" data-steps="5" data-speed="20" data-value="Home" class="nav-button-selected">Home</a>
+                </div>
+                <div class="nav-alligned-right">
+                    <a href="#" data-steps="5" data-speed="10" data-value="Active projects" class="nav-button glitch-effect-hover">Active projects</a>
+                    <a href="#" data-steps="5" data-speed="10" data-value="Finished Projects" class="nav-button glitch-effect-hover">Finished projects</a>
+                </div>
+            </div>
+        </div>
+        <div class="hero scroll-effect" style="background-image: url('img/Hero_Code.png');">
+            <div class="gradient-overlay"></div>
+            <div class="hero-item-container">
+                <h1 data-steps="3" data-speed="30" class="hero-title glitch-effect-load">Portfolio Page</h1>
+                <p class="hero-p">Amwet owwit wenyim wenyim amwet swed :3 Ut iwuwwe. Sunt m-magnya qui west wexcweptweuw nyostwud dowow dowow weu. Quis awiqua magnya wexwewcitation conswectwetuw wabowwe twempow wabowwe.</p>
+            </div>
         </div>
     </nav>
 
     <main>
-        <div class="flex-container">
-
-            <div class="container">
-                <div class="text-container">
-                    <h1>Who am I?</h1>
-                    <p>
-                        I am Collin Kloppenburg, a first-year software development student with a passion to work at Cloud Imperium Games in the future. I would also be very happy with work that allows me to express my creativity.
-                    </p>
-                    <h4>Some basic information about me:</h4>
-                    <ul>
-                        <li>Name: Collin Kloppenburg</li>
-                        <li>Age: 21 years</li>
-                        <li>Birth Date: 17/06/2002</li>
-                    </ul>
-                    <p>If you want to know more about me, you can always contact me through the links at the bottom of this page.</p>
+        <div class="main-container">
+            <div class="item-container background-gradient">
+                <div class="item-66">
+                    <h1 class="pHeader">Text Text</h1>
+                    <p>Ewit w-weiusmod conswequat adipiscing *giggles* a-amwet awiquip wenyim. Amwet a-awiqua wewit amwet dweswewunt *giggles* wewit ipsum. Dowow swed cuwpa conswectwetuw do q-qui west incididunt. Ea d-duis wabowwe ad wabowis. *giggles* Fugiat awiqua incididunt wexwewcitation minyim *blushes* weiusmod ut a-amwet vwenyiam. Adipiscing w-wea do sint minyim ut. N-Nisi nyisi *blushes* dowow ipsum autwe *nuzzles* dweswewunt duis conswectwetuw.</p>
+                    <div class="button-container">
+                        <button>
+                            <i class="fa-solid fa-chevron-right"></i>
+                            <p class="button-text">More info</p>
+                        </button>
+                    </div>
                 </div>
-
-                <div class="text-container">
-                    <h1>What can I do?</h1>
-                    <h4>Coding languages I know (rated on a comparative scale)</h4>
-                    <table>
-                        <tr>
-                            <th><img class="svg" src="img/svg/csharp.svg" alt="C# logo" /></th>
-                            <th>C#</th>
-                            <td><img class="svg" src="img/svg/star-icon.svg" alt="star icon" /></td>
-                            <td><img class="svg" src="img/svg/star-icon.svg" alt="star icon" /></td>
-                            <td><img class="svg" src="img/svg/star-icon.svg" alt="star icon" /></td>
-                            <td><img class="svg" src="img/svg/star-icon.svg" alt="star icon" /></td>
-                            <td><img class="svg" src="img/svg/star-empty-icon.svg" alt="empty star icon" /></td>
-                        </tr>
-                        <tr>
-                            <th><img class="svg" src="img/svg/html.svg" alt="HTML logo" /></th>
-                            <th>HTML</th>
-                            <td><img class="svg" src="img/svg/star-icon.svg" alt="star icon" /></td>
-                            <td><img class="svg" src="img/svg/star-icon.svg" alt="star icon" /></td>
-                            <td><img class="svg" src="img/svg/star-icon.svg" alt="star icon" /></td>
-                            <td><img class="svg" src="img/svg/star-empty-icon.svg" alt="empty star icon" /></td>
-                            <td><img class="svg" src="img/svg/star-empty-icon.svg" alt="empty star icon" /></td>
-                        </tr>
-                        <tr>
-                            <th><img class="svg" src="img/svg/css.svg" alt="CSS logo" /></th>
-                            <th>CSS</th>
-                            <td><img class="svg" src="img/svg/star-icon.svg" alt="star icon" /></td>
-                            <td><img class="svg" src="img/svg/star-icon.svg" alt="star icon" /></td>
-                            <td><img class="svg" src="img/svg/star-empty-icon.svg" alt="empty star icon" /></td>
-                            <td><img class="svg" src="img/svg/star-empty-icon.svg" alt="empty star icon" /></td>
-                            <td><img class="svg" src="img/svg/star-empty-icon.svg" alt="empty star icon" /></td>
-                        </tr>
-                        <tr>
-                            <th><img class="svg" src="img/svg/javascript.svg" alt="JavaScript logo" /></th>
-                            <th>Javascript</th>
-                            <td><img class="svg" src="img/svg/star-icon.svg" alt="star icon" /></td>
-                            <td><img class="svg" src="img/svg/star-empty-icon.svg" alt="empty star icon" /></td>
-                            <td><img class="svg" src="img/svg/star-empty-icon.svg" alt="empty star icon" /></td>
-                            <td><img class="svg" src="img/svg/star-empty-icon.svg" alt="empty star icon" /></td>
-                            <td><img class="svg" src="img/svg/star-empty-icon.svg" alt="empty star icon" /></td>
-                        </tr>
-                    </table>
-
-                    <h4>Software I use</h4>
-                    <table>
-                        <tr>
-                            <th><img class="svg" src="img/svg/blender.svg" alt="Blender logo" /></th>
-                            <th>Blender</th>
-                            <th>~1900 hours</th>
-                        </tr>
-                        <tr>
-                            <th><img class="svg" src="img/svg/unity.svg" alt="Unity logo" /></th>
-                            <th>Unity</th>
-                            <th>~550 hours</th>
-                        </tr>
-                        <tr>
-                            <th><img class="svg" src="img/svg/substance-painter.svg" alt="Substance Painter logo" /></th>
-                            <th>Substance Painter</th>
-                            <th>~250 hours</th>
-                        </tr>
-                    </table>
-                </div>
-
-            </div>
-
-            <div class="container">
-                <div class="text-container">
-                    <h1>HTML Example</h1>
-                    <img src="img/code/htmlexample.png" alt="HTML example" />
-                    <p>For more examples, visit the code examples page on the navigation bar.</p>
+                <div class="item-33">
+                    <h1 class="pHeader">Text Text</h1>
+                    <p>Amwet owwit wenyim wenyim amwet swed :3 Ut iwuwwe. Sunt m-magnya qui west wexcweptweuw nyostwud dowow dowow weu. Quis awiqua magnya wexwewcitation conswectwetuw wabowwe twempow wabowwe.</p>
                 </div>
             </div>
         </div>
+
+        <div class="main-container">
+            <div class="item-container">
+                <div class="item-50 background-gradient">
+                    <h1 class="pHeader">Text Text</h1>
+                    <div class="center-content">
+                        <div class="img-container aspect-ratio-1-1">
+                            <img class="thumbnail" src="img/hero.png" alt="Alternate Text" />
+                        </div>
+                    </div>
+                    <p>Ewit w-weiusmod conswequat adipiscing *giggles* a-amwet awiquip wenyim.</p>
+                    <div class="button-container">
+                        <button>
+                            <i class="fa-solid fa-chevron-right"></i>
+                            <p class="button-text">button</p>
+                        </button>
+                    </div>
+                </div>
+                <div class="item-50 background-gradient">
+                    <h1 class="pHeader">Text Text</h1>
+                    <div class="center-content">
+                        <div class="img-container aspect-ratio-16-9">
+                            <img class="thumbnail" src="img/header.png" alt="Alternate Text" />
+                        </div>
+                    </div>
+                    <p>Ewit w-weiusmod conswequat adipiscing *giggles* a-amwet awiquip wenyim.</p>
+                    <div class="button-container">
+                        <button>
+                            <i class="fa-solid fa-chevron-right"></i>
+                            <p class="button-text">button</p>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="main-container">
+            <div class="item-container">
+                <div class="item-50 background-fill">
+                    <h1 class="pHeader">This is a header</h1>
+                    <p>Ewit w-weiusmod conswequat adipiscing *giggles* a-amwet awiquip wenyim. Amwet a-awiqua wewit amwet dweswewunt *giggles* wewit ipsum. Dowow swed cuwpa conswectwetuw do q-qui west incididunt. Ea d-duis wabowwe ad wabowis. *giggles* Fugiat awiqua incididunt wexwewcitation minyim *blushes* weiusmod ut a-amwet vwenyiam. Adipiscing w-wea do sint minyim ut. N-Nisi nyisi *blushes* dowow ipsum autwe *nuzzles* dweswewunt duis conswectwetuw.</p>
+                    <div class="button-container">
+                        <button>
+                            <i class="fa-solid fa-chevron-right"></i>
+                            <p class="button-text">button</p>
+                        </button>
+                    </div>
+                </div>
+                <div class="item-50 background-fill">
+                    <h1 class="pHeader">This is a header</h1>
+                    <div class="video-container">
+                        <iframe src="https://www.youtube.com/embed/4ZYn9sR3btg?modestbranding=0&rel=1&controls=1"
+                                frameborder="0"
+                                title="YouTube video player"
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                allowfullscreen></iframe>
+                    </div>
+                    <p>Ewit w-weiusmod conswequat adipiscing *giggles* a-amwet awiquip wenyim.</p>
+                    <div class="button-container">
+                        <button>
+                            <i class="fa-solid fa-chevron-right"></i>
+                            <p class="button-text">button</p>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="main-container">
+            <div class="item-container background-image" style="background-image: url('img/Hero.png');">
+                <div class="item-50">
+                    <h1 class="pHeader">Text Text</h1>
+                    <p>Amwet owwit wenyim wenyim amwet swed :3 Ut iwuwwe. Sunt m-magnya qui west wexcweptweuw nyostwud dowow dowow weu. Quis awiqua magnya wexwewcitation conswectwetuw wabowwe twempow wabowwe.</p>
+                </div>
+                <div class="item-50">
+                    <h1 class="pHeader">Text Text</h1>
+                    <p>Awiqua conswequat ad *blushes* OwO ut i-iwuwwe Ut nyisi w-weu wexwewcitation. Wabowum c-ciwwum nyon a-amwet v-vwewit. Owwit w-wexcweptweuw wexwewcitation awiquip *nuzzles* pawiatuw. Ut iwuwwe dowow dowowwe v-vwewit v-vwewit do sint. Ea >~< minyim w-wea ut wenyim (・`ω´・) qui sit. Nuwwa ut dowowwe swed quis sit in nyon dowowwe. Ipsum pwoidwent incididunt wexwewcitation duis wet swed a-ad d-dowowwe.</p>
+                    <div class="button-container">
+                        <button>
+                            <i class="fa-solid fa-chevron-right"></i>
+                            <p class="button-text">button</p>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="main-container">
+            <div class="item-container background-fill">
+                <div class="item-25">
+                    <h1 class="pHeader">Text Text</h1>
+                    <p>Awiqua conswequat ad *blushes* OwO ut i-iwuwwe Ut nyisi w-weu wexwewcitation. Wabowum c-ciwwum nyon a-amwet v-vwewit. Owwit w-wexcweptweuw wexwewcitation awiquip *nuzzles* pawiatuw. Ut iwuwwe dowow dowowwe v-vwewit v-vwewit do sint. Ea >~< minyim w-wea ut wenyim (・`ω´・) qui sit. Nuwwa ut dowowwe swed quis sit in nyon dowowwe. Ipsum pwoidwent incididunt wexwewcitation duis wet swed a-ad d-dowowwe.</p>
+                </div>
+                <div class="item-75">
+                    <h1 class="pHeader">Text Text</h1>
+                    <p>Amwet owwit wenyim wenyim amwet swed :3 Ut iwuwwe. Sunt m-magnya qui west wexcweptweuw nyostwud dowow dowow weu. Quis awiqua magnya wexwewcitation conswectwetuw wabowwe twempow wabowwe.</p>
+                    <div class="center-content">
+                        <div class="img-container">
+                            <img src="img/modeling/blackhole.png" alt="header" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="main-container">
+            <div class="item-container">
+                <div class="item-33 background-fill">
+                    <h1 class="pHeader">This is a header</h1>
+                    <div class="video-container">
+                        <iframe src="https://www.youtube.com/embed/4ZYn9sR3btg?modestbranding=0&rel=1&controls=1"
+                                frameborder="0"
+                                title="YouTube video player"
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                allowfullscreen></iframe>
+                    </div>
+                    <p>Ewit w-weiusmod conswequat adipiscing *giggles* a-amwet awiquip wenyim.</p>
+                    <div class="button-container">
+                        <button>
+                            <i class="fa-solid fa-chevron-right"></i>
+                            <p class="button-text">button</p>
+                        </button>
+                    </div>
+                </div>
+                <div class="item-33 background-fill">
+                    <h1 class="pHeader">This is a header</h1>
+                    <div class="video-container">
+                        <iframe src="https://www.youtube.com/embed/4ZYn9sR3btg?modestbranding=0&rel=1&controls=1"
+                                frameborder="0"
+                                title="YouTube video player"
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                allowfullscreen></iframe>
+                    </div>
+                    <p>Ewit w-weiusmod conswequat adipiscing *giggles* a-amwet awiquip wenyim.</p>
+                    <div class="button-container">
+                        <button>
+                            <i class="fa-solid fa-chevron-right"></i>
+                            <p class="button-text">button</p>
+                        </button>
+                    </div>
+                </div>
+                <div class="item-33 background-fill">
+                    <h1 class="pHeader">This is a header</h1>
+                    <div class="video-container">
+                        <iframe src="https://www.youtube.com/embed/4ZYn9sR3btg?modestbranding=0&rel=1&controls=1"
+                                frameborder="0"
+                                title="YouTube video player"
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                allowfullscreen></iframe>
+                    </div>
+                    <p>Ewit w-weiusmod conswequat adipiscing *giggles* a-amwet awiquip wenyim.</p>
+                    <div class="button-container">
+                        <button>
+                            <i class="fa-solid fa-chevron-right"></i>
+                            <p class="button-text">button</p>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="main-container background-image" style="background-image: url('img/Hero.png');">
+            <div class="item-container">
+                <div class="item-33">
+                    <h1 class="pHeader">Text Text</h1>
+                    <p>Ewit w-weiusmod conswequat adipiscing *giggles* a-amwet awiquip wenyim. Amwet a-awiqua wewit amwet dweswewunt *giggles* wewit ipsum. Dowow swed cuwpa conswectwetuw do q-qui west incididunt. Ea d-duis wabowwe ad wabowis. *giggles* Fugiat awiqua incididunt wexwewcitation minyim *blushes* weiusmod ut a-amwet vwenyiam. Adipiscing w-wea do sint minyim ut. N-Nisi nyisi *blushes* dowow ipsum autwe *nuzzles* dweswewunt duis conswectwetuw.</p>
+                </div>
+                <div class="item-33">
+                    <h1 class="pHeader">Text Text</h1>
+                    <p>Awiqua conswequat ad *blushes* OwO ut i-iwuwwe Ut nyisi w-weu wexwewcitation. Wabowum c-ciwwum nyon a-amwet v-vwewit. Owwit w-wexcweptweuw wexwewcitation awiquip *nuzzles* pawiatuw. Ut iwuwwe dowow dowowwe v-vwewit v-vwewit do sint. Ea >~< minyim w-wea ut wenyim (・`ω´・) qui sit. Nuwwa ut dowowwe swed quis sit in nyon dowowwe. Ipsum pwoidwent incididunt wexwewcitation duis wet swed a-ad d-dowowwe.</p>
+                </div>
+                <div class="item-33">
+                    <h1 class="pHeader">Text Text</h1>
+                    <p>Amwet owwit wenyim wenyim amwet swed :3 Ut iwuwwe. Sunt m-magnya qui west wexcweptweuw nyostwud dowow dowow weu. Quis awiqua magnya wexwewcitation conswectwetuw wabowwe twempow wabowwe.</p>
+                </div>
+            </div>
+        </div>
+
     </main>
+
+    <div id="image-modal">
+        <img id="modal-content">
+    </div>
 
     <footer>
         <div class="footer-container">
-            <h2>How can you contact me?</h2>
+            <h1>How can you contact me?</h1>
             <ul>
                 <li>Discord: Lyrith</li>
                 <li>Telegram: <a href="https://t.me/Lyritha">Lyrith</a></li>
@@ -129,6 +247,10 @@
             </ul>
         </div>
     </footer>
+
+    <script defer  src="scripts/Parallax.js"></script>
+    <script defer src="scripts/GlitchText.js"></script>
+    <script defer src="scripts/FullscreenImages.js"></script>
 
 </body>
 

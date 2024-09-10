@@ -1,0 +1,66 @@
+main {
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.main-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.item-container {
+    margin: 20px 0px;
+    display: flex;
+    max-width: 1400px;
+    justify-content: center;
+    align-items: center;
+}
+
+.item-100 {
+    width: 100%;
+}
+
+.item-75 {
+    width: 75%;
+}
+
+.item-66 {
+    width: 66%;
+}
+
+.item-50 {
+    width: 50%;
+}
+
+.item-33 {
+    width: 33%;
+}
+
+.item-25 {
+    width: 25%;
+}
+
+.item-100, .item-75, .item-66, .item-50, .item-33, .item-25 {
+    margin: 20px;
+}
+
+.center-content {
+    display: flex;
+    justify-content: center;
+}
+
+.pHeader {
+    width: 80%;
+    margin: 30px auto;
+    text-align: center;
+    border-bottom: 3px solid white;
+    font-size: 3em;
+}
+
+p {
+    margin: 20px;
+    font-size: 1.5em;
+}

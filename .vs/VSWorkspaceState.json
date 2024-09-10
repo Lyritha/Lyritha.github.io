@@ -1,8 +1,13 @@
 {
   "ExpandedNodes": [
     "",
+    "\\css",
+    "\\css\\components",
+    "\\css\\segments",
     "\\img",
-    "\\img\\modeling"
+    "\\img\\code",
+    "\\img\\modeling",
+    "\\scripts"
   ],
   "SelectedNode": "\\index.html",
   "PreviewInSolutionExplorer": false

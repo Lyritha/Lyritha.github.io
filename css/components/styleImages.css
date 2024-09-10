@@ -1,0 +1,33 @@
+.img-container {
+    display: flex;
+    width: 70%;
+    margin: 20px;
+}
+
+    .img-container img {
+        width: 100%;
+        object-fit: cover;
+    }
+
+.img-border {
+    outline: solid 5px var(--primary);
+}
+
+.aspect-ratio-16-9 {
+    aspect-ratio: 16/9;
+}
+
+.aspect-ratio-1-1 {
+    aspect-ratio: 1/1;
+}
+
+.video-container {
+    width: 90%;
+    margin: 0 auto;
+}
+
+iframe {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    border: 0;
+}

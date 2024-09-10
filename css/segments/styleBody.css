@@ -1,0 +1,22 @@
+:root {
+    --primary: #333333;
+    --secondary: #1D1D1D;
+    --tertiary: #121212;
+    --quaternary: #151515;
+    --gradientPrimary: hsla(0, 100%, 50%, 1);
+    --gradientSecondary: hsla(260, 100%, 60%, 1);
+
+    scrollbar-color: var(--tertiary) var(--primary);
+}
+
+html, * {
+    font-family: monospace;
+    font-weight: bold;
+    color: white;
+}
+
+body {
+    /* sets background and removes margin*/
+    background: var(--secondary);
+    margin: 0px;
+}
