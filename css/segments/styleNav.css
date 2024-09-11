@@ -42,6 +42,7 @@ nav {
 
 .nav-button-selected {
     color: red;
+    cursor: pointer;
 }
 
 .hero {
@@ -72,7 +73,6 @@ nav {
     margin: auto;
     border-bottom: 3px solid white;
     padding: 5px;
-    max-width: 80%;
 }
 
 .hero-p {
