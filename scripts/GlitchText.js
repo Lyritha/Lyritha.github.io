@@ -1,5 +1,8 @@
+// Check if the user prefers reduced motion
+const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+
 const letters = "abcdefghijklmnopqrstuvwxyz";
-GlitchOnLoad();
+if (!prefersReducedMotion.matches) GlitchOnLoad();
 
 function GlitchOnLoad() {
     const targets = document.querySelectorAll(".glitch-effect-load");
@@ -26,24 +29,26 @@ function GlitchOnLoad() {
     }
 }
 
-document.querySelectorAll(".glitch-effect-hover").forEach(element => {
-    element.onmouseover = event => {
-        let iterations = 0;
+if (!prefersReducedMotion.matches) {
+    document.querySelectorAll(".glitch-effect-hover").forEach(element => {
+        element.onmouseover = event => {
+            let iterations = 0;
 
-        const interval = setInterval(() => {
-            event.target.innerText = event.target.innerText.split("")
-                .map((letter, index) => {
-                    if (index < iterations || letter == ' ') {
-                        return event.target.dataset.value[index];
-                    }
+            const interval = setInterval(() => {
+                event.target.innerText = event.target.innerText.split("")
+                    .map((letter, index) => {
+                        if (index < iterations || letter == ' ') {
+                            return event.target.dataset.value[index];
+                        }
 
-                    return letters[Math.floor(Math.random() * 26)];
-                })
-                .join("");
+                        return letters[Math.floor(Math.random() * 26)];
+                    })
+                    .join("");
 
-            if (iterations >= event.target.dataset.value.length) clearInterval(interval);
+                if (iterations >= event.target.dataset.value.length) clearInterval(interval);
 
-            iterations += 1 / event.target.dataset.steps;
-        }, event.target.dataset.speed);
-    };
-});
+                iterations += 1 / event.target.dataset.steps;
+            }, event.target.dataset.speed);
+        };
+    });
+}

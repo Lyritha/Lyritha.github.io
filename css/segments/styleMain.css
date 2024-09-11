@@ -1,3 +1,20 @@
+@media (prefers-reduced-motion: no-preference) {
+    .main-container {
+        opacity: 0;
+        animation: 1s fadeInUp forwards;
+    }
+
+    .item-container-horizontal, .item-container-vertical {
+        opacity: 0;
+        animation: 1s fadeInUp forwards;
+    }
+
+    .item-container-horizontal-wide {
+        opacity: 0;
+        animation: 1s fadeInUp forwards;
+    }
+}
+
 main {
     display: flex;
     flex-flow: column;
