@@ -17,6 +17,12 @@ main {
     max-width: 1400px;
 }
 
+.item-container-horizontal-wide {
+    margin: 20px 0px;
+    display: flex;
+    max-width: 90%;
+}
+
 .item-container-vertical {
     flex-flow: column;
 }
@@ -53,6 +59,16 @@ main {
     height: 90%;
     padding: 10px;
     margin: 20px;
+}
+
+.item-hover {
+    width: 50%;
+    height: 100%;
+    transition: 1s;
+}
+
+.item-hover:hover {
+    width: 70%;
 }
 
 .width.content {
