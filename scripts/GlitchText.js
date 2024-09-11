@@ -1,8 +1,8 @@
 // Check if the user prefers reduced motion
-const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+const prefersReducedMotionG = window.matchMedia('(prefers-reduced-motion: reduce)');
 
 const letters = "abcdefghijklmnopqrstuvwxyz";
-if (!prefersReducedMotion.matches) GlitchOnLoad();
+if (!prefersReducedMotionG.matches) GlitchOnLoad();
 
 function GlitchOnLoad() {
     const targets = document.querySelectorAll(".glitch-effect-load");
@@ -29,7 +29,7 @@ function GlitchOnLoad() {
     }
 }
 
-if (!prefersReducedMotion.matches) {
+if (!prefersReducedMotionG.matches) {
     document.querySelectorAll(".glitch-effect-hover").forEach(element => {
         element.onmouseover = event => {
             let iterations = 0;

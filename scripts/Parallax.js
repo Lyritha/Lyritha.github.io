@@ -1,8 +1,8 @@
 // Check if the user prefers reduced motion
-const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+const prefersReducedMotionP = window.matchMedia('(prefers-reduced-motion: reduce)');
 
 // Add an event listener to the window to listen for the scroll event
-if (!prefersReducedMotion.matches) {
+if (!prefersReducedMotionP.matches) {
     window.addEventListener('scroll', function () {
         // Get the number of pixels the document has scrolled vertically
         const scrollPosition = window.scrollY;
