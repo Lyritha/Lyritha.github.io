@@ -62,7 +62,7 @@
     border-radius: 0px 30px 30px 0px;
 }
 
-@media only screen and (max-width: 1200px) {
+@media only screen and (max-width: 1100px) {
     .background-radius-small, .background-radius-left-small, .background-radius-right-small {
         border-radius: 10px;
     }
@@ -74,4 +74,16 @@
     .background-radius-large, .background-radius-left-large, .background-radius-right-large {
         border-radius: 30px;
     }
+}
+
+@media only screen and (max-width: 1400px) {
+    .background-image {
+        background-size: cover;
+        transition: transform 0.5s;
+    }
+
+        .background-image:hover {
+            background-size: cover;
+            transform: scale(1.01);
+        }
 }

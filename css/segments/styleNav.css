@@ -35,7 +35,7 @@ nav {
     color: white;
 }
 
-    .nav-button:hover {
+    .nav-button:hover, .nav-button-selected:hover {
         color: red;
         font-size: 2.1em;
     }

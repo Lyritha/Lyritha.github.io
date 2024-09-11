@@ -3,11 +3,11 @@
     "",
     "\\css",
     "\\css\\components",
+    "\\css\\effects",
     "\\css\\segments",
     "\\img",
-    "\\img\\main-page",
     "\\scripts"
   ],
-  "SelectedNode": "\\css\\segments\\styleBody.css",
+  "SelectedNode": "\\active_projects.html",
   "PreviewInSolutionExplorer": false
 }
