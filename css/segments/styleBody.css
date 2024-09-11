@@ -5,7 +5,6 @@
     --quaternary: #151515;
     --gradientPrimary: hsla(0, 100%, 50%, 1);
     --gradientSecondary: hsla(260, 100%, 60%, 1);
-
     scrollbar-color: var(--tertiary) var(--primary);
 }
 

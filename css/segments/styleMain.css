@@ -6,21 +6,24 @@ main {
 }
 
 .main-container {
+    position: relative;
     width: 100%;
     display: flex;
     justify-content: center;
+    align-items: stretch;
 }
 
 .item-container-horizontal, .item-container-vertical {
     margin: 20px 0px;
     display: flex;
     max-width: 1400px;
+    height: fit-content;
 }
 
 .item-container-horizontal-wide {
     margin: 20px 0px;
     display: flex;
-    max-width: 90%;
+    max-width: 80%;
 }
 
 .item-container-vertical {
@@ -62,17 +65,19 @@ main {
 }
 
 .item-hover {
+    margin: auto;
     width: 50%;
-    height: 100%;
+    min-height: 300px;
     transition: 1s;
 }
 
-.item-hover:hover {
-    width: 70%;
-}
+    .item-hover:hover {
+        width: 60%;
+    }
 
-.width.content {
-    width: fit-content;
+.item-no-margin {
+    margin: auto;
+    height: fit-content;
 }
 
 .center-content {
@@ -80,7 +85,7 @@ main {
     justify-content: center;
 }
 
-.pHeader {
+.header-main, .header-center {
     width: 80%;
     margin: 30px auto;
     text-align: center;
@@ -88,12 +93,30 @@ main {
     font-size: 3em;
 }
 
-p {
+.text-main {
+    border-left: 3px solid white;
+    padding-left: 10px;
+    overflow: hidden;
+}
+
+.text-main, .text-center, ul {
     margin: 20px;
     font-size: 1.5em;
 }
 
-ul {
-    margin: 20px;
-    font-size: 1.5em;
+.text-center {
+    text-align: center;
+}
+
+@media only screen and (max-width: 1200px) {
+    .main-container, .item-container-horizontal, .item-container-vertical, .item-container-horizontal-wide {
+        flex-flow: column;
+        width: 100%;
+        margin: 20px auto;
+    }
+
+    .item-100, .item-75, .item-66, .item-50, .item-33, .item-25, .item-10 {
+        width: 90%;
+        margin: 20px auto;
+    }
 }

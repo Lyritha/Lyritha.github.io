@@ -2,24 +2,24 @@ button {
     display: flex;
     background: linear-gradient(270deg, var(--gradientPrimary), var(--gradientSecondary));
     border: none;
-    border-radius: 100px;
+    border-radius: 20px;
     padding: 5px;
     margin: 5px;
     cursor: pointer;
-    min-width: 200px;
+    min-width: fit-content;
     max-width: 70%;
-    height: auto;
+    height: fit-content;
     transition: 0.5s;
     overflow: hidden;
 }
 
     button i {
+        font-size: 1.5em;
         margin: auto 20px;
     }
 
     button:hover {
-        min-width: 250px;
-        max-width: 90%;
+        transform: scale(1.05);
     }
 
 .button-container {
