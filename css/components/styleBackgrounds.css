@@ -19,6 +19,7 @@
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
+    transition: background-size 0.3s ease; /* Add transition for smooth zoom */
 }
 
 .background-radius-small {
@@ -31,4 +32,42 @@
 
 .background-radius-large {
     border-radius: 30px;
+}
+
+.background-radius-left-small {
+    border-radius: 10px 0px 0px 10px;
+}
+
+.background-radius-left-medium {
+    border-radius: 20px 0px 0px 20px;
+}
+
+.background-radius-left-large {
+    border-radius: 30px 0px 0px 30px;
+}
+
+.background-radius-right-small {
+    border-radius: 0px 10px 10px 0px;
+}
+
+.background-radius-right-medium {
+    border-radius: 0px 20px 20px 0px;
+}
+
+.background-radius-right-large {
+    border-radius: 0px 30px 30px 0px;
+}
+
+@media only screen and (max-width: 1100px) {
+    .background-radius-small, .background-radius-left-small, .background-radius-right-small {
+        border-radius: 10px;
+    }
+
+    .background-radius-medium, .background-radius-left-medium, .background-radius-right-medium {
+        border-radius: 20px;
+    }
+
+    .background-radius-large, .background-radius-left-large, .background-radius-right-large {
+        border-radius: 30px;
+    }
 }
