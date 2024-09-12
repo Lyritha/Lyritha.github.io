@@ -3,11 +3,11 @@
     "",
     "\\css",
     "\\css\\components",
-    "\\css\\effects",
     "\\css\\segments",
     "\\img",
+    "\\img\\main-page",
     "\\scripts"
   ],
-  "SelectedNode": "\\scripts\\Parallax.js",
+  "SelectedNode": "\\index.html",
   "PreviewInSolutionExplorer": false
 }
