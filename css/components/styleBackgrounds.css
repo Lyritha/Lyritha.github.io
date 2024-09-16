@@ -14,7 +14,7 @@
     }
 
 .background-image {
-    background-size: contain;
+    background-size: cover;
     background-position: center;
     transition: background-size 0.3s ease;
 }
