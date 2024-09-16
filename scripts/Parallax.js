@@ -1,14 +1,19 @@
 // Check if the user prefers reduced motion
 const prefersReducedMotionP = window.matchMedia('(prefers-reduced-motion: reduce)');
+const targets = document.querySelectorAll('.scroll-effect');
+
+SetPositions();
 
 // Add an event listener to the window to listen for the scroll event
 if (!prefersReducedMotionP.matches) {
     window.addEventListener('scroll', function () {
-        // Get the number of pixels the document has scrolled vertically
-        const scrollPosition = window.scrollY;
+        SetPositions();
+    });
+}
 
-        // Move the background image in the opposite direction of scrolling
-        // We can use a multiplier (like 0.5) to control the speed of the effect
-        document.querySelector('.scroll-effect').style.backgroundPositionY = -(scrollPosition * 0.5) + 'px';
+function SetPositions() {
+    targets.forEach(target => {
+        const elementPos = Math.min(0, target.getBoundingClientRect().top) / 2;
+        target.style.backgroundPositionY = elementPos - 10 + 'px';
     });
 }

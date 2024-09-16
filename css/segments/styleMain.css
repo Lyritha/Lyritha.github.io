@@ -40,7 +40,7 @@ main {
 .item-container-horizontal-wide {
     margin: 20px 0px;
     display: flex;
-    max-width: 80%;
+    max-width: 90%;
 }
 
 .item-container-vertical {
