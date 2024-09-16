@@ -78,7 +78,7 @@ main {
 .item-100, .item-75, .item-66, .item-50, .item-33, .item-25, .item-10 {
     height: 90%;
     padding: 10px;
-    margin: 20px;
+    margin: 20px auto;
 }
 
 .item-hover {
