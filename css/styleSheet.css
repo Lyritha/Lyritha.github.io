@@ -4,11 +4,11 @@
 @import url("components/styleImages.css");
 
 /*segments*/
+@import url("segments/styleNav.css");
 @import url("segments/styleBody.css");
 @import url("segments/styleFooter.css");
 @import url("segments/styleImageModal.css");
 @import url("segments/styleMain.css");
-@import url("segments/styleNav.css");
 
 /*effects/js related*/
 @import url("effects/styleGlitchEffect.css");
