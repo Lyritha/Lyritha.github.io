@@ -126,6 +126,12 @@ main {
     text-align: center;
 }
 
+@media only screen and (min-width: 1800px) {
+    .item-container-horizontal-wide {
+        max-width: 1600px;
+    }
+}
+
 @media only screen and (max-width: 1200px) {
     .item-container-horizontal, .item-container-vertical, .item-container-horizontal-wide {
         flex-wrap: wrap;
@@ -141,11 +147,5 @@ main {
     .item-100, .item-75, .item-66, .item-50, .item-33, .item-25, .item-10 {
         width: 95%;
         margin: 20px auto;
-    }
-}
-
-@media only screen and (min-width: 1800px) {
-    .item-container-horizontal-wide {
-        max-width: 1600px;
     }
 }

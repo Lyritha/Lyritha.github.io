@@ -97,17 +97,11 @@ nav {
     }
 
 
-@media only screen and (max-width: 400px) {
-    .hero-title {
-        font-size: 2em;
+@media only screen and (max-width: 900px) {
+    .nav-container {
+        width: 90%;
     }
 
-    .hero-p {
-        font-size: 2em;
-    }
-}
-
-@media only screen and (max-width: 600px) {
     .hero-title {
         font-size: 5em;
     }
@@ -119,7 +113,7 @@ nav {
 
 @media only screen and (max-width: 700px) {
     .nav-container {
-        display:flex;
+        display: flex;
         flex-flow: column;
         width: 100%;
     }
@@ -134,8 +128,19 @@ nav {
     }
 }
 
-@media only screen and (max-width: 900px) {
-    .nav-container {
-        width: 100%;
+@media only screen and (max-width: 600px) {
+    .hero-title {
+        font-size: 3em;
+    }
+
+    .hero-p {
+        font-size: 2em;
     }
 }
+
+@media only screen and (max-width: 500px) {
+    .hero-title {
+        width: 80%;
+    }
+}
+
