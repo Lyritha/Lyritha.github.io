@@ -27,8 +27,8 @@
     transform: scale(0);
     margin: auto;
     display: block;
-    max-width: 70vw;
-    max-height: 40vw;
+    max-width: 90%;
+    max-height: 90%;
     border-radius: 20px;
     transition: transform ease-in-out 0.3s;
 }
