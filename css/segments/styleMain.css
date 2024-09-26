@@ -4,7 +4,7 @@
         animation: 1s fadeInUp forwards;
     }
 
-    .item-container-horizontal, .item-container-vertical {
+    .item-container-horizontal, .item-container-vertical, .item-container-vertical-max {
         opacity: 0;
         animation: 1s fadeInUp forwards;
     }
@@ -34,7 +34,6 @@ main {
     margin: 20px 0px;
     display: flex;
     max-width: 1400px;
-    height: fit-content;
 }
 
 .item-container-horizontal-wide {

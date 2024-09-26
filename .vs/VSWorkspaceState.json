@@ -3,11 +3,12 @@
     "",
     "\\css",
     "\\css\\components",
+    "\\css\\effects",
     "\\css\\segments",
     "\\img",
     "\\img\\main-page",
     "\\scripts"
   ],
-  "SelectedNode": "\\index.html",
+  "SelectedNode": "\\css\\segments\\styleImageModal.css",
   "PreviewInSolutionExplorer": false
 }
