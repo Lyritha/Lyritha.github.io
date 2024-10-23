@@ -38,13 +38,14 @@
 }
 
 .video-container {
+    display:flex;
     width: 90%;
-    margin: 0 auto;
+    margin: 20px auto;
 }
 
 iframe {
     width: 100%;
-    aspect-ratio: 16 / 9;
+    margin: auto;
     border: 0;
 }
 
