@@ -31,7 +31,7 @@ main {
 }
 
 .item-container-horizontal, .item-container-vertical {
-    margin: 20px 0px;
+    margin: 20px 20px;
     display: flex;
     max-width: 1400px;
     justify-content:center;
@@ -133,12 +133,6 @@ main {
 .text-center {
     text-align: center;
     margin: 20px auto;
-}
-
-@media only screen and (min-width: 1800px) {
-    .item-container-horizontal-wide {
-        max-width: 1600px;
-    }
 }
 
 @media only screen and (max-width: 1200px) {

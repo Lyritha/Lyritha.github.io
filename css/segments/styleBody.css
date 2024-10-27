@@ -12,6 +12,7 @@ html, * {
     font-family: monospace;
     font-weight: bold;
     color: white;
+    scroll-behavior: smooth;
 }
 
 body {

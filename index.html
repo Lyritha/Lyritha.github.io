@@ -8,7 +8,6 @@
 
     <meta property="og:type" content="website">
     <meta property="og:title" content="Collin's Portfolio" />
-    <meta property="og:description" content="portfolio made, managed and owned by Collin Kloppenburg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <link href="css/styleSheet.css" rel="stylesheet" />
@@ -33,9 +32,23 @@
     <header>
         <div class="hero scroll-effect" style="background-image: url('img/Hero_Code.png');">
             <div class="gradient-overlay"></div>
-            <div class="hero-item-container">
-                <h1 data-steps="3" data-speed="30" class="hero-title glitch-effect-load">Portfolio Page</h1>
-                <p class="hero-p">portfolio made, managed and owned by Collin Kloppenburg</p>
+            <div class="hero-item-container item-container-horizontal">
+                <div class="item-75 item-no-margin">
+                    <h1 data-steps="3" data-speed="30" class="hero-title glitch-effect-load">Software dev</h1>
+                    <div class="item-container-horizontal">
+                        <div class="item-75 item-no-margin">
+                            <p class="hero-p">Looking for an internship in the game-dev or front-end web-dev sectors.</p>
+                            <div class="button-container">
+                                <button type="button" onclick="location.href='#footer'" value="get in contact">
+                                    <i class="fa-solid fa-chevron-right"></i>
+                                    <p class="button-text">Get in contact</p>
+                                </button>
+                            </div>
+                        </div>
+                        <p class="item-25 item-height-fit-content hero-p2">portfolio made, managed and owned by Collin Kloppenburg.</p>
+                    </div>
+
+                </div>
             </div>
         </div>
     </header>
@@ -75,16 +88,13 @@
             </div>
         </section>
 
-        <section class="main-container background-fill" style="min-height: 500px;">
-            <div class="item-container-horizontal" style="width:100%;">
-                <div class="item-container-vertical item-100 item-no-margin background-image background-radius-medium" style="background-image: url('img/main-page/project_hero.png'); justify-content:space-between;">
+        <section class="main-container background-fill">
+                <div class="item-container-vertical background-image background-radius-medium" style="background-image: url('img/main-page/project_hero.png'); justify-content:space-between;">
                     <h1 class="header-main">Projects</h1>
-                    <div style="margin:auto;">
-                        <p class="text-center item-50">
-                            The projects i make are mainly made in Unity using C#, i do wish to grow my library of projects outside of the Unity game engine, but have no set goals for this yet.
-                            Outside of unity projects i am also currently making small projects using ShaderToy to learn GLSL, expanding to HLSL to be able to make my own shaders in unity.
-                        </p>
-                    </div>
+                    <p class="text-center item-50">
+                        The projects i make are mainly made in Unity using C#, i do wish to grow my library of projects outside of the Unity game engine, but have no set goals for this yet.
+                        Outside of unity projects i am also currently making small projects using ShaderToy to learn GLSL, expanding to HLSL to be able to make my own shaders in unity.
+                    </p>
                     <div class="button-container">
                         <button type="button" onclick="location.href='projects'" value="go to finished projects">
                             <i class="fa-solid fa-chevron-right"></i>
@@ -92,7 +102,6 @@
                         </button>
                     </div>
                 </div>
-            </div>
         </section>
 
     </main>
@@ -101,7 +110,7 @@
         <img id="modal-content">
     </div>
 
-    <footer>
+    <footer id="footer">
         <div class="footer-container">
             <h1>How can you contact me?</h1>
             <ul>
