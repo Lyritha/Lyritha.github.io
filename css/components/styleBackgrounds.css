@@ -9,6 +9,10 @@
     transition: background-position 0.5s ease-in-out;
 }
 
+.background-fill-transparent {
+    background: hsla(0, 0%, 0%, 0.5);
+}
+
     .background-fill:hover {
         background-position: 100% 100%;
     }

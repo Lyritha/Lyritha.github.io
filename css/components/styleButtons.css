@@ -24,6 +24,7 @@ button {
     }
 
 .button-container {
+    display:flex;
     padding: 5px 20px 20px 20px;
     display: flex;
     justify-content: center;
@@ -47,6 +48,14 @@ button {
 }
 
 @media only screen and (max-width: 600px) {
+
+    .button-container {
+        flex-flow: column;
+    }
+
+    button {
+        margin: 5px auto;
+    }
 
     button i {
         font-size: 1em;

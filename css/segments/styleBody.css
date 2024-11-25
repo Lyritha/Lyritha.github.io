@@ -1,8 +1,8 @@
 :root {
-    --primary: #333333;
-    --secondary: #1D1D1D;
-    --tertiary: #121212;
-    --quaternary: #151515;
+    --primary: hsla(0, 0%, 20%, 1);
+    --secondary: hsla(0, 0%, 11%, 1);
+    --tertiary: hsla(0, 0%, 7%, 1);
+    --quaternary: hsla(0, 0%, 8%, 1);
     --gradientPrimary: hsla(0, 100%, 50%, 1);
     --gradientSecondary: hsla(260, 100%, 60%, 1);
     scrollbar-color: var(--gradientPrimary) var(--primary);
@@ -19,6 +19,10 @@ body {
     /* sets background and removes margin*/
     background: var(--secondary);
     margin: 0px;
+}
+
+.background-filth {
+    background: repeating-linear-gradient(#68bcb9, #68bcb9 20px, #57a6a3 20px, #57a6a3 25px);
 }
 
 @keyframes fadeInUp {
