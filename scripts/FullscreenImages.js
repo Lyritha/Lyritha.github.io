@@ -1,4 +1,4 @@
-// Get the modal
+// Get the modal components
 const modal = document.getElementById('image-modal');
 const modalImg = document.getElementById('modal-content');
 
@@ -10,7 +10,24 @@ thumbnails.forEach(thumbnail => {
     thumbnail.addEventListener('click', function () {
         modal.style.display = 'flex';
         ModalAnimation(1);
-        modalImg.src = this.src;
+
+        // Determine the source based on the element type
+        let link;
+
+        if (this.tagName.toLowerCase() === 'img') {
+            // If the element is an <img>, use the 'src' attribute
+            link = this.src;
+        }
+
+        else if (this.tagName.toLowerCase() === 'div') {
+            // If the element is a <div>, use the background image
+            const backgroundImage = window.getComputedStyle(this).backgroundImage;
+            // Extract the URL from 'url("...")'
+            link = backgroundImage.slice(5, -2); // Removes 'url("' and '")'
+        }
+
+        // Set the modal image source
+        modalImg.src = link;
     });
 });
 
@@ -18,7 +35,6 @@ thumbnails.forEach(thumbnail => {
 window.addEventListener('click', function (event) {
     if (event.target === modal) {
         ModalAnimation(0);
-
     }
 });
 

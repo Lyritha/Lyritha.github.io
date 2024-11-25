@@ -2,6 +2,7 @@
 @import url("components/styleBackgrounds.css");
 @import url("components/styleButtons.css");
 @import url("components/styleImages.css");
+@import url("components/styleGallery.css");
 
 /*segments*/
 @import url("segments/styleBody.css");
