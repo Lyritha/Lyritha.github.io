@@ -2,15 +2,15 @@
   "ExpandedNodes": [
     "",
     "\\css",
-    "\\css\\components",
-    "\\css\\effects",
     "\\css\\segments",
     "\\img",
+    "\\img\\gallery-page",
+    "\\img\\gallery-page\\house",
     "\\img\\main-page",
     "\\img\\projects-page",
     "\\img\\theFilth-page",
     "\\scripts"
   ],
-  "SelectedNode": "\\projects.html",
+  "SelectedNode": "\\img\\gallery-page\\house\\Hous_BedRoom5.webp",
   "PreviewInSolutionExplorer": false
 }
