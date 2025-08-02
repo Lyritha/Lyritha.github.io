@@ -11,22 +11,16 @@ const experiencesData = [
         title: "Zoete kruimels",
         subtitle: "Intern Pastry baker",
         image: "Images/Experiences/ZoeteKruimels.png",
-        period: "? - ?",
-        description: `Meow`
+        period: "6/02/23 - 21/04/23",
+        description: `During my internship at Zoete Kruimels, I mostly worked under the guidance of a team leader, but as part of my studies, I also took on tasks independently.`
     },
     {
         title: "Nienke's cupcakes",
         subtitle: "Intern Pastry baker",
         image: "Images/Experiences/Nienkes.jpg",
-        period: "? - ?",
-        description: `Meow, but different`
-    },
-    {
-        title: "Action",
-        subtitle: "shelf stacker",
-        image: "Images/Experiences/Action.png",
-        period: "? - ?",
-        description: `Meow special edition`
+        period: "15/11/21 - 4/02/22",
+        description: `During my internship at Nienke’s Cupcakes, I was involved in both day-to-day operations and special projects. 
+        \n\nWhile I often collaborated with the team, I also had opportunities to take initiative and handle tasks on my own as part of my study requirements.`
     },
 ];
 const eductationData = [
@@ -34,15 +28,17 @@ const eductationData = [
         title: "ROC van twente",
         subtitle: "software developer",
         image: "Images/Experiences/ROC.png",
-        period: "? - 31/07/27",
-        description: `meoster`
+        period: "? - 31/07/27 (screw duo)",
+        description: `I'm currently in my third year of a four-year Software Development program at ROC van Twente, where I focus primarily on game development using Unity. Alongside game projects, I have also worked on websites and MonoGame.
+        \n\nMy passion for programming started as a hobby but i wanted to get more in-depth with it.`
     },
     {
         title: "ROC van twente",
         subtitle: "independent working baker",
         image: "Images/Experiences/ROC.png",
-        period: "? - ?",
-        description: `Meow`
+        period: "? - ? (screw duo)",
+        description: `During my training to become an independent baker, I focused mainly on pastries, cakes, and other sweet baked goods.
+        \n\nI gained hands-on experience in the bakery, alongside studying ingredient science, baking techniques, hygiene, and scheduling.`
     }
 ];
 
