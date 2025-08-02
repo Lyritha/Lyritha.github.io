@@ -19,7 +19,7 @@ const experiencesData = [
         subtitle: "Intern Pastry baker",
         image: "Images/Experiences/Nienkes.jpg",
         period: "15/11/21 - 4/02/22",
-        description: `During my internship at Nienke’s Cupcakes, I was involved in both day-to-day operations and special projects. 
+        description: `During my internship at Nienke's Cupcakes, I was involved in both day-to-day operations and special projects. 
         \n\nWhile I often collaborated with the team, I also had opportunities to take initiative and handle tasks on my own as part of my study requirements.`
     },
 ];
