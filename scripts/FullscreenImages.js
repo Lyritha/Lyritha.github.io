@@ -1,53 +1,57 @@
-// Get the modal components
-const modal = document.getElementById('image-modal');
-const modalImg = document.getElementById('modal-content');
+﻿document.addEventListener('DOMContentLoaded', () => {
+    initFullscreenImages();
+});
 
-// Get all thumbnail images
-const thumbnails = document.querySelectorAll('.thumbnail');
+function initFullscreenImages() {
+    const modal = document.getElementById('image-modal');
+    const modalImg = document.getElementById('modal-content');
 
-// Add click event listeners to thumbnails
-thumbnails.forEach(thumbnail => {
-    thumbnail.addEventListener('click', function () {
+    if (!modal || !modalImg) return;
+
+    const thumbnails = document.querySelectorAll('.thumbnail');
+
+    thumbnails.forEach(thumbnail => {
+        // Prevent duplicate listeners
+        thumbnail.removeEventListener('click', handleClick);
+        thumbnail.addEventListener('click', handleClick);
+    });
+
+    function handleClick() {
         modal.style.display = 'flex';
         ModalAnimation(1);
 
-        // Determine the source based on the element type
         let link;
+        let tag = this.tagName.toLowerCase();
 
-        if (this.tagName.toLowerCase() === 'img') {
-            // If the element is an <img>, use the 'src' attribute
+        if (tag === 'img') {
             link = this.src;
-        }
-
-        else if (this.tagName.toLowerCase() === 'div') {
-            // If the element is a <div>, use the background image
+        } else if (tag === 'div') {
             const backgroundImage = window.getComputedStyle(this).backgroundImage;
-            // Extract the URL from 'url("...")'
-            link = backgroundImage.slice(5, -2); // Removes 'url("' and '")'
+            link = backgroundImage.slice(5, -2);
         }
 
-        // Set the modal image source
         modalImg.src = link;
-    });
-});
-
-// Close the modal when clicking outside of the image
-window.addEventListener('click', function (event) {
-    if (event.target === modal) {
-        ModalAnimation(0);
     }
-});
 
-function ModalAnimation(target) {
+    window.addEventListener('click', function (event) {
+        if (event.target === modal) {
+            ModalAnimation(0);
+        }
+    });
 
-    setTimeout(() => {
-        modal.style.opacity = target;
-        modalImg.style.transform = 'scale(' + target + ')';
-    }, 0);
-
-    if (target == 0) {
+    function ModalAnimation(target) {
         setTimeout(() => {
-            modal.style.display = 'none';
-        }, 300);
+            modal.style.opacity = target;
+            modalImg.style.transform = `scale(${target})`;
+        }, 0);
+
+        if (target === 0) {
+            setTimeout(() => {
+                modal.style.display = 'none';
+            }, 300);
+        }
     }
 }
+
+// Make it callable globally
+window.initFullscreenImages = initFullscreenImages;

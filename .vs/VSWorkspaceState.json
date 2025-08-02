@@ -3,13 +3,8 @@
     "",
     "\\css",
     "\\css\\segments",
-    "\\img",
-    "\\img\\gallery-page",
-    "\\img\\gallery-page\\house",
-    "\\img\\main-page",
-    "\\img\\projects-page",
-    "\\img\\theFilth-page"
+    "\\scripts"
   ],
-  "SelectedNode": "\\img\\theFilth-page",
+  "SelectedNode": "\\index.html",
   "PreviewInSolutionExplorer": false
 }
