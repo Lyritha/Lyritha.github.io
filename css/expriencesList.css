@@ -1,11 +1,10 @@
 .expriences-list {
     height: 100%;
     width: 100%;
-
     border-left: solid var(--outline-width-large) var(--border-col);
 }
 
-.experiences-item  {
+.experiences-item {
     width: 100%;
 }
 

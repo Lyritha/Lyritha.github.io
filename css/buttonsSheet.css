@@ -74,10 +74,6 @@ button, a {
     outline-color: #6d7d9c;
 }
 
-.social-container {
-    height: 102px;
-}
-
 
 /*styling for "info" buttons (for software and such)*/
 
@@ -189,9 +185,9 @@ button, a {
     transform: translateY(0);
 }
 
-
-@media (max-width: 1100px) {
-    .social-container {
-        height: 306px;
+@media (max-width: 550px) {
+    .button-social {
+        padding: var(--spacing-small);
+        gap: var(--spacing-small);
     }
 }
