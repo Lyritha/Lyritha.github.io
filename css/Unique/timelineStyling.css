@@ -1,0 +1,58 @@
+.timeline-list {
+    height: 100%;
+    width: 100%;
+    border-left: solid var(--outline-width-large) var(--border-col);
+}
+
+.timeline-item {
+    width: 100%;
+}
+
+.timeline-container {
+    outline: var(--outline-width-medium) solid var(--border-col);
+    border-radius: var(--outline-radius);
+    padding: var(--spacing-small);
+    gap: var(--spacing-small);
+    transition: ease-in outline-color 150ms, ease-in border-color 150ms, ease-in border-top-color 150ms;
+}
+
+
+.timeline-line {
+    width: 15px;
+    margin: auto 0px;
+    height: var(--outline-width-medium);
+    border-top: solid var(--outline-width-medium) var(--border-col);
+    transition: ease-in outline-color 150ms, ease-in border-color 150ms, ease-in border-top-color 150ms;
+}
+
+.timeline-icon {
+    height: 35px;
+}
+
+.timeline-item.active .timeline-container,
+.timeline-item.active .timeline-line,
+.timeline-item:hover .timeline-container,
+.timeline-item:hover .timeline-line {
+    outline-color: var(--highlight-color);
+    border-color: var(--highlight-color);
+    border-top-color: var(--highlight-color);
+}
+
+@media (max-width: 1350px) {
+    /* Styles for thinner desktop screens (laptops, small monitors) */
+}
+
+/* tablet: landscape tablets, large phones in landscape */
+@media (max-width: 1100px) {
+    /* Styles for tablets or small laptops */
+}
+
+/* tablet-thin: portrait tablets or small landscape phones */
+@media (max-width: 800px) {
+    /* Styles for thin tablets */
+}
+
+/* mobile: phones */
+@media (max-width: 550px) {
+    /* Styles for phones */
+}

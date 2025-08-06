@@ -1,0 +1,38 @@
+[
+  {
+    "key": "Unity",
+    "name": "Unity",
+    "skillLevel": "Advanced",
+    "iconSrc": "Images/Software/unity.png",
+    "bgColor": "white",
+    "outlineColor": "#000000",
+    "textColor": "#000000"
+  },
+  {
+    "key": "Blender",
+    "name": "Blender",
+    "skillLevel": "Advanced",
+    "iconSrc": "Images/Software/blender.png",
+    "bgColor": "white",
+    "outlineColor": "#e87d0d",
+    "textColor": "#000000"
+  },
+  {
+    "key": "SubstanceP",
+    "name": "Substance painter",
+    "skillLevel": "Advanced",
+    "iconSrc": "Images/Software/SubstanceP.svg",
+    "bgColor": "#1e3101",
+    "outlineColor": "#99e83f",
+    "textColor": "#99e83f"
+  },
+  {
+    "key": "Inkscape",
+    "name": "Inkscape",
+    "skillLevel": "Average",
+    "iconSrc": "Images/Software/Inkscape.svg",
+    "bgColor": "white",
+    "outlineColor": "#000000",
+    "textColor": "#000000"
+  }
+]

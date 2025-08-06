@@ -1,0 +1,38 @@
+[
+  {
+    "key": "cSharp",
+    "name": "c#",
+    "skillLevel": "Advanced",
+    "iconSrc": "Images/Languages/c-sharp.png",
+    "bgColor": "#962C87",
+    "outlineColor": "#B14796",
+    "textColor": "white"
+  },
+  {
+    "key": "JS",
+    "name": "Javascript",
+    "skillLevel": "Average",
+    "iconSrc": "Images/Languages/js.png",
+    "bgColor": "#FFDF00",
+    "outlineColor": "#FFF350",
+    "textColor": "#000000"
+  },
+  {
+    "key": "HTML",
+    "name": "HTML",
+    "skillLevel": "Average",
+    "iconSrc": "Images/Languages/html-5.png",
+    "bgColor": "white",
+    "outlineColor": "#FF7444",
+    "textColor": "#000000"
+  },
+  {
+    "key": "CSS",
+    "name": "CSS",
+    "skillLevel": "Average",
+    "iconSrc": "Images/Languages/css-3.png",
+    "bgColor": "white",
+    "outlineColor": "#5EB8FF",
+    "textColor": "#000000"
+  }
+]

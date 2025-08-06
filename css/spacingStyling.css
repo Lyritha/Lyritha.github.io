@@ -1,0 +1,39 @@
+.gap-small {
+    gap: var(--spacing-small);
+}
+
+.gap-med {
+    gap: var(--spacing-medium);
+}
+
+.padding-small {
+    padding: var(--spacing-small);
+}
+
+.padding-med {
+    padding: var(--spacing-medium);
+}
+
+.gap-between {
+    justify-content: space-between;
+}
+
+/* desktop-thin: slightly smaller than wide desktop */
+@media (max-width: 1350px) {
+    /* Styles for thinner desktop screens (laptops, small monitors) */
+}
+
+/* tablet: landscape tablets, large phones in landscape */
+@media (max-width: 1100px) {
+    /* Styles for tablets or small laptops */
+}
+
+/* tablet-thin: portrait tablets or small landscape phones */
+@media (max-width: 800px) {
+    /* Styles for thin tablets */
+}
+
+/* mobile: phones */
+@media (max-width: 550px) {
+    /* Styles for phones */
+}

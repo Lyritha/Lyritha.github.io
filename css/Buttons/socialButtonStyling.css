@@ -1,0 +1,55 @@
+.button-social {
+    display: flex;
+    flex-flow: row;
+    justify-content: center;
+    align-items: center;
+    outline: var(--outline-width-medium) solid #ffffff;
+    background: #000000;
+    border-radius: var(--outline-radius);
+    padding: var(--spacing-medium);
+    gap: var(--spacing-medium);
+    transition: outline-width 100ms ease-in-out;
+}
+
+    .button-social:hover {
+        outline-width: var(--outline-width-large);
+    }
+
+.social-button-icon {
+    height: var(--header-size);
+}
+
+#social-Gmail {
+    background: #3e79d9;
+    outline-color: #84a2ff;
+}
+
+#social-LinkedIn {
+    background: #2b6497;
+    outline-color: #4096e3;
+}
+
+#social-Github {
+    background: #384050;
+    outline-color: #6d7d9c;
+}
+
+/* desktop-thin: slightly smaller than wide desktop */
+@media (max-width: 1350px) {
+    /* Styles for thinner desktop screens (laptops, small monitors) */
+}
+
+/* tablet: landscape tablets, large phones in landscape */
+@media (max-width: 1100px) {
+    /* Styles for tablets or small laptops */
+}
+
+/* tablet-thin: portrait tablets or small landscape phones */
+@media (max-width: 800px) {
+    /* Styles for thin tablets */
+}
+
+/* mobile: phones */
+@media (max-width: 550px) {
+    /* Styles for phones */
+}

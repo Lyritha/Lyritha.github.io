@@ -1,0 +1,39 @@
+.button {
+    display: inline-flex;
+    align-items: center;
+    outline: var(--outline-width-small) solid var(--highlight-color);
+    border-radius: var(--outline-radius);
+    padding: var(--spacing-small);
+    gap: var(--spacing-small);
+    transition: background 200ms ease-in-out, outline-width 100ms ease-in-out;
+    align-self: flex-start;
+}
+
+    .button.active, .button:hover {
+        background: rgba(224, 68, 71, 0.2);
+        outline-width: var(--outline-width-medium);
+    }
+
+.button-icon {
+    height: var(--text-size);
+}
+
+/* desktop-thin: slightly smaller than wide desktop */
+@media (max-width: 1350px) {
+    /* Styles for thinner desktop screens (laptops, small monitors) */
+}
+
+/* tablet: landscape tablets, large phones in landscape */
+@media (max-width: 1100px) {
+    /* Styles for tablets or small laptops */
+}
+
+/* tablet-thin: portrait tablets or small landscape phones */
+@media (max-width: 800px) {
+    /* Styles for thin tablets */
+}
+
+/* mobile: phones */
+@media (max-width: 550px) {
+    /* Styles for phones */
+}

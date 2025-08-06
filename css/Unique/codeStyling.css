@@ -1,0 +1,80 @@
+/* Customize the code block container */
+code[class*="language-"], pre[class*="language-"] {
+    background: transparent;
+    color: #dcdcdc;
+    padding: 1rem;
+    border-radius: 0px;
+    overflow-x: auto;
+    font-family: 'Azeret Mono', monospace;
+    font-size: var(--sub-text-size);
+}
+
+    code[class*="language-"]::-webkit-scrollbar, pre[class*="language-"]::-webkit-scrollbar-track {
+        color: transparent;
+    }
+
+    code[class*="language-"]::-webkit-scrollbar-thumb {
+        background-color: var(--highlight-color);
+        border-radius: var(--outline-radius);
+        background-clip: content-box;
+    }
+
+    code[class*="language-"]::-webkit-scrollbar-corner {
+        background-color: transparent;
+    }
+
+/* Customize token styles */
+.token.comment,
+.token.prolog,
+.token.doctype,
+.token.cdata {
+    color: #6a9955;
+}
+
+.token.keyword {
+    color: #569cd6;
+}
+
+.token.string {
+    color: #ce9178;
+}
+
+.token.function {
+    color: #dcdcaa;
+}
+
+.token.class-name {
+    color: #4ec9b0;
+}
+
+.token.operator {
+    color: #d4d4d4;
+}
+
+/* desktop-thin: slightly smaller than wide desktop */
+@media (max-width: 1350px) {
+    code[class*="language-"], pre[class*="language-"] {
+        font-size: calc(var(--sub-text-size) * 0.95)
+    }
+}
+
+/* tablet: landscape tablets, large phones in landscape */
+@media (max-width: 1100px) {
+    code[class*="language-"], pre[class*="language-"] {
+        font-size: calc(var(--sub-text-size) * 0.9)
+    }
+}
+
+/* tablet-thin: portrait tablets or small landscape phones */
+@media (max-width: 800px) {
+    code[class*="language-"], pre[class*="language-"] {
+        font-size: calc(var(--sub-text-size) * 0.85)
+    }
+}
+
+/* mobile: phones */
+@media (max-width: 550px) {
+    code[class*="language-"], pre[class*="language-"] {
+        font-size: calc(var(--sub-text-size) * 0.8)
+    }
+}

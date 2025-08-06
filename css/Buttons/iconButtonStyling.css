@@ -1,0 +1,69 @@
+.info-list {
+    display: flex;
+    flex-flow: row wrap;
+    gap: var(--spacing-small);
+}
+
+.info-item {
+    display: flex;
+    padding: var(--spacing-tiny);
+    background: White;
+    outline: var(--outline-width-small) solid Black;
+    border-radius: var(--outline-radius);
+    transition: outline-width 100ms ease-in-out;
+}
+
+.info-item-icon {
+    height: 32px;
+}
+
+.info-wrapper {
+    position: relative;
+    display: inline-block;
+}
+
+.info-modal {
+    position: absolute;
+    top: 110%;
+    left: 0;
+    margin-top: 8px;
+    display: flex;
+    padding: var(--spacing-small);
+    gap: var(--spacing-medium);
+    background: White;
+    outline: var(--outline-width-medium) solid #000000;
+    border-radius: var(--outline-radius);
+    z-index: 2;
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(10px);
+    transition: opacity 300ms ease, transform 300ms ease;
+}
+
+
+.info-wrapper:hover .info-modal {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateY(0);
+    z-index: 10;
+}
+
+/* desktop-thin: slightly smaller than wide desktop */
+@media (max-width: 1350px) {
+    /* Styles for thinner desktop screens (laptops, small monitors) */
+}
+
+/* tablet: landscape tablets, large phones in landscape */
+@media (max-width: 1100px) {
+    /* Styles for tablets or small laptops */
+}
+
+/* tablet-thin: portrait tablets or small landscape phones */
+@media (max-width: 800px) {
+    /* Styles for thin tablets */
+}
+
+/* mobile: phones */
+@media (max-width: 550px) {
+    /* Styles for phones */
+}

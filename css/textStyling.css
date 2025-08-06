@@ -1,0 +1,80 @@
+h1, p, .sub-p {
+    color: var(--main-text-col);
+    margin: 0px;
+    padding: 0px;
+    white-space: pre-wrap;
+
+}
+
+h1 {
+    font-size: var(--header-size);
+}
+
+p {
+    font-size: var(--text-size);
+}
+
+.sub-p {
+    font-size: var(--sub-text-size);
+}
+
+.text-grey {
+    color: var(--sub-text-col);
+}
+
+.text-black {
+    color: black;
+}
+
+/* desktop-thin: slightly smaller than wide desktop */
+@media (max-width: 1350px) {
+    /* Styles for thinner desktop screens (laptops, small monitors) */
+    h1 {
+        font-size: calc(var(--header-size) * 0.85);
+    }
+
+    p {
+        font-size: calc(var(--text-size) * 0.85);
+    }
+
+    .sub-p {
+        font-size: calc(var(--sub-text-size) * 0.85);
+    }
+}
+
+/* tablet: landscape tablets, large phones in landscape */
+@media (max-width: 1100px) {
+    /* Styles for tablets or small laptops */
+}
+
+/* tablet-thin: portrait tablets or small landscape phones */
+@media (max-width: 800px) {
+    /* Styles for thin tablets */
+    h1 {
+        font-size: calc(var(--header-size) * 0.75);
+    }
+
+    p {
+        font-size: calc(var(--text-size) * 0.75);
+    }
+
+    .sub-p {
+        font-size: calc(var(--sub-text-size) * 0.75);
+    }
+}
+
+/* mobile: phones */
+@media (max-width: 550px) {
+    /* Styles for phones */
+    h1 {
+        font-size: calc(var(--header-size) * 0.6);
+    }
+
+    p {
+        font-size: calc(var(--text-size) * 0.6);
+    }
+
+    .sub-p {
+        font-size: calc(var(--sub-text-size) * 0.6);
+    }
+}

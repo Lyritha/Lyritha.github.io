@@ -2,8 +2,11 @@
   "ExpandedNodes": [
     "",
     "\\css",
-    "\\scripts"
+    "\\css\\Buttons",
+    "\\css\\Unique",
+    "\\scripts",
+    "\\scripts\\Elements",
+    "\\scripts\\Utility"
   ],
-  "SelectedNode": "\\scripts\\PageBuilder.js",
   "PreviewInSolutionExplorer": false
 }
