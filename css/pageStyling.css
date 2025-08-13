@@ -1,0 +1,54 @@
+.bento {
+    width: 100%;
+    max-width: 1400px;
+    padding: 0 var(--spacing-medium);
+    box-sizing: border-box;
+    justify-content: center;
+}
+
+.nav {
+    max-width: 250px;
+    min-height: 520px;
+}
+
+.h-spacer {
+    height: 8vw;
+    min-height: var(--spacing-medium);
+}
+
+.code {
+    max-height: 340px;
+}
+
+/* desktop-thin: slightly smaller than wide desktop */
+@media (max-width: 1350px) {
+    .h-spacer {
+        height: 5vw;
+    }
+
+    .nav {
+        min-height: 450px;
+        max-width: 200px;
+    }
+
+    .code {
+        max-height: 290px;
+    }
+}
+
+/* tablet: landscape tablets, large phones in landscape */
+@media (max-width: 1100px) {
+    /* Styles for tablets or small laptops */
+    .h-spacer {
+        height: 2vw;
+    }
+
+    .nav {
+        max-width: 100%;
+        min-height: auto;
+    }
+
+    .code {
+        max-height: 500px;
+    }
+}

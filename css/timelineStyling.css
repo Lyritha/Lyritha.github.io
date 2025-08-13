@@ -1,0 +1,24 @@
+.timeline-list {
+    border-left: solid var(--outline-width-large) var(--border-col);
+}
+
+.timeline-item {
+    --timeline-current-color: var(--border-col);
+}
+
+    .timeline-item.active, .timeline-item:hover {
+        --timeline-current-color: var(--highlight-color);
+    }
+
+.timeline-container {
+    outline: var(--outline-width-medium) solid var(--timeline-current-color);
+    border-radius: var(--outline-radius);
+    transition: outline-color 150ms ease-in;
+}
+
+.timeline-line {
+    width: 15px;
+    margin: auto 0px;
+    border-top: solid var(--outline-width-medium) var(--timeline-current-color);
+    transition: border-color 150ms ease-in;
+}

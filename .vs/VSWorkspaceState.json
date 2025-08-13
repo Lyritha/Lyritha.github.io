@@ -2,9 +2,10 @@
   "ExpandedNodes": [
     "",
     "\\css",
-    "\\css\\segments",
+    "\\css\\Unique",
+    "\\Modules",
     "\\scripts"
   ],
-  "SelectedNode": "\\index.html",
+  "SelectedNode": "\\scripts\\Main.js",
   "PreviewInSolutionExplorer": false
 }

@@ -4,203 +4,125 @@
 <head>
     <title>Collin's Portfolio</title>
 
+    <!-- Fonts from both versions -->
     <link href="https://fonts.googleapis.com/css2?family=Azeret+Mono&display=swap" rel="stylesheet">
-    <link href="css/bentoSheet.css" rel="stylesheet" />
-    <link href="css/buttonsSheet.css" rel="stylesheet" />
-    <link href="css/ImageModalSheet.css" rel="stylesheet" />
-    <link href="css/expriencesList.css" rel="stylesheet" />
-    <link href="css/project.css" rel="stylesheet" />
-    <link href="css/mainSheet.css" rel="stylesheet" />
+
+    <!-- Stylesheets from both versions -->
+    <link href="css/ButtonsStyling.css" rel="stylesheet" />
+    <link href="css/containerStyling.css" rel="stylesheet" />
+    <link href="css/flexStyling.css" rel="stylesheet" />
+    <link href="css/pageStyling.css" rel="stylesheet" />
+    <link href="css/projectListStyling.css" rel="stylesheet" />
+    <link href="css/rootStyling.css" rel="stylesheet" />
+    <link href="css/textStyling.css" rel="stylesheet" />
+    <link href="css/timelineStyling.css" rel="stylesheet" />
 
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Meta tags from both versions -->
+    <title>Collin's portfolio</title>
+    <meta name="title" content="Collin's portfolio" />
+    <meta name="description" content="I am Collin, a student software developer studying at ROC van Twente, located in the Netherlands. I also do 3D modelling and shader coding as a hobby." />
+
+    <!-- Open Graph / Facebook / Discord -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://lyritha.github.io/" />
+    <meta property="og:title" content="Collin's portfolio" />
+    <meta property="og:description" content="I am Collin, a student software developer studying at ROC van Twente, located in the Netherlands. I also do 3D modelling and shader coding as a hobby." />
+    <meta property="og:image" content="https://lyritha.github.io/Images/EmbedTumbnail.png" />
+    <meta property="og:locale" content="en_US" />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:url" content="https://lyritha.github.io/" />
+    <meta name="twitter:title" content="Collin's portfolio" />
+    <meta name="twitter:description" content="I am Collin, a student software developer studying at ROC van Twente, located in the Netherlands. I also do 3D modelling and shader coding as a hobby." />
+    <meta name="twitter:image" content="https://lyritha.github.io/Images/EmbedTumbnail.png" />
+
+    <!-- Theme & Favicon (optional) -->
+    <meta name="theme-color" content="#111827" />
+    <link rel="icon" href="/favicon.ico" type="image/x-icon" />
+
+    <!-- PrismJS theme from stashed changes -->
+    <link href="https://cdn.jsdelivr.net/npm/prismjs/themes/prism-okaidia.css" rel="stylesheet" />
 </head>
 
 <body>
     <main class="page">
         <div class="h-spacer"></div>
-        <section class="bento">
-            <div class="flex-horizontal flex-vertical-mobile fill-container">
-                <div class="flex-vertical order-0 fill-container">
-                    <div class="flex-vertical" style="position: relative; width: 100%; height: 100%;">
-                        <div class="main-page ignoreLayout active fill-container flex-vertical">
-                            <div id="ui-about" class="ui-section active flex-horizontal flex-vertical-mobile fill-container">
-                                <div class="flex-vertical gap-padding w-left">
-                                    <div class="text-container flex-vertical fill-container">
+        <!-- Both layout structures kept, you may want to unify later -->
+        <section class="flex-vertical bento">
+            <div class="flex-horizontal flex-vertical-tablet flex-ratio-1">
+                <div class="flex-vertical order-0 order-1-tablet flex-ratio-1">
+                    <div class="flex-vertical overlayed-container flex-ratio-1">
+                        <div data-page="main" class="overlayed-container-item flex-ratio-1 flex-vertical">
+                            <div data-page="main" data-section="about" class="overlayed-container-item flex-horizontal flex-vertical-tablet-thin flex-ratio-1">
+                                <div class="flex-vertical gap-med padding-small flex-ratio-1">
+                                    <div class="text-container flex-vertical flex-ratio-1">
                                         <h1>Software developer</h1>
                                         <p class="text-grey">I am collin, a student software developer studying at ROC van twente located in the Netherlands. I also do 3D modelling and shader coding as a hobby.</p>
                                     </div>
                                     <div class="flex-horizontal gap">
                                         <div class="text-container flex-vertical fill-container">
                                             <h1>Languages</h1>
-                                            <div class="info-list">
-                                                <div class="info-wrapper">
-                                                    <div class="info-item" id="info-cSharp">
-                                                        <img src="Images/Languages/c-sharp.png" class="info-item-icon" alt="Icons" />
-                                                    </div>
-                                                    <div class="info-modal mobile-hide" id="info-cSharp">
-                                                        <img src="Images/Languages/c-sharp.png" class="social-button-icon" alt="Icons" />
-                                                        <div>
-                                                            <p>c#</p>
-                                                            <p class="sub-p text-grey">Advanced</p>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="info-wrapper">
-                                                    <div class="info-item" id="info-JS">
-                                                        <img src="Images/Languages/js.png" class="info-item-icon" alt="Icons" />
-                                                    </div>
-                                                    <div class="info-modal mobile-hide" id="info-JS">
-                                                        <img src="Images/Languages/js.png" class="social-button-icon" alt="Icons" />
-                                                        <div>
-                                                            <p class="text-black">Javascript</p>
-                                                            <p class="sub-p text-black">Average</p>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="info-wrapper">
-                                                    <div class="info-item" id="info-HTML">
-                                                        <img src="Images/Languages/html-5.png" class="info-item-icon" alt="Icons" />
-                                                    </div>
-                                                    <div class="info-modal mobile-hide" id="info-HTML">
-                                                        <img src="Images/Languages/html-5.png" class="social-button-icon" alt="Icons" />
-                                                        <div>
-                                                            <p class="text-black">HTML</p>
-                                                            <p class="sub-p text-black">Average</p>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="info-wrapper">
-                                                    <div class="info-item" id="info-CSS">
-                                                        <img src="Images/Languages/css-3.png" class="info-item-icon" alt="Icons" />
-                                                    </div>
-                                                    <div class="info-modal mobile-hide" id="info-CSS">
-                                                        <img src="Images/Languages/css-3.png" class="social-button-icon" alt="Icons" />
-                                                        <div>
-                                                            <p class="text-black">CSS</p>
-                                                            <p class="sub-p text-black">Average</p>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
+                                            <div id="info-languages" class="flex-horizontal-wrap gap-small"></div>
                                         </div>
                                         <div class="text-container flex-vertical fill-container">
                                             <h1>Software</h1>
-                                            <div class="info-list">
-                                                <div class="info-wrapper">
-                                                    <div class="info-item" id="info-Unity">
-                                                        <img src="Images/Software/unity.png" class="info-item-icon" alt="Icons" />
-                                                    </div>
-                                                    <div class="info-modal mobile-hide" id="info-Unity">
-                                                        <img src="Images/Software/unity.png" class="social-button-icon" alt="Icons" />
-                                                        <div>
-                                                            <p class="text-black">Unity</p>
-                                                            <p class="sub-p text-black">Advanced</p>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="info-wrapper">
-                                                    <div class="info-item" id="info-Blender">
-                                                        <img src="Images/Software/blender.png" class="info-item-icon" alt="Icons" />
-                                                    </div>
-                                                    <div class="info-modal mobile-hide" id="info-Blender">
-                                                        <img src="Images/Software/blender.png" class="social-button-icon" alt="Icons" />
-                                                        <div>
-                                                            <p class="text-black">Blender</p>
-                                                            <p class="sub-p text-black">Advanced</p>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="info-wrapper">
-                                                    <div class="info-item" id="info-SubstanceP">
-                                                        <img src="Images/Software/SubstanceP.svg" class="info-item-icon" alt="Icons" />
-                                                    </div>
-                                                    <div class="info-modal mobile-hide" id="info-SubstanceP">
-                                                        <img src="Images/Software/SubstanceP.svg" class="social-button-icon" alt="Icons" />
-                                                        <div>
-                                                            <p class="">Substance painter</p>
-                                                            <p class="sub-p text-grey">Advanced</p>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="info-wrapper">
-                                                    <div class="info-item" id="info-Inkscape">
-                                                        <img src="Images/Software/Inkscape.svg" class="info-item-icon" alt="Icons" />
-                                                    </div>
-                                                    <div class="info-modal mobile-hide" id="info-Inkscape">
-                                                        <img src="Images/Software/Inkscape.svg" class="social-button-icon" alt="Icons" />
-                                                        <div>
-                                                            <p class="text-black">Inkscape</p>
-                                                            <p class="sub-p text-black">Average</p>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
+                                            <div id="info-programs" class="flex-horizontal-wrap gap-small"></div>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="flex-vertical gap-padding fill-container">
                                     <div class="image-container fill-container">
-                                        <img src="Portfolio_Image_Me.png" class="thumbnail thumnail-fit-container" alt="Icons" />
+                                        <img src="Images/Portfolio_Image_Me.png" class="thumbnail thumnail-fit-container" alt="Icons" />
                                     </div>
                                 </div>
                             </div>
-                            <div id="ui-experiences" class="ui-section flex-horizontal flex-vertical-mobile fill-container">
-                                <div class="flex-vertical order-0 gap-padding fill-container">
-                                    <div class="text-container flex-vertical fill-container">
+                            <div data-page="main" data-section="experiences" class="overlayed-container-item flex-horizontal flex-vertical-tablet-thin flex-ratio-1">
+                                <div class="flex-vertical gap-med padding-small flex-ratio-1">
+                                    <div class="text-container flex-vertical flex-ratio-1">
                                         <h1>Work Experiences</h1>
-                                        <div class="expriences-list flex-vertical gap-small" id="experiences-list"></div>
+                                        <div class="timeline-list flex-ratio-1 flex-vertical gap-small" id="experiences-list"></div>
                                     </div>
                                 </div>
                                 <div class="flex-vertical order-0 gap-padding fill-container">
                                     <div class="text-container flex-vertical fill-container">
                                         <h1 id="experience-title">TempTitle</h1>
-                                        <p id="experience-description" class="text-grey">
-                                        </p>
+                                        <p id="experience-description" class="text-grey"></p>
                                     </div>
                                 </div>
                             </div>
-                            <div id="ui-education" class="ui-section flex-horizontal flex-vertical-mobile fill-container">
-                                <div class="flex-vertical order-0 gap-padding fill-container">
-                                    <div class="text-container flex-vertical fill-container">
+                            <div data-page="main" data-section="education" class="overlayed-container-item flex-horizontal flex-vertical-tablet-thin flex-ratio-1">
+                                <div class="flex-vertical gap-med padding-small flex-ratio-1">
+                                    <div class="text-container flex-vertical flex-ratio-1">
                                         <h1>Education</h1>
-                                        <div class="expriences-list flex-vertical gap-small" id="education-list"></div>
+                                        <div class="timeline-list flex-vertical flex-ratio-1 gap-small" id="education-list"></div>
                                     </div>
                                 </div>
                                 <div class="flex-vertical order-0 gap-padding fill-container">
                                     <div class="text-container flex-vertical fill-container">
                                         <h1 id="education-title">TempTitle</h1>
-                                        <p id="education-description" class="text-grey">
-                                        </p>
+                                        <p id="education-description" class="text-grey"></p>
                                     </div>
                                 </div>
                             </div>
-                            <div id="ui-projects" class="ui-section flex-horizontal fill-container">
-                                <div class="flex-vertical order-0 gap-padding fill-container">
-                                    <div class="text-container flex-horizontal gap-between">
-                                        <h1>Projects</h1>
-                                        <div class="flex-horizontal gap-small">
-                                            <button id="filter-unity" class="filter button-selected">
-                                                <p>Unity</p>
-                                            </button>
-                                            <button id="filter-blender" class="filter button-deselected">
-                                                <p>Blender</p>
-                                            </button>
-                                            <button id="filter-shaders" class="filter button-deselected">
-                                                <p>Shaders</p>
-                                            </button>
-                                        </div>
+                            <div data-page="main" data-section="projects" class="overlayed-container-item flex-horizontal flex-ratio-1">
+                                <div class="flex-vertical gap-med padding-small flex-ratio-1">
+                                    <div class="text-container flex-horizontal flex-vertical-tablet-thin flex-allign-center-tablet-thin gap-between">
+                                        <h1 class="">Projects</h1>
+                                        <div id="projects-filters" class="flex-horizontal-wrap flex-allign-center gap-small"></div>
                                     </div>
                                     <div class="text-container flex-horizontal fill-container">
-                                        <div class="projects-list" id="projects-list">
-                                        </div>
+                                        <div class="projects-list" id="projects-list"></div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="project-page ignoreLayout fill-container flex-vertical">
-                            <div class="flex-vertical order-0 gap-padding fill-container">
-                                <div class="text-container flex-horizontal gap-between">
+                        <div data-page="project" class="overlayed-container-item flex-ratio-1 flex-vertical">
+                            <div class="flex-vertical gap-med padding-small flex-ratio-1">
+                                <div class="text-container flex-horizontal flex-vertical-tablet-thin flex-allign-center gap-between">
                                     <h1 id="project-title">PROJECT NAME</h1>
                                     <div class="flex-horizontal gap">
                                         <button id="button-random-project" class="button-deselected">
@@ -211,207 +133,79 @@
                                         </button>
                                     </div>
                                 </div>
-                                <div style="position: relative; width: 100%; height: 100%;">
-                                    <div id="ui-about-project" class="ui-section flex-vertical">
-                                        <div class="flex-horizontal fill-container gap">
-                                            <div class="text-container flex-vertical">
-                                                <h1 id="about-title">What is PROJECT</h1>
-                                                <p id="about-desc" class="text-grey">PROJECT DESC</p>
-                                            </div>
-                                            <div class="flex-vertical order-1">
-                                                <div class="image-container fill-container">
-                                                    <img id="about-img" src="TEMP" class="thumbnail thumnail-fit-container" alt="Icons" />
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div id="ui-contribution-project" class="ui-section flex-vertical">
-                                        <div class="flex-horizontal fill-container gap">
-                                            <div class="text-container flex-vertical">
-                                                <h1>Contribution</h1>
-                                                <p id="contribution-desc" class="text-grey">CONTRIBUTION DESC</p>
-                                            </div>
-                                            <div class="flex-vertical order-1">
-                                                <div class="image-container fill-container">
-                                                    <img id="contribution-img" src="TEMP" class="thumbnail thumnail-fit-container" alt="Icons" />
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div id="ui-gallery-project" class="ui-section flex-vertical">
-                                        <div id="gallery-container" class="flex-horizontal fill-container gap"></div>
-                                    </div>
-                                    <div id="ui-code-project" class="ui-section flex-vertical">
-                                        <div class="flex-horizontal fill-container gap" style="height: 100%">
-                                            <div class="text-container flex-vertical">
-                                                <h1>Code</h1>
-                                                <p id="code-desc" class="text-grey">CODE DESC</p>
-                                            </div>
-                                            <div class="flex-vertical order-1">
-                                                <div class="image-container fill-container">
-                                                    <img id="code-img" src="TEMP" class="thumbnail thumnail-fit-container" alt="Icons" />
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+                                <div id="project-container" class="overlayed-container flex-ratio-1"></div>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="flex-vertical order-1 gap-padding w-nav">
-                    <div class="text-container flex-vertical gap-between fill-container">
-                        <div id="ui-container" style="position: relative; width: 100%; height: 100%;">
-                            <div class="flex-vertical flex-horizontal-wrap-mobile main-page ui-nav active gap-small">
-                                <button id="button-about" class="nav-button button-selected">
-                                    <img src="Images/Icons/user.png" class="button-icon" alt="Icons" />
-                                    <p>About me</p>
-                                </button>
-                                <button id="button-experiences" class="nav-button button-deselected">
-                                    <img src="Images/Icons/briefcase.png" class="button-icon" alt="Icons" />
-                                    <p>Experiences</p>
-                                </button>
-                                <button id="button-education" class="nav-button button-deselected">
-                                    <img src="Images/Icons/education.png" class="button-icon" alt="Icons" />
-                                    <p>Education</p>
-                                </button>
-                                <button id="button-projects" class="nav-button button-deselected">
-                                    <img src="Images/Icons/coding.png" class="button-icon" alt="Icons" />
-                                    <p>Projects</p>
-                                </button>
-                            </div>
-                            <div class="project-page flex-vertical flex-horizontal-wrap-mobile ui-nav gap-small">
-                                <button id="button-about-project" class="nav-button button-deselected">
-                                    <img src="Images/Icons/user.png" class="button-icon" alt="Icons" />
-                                    <p>About</p>
-                                </button>
-                                <button id="button-contribution-project" class="nav-button button-deselected">
-                                    <img src="Images/Icons/briefcase.png" class="button-icon" alt="Icons" />
-                                    <p>Contribution</p>
-                                </button>
-                                <button id="button-gallery-project" class="nav-button button-deselected">
-                                    <img src="Images/Icons/education.png" class="button-icon" alt="Icons" />
-                                    <p>Gallery</p>
-                                </button>
-                                <button id="button-code-project" class="nav-button button-deselected">
-                                    <img src="Images/Icons/coding.png" class="button-icon" alt="Icons" />
-                                    <p>Code</p>
-                                </button>
-                            </div>
+                <div class="flex-vertical flex-horizontal-tablet order-1 order-0-tablet gap-med padding-small nav">
+                    <div class="text-container flex-vertical gap-between flex-ratio-1">
+                        <div id="ui-container" class="flex-vertical flex-horizontal-wrap-tablet flex-allign-center-tablet gap-small">
+                            <button data-page="main" data-section="about" id="main-button-about" class="button hide-element">
+                                <img src="Images/Icons/user.png" class="icon-small" alt="Icons" />
+                                <p>About me</p>
+                            </button>
+                            <button data-page="main" data-section="experiences" id="main-button-experiences" class="button hide-element">
+                                <img src="Images/Icons/briefcase.png" class="icon-small" alt="Icons" />
+                                <p>Experiences</p>
+                            </button>
+                            <button data-page="main" data-section="education" id="main-button-education" class="button hide-element">
+                                <img src="Images/Icons/education.png" class="icon-small" alt="Icons" />
+                                <p>Education</p>
+                            </button>
+                            <button data-page="main" data-section="projects" id="main-button-projects" class="button hide-element">
+                                <img src="Images/Icons/coding.png" class="icon-small" alt="Icons" />
+                                <p>Projects</p>
+                            </button>
                         </div>
-                            <p class="sub-p text-grey mobile-hide">
-                                Fun fact:
-                                The entire website is fully made from scratch, designed in fimga.
-                            </p>
-                        </div>
-                        <a target="_blank" href="https://www.google.com/maps/place/Enschede/@52.2232768,6.8272364,13z/data=!3m1!4b1!4m6!3m5!1s0x47b8139482fe5187:0xd24e1fb7ad7265e2!8m2!3d52.2215372!4d6.8936619!16zL20vMHBzNHA?entry=ttu&g_ep=EgoyMDI1MDcxNS4xIKXMDSoASAFQAw%3D%3D" class="button-location mobile-hide">
-                            <div class="flex-horizontal gap allign-center">
-                                <img src="Images/Icons/location.png" class="button-icon" alt="Icons" />
-                                <p>Enschede, Netherlands</p>
-                            </div>
-                        </a>
+                        <p class="sub-p text-grey hide-element-tablet">
+                            Fun fact:
+                            The entire website is fully made from scratch, designed in fimga.
+                        </p>
                     </div>
+                    <a class="text-container flex-vertical button-location hide-element-tablet-thin" target="_blank" href="https://www.google.com/maps/place/Enschede/@52.2232768,6.8272364,13z/data=!3m1!4b1!4m6!3m5!1s0x47b8139482fe5187:0xd24e1fb7ad7265e2!8m2!3d52.2215372!4d6.8936619!16zL20vMHBzNHA?entry=ttu&g_ep=EgoyMDI1MDcxNS4xIKXMDSoASAFQAw%3D%3D">
+                        <div class="flex-horizontal gap-med flex-ratio-1 flex-allign-center">
+                            <img src="Images/Icons/location.png" class="icon-med" alt="Icons" />
+                            <p>Enschede, Netherlands</p>
+                        </div>
+                    </a>
+                </div>
             </div>
-            <div class="flex-horizontal social-container" style="position: relative; width: 100%">
-                <div class="main-page ignoreLayout active flex-horizontal">
-                    <div class="flex-horizontal flex-vertical-mobile gap-padding fill-container">
-                        <a target="_blank" href="mailto:collin.rarekip@gmail.com" class="button-social fill-container" id="social-Gmail">
-                            <img src="Images/Socials/email.png" class="social-button-icon" alt="Icons" />
+            <div class="flex-horizontal social-container overlayed-container">
+                <div data-page="main" class="overlayed-container-item flex-horizontal">
+                    <div class="flex-horizontal flex-vertical-tablet-thin gap-med padding-small flex-ratio-1">
+                        <a target="_blank" href="mailto:collin.rarekip@gmail.com" class="flex-horizontal flex-allign-center gap-med padding-med button-social flex-ratio-1" id="Gmail">
+                            <img src="Images/Socials/email.png" class="icon-large" alt="Icons" />
                             <h1>Gmail</h1>
                         </a>
-                        <a target="_blank" href="https://www.linkedin.com/in/collin-kloppenburg/" class="button-social fill-container" id="social-LinkedIn">
-                            <img src="Images/Socials/linkedin.png" class="social-button-icon" alt="Icons" />
+                        <a target="_blank" href="https://www.linkedin.com/in/collin-kloppenburg/" class="flex-horizontal flex-allign-center gap-med padding-med button-social flex-ratio-1" id="LinkedIn">
+                            <img src="Images/Socials/linkedin.png" class="icon-large" alt="Icons" />
                             <h1>LinkedIn</h1>
                         </a>
-                        <a target="_blank" href="https://github.com/Lyritha" class="button-social fill-container" id="social-Github">
-                            <img src="Images/Socials/Github.png" class="social-button-icon" alt="Icons" />
+                        <a target="_blank" href="https://github.com/Lyritha" class="flex-horizontal flex-allign-center gap-med padding-med button-social flex-ratio-1" id="Github">
+                            <img src="Images/Socials/Github.png" class="icon-large" alt="Icons" />
                             <h1>Github</h1>
                         </a>
                     </div>
                 </div>
-                <div class="project-page ignoreLayout flex-horizontal">
-                    <div class="flex-horizontal flex-vertical-mobile gap-padding fill-container">
-                        <div class="text-container flex-horizontal flex-vertical-mobile fill-container gap-between">
-                            <h1>Where to play</h1>
-                            <div id="where-to-list" class="flex-horizontal flex-vertical-mobile gap">
-
-                            </div>
+                <div data-page="project" class="overlayed-container-item flex-horizontal">
+                    <div class="flex-horizontal gap-med padding-small flex-ratio-1">
+                        <div class="text-container flex-horizontal flex-vertical-tablet-thin flex-allign-center-tablet-thin flex-ratio-1 gap-between">
+                            <h1 id="where-to-list-text">Downloads</h1>
+                            <div id="where-to-list" class="flex-horizontal-wrap flex-allign-center gap-med"></div>
                         </div>
                     </div>
                 </div>
             </div>
-
         </section>
     </main>
 
-    <!--handle allowing images to be fullscreen-->
-    <script defer src="scripts/FullscreenImages.js"></script>
-    <div id="image-modal">
-        <img id="modal-content">
-    </div>
-
-    <script defer src="scripts/experienceHandler.js"></script>
-    <script defer src="scripts/PageBuilder.js"></script>
-    <!--handle all dynamic elements-->
-    <script>
+    <!-- Scripts from both versions -->
+    <script type="module">
+        import * as main from './scripts/Main.js';
         document.addEventListener('DOMContentLoaded', () => {
 
-            /*uses the section and id encoded in the url to navigate to the correct position on the website */
-            LoadPageOnStart();
-
-            /*creates the list of projects*/
-            CreateProjectList({ data: projects });
-
-            /*main page nav buttons*/
-            CreateSectionSwitchButton('ui-about', 'button-about');
-            CreateSectionSwitchButton('ui-experiences', 'button-experiences');
-            CreateSectionSwitchButton('ui-education', 'button-education');
-            CreateSectionSwitchButton('ui-projects', 'button-projects');
-
-            /*project page nav buttons*/
-            CreateSectionSwitchButton('ui-about-project', 'button-about-project');
-            CreateSectionSwitchButton('ui-contribution-project', 'button-contribution-project');
-            CreateSectionSwitchButton('ui-gallery-project', 'button-gallery-project');
-            CreateSectionSwitchButton('ui-code-project', 'button-code-project');
-
-            /*creates the list of experiences */
-            createDynamicList({
-                data: experiencesData,
-                listContainerId: 'experiences-list',
-                titleId: 'experience-title',
-                descriptionId: 'experience-description'
-            });
-
-            /*creates the list of education */
-            createDynamicList({
-                data: eductationData,
-                listContainerId: 'education-list',
-                titleId: 'education-title',
-                descriptionId: 'education-description'
-            });
-
-            /*too specific use case to make custom script for*/
-            document.getElementById('button-to-projects')?.addEventListener('click', () => {
-                switchPages('.main-page', '.project-page');
-                SwitchSection('ui-projects', 'button-projects', '.ui-section', '.nav-button');
-
-                // Remove `id` from the URL
-                const url = new URL(window.location);
-                url.searchParams.delete('id');
-                window.history.pushState({}, '', url);
-            });
-
-            document.getElementById('button-random-project')?.addEventListener('click', () => {
-                GetRandomProject({projectsData: projects});
-            });
-
-            /*initializes the project list with the unity filter */
-            FilterProjectList('filter-unity', 'Unity');
-
-            /*adds the filter functionality to the buttons */
-            CreateFilterButton('filter-unity','Unity');
-            CreateFilterButton('filter-blender', 'Blender');
-            CreateFilterButton('filter-shaders', 'Shaders');
+            main.initializePage();
         });
     </script>
 </body>

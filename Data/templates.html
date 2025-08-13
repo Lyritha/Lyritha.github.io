@@ -1,0 +1,195 @@
+<template id="project-item-template">
+    <div data-role="data-filter" class="projects-item flex-vertical gap-small">
+        <div class="flex-ratio-1">
+            <img data-role="thumbnail" src="" class="projects-img thumbnail" alt="Icons" />
+        </div>
+        <div class="flex-vertical flex-ratio-1 gap-small gap-between">
+            <div class="flex-vertical">
+                <h1 data-role="title" class=""></h1>
+                <p data-role="subtitle" class="text-grey"></p>
+            </div>
+            <button data-function="button" class="button">
+                <p class="sub-p">Read more</p>
+            </button>
+        </div>
+    </div>
+</template>
+
+<template id="timeline-item">
+    <button data-function="button" class="timeline-item flex-horizontal">
+        <div class="timeline-line"></div>
+        <div class="timeline-container gap-small padding-small flex-horizontal flex-allign-center">
+            <img data-role="image" src="" class="icon-med" alt="Icon" />
+            <div>
+                <p data-role="title"></p>
+                <p data-role="sub" class="sub-p text-grey"></p>
+            </div>
+        </div>
+        <div class="timeline-line"></div>
+        <div class="timeline-container gap-small padding-small flex-ratio-1">
+            <p>Period</p>
+            <p data-role="period" class="sub-p text-grey"></p>
+        </div>
+    </button>
+</template>
+
+
+<template id="info-icons">
+    <div class="info-item flex-horizontal padding-tiny" data-role="color">
+        <img data-role="image" class="icon-med" alt="Icons" />
+
+        <div class="info-modal flex-horizontal gap-med padding-small" data-role="color">
+            <img data-role="image" class="icon-med" alt="Icons" />
+            <div class="flex-vertical flex-allign-center-mobile">
+                <p data-role="title text"></p>
+                <p data-role="subtitle text" class="sub-p"></p>
+            </div>
+        </div>
+    </div>
+</template>
+
+<template id="simple-button">
+    <button class="button">
+        <p data-role="content"></p>
+    </button>
+</template>
+
+<template id="button-with-image">
+    <button class="button">
+        <img data-role="icon" class="icon-small" alt="Icons" />
+        <p data-role="name"></p>
+    </button>
+</template>
+
+<template id="image-modal">
+    <div id="imageModal">
+        <div id="imageModal-content">
+            <div id="imageModal-nav">
+                <div id="imageModal-nav-container">
+                    <div id="imageModal-nav-left" data-role="nav-hide">
+                        <button data-function="previous-image" class="button"><p>Previous</p></button>
+                        <button data-function="next-image" class="button"><p>Next</p></button>
+                    </div>
+                    <div id="imageModal-nav-right">
+                        <button data-function="close-modal" class="button"><p>Close</p></button>
+                    </div>
+                </div>
+            </div>
+
+            <img data-role="image" src="" alt="Image" />
+        </div>
+    </div>
+</template>
+
+
+<!--project templates-->
+<template id="project-text-img">
+    <div data-role="target-id" class="overlayed-container-item flex-vertical">
+        <div class="flex-horizontal flex-vertical-tablet-thin flex-ratio-1 gap-med">
+            <div class="text-container flex-vertical flex-ratio-2">
+                <h1 data-role="page-name">About</h1>
+                <p data-role="page-description" class="text-grey">PROJECT DESC</p>
+            </div>
+            <div class="flex-vertical flex-ratio-3">
+                <div class="image-container flex-ratio-1">
+                    <img data-role="page-image" src="" class="thumbnail" alt="Icons" />
+                </div>
+            </div>
+        </div>
+
+        <button data-function="nav-button" class="button">
+            <img data-role="page-icon" class="icon-small" alt="Icons" />
+            <p data-role="page-name"></p>
+        </button>
+    </div>
+</template>
+
+<template id="project-gallery">
+    <div data-role="target-id" class="overlayed-container-item flex-vertical">
+        <div data-role="page-images" class="flex-horizontal flex-ratio-1 gap-med">
+            <div id="gallery-1" class="thumbnail-group flex-vertical gap-med flex-ratio-1" style="max-height: 407.273px;">
+                <div class="image-container flex-ratio-1">
+                    <img src="" class="thumbnail" alt="Icons" />
+                </div>
+            </div>
+            <div id="gallery-2" class="thumbnail-group flex-vertical flex-ratio-1">
+                <div class="image-container flex-ratio-1">
+                    <img src="" class="thumbnail" alt="Icons" />
+                </div>
+            </div>
+            <div id="gallery-3" class="thumbnail-group flex-horizontal flex-vertical-tablet-thin flex-ratio-1 gap-med">
+                <div class="image-container flex-ratio-1">
+                    <img src="" class="thumbnail" alt="Icons" />
+                </div>
+                <div class="image-container flex-ratio-1">
+                    <img src="" class="thumbnail" alt="Icons" />
+                </div>
+                <div class="image-container flex-ratio-1">
+                    <img src="" class="thumbnail" alt="Icons" />
+                </div>
+            </div>
+            <div id="gallery-4" class="thumbnail-group flex-vertical gap-med flex-ratio-1" style="max-height: 388.273px;">
+                <div class="flex-horizontal gap-med" style="height:50%;">
+                    <div class="image-container flex-ratio-1">
+                        <img src="" class="thumbnail" alt="Icons" />
+                    </div>
+                    <div class="image-container flex-ratio-1">
+                        <img src="" class="thumbnail" alt="Icons" />
+                    </div>
+                </div>
+                <div class="flex-horizontal gap-med" style="height:50%;">
+                    <div class="image-container flex-ratio-1">
+                        <img src="" class="thumbnail" alt="Icons" />
+                    </div>
+                    <div class="image-container flex-ratio-1">
+                        <img src="" class="thumbnail" alt="Icons" />
+                    </div>
+                </div>
+            </div>
+            <div id="gallery-5" class="thumbnail-group flex-horizontal flex-vertical-tablet-thin flex-ratio-1 gap-med">
+                <div class="flex-vertical flex-ratio-1">
+                    <div class="image-container flex-ratio-1">
+                        <img src="" class="thumbnail" alt="Icons" />
+                    </div>
+                </div>
+                <div class="flex-vertical gap-med flex-ratio-1">
+                    <div class="flex-horizontal gap-med flex-ratio-1">
+                        <div class="image-container flex-ratio-1">
+                            <img src="" class="thumbnail" alt="Icons" />
+                        </div>
+                        <div class="image-container flex-ratio-1">
+                            <img src="" class="thumbnail" alt="Icons" />
+                        </div>
+                    </div>
+                    <div class="flex-horizontal gap-med flex-ratio-1">
+                        <div class="image-container flex-ratio-1">
+                            <img src="" class="thumbnail" alt="Icons" />
+                        </div>
+                        <div class="image-container flex-ratio-1">
+                            <img src="" class="thumbnail" alt="Icons" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <button data-function="nav-button" class="button">
+            <img data-role="page-icon" class="icon-small" alt="Icons" />
+            <p data-role="page-name"></p>
+        </button>
+    </div>
+</template>
+
+<template id="project-code">
+    <div data-role="target-id" class="overlayed-container-item flex-vertical flex-ratio-1">
+        <div class="flex-horizontal flex-ratio-1 gap-med">
+            <div class="text-container flex-vertical flex-ratio-1">
+                <pre class="flex-vertical"><code data-role="page-code" class="code language-csharp flex-ratio-1"></code></pre>
+            </div>
+        </div>
+
+        <button data-function="nav-button" class="button">
+            <img data-role="page-icon" class="icon-small" alt="Icons" />
+            <p data-role="page-name"></p>
+        </button>
+    </div>
+</template>
