@@ -2,10 +2,11 @@
   "ExpandedNodes": [
     "",
     "\\css",
-    "\\css\\Unique",
+    "\\Images",
     "\\Modules",
+    "\\Modules\\ImageModal",
     "\\scripts"
   ],
-  "SelectedNode": "\\scripts\\Main.js",
+  "SelectedNode": "\\index.html",
   "PreviewInSolutionExplorer": false
 }
