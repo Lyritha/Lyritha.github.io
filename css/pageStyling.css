@@ -6,6 +6,10 @@
     justify-content: center;
 }
 
+.social-container {
+    height: 105px;
+}
+
 .nav {
     max-width: 250px;
     min-height: 520px;

@@ -32,7 +32,7 @@ p {
 /* code styling */
 
 pre[class*="language-"], pre[class*="language-"]::-webkit-scrollbar-track, pre[class*="language-"]::-webkit-scrollbar-corner {
-    background-color: transparent;
+    background: none;
     font-size: var(--sub-text-size);
 }
 
@@ -46,11 +46,18 @@ pre[class*="language-"], pre[class*="language-"]::-webkit-scrollbar-track, pre[c
         border-radius: var(--outline-radius);
     }
 
+.token.comment, .token.prolog, .token.doctype, .token.cdata, .token.keyword,
+.token.string, .token.function, .token.class-name, .token.operator {
+    background: none;
+}
+
+
 .token.comment,
 .token.prolog,
 .token.doctype,
 .token.cdata {
     color: #6a9955;
+
 }
 
 .token.keyword {
@@ -72,3 +79,4 @@ pre[class*="language-"], pre[class*="language-"]::-webkit-scrollbar-track, pre[c
 .token.operator {
     color: #d4d4d4;
 }
+

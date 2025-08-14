@@ -1,4 +1,4 @@
-const templates = {};
+﻿const templates = {};
 
 export async function loadTemplates(filePath) {
     try {
@@ -25,29 +25,30 @@ export function getTemplateClone(templateId) {
 export function getTemplateCloneByDataRoles(dataRolesInput) {
     if (!dataRolesInput) return null;
 
-    const dataRoles = new Set(Array.isArray(dataRolesInput) ? dataRolesInput : Object.keys(dataRolesInput));
+    // Filter out ?-prefixed roles from the provided input
+    const cleanRoles = Array.isArray(dataRolesInput)
+        ? dataRolesInput.filter(role => !role.startsWith('?'))
+        : Object.keys(dataRolesInput).filter(role => !role.startsWith('?'));
+
+    const dataRoles = new Set(cleanRoles);
 
     for (const [id, template] of Object.entries(templates)) {
         const content = template.content;
-
-        // Get the first direct child of the template (the div with data-role="target-id")
         const firstChild = content.children[0];
         if (!firstChild) continue;
 
-        // Get all elements inside the firstChild (its descendants) with data-role
         const elements = firstChild.querySelectorAll('[data-role]');
-
-        // Gather unique data-roles from these descendants
         const templateRolesSet = new Set();
 
         elements.forEach(el => {
             const roles = el.getAttribute('data-role').split(/\s+/);
-            roles.forEach(role => templateRolesSet.add(role));
+            roles
+                .filter(role => !role.startsWith('?'))
+                .forEach(role => templateRolesSet.add(role));
         });
 
-        // Check if the sets match exactly
-        if (templateRolesSet.size === dataRoles.size &&
-            [...templateRolesSet].every(role => dataRoles.has(role))) {
+        // Check that all required roles are present in the template
+        if ([...dataRoles].every(role => templateRolesSet.has(role))) {
             return content.cloneNode(true);
         }
     }

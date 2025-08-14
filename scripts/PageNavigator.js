@@ -14,48 +14,38 @@ import * as UrlState from './Utility/UrlState.js';
  */
 export function bindNavButtonToSection({ buttonId }) {
     const button = document.getElementById(buttonId);
+    const [ page, , section ] = button.id.split('-');
 
     button.addEventListener('click', () => {
-        navigateToSection({
-            page: button.dataset.page,
-            section: button.dataset.section
-        })
+        navigateToSection({ page, section })
     })
 }
 
 export function handleInitialNavigation() {
-    let { page = 'main', section = 'about', id = '' } = UrlState.get();
-    navigateToSection({ page, section, id });
+    let { page = 'main', section = 'about'} = UrlState.get();
+    navigateToSection({ page, section});
 }
 
 
-export function navigateToSection({ page, section, id }) {
-    const { page: pPage, section: pSection, id: pId } = UrlState.get();
+export function navigateToSection({ page, section}) {
+    const { page: pPage, section: pSection } = UrlState.get();
 
-    if (pPage) toggleSection(pPage, pSection, pId, false);
-    toggleSection(page, section, id, true);
+    if(pPage && pSection)toggleSection(pPage, pSection, false);
+    toggleSection(page, section, true);
 
     //override info in url so that page switching works properly on load
-    UrlState.set({ params: { page, section, id } });
+    UrlState.set({ params: { page, section} });
 }
 
-function toggleSection(page, section, id, toggle) {
-    console.log(`${page}`);
-    const idAttr = id ? `[data-id="${id}"]` : '';
+function toggleSection(page, section, toggle) {
     const pgAttr = `[data-page="${page}"]`;
     const scAttr = `[data-section="${section}"]`;
 
-    // Toggle buttons sharing same page and id
-    const buttonSelector = `button${pgAttr}${idAttr}`;
-    document.querySelectorAll(buttonSelector).forEach(el => el.classList.toggle('hide-element', !toggle));
+    //navigate pages
+    const pageSelector = `${pgAttr}:not([data-section])`;
+    document.querySelectorAll(pageSelector).forEach(el => el.classList.toggle('active', toggle));
 
-    // Toggle the section elements with page, section, and optional id
-    const sectionSelector = `${pgAttr}${scAttr}${idAttr}`;
+    // navigate sections
+    const sectionSelector = `${pgAttr}${scAttr}`;
     document.querySelectorAll(sectionSelector).forEach(el => el.classList.toggle('active', toggle));
-
-    // Toggle elements with page and id but NO section attribute
-    document.querySelectorAll(`${pgAttr}${idAttr}:not([data-section])`).forEach(el => el.classList.toggle('active', toggle));
-
-    // Toggle elements with page only (no section, no id)
-    document.querySelectorAll(`${pgAttr}:not([data-section]):not([data-id])`).forEach(el => el.classList.toggle('active', toggle));
 }

@@ -50,6 +50,10 @@
     justify-content: center;
 }
 
+.flex-center-items {
+    align-items: center;
+}
+
 .hide-element {
     display: none;
     opacity: 0;
@@ -107,6 +111,10 @@
     .flex-allign-center-desktop-thin {
         align-items: center;
         justify-content: center;
+    }
+
+    .flex-center-items-desktop-thin {
+        align-items: center;
     }
 
     .hide-element-desktop-thin {
@@ -168,6 +176,10 @@
         justify-content: center;
     }
 
+    .flex-center-items-tablet {
+        align-items: center;
+    }
+
     .hide-element-tablet {
         display: none;
     }
@@ -224,7 +236,10 @@
 
     .flex-allign-center-tablet-thin {
         align-items: center;
-        justify-content: center;
+    }
+
+    .flex-center-items-tablet-thin {
+        align-items: center;
     }
 
     .hide-element-tablet-thin {
@@ -284,6 +299,10 @@
     .flex-allign-center-mobile {
         align-items: center;
         justify-content: center;
+    }
+
+    .flex-center-items-mobile {
+        align-items: center;
     }
 
     .hide-element-mobile {

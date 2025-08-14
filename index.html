@@ -8,6 +8,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Azeret+Mono&display=swap" rel="stylesheet">
     <!-- Prism CSS -->
     <link href="https://cdn.jsdelivr.net/npm/prismjs/themes/prism.css" rel="stylesheet" />
+    <!-- PrismJS theme from stashed changes -->
+    <link href="https://cdn.jsdelivr.net/npm/prismjs/themes/prism-okaidia.css" rel="stylesheet" />
 
     <!-- Stylesheets from both versions -->
     <link href="css/ButtonsStyling.css" rel="stylesheet" />
@@ -46,18 +48,15 @@
     <meta name="theme-color" content="#111827" />
     <link rel="icon" href="/favicon.ico" type="image/x-icon" />
 
-    <!-- PrismJS theme from stashed changes -->
-    <link href="https://cdn.jsdelivr.net/npm/prismjs/themes/prism-okaidia.css" rel="stylesheet" />
 </head>
 
 <body>
-    <main class="page">
+    <main class="flex-vertical flex-allign-center">
         <div class="h-spacer"></div>
-        <!-- Both layout structures kept, you may want to unify later -->
         <section class="flex-vertical bento">
             <div class="flex-horizontal flex-vertical-tablet flex-ratio-1">
                 <div class="flex-vertical order-0 order-1-tablet flex-ratio-1">
-                    <div class="flex-vertical overlayed-container flex-ratio-1">
+                    <div id="pages" class="flex-vertical overlayed-container flex-ratio-1">
                         <div data-page="main" class="overlayed-container-item flex-ratio-1 flex-vertical">
                             <div data-page="main" data-section="about" class="overlayed-container-item flex-horizontal flex-vertical-tablet-thin flex-ratio-1">
                                 <div class="flex-vertical gap-med padding-small flex-ratio-1">
@@ -65,20 +64,20 @@
                                         <h1>Software developer</h1>
                                         <p class="text-grey">I am collin, a student software developer studying at ROC van twente located in the Netherlands. I also do 3D modelling and shader coding as a hobby.</p>
                                     </div>
-                                    <div class="flex-horizontal gap">
-                                        <div class="text-container flex-vertical fill-container">
+                                    <div class="flex-horizontal gap-med flex-vertical-mobile">
+                                        <div class="text-container flex-vertical flex-ratio-1">
                                             <h1>Languages</h1>
                                             <div id="info-languages" class="flex-horizontal-wrap gap-small"></div>
                                         </div>
-                                        <div class="text-container flex-vertical fill-container">
+                                        <div class="text-container flex-vertical flex-ratio-1">
                                             <h1>Software</h1>
                                             <div id="info-programs" class="flex-horizontal-wrap gap-small"></div>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="flex-vertical gap-padding fill-container">
-                                    <div class="image-container fill-container">
-                                        <img src="Images/Portfolio_Image_Me.png" class="thumbnail thumnail-fit-container" alt="Icons" />
+                                <div class="flex-vertical gap-med padding-small flex-ratio-1">
+                                    <div class="image-container flex-ratio-1">
+                                        <img src="Images/Portfolio_Image_Me.png" class="thumbnail" alt="Icons" />
                                     </div>
                                 </div>
                             </div>
@@ -89,8 +88,8 @@
                                         <div class="timeline-list flex-ratio-1 flex-vertical gap-small" id="experiences-list"></div>
                                     </div>
                                 </div>
-                                <div class="flex-vertical order-0 gap-padding fill-container">
-                                    <div class="text-container flex-vertical fill-container">
+                                <div class="flex-vertical gap-med padding-small flex-ratio-1">
+                                    <div class="text-container flex-vertical flex-ratio-1">
                                         <h1 id="experience-title">TempTitle</h1>
                                         <p id="experience-description" class="text-grey"></p>
                                     </div>
@@ -103,8 +102,8 @@
                                         <div class="timeline-list flex-vertical flex-ratio-1 gap-small" id="education-list"></div>
                                     </div>
                                 </div>
-                                <div class="flex-vertical order-0 gap-padding fill-container">
-                                    <div class="text-container flex-vertical fill-container">
+                                <div class="flex-vertical gap-med padding-small flex-ratio-1">
+                                    <div class="text-container flex-vertical flex-ratio-1">
                                         <h1 id="education-title">TempTitle</h1>
                                         <p id="education-description" class="text-grey"></p>
                                     </div>
@@ -116,49 +115,35 @@
                                         <h1 class="">Projects</h1>
                                         <div id="projects-filters" class="flex-horizontal-wrap flex-allign-center gap-small"></div>
                                     </div>
-                                    <div class="text-container flex-horizontal fill-container">
+                                    <div class="text-container flex-horizontal flex-ratio-1">
                                         <div class="projects-list" id="projects-list"></div>
                                     </div>
                                 </div>
-                            </div>
-                        </div>
-                        <div data-page="project" class="overlayed-container-item flex-ratio-1 flex-vertical">
-                            <div class="flex-vertical gap-med padding-small flex-ratio-1">
-                                <div class="text-container flex-horizontal flex-vertical-tablet-thin flex-allign-center gap-between">
-                                    <h1 id="project-title">PROJECT NAME</h1>
-                                    <div class="flex-horizontal gap">
-                                        <button id="button-random-project" class="button-deselected">
-                                            <p>Random Project</p>
-                                        </button>
-                                        <button id="button-to-projects" class="button-deselected">
-                                            <p>Projects</p>
-                                        </button>
-                                    </div>
-                                </div>
-                                <div id="project-container" class="overlayed-container flex-ratio-1"></div>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="flex-vertical flex-horizontal-tablet order-1 order-0-tablet gap-med padding-small nav">
                     <div class="text-container flex-vertical gap-between flex-ratio-1">
-                        <div id="ui-container" class="flex-vertical flex-horizontal-wrap-tablet flex-allign-center-tablet gap-small">
-                            <button data-page="main" data-section="about" id="main-button-about" class="button hide-element">
-                                <img src="Images/Icons/user.png" class="icon-small" alt="Icons" />
-                                <p>About me</p>
-                            </button>
-                            <button data-page="main" data-section="experiences" id="main-button-experiences" class="button hide-element">
-                                <img src="Images/Icons/briefcase.png" class="icon-small" alt="Icons" />
-                                <p>Experiences</p>
-                            </button>
-                            <button data-page="main" data-section="education" id="main-button-education" class="button hide-element">
-                                <img src="Images/Icons/education.png" class="icon-small" alt="Icons" />
-                                <p>Education</p>
-                            </button>
-                            <button data-page="main" data-section="projects" id="main-button-projects" class="button hide-element">
-                                <img src="Images/Icons/coding.png" class="icon-small" alt="Icons" />
-                                <p>Projects</p>
-                            </button>
+                        <div id="nav-buttons" class="flex-vertical overlayed-container flex-ratio-1">
+                            <div data-page="main" class="overlayed-container-item flex-ratio-1 flex-vertical gap-small flex-horizontal-wrap-tablet flex-allign-center-tablet">
+                                <button data-page="main" data-section="about" id="main-button-about" class="button">
+                                    <img src="Images/Icons/user.png" class="icon-small" alt="Icons" />
+                                    <p>About me</p>
+                                </button>
+                                <button data-page="main" data-section="experiences" id="main-button-experiences" class="button">
+                                    <img src="Images/Icons/briefcase.png" class="icon-small" alt="Icons" />
+                                    <p>Experiences</p>
+                                </button>
+                                <button data-page="main" data-section="education" id="main-button-education" class="button">
+                                    <img src="Images/Icons/education.png" class="icon-small" alt="Icons" />
+                                    <p>Education</p>
+                                </button>
+                                <button data-page="main" data-section="projects" id="main-button-projects" class="button">
+                                    <img src="Images/Icons/coding.png" class="icon-small" alt="Icons" />
+                                    <p>Projects</p>
+                                </button>
+                            </div>
                         </div>
                         <p class="sub-p text-grey hide-element-tablet">
                             Fun fact:
@@ -173,8 +158,8 @@
                     </a>
                 </div>
             </div>
-            <div class="flex-horizontal social-container overlayed-container">
-                <div data-page="main" class="overlayed-container-item flex-horizontal">
+            <div id="footer-container" class="flex-horizontal social-container overlayed-container">
+                <div data-page="main" class="overlayed-container-item flex-horizontal flex-ratio-1">
                     <div class="flex-horizontal flex-vertical-tablet-thin gap-med padding-small flex-ratio-1">
                         <a target="_blank" href="mailto:collin.rarekip@gmail.com" class="flex-horizontal flex-allign-center gap-med padding-med button-social flex-ratio-1" id="Gmail">
                             <img src="Images/Socials/email.png" class="icon-large" alt="Icons" />
@@ -188,14 +173,6 @@
                             <img src="Images/Socials/Github.png" class="icon-large" alt="Icons" />
                             <h1>Github</h1>
                         </a>
-                    </div>
-                </div>
-                <div data-page="project" class="overlayed-container-item flex-horizontal">
-                    <div class="flex-horizontal gap-med padding-small flex-ratio-1">
-                        <div class="text-container flex-horizontal flex-vertical-tablet-thin flex-allign-center-tablet-thin flex-ratio-1 gap-between">
-                            <h1 id="where-to-list-text">Downloads</h1>
-                            <div id="where-to-list" class="flex-horizontal-wrap flex-allign-center gap-med"></div>
-                        </div>
                     </div>
                 </div>
             </div>

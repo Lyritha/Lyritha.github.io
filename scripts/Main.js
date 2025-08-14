@@ -10,11 +10,13 @@ export async function initializePage() {
     await Modules.LoadModules();
     await TemplateLoader.loadTemplates('./Data/templates.html');
 
+    
     await ProjectHandler.createAllProjects({
         projectDataPath: './Data/projects.json',
         projectListId: 'projects-list',
-        projectContainerId: 'project-container',
-        projectNavContainerId: 'ui-container'
+        pageContainerId: 'pages',
+        navContainerId: 'nav-buttons',
+        footerContainerId: 'footer-container'
     });
 
     // Enable image modal
@@ -88,14 +90,4 @@ function bindAllButtons() {
     document.querySelectorAll('[id^="main-button-"]').forEach(btn => {
         PageNavigator.bindNavButtonToSection({ buttonId: btn.id });
     });
-
-    // button to return from project to projects list
-    document.getElementById('button-to-projects').addEventListener('click', () => {
-        PageNavigator.navigateToSection({ page: 'main', section: 'projects' });
-    });
-
-    document.getElementById('button-random-project').addEventListener('click', () => {
-        ProjectHandler.getRandomProject();
-    });
-
 }
