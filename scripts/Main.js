@@ -10,7 +10,7 @@ export async function initializePage() {
     await Modules.LoadModules();
     await TemplateLoader.loadTemplates('./Data/templates.html');
 
-    
+    // Load projects
     await ProjectHandler.createAllProjects({
         projectDataPath: './Data/projects.json',
         projectListId: 'projects-list',
@@ -34,38 +34,28 @@ export async function initializePage() {
         filterDataKey: 'filter'
     });
 
-    // timelines
-    Modules.InteractiveItems.create({
-        template: TemplateLoader.getTemplateClone('timeline-item'),
-        data: JsonLoader.getJson('education'),
-        containerId: "education-list",
-        targetMap: {
-            title: "education-title",
-            description: "education-description",
-        }
-    });
-
-    Modules.InteractiveItems.create({
-        template: TemplateLoader.getTemplateClone('timeline-item'),
-        data: JsonLoader.getJson('experiences'),
-        containerId: "experiences-list",
-        targetMap: {
-            title: "experience-title",
-            description: "experience-description"
-        }
+    // timeline items
+    const timelines = await JsonLoader.getJson('timeline');
+    ['education', 'experiences'].forEach(group => {
+        Modules.InteractiveItems.create({
+            template: TemplateLoader.getTemplateClone('timeline-item'),
+            data: timelines[group],
+            containerId: `${group}-list`,
+            targetMap: {
+                title: `${group}-title`,
+                description: `${group}-description`
+            }
+        });
     });
 
     // hover info icons
-    Modules.InteractiveItems.create({
-        template: TemplateLoader.getTemplateClone('info-icons'),
-        data: JsonLoader.getJson('languagesIcons'),
-        containerId: "info-languages",
-    });
-
-    Modules.InteractiveItems.create({
-        template: TemplateLoader.getTemplateClone('info-icons'),
-        data: JsonLoader.getJson('programIcons'),
-        containerId: "info-programs",
+    const icons = await JsonLoader.getJson('infoIcons');
+    ['languages', 'programs'].forEach(group => {
+        Modules.InteractiveItems.create({
+            template: TemplateLoader.getTemplateClone('info-icons'),
+            data: icons[group],
+            containerId: `info-${group}`,
+        });
     });
 
     // Decorative modules
@@ -81,14 +71,11 @@ export async function initializePage() {
     });
 
 
-    bindAllButtons();
+    // Bind navigation buttons to sections
+    document.querySelectorAll('button[data-page][data-section]').forEach(btn => {
+        PageNavigator.bindNavButtonToSection(btn);
+    });
+
     Modules.LoadImagesOptimized.initialize();
     PageNavigator.handleInitialNavigation();
-}
-
-function bindAllButtons() {
-    // Auto-bind any main-button-* ID
-    document.querySelectorAll('[id^="main-button-"]').forEach(btn => {
-        PageNavigator.bindNavButtonToSection({ buttonId: btn.id });
-    });
 }

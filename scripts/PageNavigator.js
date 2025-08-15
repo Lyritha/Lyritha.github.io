@@ -12,12 +12,10 @@ import * as UrlState from './Utility/UrlState.js';
  * @param {string} [targetPage] - (Optional) Page name to navigate to.
  * @param {string} [targetSection] - (Optional) Section name to navigate to.
  */
-export function bindNavButtonToSection({ buttonId }) {
-    const button = document.getElementById(buttonId);
-    const [ page, , section ] = button.id.split('-');
-
+export function bindNavButtonToSection(button) {
+    
     button.addEventListener('click', () => {
-        navigateToSection({ page, section })
+        navigateToSection({ page: button.dataset.page, section: button.dataset.section })
     })
 }
 

@@ -28,6 +28,7 @@
 }
 
 
+
 /* info button styling */
 .info-item, .info-modal {
     background: White;
@@ -69,8 +70,6 @@
         outline-width: var(--outline-width-large);
     }
 }
-
-
 
 .button-social#Gmail {
     background: #3e79d9;

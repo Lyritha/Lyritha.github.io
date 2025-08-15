@@ -1,4 +1,3 @@
-
 /* default styling */
 h1, p, .sub-p {
     color: var(--main-text-col);
@@ -30,7 +29,6 @@ p {
 
 
 /* code styling */
-
 pre[class*="language-"], pre[class*="language-"]::-webkit-scrollbar-track, pre[class*="language-"]::-webkit-scrollbar-corner {
     background: none;
     font-size: var(--sub-text-size);

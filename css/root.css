@@ -63,6 +63,12 @@ button, a {
     appearance: none;
 }
 
+
+
+
+
+
+
 /* desktop-thin: slightly smaller than wide desktop */
 @media (max-width: 1350px) {
     :root {

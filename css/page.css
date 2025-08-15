@@ -1,3 +1,5 @@
+/* all elements that require set sizing */
+
 .bento {
     width: 100%;
     max-width: 1400px;
@@ -16,7 +18,7 @@
 }
 
 .h-spacer {
-    height: 8vw;
+    height: 6vw;
     min-height: var(--spacing-medium);
 }
 
@@ -27,7 +29,7 @@
 /* desktop-thin: slightly smaller than wide desktop */
 @media (max-width: 1350px) {
     .h-spacer {
-        height: 5vw;
+        height: 4vw;
     }
 
     .nav {
