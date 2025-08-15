@@ -6,7 +6,13 @@
     --timeline-current-color: var(--border-col);
 }
 
-    .timeline-item.active, .timeline-item:hover {
+@media (hover: hover) {
+    .timeline-item:hover {
+        --timeline-current-color: var(--highlight-color);
+    }
+}
+
+    .timeline-item.active {
         --timeline-current-color: var(--highlight-color);
     }
 

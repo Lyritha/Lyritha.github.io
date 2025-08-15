@@ -3,13 +3,15 @@ import * as InteractiveItems from './InteractiveItems/InteractiveItems.js';
 import * as ImageModal from './ImageModal/ImageModal.js';
 import * as CornerDecorations from './CornerDecorations/CornerDecorations.js'
 import * as TiltCards from './TiltCards/TiltCards.js'
+import * as LoadImagesOptimized from './LoadImagesOptimized/LoadImagesOptimized.js';
 
 export {
     DynamicFilters,
     InteractiveItems,
     ImageModal,
     CornerDecorations,
-    TiltCards
+    TiltCards,
+    LoadImagesOptimized
 };
 
 const modules = {
@@ -17,7 +19,8 @@ const modules = {
     InteractiveItems,
     ImageModal,
     CornerDecorations,
-    TiltCards
+    TiltCards,
+    LoadImagesOptimized
 };
 
 export async function LoadModules() {

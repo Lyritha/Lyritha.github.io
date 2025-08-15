@@ -38,6 +38,10 @@
     .code {
         max-height: 290px;
     }
+
+    .social-container {
+        height: 83px;
+    }
 }
 
 /* tablet: landscape tablets, large phones in landscape */

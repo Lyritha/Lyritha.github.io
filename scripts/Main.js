@@ -82,6 +82,7 @@ export async function initializePage() {
 
 
     bindAllButtons();
+    Modules.LoadImagesOptimized.initialize();
     PageNavigator.handleInitialNavigation();
 }
 

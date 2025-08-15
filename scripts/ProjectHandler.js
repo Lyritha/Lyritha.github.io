@@ -93,30 +93,31 @@ function createProjectNav(project) {
 }
 
 function createProjectFooter(project) {
-    let footerElement = document.createElement('div');
+    let footerElement = TemplateLoader.getTemplateClone('project-footer-empty');
 
     switch (project['data-filter']) {
         case 'Unity':
             footerElement = TemplateLoader.getTemplateClone('project-footer-game');
             const buttonContainer = footerElement.querySelector('[data-role="link-container"]');
 
-            const dataEl = footerElement.querySelector('[data-role="project-data"]');
-            dataEl.dataset.page = sanitizeId(project.title);
-
             Object.values(project.links).forEach(link => {
-                const button = TemplateLoader.getTemplateClone('project-button');
-                button.querySelector('[data-role="section-icon"]').src = link.icon;
-                button.querySelector('[data-role="section-name"]').textContent = link.name;
+                const buttonEle = TemplateLoader.getTemplateClone('project-button');
+                buttonEle.querySelector('[data-role="section-icon"]').src = link.icon;
+                buttonEle.querySelector('[data-role="section-name"]').textContent = link.name;
+                const button = buttonEle.querySelector('button');
 
                 button.addEventListener('click', () => {
-                    window.open(link.url, '_blank');
+                    window.open(link.link, '_blank');
                 });
 
-                buttonContainer.appendChild(button);
+                buttonContainer.appendChild(buttonEle);
             });
 
             break;
     }
+
+    const dataEl = footerElement.querySelector('[data-role="project-data"]');
+    dataEl.dataset.page = sanitizeId(project.title);
 
     return footerElement;
 }
@@ -208,7 +209,7 @@ function populateTemplate(clone, data) {
                 return;
             }
             if (tag === 'IMG') {
-                element.src = value;
+                element.dataset.src = value;
                 return;
             }
             if (tag === 'CODE') {
@@ -220,7 +221,7 @@ function populateTemplate(clone, data) {
                 const length = value.length - 1;
                 const children = Array.from(element.children);
                 children.forEach((child, index) => { if (index !== length) element.removeChild(child); });
-                element.querySelectorAll('img').forEach((imgEl, index) => { imgEl.src = value[index]; });
+                element.querySelectorAll('img').forEach((imgEl, index) => { imgEl.dataset.src = value[index]; });
                 return;
             }
             if (key.startsWith('data-')) {

@@ -10,10 +10,17 @@
     align-self: flex-start;
 }
 
-    .button.active, .button:hover {
+@media (hover: hover) {
+    .button:hover {
         background: rgba(224, 68, 71, 0.2);
         outline-width: var(--outline-width-medium);
     }
+}
+
+.button.active {
+    background: rgba(224, 68, 71, 0.2);
+    outline-width: var(--outline-width-medium);
+}
 
 /* location button styling */
 .button-location {
@@ -36,7 +43,6 @@
     position: absolute;
     top: 130%;
     left: 0;
-
     pointer-events: none;
     transform: translateY(10px);
     opacity: 0;
@@ -44,11 +50,11 @@
     z-index: 10;
 }
 
-    .info-item:hover .info-modal {
-        opacity: 1;
-        transform: translateY(0);
-    }
-    
+.info-item:hover .info-modal {
+    opacity: 1;
+    transform: translateY(0);
+}
+
 
 /* social button styling*/
 
@@ -58,24 +64,28 @@
     transition: outline-width 100ms ease-in-out;
 }
 
+@media (hover: hover) {
     .button-social:hover {
         outline-width: var(--outline-width-large);
     }
+}
 
-    .button-social#Gmail {
-        background: #3e79d9;
-        outline-color: #84a2ff;
-    }
 
-    .button-social#LinkedIn {
-        background: #2b6497;
-        outline-color: #4096e3;
-    }
 
-    .button-social#Github {
-        background: #384050;
-        outline-color: #6d7d9c;
-    }
+.button-social#Gmail {
+    background: #3e79d9;
+    outline-color: #84a2ff;
+}
+
+.button-social#LinkedIn {
+    background: #2b6497;
+    outline-color: #4096e3;
+}
+
+.button-social#Github {
+    background: #384050;
+    outline-color: #6d7d9c;
+}
 
 /* icon sizes */
 .icon-tiny {

@@ -81,6 +81,8 @@
     transition: transform 0.2s ease;
 }
 
+@media (hover: hover) {
     .thumbnail:hover {
         transform: scale(1.01);
     }
+}

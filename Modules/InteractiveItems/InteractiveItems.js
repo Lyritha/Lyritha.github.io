@@ -78,7 +78,7 @@ export async function create({ template, data, containerId, targetMap = {}, butt
             // Regular content/image binding
             getFilteredTargets(allRoleElements, key).forEach(target => {
                 if (target.tagName === 'IMG') {
-                    target.src = value;
+                    target.dataset.src = value;
                     target.alt = `${entry.title || key} image`;
                 }
 

@@ -1,7 +1,7 @@
 <template id="project-item-template">
     <div data-role="data-filter" class="projects-item flex-vertical gap-small">
         <div class="flex-ratio-1">
-            <img data-role="thumbnail" src="" class="projects-img thumbnail" alt="Icons" />
+            <img data-role="thumbnail" data-src="" class="projects-img thumbnail" alt="Icons" />
         </div>
         <div class="flex-vertical flex-ratio-1 gap-small gap-between">
             <div class="flex-vertical">
@@ -19,7 +19,7 @@
     <button data-function="button" class="timeline-item flex-horizontal">
         <div class="timeline-line"></div>
         <div class="timeline-container gap-small padding-small flex-horizontal flex-allign-center">
-            <img data-role="image" src="" class="icon-med" alt="Icon" />
+            <img data-role="image" data-src="" class="icon-med" alt="Icon" />
             <div>
                 <p data-role="title"></p>
                 <p data-role="sub" class="sub-p text-grey"></p>
@@ -70,7 +70,7 @@
                 </div>
             </div>
 
-            <img data-role="image" src="" alt="Image" />
+            <img data-role="image" data-src="" alt="Image" />
         </div>
     </div>
 </template>
@@ -88,9 +88,9 @@
 <template id="project">
     <div data-role="project-data" class="overlayed-container-item flex-ratio-1 flex-vertical">
         <div class="flex-vertical gap-med padding-small flex-ratio-1">
-            <div class="text-container flex-horizontal flex-vertical-tablet-thin gap-between">
+            <div class="text-container flex-horizontal flex-vertical-tablet-thin flex-center-items gap-between">
                 <h1 data-role="project-title">PROJECT NAME</h1>
-                <div class="flex-horizontal gap-med">
+                <div class="flex-horizontal-wrap flex-allign-center gap-small">
                     <button data-function="random-project" class="button">
                         <p>Random Project</p>
                     </button>
@@ -107,9 +107,18 @@
 <template id="project-footer-game">
     <div data-role="project-data" class="overlayed-container-item flex-horizontal gap-med flex-ratio-1">
         <div class="flex-vertical gap-med padding-small flex-ratio-1">
-            <div class="flex-horizontal text-container gap-between flex-ratio-1 flex-center-items">
+            <div class="flex-horizontal text-container gap-between flex-ratio-1 flex-center-items flex-vertical-tablet-thin">
                 <h1>Downloads</h1>
-                <div data-role="link-container" class="flex-horizontal gap-med"></div>
+                <div data-role="link-container" class="gap-small flex-horizontal-wrap flex-allign-center"></div>
+            </div>
+        </div>
+    </div>
+</template>
+
+<template id="project-footer-empty">
+    <div data-role="project-data" class="overlayed-container-item flex-horizontal gap-med flex-ratio-1">
+        <div class="flex-vertical gap-med padding-small flex-ratio-1">
+            <div class="flex-horizontal text-container gap-between flex-ratio-1 flex-center-items hide-element-tablet-thin">
             </div>
         </div>
     </div>
@@ -125,7 +134,7 @@
             </div>
             <div class="flex-vertical flex-ratio-3">
                 <div class="image-container flex-ratio-1">
-                    <img data-role="section-image" src="" class="thumbnail" alt="Icons" />
+                    <img data-role="section-image" data-src="" class="thumbnail" alt="Icons" />
                 </div>
             </div>
         </div>
@@ -137,64 +146,64 @@
         <div data-role="section-images" class="flex-horizontal flex-ratio-1 gap-med">
             <div id="gallery-1" class="thumbnail-group flex-vertical gap-med flex-ratio-1" style="max-height: 407.273px;">
                 <div class="image-container flex-ratio-1">
-                    <img src="" class="thumbnail" alt="Icons" />
+                    <img data-src="" class="thumbnail" alt="Icons" />
                 </div>
             </div>
             <div id="gallery-2" class="thumbnail-group flex-vertical flex-ratio-1">
                 <div class="image-container flex-ratio-1">
-                    <img src="" class="thumbnail" alt="Icons" />
+                    <img data-src="" class="thumbnail" alt="Icons" />
                 </div>
             </div>
             <div id="gallery-3" class="thumbnail-group flex-horizontal flex-vertical-tablet-thin flex-ratio-1 gap-med">
                 <div class="image-container flex-ratio-1">
-                    <img src="" class="thumbnail" alt="Icons" />
+                    <img data-src="" class="thumbnail" alt="Icons" />
                 </div>
                 <div class="image-container flex-ratio-1">
-                    <img src="" class="thumbnail" alt="Icons" />
+                    <img data-src="" class="thumbnail" alt="Icons" />
                 </div>
                 <div class="image-container flex-ratio-1">
-                    <img src="" class="thumbnail" alt="Icons" />
+                    <img data-src="" class="thumbnail" alt="Icons" />
                 </div>
             </div>
             <div id="gallery-4" class="thumbnail-group flex-vertical gap-med flex-ratio-1" style="max-height: 388.273px;">
                 <div class="flex-horizontal gap-med" style="height:50%;">
                     <div class="image-container flex-ratio-1">
-                        <img src="" class="thumbnail" alt="Icons" />
+                        <img data-src="" class="thumbnail" alt="Icons" />
                     </div>
                     <div class="image-container flex-ratio-1">
-                        <img src="" class="thumbnail" alt="Icons" />
+                        <img data-src="" class="thumbnail" alt="Icons" />
                     </div>
                 </div>
                 <div class="flex-horizontal gap-med" style="height:50%;">
                     <div class="image-container flex-ratio-1">
-                        <img src="" class="thumbnail" alt="Icons" />
+                        <img data-src="" class="thumbnail" alt="Icons" />
                     </div>
                     <div class="image-container flex-ratio-1">
-                        <img src="" class="thumbnail" alt="Icons" />
+                        <img data-src="" class="thumbnail" alt="Icons" />
                     </div>
                 </div>
             </div>
             <div id="gallery-5" class="thumbnail-group flex-horizontal flex-vertical-tablet-thin flex-ratio-1 gap-med">
                 <div class="flex-vertical flex-ratio-1">
                     <div class="image-container flex-ratio-1">
-                        <img src="" class="thumbnail" alt="Icons" />
+                        <img data-src="" class="thumbnail" alt="Icons" />
                     </div>
                 </div>
                 <div class="flex-vertical gap-med flex-ratio-1">
-                    <div class="flex-horizontal gap-med flex-ratio-1">
+                    <div class="flex-horizontal flex-vertical-mobile gap-med flex-ratio-1">
                         <div class="image-container flex-ratio-1">
-                            <img src="" class="thumbnail" alt="Icons" />
+                            <img data-src="" class="thumbnail" alt="Icons" />
                         </div>
                         <div class="image-container flex-ratio-1">
-                            <img src="" class="thumbnail" alt="Icons" />
+                            <img data-src="" class="thumbnail" alt="Icons" />
                         </div>
                     </div>
-                    <div class="flex-horizontal gap-med flex-ratio-1">
+                    <div class="flex-horizontal flex-vertical-mobile gap-med flex-ratio-1">
                         <div class="image-container flex-ratio-1">
-                            <img src="" class="thumbnail" alt="Icons" />
+                            <img data-src="" class="thumbnail" alt="Icons" />
                         </div>
                         <div class="image-container flex-ratio-1">
-                            <img src="" class="thumbnail" alt="Icons" />
+                            <img data-src="" class="thumbnail" alt="Icons" />
                         </div>
                     </div>
                 </div>

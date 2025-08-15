@@ -1,41 +1,41 @@
-.tiltCards-parent {
-    position: relative;
-    perspective: 800px;
-    z-index: 1;
-}
-
-.tiltCards-parent:hover,
-.tiltCards:hover {
-    z-index: 2;
-}
-
-.tiltCards {
-    position: relative;
-    transform-style: preserve-3d;
-    z-index: 1;
-    transition: transform 1s ease;
-    transform: rotateX(var(--tiltCards-rotate-x, 0deg)) rotateY(var(--tiltCards-rotate-y, 0deg));
-    box-shadow: var(--tiltCards-shadow-x, 0px) var(--tiltCards-shadow-y, 0px) var(--tiltCards-shadow-blur) rgba(0, 0, 0, 0.7);
-}
-
-.tiltCards {
-}
-
-    .tiltCards::before {
-        content: "";
-        position: absolute;
-        inset: 0;
-        background-image: var(--bg-gradient-hover);
-        background-position: var(--tiltCards-position);
-        background-size: 200%;
-        background-repeat: no-repeat;
-        opacity: 0;
-        transition: opacity 0.5s ease;
-        pointer-events: none;
-        z-index: 10;
+@media (hover: hover) {
+    .tiltCards-parent {
+        position: relative;
+        perspective: 800px;
+        z-index: 1;
     }
 
+        /* Enable tilt on hover-capable devices (including touchscreen laptops) */
 
-    .tiltCards:hover::before {
-        opacity: 1;
+        .tiltCards-parent:hover,
+        .tiltCards:hover {
+            z-index: 2;
+        }
+
+    .tiltCards {
+        position: relative;
+        transform-style: preserve-3d;
+        z-index: 1;
+        transition: transform 1s ease;
+        transform: rotateX(var(--tiltCards-rotate-x, 0deg)) rotateY(var(--tiltCards-rotate-y, 0deg));
+        box-shadow: var(--tiltCards-shadow-x, 0px) var(--tiltCards-shadow-y, 0px) var(--tiltCards-shadow-blur) rgba(0, 0, 0, 0.7);
     }
+
+        .tiltCards::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background-image: var(--bg-gradient-hover);
+            background-position: var(--tiltCards-position);
+            background-size: 200%;
+            background-repeat: no-repeat;
+            opacity: 0;
+            transition: opacity 0.5s ease;
+            pointer-events: none;
+            z-index: 10;
+        }
+
+        .tiltCards:hover::before {
+            opacity: 1;
+        }
+}

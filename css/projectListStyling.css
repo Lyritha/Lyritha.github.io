@@ -24,6 +24,7 @@
 
 .projects-list::-webkit-scrollbar, .projects-list::-webkit-scrollbar-track {
     color: transparent;
+    width: 5px;
 }
 
 .projects-list::-webkit-scrollbar-thumb {
@@ -32,22 +33,11 @@
     background-clip: content-box;
 }
 
-.ui-section, .ui-nav, .ignoreLayout {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    opacity: 0;
-    pointer-events: none;
-    transition: opacity 0.5s ease;
-}
-
 /* desktop-thin: slightly smaller than wide desktop */
 @media (max-width: 1350px) {
     /* Styles for thinner desktop screens (laptops, small monitors) */
     .projects-list {
-        max-height: 240px;
+        max-height: 328px;
     }
 }
 
@@ -58,15 +48,23 @@
 
 @media (max-width: 1100px) {
     .projects-list {
-    max-height: 662px;
+        max-height: 662px;
     }
 
     .projects-item {
-        flex: 0 0 100%;
-        height: 100px;
+        flex: 0 0 calc(50% - 1rem);
+        height: auto;
     }
 
     .projects-img {
         height: 100px;
+    }
+}
+
+/* tablet-thin: portrait tablets or small landscape phones */
+@media (max-width: 800px) {
+    .projects-item {
+        flex: 0 0 calc(100% - 1rem);
+        height: auto;
     }
 }
