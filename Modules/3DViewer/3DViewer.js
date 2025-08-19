@@ -16,6 +16,10 @@ const ViewerState = {
 
 export function initViewer(container = document.body) {
 
+    if (!checkWebGL()) {
+        return; // Exit if WebGL is not supported
+    }
+
     // scene
     ViewerState.scene = createScene();
 
@@ -36,6 +40,12 @@ export function initViewer(container = document.body) {
 }
 
 export function loadModel(path, boundingBoxTarget) {
+    if (!ViewerState.scene) {
+        console.error("Viewer not initialized. Call initViewer first.");
+        return;
+    }
+
+
     // Dispose previous model if it exists
     if (ViewerState.model) {
         ViewerState.scene.remove(ViewerState.model);
@@ -93,6 +103,11 @@ export function loadModel(path, boundingBoxTarget) {
     );
 }
 export function loadHDR(path) {
+    if (!ViewerState.scene) {
+        console.error("Viewer not initialized. Call initViewer first.");
+        return;
+    }
+
     const file = typeof path === 'string' ? path : path.file;
     const folder = typeof path === 'object' && path.folder ? path.folder : '';
 
@@ -110,6 +125,30 @@ export function loadHDR(path) {
         });
 }
 
+
+function checkWebGL() {
+    const canvas = document.createElement('canvas');
+    const gl = canvas.getContext('webgl') || canvas.getContext('experimental-webgl');
+
+    if (!gl) {
+        alert("WebGL is not supported on your browser. 3D features will not work.");
+        return false;
+    }
+
+    const debugInfo = gl.getExtension('WEBGL_debug_renderer_info');
+    if (debugInfo) {
+        const renderer = gl.getParameter(debugInfo.UNMASKED_RENDERER_WEBGL);
+        if (/swiftshader/i.test(renderer) || /software/i.test(renderer)) {
+            alert(
+                "Your browser is using software WebGL, which is very slow. " +
+                "For better performance, please enable hardware acceleration in your browser settings."
+            );
+            return false;
+        }
+    }
+
+    return true; // Hardware-accelerated WebGL is available
+}
 
 
 function setupResize(camera, renderer, container) {

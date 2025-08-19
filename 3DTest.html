@@ -5,6 +5,7 @@
     <title>Three.js GLB + HDR</title>
     <style>
         #container {
+            display: flex;
             flex: 1;
             position: relative;
             border: 5px solid #808080;
@@ -12,6 +13,8 @@
             box-sizing: border-box;
             margin: 50px;
             overflow: hidden;
+            justify-content: center;
+            align-items: center;
         }
 
         body {
@@ -21,6 +24,11 @@
             width: 100vw;
             height: 100vh;
             background: black;
+        }
+
+        h1 {
+            color: white;
+            font-size: 5em;
         }
     </style>
 
@@ -36,7 +44,7 @@
 </head>
 <body>
     <div id="container" class="a">
-
+        <h1>GPU usage not supported</h1>
     </div>
 
 
