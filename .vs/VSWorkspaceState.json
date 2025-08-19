@@ -3,11 +3,11 @@
     "",
     "\\css",
     "\\Data",
-    "\\Images",
     "\\Modules",
+    "\\Modules\\3DViewer",
     "\\scripts",
     "\\scripts\\Utility"
   ],
-  "SelectedNode": "\\index.html",
+  "SelectedNode": "\\3DTest.html",
   "PreviewInSolutionExplorer": false
 }
