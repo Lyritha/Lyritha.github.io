@@ -53,10 +53,12 @@
     <script type="module">
         import * as viewer from "/Modules/3DViewer/3DViewer.js";
 
-        const container = document.getElementById("container");
-        viewer.initViewer(container);
-        viewer.loadModel("Models/House.glb", "House");
-        viewer.loadHDR("Images/hdr.hdr")
+        viewer.openScene({
+            modelPath: "Models/House.glb",
+            modelBoundsName: "House",
+            hdrPathOrHex: "Images/hdr.hdr",
+            containerId: "container",
+        })
     </script>
 </body>
 </html>

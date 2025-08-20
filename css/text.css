@@ -1,5 +1,5 @@
 /* default styling */
-h1, p, .sub-p {
+h1, p, .sub-p, li {
     color: var(--main-text-col);
     margin: 0px;
     padding: 0px;
@@ -11,7 +11,7 @@ h1 {
     font-size: var(--header-size);
 }
 
-p {
+p, li {
     font-size: var(--text-size);
 }
 

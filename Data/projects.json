@@ -113,6 +113,15 @@
           "Images/Projects/TinyHouse/Hous_BedRoom.png",
           "Images/Projects/TinyHouse/Hous_Bathroom.png"
         ]
+      },
+      {
+        "?section-name": "3D model",
+        "?section-icon": "Images/Icons/user.png",
+        "section-scene": {
+          "modelPath": "Models/House.glb",
+          "modelBoundsName": "House",
+          "hdrPathOrHex": "Images/hdr.hdr"
+        }
       }
     ]
   }

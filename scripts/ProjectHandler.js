@@ -1,6 +1,7 @@
 import * as TemplateLoader from './Utility/TemplateLoader.js';
 import * as PageNavigator from './PageNavigator.js';
 import * as UrlState from './Utility/UrlState.js';
+import * as Modules from '../Modules/moduleManager.js';
 
 /** @type {Set<string>} Tags considered as simple text elements for populateTemplate */
 const TEXT_TAGS = new Set(['H1', 'H2', 'H3', 'H4', 'H5', 'H6', 'P', 'SPAN', 'LABEL', 'BUTTON']);
@@ -208,15 +209,18 @@ function populateTemplate(clone, data) {
                 element.textContent = value;
                 return;
             }
+
             if (tag === 'IMG') {
                 element.dataset.src = value;
                 return;
             }
+
             if (tag === 'CODE') {
                 element.textContent = value;
                 Prism.highlightElement(element);
                 return;
             }
+
             if (key.toLowerCase().includes('images') && Array.isArray(value)) {
                 const length = value.length - 1;
                 const children = Array.from(element.children);
@@ -224,6 +228,24 @@ function populateTemplate(clone, data) {
                 element.querySelectorAll('img').forEach((imgEl, index) => { imgEl.dataset.src = value[index]; });
                 return;
             }
+
+            if (key.toLowerCase().includes('scene')) {
+                Object.entries(value).forEach(([sceneKey, sceneValue]) => {
+                    element.dataset[sceneKey] = sceneValue;
+                });
+
+                const canOpen = Modules.Viewer3D.canOpen3DViewer(element);
+
+                if (canOpen) {
+                    Modules.Viewer3D.openScene({
+                        modelPath: value.modelPath,
+                        modelBoundsName: value.modelBoundsName,
+                        hdrPathOrHex: value.hdrPathOrHex,
+                        container: element
+                    });
+                }
+            }
+
             if (key.startsWith('data-')) {
                 element.dataset[key.slice(5)] = value;
                 return;

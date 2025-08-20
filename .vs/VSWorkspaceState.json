@@ -4,10 +4,13 @@
     "\\css",
     "\\Data",
     "\\Modules",
-    "\\Modules\\3DViewer",
+    "\\Modules\\ImageModal",
+    "\\Modules\\InteractiveItems",
+    "\\Modules\\LoadImagesOptimized",
+    "\\Modules\\Viewer3D",
     "\\scripts",
     "\\scripts\\Utility"
   ],
-  "SelectedNode": "\\3DTest.html",
+  "SelectedNode": "\\Modules\\Viewer3D\\Viewer3D.js",
   "PreviewInSolutionExplorer": false
 }

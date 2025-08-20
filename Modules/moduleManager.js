@@ -4,6 +4,7 @@ import * as ImageModal from './ImageModal/ImageModal.js';
 import * as CornerDecorations from './CornerDecorations/CornerDecorations.js'
 import * as TiltCards from './TiltCards/TiltCards.js'
 import * as LoadImagesOptimized from './LoadImagesOptimized/LoadImagesOptimized.js';
+import * as Viewer3D from './Viewer3D/Viewer3D.js';
 
 export {
     DynamicFilters,
@@ -11,7 +12,8 @@ export {
     ImageModal,
     CornerDecorations,
     TiltCards,
-    LoadImagesOptimized
+    LoadImagesOptimized,
+    Viewer3D
 };
 
 const modules = {
@@ -20,7 +22,8 @@ const modules = {
     ImageModal,
     CornerDecorations,
     TiltCards,
-    LoadImagesOptimized
+    LoadImagesOptimized,
+    Viewer3D
 };
 
 export async function LoadModules() {
