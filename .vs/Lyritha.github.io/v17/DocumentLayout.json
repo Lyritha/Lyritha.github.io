@@ -3,12 +3,16 @@
   "WorkspaceRootPath": "C:\\Users\\colli\\Documents\\GitHub\\Lyritha.github.io\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\colli\\Documents\\GitHub\\Lyritha.github.io\\Data\\projects.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Data\\projects.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\colli\\Documents\\GitHub\\Lyritha.github.io\\Modules\\Viewer3D\\Viewer3D.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
       "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Modules\\Viewer3D\\Viewer3D.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\colli\\Documents\\GitHub\\Lyritha.github.io\\scripts\\ProjectHandler.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:scripts\\ProjectHandler.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\colli\\Documents\\GitHub\\Lyritha.github.io\\index.html||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:index.html||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\colli\\Documents\\GitHub\\Lyritha.github.io\\Data\\templates.html||{40D31677-CBC0-4297-A9EF-89D907823A98}",
@@ -19,16 +23,20 @@
       "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Modules\\Viewer3D\\Viewer3D.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\colli\\Documents\\GitHub\\Lyritha.github.io\\Modules\\ImageModal\\ImageModal.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Modules\\ImageModal\\ImageModal.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\colli\\Documents\\GitHub\\Lyritha.github.io\\Data\\timeline.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Data\\timeline.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\colli\\Documents\\GitHub\\Lyritha.github.io\\css\\buttons.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:css\\buttons.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\colli\\Documents\\GitHub\\Lyritha.github.io\\Modules\\ImageModal\\ImageModal.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
       "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Modules\\ImageModal\\ImageModal.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\colli\\Documents\\GitHub\\Lyritha.github.io\\css\\text.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:css\\text.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\colli\\Documents\\GitHub\\Lyritha.github.io\\css\\elements.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:css\\elements.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\colli\\Documents\\GitHub\\Lyritha.github.io\\css\\containers.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
@@ -39,8 +47,28 @@
       "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:css\\root.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\colli\\Documents\\GitHub\\Lyritha.github.io\\css\\elements.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:css\\elements.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\colli\\Documents\\GitHub\\Lyritha.github.io\\scripts\\ProjectHandler.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:scripts\\ProjectHandler.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\colli\\Documents\\GitHub\\Lyritha.github.io\\css\\page.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:css\\page.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\colli\\Documents\\GitHub\\Lyritha.github.io\\css\\flex.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:css\\flex.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\colli\\Documents\\GitHub\\Lyritha.github.io\\css\\text.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:css\\text.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\colli\\Documents\\GitHub\\Lyritha.github.io\\scripts\\PageNavigator.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:scripts\\PageNavigator.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\colli\\Documents\\GitHub\\Lyritha.github.io\\Modules\\ImageModal\\ImageModal.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Modules\\ImageModal\\ImageModal.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\colli\\Documents\\GitHub\\Lyritha.github.io\\scripts\\Main.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
@@ -55,28 +83,8 @@
       "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Modules\\LoadImagesOptimized\\LoadImagesOptimized.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\colli\\Documents\\GitHub\\Lyritha.github.io\\index.html||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:index.html||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\colli\\Documents\\GitHub\\Lyritha.github.io\\css\\buttons.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:css\\buttons.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\colli\\Documents\\GitHub\\Lyritha.github.io\\Data\\projects.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Data\\projects.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\colli\\Documents\\GitHub\\Lyritha.github.io\\Data\\timeline.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Data\\timeline.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\colli\\Documents\\GitHub\\Lyritha.github.io\\3DTest.html||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:3DTest.html||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\colli\\Documents\\GitHub\\Lyritha.github.io\\scripts\\PageNavigator.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:scripts\\PageNavigator.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\colli\\Documents\\GitHub\\Lyritha.github.io\\css\\pageStyling.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
@@ -117,8 +125,8 @@
       "VerticalTabListWidth": 256,
       "DocumentGroups": [
         {
-          "DockedWidth": 91,
-          "SelectedChildIndex": 4,
+          "DockedWidth": 142,
+          "SelectedChildIndex": 8,
           "Children": [
             {
               "$type": "Bookmark",
@@ -134,33 +142,150 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 3,
               "Title": "templates.html",
               "DocumentMoniker": "C:\\Users\\colli\\Documents\\GitHub\\Lyritha.github.io\\Data\\templates.html",
               "RelativeDocumentMoniker": "Data\\templates.html",
               "ToolTip": "C:\\Users\\colli\\Documents\\GitHub\\Lyritha.github.io\\Data\\templates.html",
               "RelativeToolTip": "Data\\templates.html",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAPEAAAAaAAAAAAAAAA==",
+              "ViewState": "AgIAAC0AAAAAAAAAAAAowFAAAAAjAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001512|",
               "WhenOpened": "2025-08-14T16:03:29.828Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 7,
+              "Title": "ImageModal.js",
+              "DocumentMoniker": "C:\\Users\\colli\\Documents\\GitHub\\Lyritha.github.io\\Modules\\ImageModal\\ImageModal.js",
+              "RelativeDocumentMoniker": "Modules\\ImageModal\\ImageModal.js",
+              "ToolTip": "C:\\Users\\colli\\Documents\\GitHub\\Lyritha.github.io\\Modules\\ImageModal\\ImageModal.js",
+              "RelativeToolTip": "Modules\\ImageModal\\ImageModal.js",
+              "ViewState": "AgIAACcAAAAAAAAAAAAAAEEAAAAaAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
+              "WhenOpened": "2025-08-20T16:55:45.513Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "elements.css",
+              "DocumentMoniker": "C:\\Users\\colli\\Documents\\GitHub\\Lyritha.github.io\\css\\elements.css",
+              "RelativeDocumentMoniker": "css\\elements.css",
+              "ToolTip": "C:\\Users\\colli\\Documents\\GitHub\\Lyritha.github.io\\css\\elements.css",
+              "RelativeToolTip": "css\\elements.css",
+              "ViewState": "AgIAAA8AAAAAAAAAAAAAADcAAAATAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
+              "WhenOpened": "2025-08-20T15:36:55.601Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "buttons.css",
+              "DocumentMoniker": "C:\\Users\\colli\\Documents\\GitHub\\Lyritha.github.io\\css\\buttons.css",
+              "RelativeDocumentMoniker": "css\\buttons.css",
+              "ToolTip": "C:\\Users\\colli\\Documents\\GitHub\\Lyritha.github.io\\css\\buttons.css",
+              "RelativeToolTip": "css\\buttons.css",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABsAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
+              "WhenOpened": "2025-08-20T15:36:59.081Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "containers.css",
+              "DocumentMoniker": "C:\\Users\\colli\\Documents\\GitHub\\Lyritha.github.io\\css\\containers.css",
+              "RelativeDocumentMoniker": "css\\containers.css",
+              "ToolTip": "C:\\Users\\colli\\Documents\\GitHub\\Lyritha.github.io\\css\\containers.css",
+              "RelativeToolTip": "css\\containers.css",
+              "ViewState": "AgIAABsAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
+              "WhenOpened": "2025-08-20T15:36:59.785Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "projects.json",
+              "DocumentMoniker": "C:\\Users\\colli\\Documents\\GitHub\\Lyritha.github.io\\Data\\projects.json",
+              "RelativeDocumentMoniker": "Data\\projects.json",
+              "ToolTip": "C:\\Users\\colli\\Documents\\GitHub\\Lyritha.github.io\\Data\\projects.json",
+              "RelativeToolTip": "Data\\projects.json",
+              "ViewState": "AgIAAHUAAAAAAAAAAAAIwKQAAAADAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2025-08-14T17:16:36.73Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "root.css",
+              "DocumentMoniker": "C:\\Users\\colli\\Documents\\GitHub\\Lyritha.github.io\\css\\root.css",
+              "RelativeDocumentMoniker": "css\\root.css",
+              "ToolTip": "C:\\Users\\colli\\Documents\\GitHub\\Lyritha.github.io\\css\\root.css",
+              "RelativeToolTip": "css\\root.css",
+              "ViewState": "AgIAADkAAAAAAAAAAAAAAD8AAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
+              "WhenOpened": "2025-08-20T18:33:06.873Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
               "Title": "ProjectHandler.js",
               "DocumentMoniker": "C:\\Users\\colli\\Documents\\GitHub\\Lyritha.github.io\\scripts\\ProjectHandler.js",
               "RelativeDocumentMoniker": "scripts\\ProjectHandler.js",
               "ToolTip": "C:\\Users\\colli\\Documents\\GitHub\\Lyritha.github.io\\scripts\\ProjectHandler.js",
               "RelativeToolTip": "scripts\\ProjectHandler.js",
-              "ViewState": "AgIAAMkAAAAAAAAAAAAmwPgAAAAqAAAAAAAAAA==",
+              "ViewState": "AgIAAL4AAAAAAAAAAAAYwPUAAAANAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
               "WhenOpened": "2025-08-14T19:57:02.453Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 12,
+              "Title": "page.css",
+              "DocumentMoniker": "C:\\Users\\colli\\Documents\\GitHub\\Lyritha.github.io\\css\\page.css",
+              "RelativeDocumentMoniker": "css\\page.css",
+              "ToolTip": "C:\\Users\\colli\\Documents\\GitHub\\Lyritha.github.io\\css\\page.css",
+              "RelativeToolTip": "css\\page.css",
+              "ViewState": "AgIAABIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
+              "WhenOpened": "2025-08-21T20:52:44.033Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "flex.css",
+              "DocumentMoniker": "C:\\Users\\colli\\Documents\\GitHub\\Lyritha.github.io\\css\\flex.css",
+              "RelativeDocumentMoniker": "css\\flex.css",
+              "ToolTip": "C:\\Users\\colli\\Documents\\GitHub\\Lyritha.github.io\\css\\flex.css",
+              "RelativeToolTip": "css\\flex.css",
+              "ViewState": "AgIAAP4AAAAAAAAAAAAIwBgBAAAcAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
+              "WhenOpened": "2025-08-21T21:43:13.864Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "text.css",
+              "DocumentMoniker": "C:\\Users\\colli\\Documents\\GitHub\\Lyritha.github.io\\css\\text.css",
+              "RelativeDocumentMoniker": "css\\text.css",
+              "ToolTip": "C:\\Users\\colli\\Documents\\GitHub\\Lyritha.github.io\\css\\text.css",
+              "RelativeToolTip": "css\\text.css",
+              "ViewState": "AgIAABgAAAAAAAAAAAAAAA0AAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
+              "WhenOpened": "2025-08-20T18:33:53.406Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
               "Title": "ImageModal.css",
               "DocumentMoniker": "C:\\Users\\colli\\Documents\\GitHub\\Lyritha.github.io\\Modules\\ImageModal\\ImageModal.css",
               "RelativeDocumentMoniker": "Modules\\ImageModal\\ImageModal.css",
@@ -173,85 +298,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "ImageModal.js",
-              "DocumentMoniker": "C:\\Users\\colli\\Documents\\GitHub\\Lyritha.github.io\\Modules\\ImageModal\\ImageModal.js",
-              "RelativeDocumentMoniker": "Modules\\ImageModal\\ImageModal.js",
-              "ToolTip": "C:\\Users\\colli\\Documents\\GitHub\\Lyritha.github.io\\Modules\\ImageModal\\ImageModal.js",
-              "RelativeToolTip": "Modules\\ImageModal\\ImageModal.js",
-              "ViewState": "AgIAACcAAAAAAAAAAAAAAEoAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
-              "WhenOpened": "2025-08-20T16:55:45.513Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "text.css",
-              "DocumentMoniker": "C:\\Users\\colli\\Documents\\GitHub\\Lyritha.github.io\\css\\text.css",
-              "RelativeDocumentMoniker": "css\\text.css",
-              "ToolTip": "C:\\Users\\colli\\Documents\\GitHub\\Lyritha.github.io\\css\\text.css",
-              "RelativeToolTip": "css\\text.css",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAFAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
-              "WhenOpened": "2025-08-20T18:33:53.406Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 9,
-              "Title": "elements.css",
-              "DocumentMoniker": "C:\\Users\\colli\\Documents\\GitHub\\Lyritha.github.io\\css\\elements.css",
-              "RelativeDocumentMoniker": "css\\elements.css",
-              "ToolTip": "C:\\Users\\colli\\Documents\\GitHub\\Lyritha.github.io\\css\\elements.css",
-              "RelativeToolTip": "css\\elements.css",
-              "ViewState": "AgIAADMAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
-              "WhenOpened": "2025-08-20T15:36:55.601Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "root.css",
-              "DocumentMoniker": "C:\\Users\\colli\\Documents\\GitHub\\Lyritha.github.io\\css\\root.css",
-              "RelativeDocumentMoniker": "css\\root.css",
-              "ToolTip": "C:\\Users\\colli\\Documents\\GitHub\\Lyritha.github.io\\css\\root.css",
-              "RelativeToolTip": "css\\root.css",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAARAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
-              "WhenOpened": "2025-08-20T18:33:06.873Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "containers.css",
-              "DocumentMoniker": "C:\\Users\\colli\\Documents\\GitHub\\Lyritha.github.io\\css\\containers.css",
-              "RelativeDocumentMoniker": "css\\containers.css",
-              "ToolTip": "C:\\Users\\colli\\Documents\\GitHub\\Lyritha.github.io\\css\\containers.css",
-              "RelativeToolTip": "css\\containers.css",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
-              "WhenOpened": "2025-08-20T15:36:59.785Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 14,
-              "Title": "buttons.css",
-              "DocumentMoniker": "C:\\Users\\colli\\Documents\\GitHub\\Lyritha.github.io\\css\\buttons.css",
-              "RelativeDocumentMoniker": "css\\buttons.css",
-              "ToolTip": "C:\\Users\\colli\\Documents\\GitHub\\Lyritha.github.io\\css\\buttons.css",
-              "RelativeToolTip": "css\\buttons.css",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
-              "WhenOpened": "2025-08-20T15:36:59.081Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 17,
+              "DocumentIndex": 20,
               "Title": "3DTest.html",
               "DocumentMoniker": "C:\\Users\\colli\\Documents\\GitHub\\Lyritha.github.io\\3DTest.html",
               "RelativeDocumentMoniker": "3DTest.html",
@@ -259,12 +306,11 @@
               "RelativeToolTip": "3DTest.html",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAACMAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001512|",
-              "WhenOpened": "2025-08-20T15:16:23.054Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-08-20T15:16:23.054Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
+              "DocumentIndex": 18,
               "Title": "moduleManager.js",
               "DocumentMoniker": "C:\\Users\\colli\\Documents\\GitHub\\Lyritha.github.io\\Modules\\moduleManager.js",
               "RelativeDocumentMoniker": "Modules\\moduleManager.js",
@@ -272,12 +318,11 @@
               "RelativeToolTip": "Modules\\moduleManager.js",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAACEAAAAfAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
-              "WhenOpened": "2025-08-14T16:04:09.696Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-08-14T16:04:09.696Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 21,
+              "DocumentIndex": 23,
               "Title": "containerStyling.css",
               "DocumentMoniker": "C:\\Users\\colli\\Documents\\GitHub\\Lyritha.github.io\\css\\containerStyling.css",
               "RelativeDocumentMoniker": "css\\containerStyling.css",
@@ -288,7 +333,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 20,
+              "DocumentIndex": 22,
               "Title": "ButtonsStyling.css",
               "DocumentMoniker": "C:\\Users\\colli\\Documents\\GitHub\\Lyritha.github.io\\css\\ButtonsStyling.css",
               "RelativeDocumentMoniker": "css\\ButtonsStyling.css",
@@ -299,7 +344,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 25,
+              "DocumentIndex": 27,
               "Title": "TemplateLoader.js",
               "DocumentMoniker": "C:\\Users\\colli\\Documents\\GitHub\\Lyritha.github.io\\scripts\\Utility\\TemplateLoader.js",
               "RelativeDocumentMoniker": "scripts\\Utility\\TemplateLoader.js",
@@ -307,12 +352,11 @@
               "RelativeToolTip": "scripts\\Utility\\TemplateLoader.js",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABYAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
-              "WhenOpened": "2025-08-14T19:55:56.156Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-08-14T19:55:56.156Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 23,
+              "DocumentIndex": 25,
               "Title": "textStyling.css",
               "DocumentMoniker": "C:\\Users\\colli\\Documents\\GitHub\\Lyritha.github.io\\css\\textStyling.css",
               "RelativeDocumentMoniker": "css\\textStyling.css",
@@ -323,7 +367,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 26,
+              "DocumentIndex": 28,
               "Title": "JsonLoader.js",
               "DocumentMoniker": "C:\\Users\\colli\\Documents\\GitHub\\Lyritha.github.io\\scripts\\Utility\\JsonLoader.js",
               "RelativeDocumentMoniker": "scripts\\Utility\\JsonLoader.js",
@@ -331,12 +375,11 @@
               "RelativeToolTip": "scripts\\Utility\\JsonLoader.js",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAB8AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
-              "WhenOpened": "2025-08-14T19:56:02.926Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-08-14T19:56:02.926Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 22,
+              "DocumentIndex": 24,
               "Title": "projectListStyling.css",
               "DocumentMoniker": "C:\\Users\\colli\\Documents\\GitHub\\Lyritha.github.io\\css\\projectListStyling.css",
               "RelativeDocumentMoniker": "css\\projectListStyling.css",
@@ -348,25 +391,51 @@
           ]
         },
         {
-          "DockedWidth": 133,
-          "SelectedChildIndex": 2,
+          "DockedWidth": 82,
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 2,
+              "Title": "index.html",
+              "DocumentMoniker": "C:\\Users\\colli\\Documents\\GitHub\\Lyritha.github.io\\index.html",
+              "RelativeDocumentMoniker": "index.html",
+              "ToolTip": "C:\\Users\\colli\\Documents\\GitHub\\Lyritha.github.io\\index.html",
+              "RelativeToolTip": "index.html",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABYAAAAwAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001512|",
+              "WhenOpened": "2024-09-07T09:20:17.042Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Viewer3D.js",
+              "DocumentMoniker": "C:\\Users\\colli\\Documents\\GitHub\\Lyritha.github.io\\Modules\\Viewer3D\\Viewer3D.js",
+              "RelativeDocumentMoniker": "Modules\\Viewer3D\\Viewer3D.js",
+              "ToolTip": "C:\\Users\\colli\\Documents\\GitHub\\Lyritha.github.io\\Modules\\Viewer3D\\Viewer3D.js",
+              "RelativeToolTip": "Modules\\Viewer3D\\Viewer3D.js",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABUAAAARAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
+              "WhenOpened": "2025-08-19T16:03:59.142Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
               "Title": "Viewer3D.css",
               "DocumentMoniker": "C:\\Users\\colli\\Documents\\GitHub\\Lyritha.github.io\\Modules\\Viewer3D\\Viewer3D.css",
               "RelativeDocumentMoniker": "Modules\\Viewer3D\\Viewer3D.css",
               "ToolTip": "C:\\Users\\colli\\Documents\\GitHub\\Lyritha.github.io\\Modules\\Viewer3D\\Viewer3D.css",
               "RelativeToolTip": "Modules\\Viewer3D\\Viewer3D.css",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAACgAAAAWAAAAAAAAAA==",
+              "ViewState": "AgIAABgAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
               "WhenOpened": "2025-08-20T15:35:58.545Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 16,
+              "DocumentIndex": 5,
               "Title": "timeline.json",
               "DocumentMoniker": "C:\\Users\\colli\\Documents\\GitHub\\Lyritha.github.io\\Data\\timeline.json",
               "RelativeDocumentMoniker": "Data\\timeline.json",
@@ -379,46 +448,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "Viewer3D.js",
-              "DocumentMoniker": "C:\\Users\\colli\\Documents\\GitHub\\Lyritha.github.io\\Modules\\Viewer3D\\Viewer3D.js",
-              "RelativeDocumentMoniker": "Modules\\Viewer3D\\Viewer3D.js",
-              "ToolTip": "C:\\Users\\colli\\Documents\\GitHub\\Lyritha.github.io\\Modules\\Viewer3D\\Viewer3D.js",
-              "RelativeToolTip": "Modules\\Viewer3D\\Viewer3D.js",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAACwAAAAzAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
-              "WhenOpened": "2025-08-19T16:03:59.142Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 10,
-              "Title": "Main.js",
-              "DocumentMoniker": "C:\\Users\\colli\\Documents\\GitHub\\Lyritha.github.io\\scripts\\Main.js",
-              "RelativeDocumentMoniker": "scripts\\Main.js",
-              "ToolTip": "C:\\Users\\colli\\Documents\\GitHub\\Lyritha.github.io\\scripts\\Main.js",
-              "RelativeToolTip": "scripts\\Main.js",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABkAAABBAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
-              "WhenOpened": "2025-08-05T17:17:37.248Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 13,
-              "Title": "index.html",
-              "DocumentMoniker": "C:\\Users\\colli\\Documents\\GitHub\\Lyritha.github.io\\index.html",
-              "RelativeDocumentMoniker": "index.html",
-              "ToolTip": "C:\\Users\\colli\\Documents\\GitHub\\Lyritha.github.io\\index.html",
-              "RelativeToolTip": "index.html",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABsAAABDAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001512|",
-              "WhenOpened": "2024-09-07T09:20:17.042Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 12,
+              "DocumentIndex": 19,
               "Title": "LoadImagesOptimized.js",
               "DocumentMoniker": "C:\\Users\\colli\\Documents\\GitHub\\Lyritha.github.io\\Modules\\LoadImagesOptimized\\LoadImagesOptimized.js",
               "RelativeDocumentMoniker": "Modules\\LoadImagesOptimized\\LoadImagesOptimized.js",
@@ -426,25 +456,11 @@
               "RelativeToolTip": "Modules\\LoadImagesOptimized\\LoadImagesOptimized.js",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
-              "WhenOpened": "2025-08-20T15:07:07.16Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-08-20T15:07:07.16Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 15,
-              "Title": "projects.json",
-              "DocumentMoniker": "C:\\Users\\colli\\Documents\\GitHub\\Lyritha.github.io\\Data\\projects.json",
-              "RelativeDocumentMoniker": "Data\\projects.json",
-              "ToolTip": "C:\\Users\\colli\\Documents\\GitHub\\Lyritha.github.io\\Data\\projects.json",
-              "RelativeToolTip": "Data\\projects.json",
-              "ViewState": "AgIAAD8AAAAAAAAAAAAAAHoAAAAqAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2025-08-14T17:16:36.73Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 24,
+              "DocumentIndex": 26,
               "Title": "timelineStyling.css",
               "DocumentMoniker": "C:\\Users\\colli\\Documents\\GitHub\\Lyritha.github.io\\css\\timelineStyling.css",
               "RelativeDocumentMoniker": "css\\timelineStyling.css",
@@ -455,20 +471,32 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 18,
+              "DocumentIndex": 15,
               "Title": "PageNavigator.js",
               "DocumentMoniker": "C:\\Users\\colli\\Documents\\GitHub\\Lyritha.github.io\\scripts\\PageNavigator.js",
               "RelativeDocumentMoniker": "scripts\\PageNavigator.js",
               "ToolTip": "C:\\Users\\colli\\Documents\\GitHub\\Lyritha.github.io\\scripts\\PageNavigator.js",
               "RelativeToolTip": "scripts\\PageNavigator.js",
-              "ViewState": "AgIAAA4AAAAAAAAAAAAAACEAAAAnAAAAAAAAAA==",
+              "ViewState": "AgIAAA4AAAAAAAAAAAAqwCEAAAAnAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
               "WhenOpened": "2025-08-14T16:03:52.314Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 19,
+              "DocumentIndex": 17,
+              "Title": "Main.js",
+              "DocumentMoniker": "C:\\Users\\colli\\Documents\\GitHub\\Lyritha.github.io\\scripts\\Main.js",
+              "RelativeDocumentMoniker": "scripts\\Main.js",
+              "ToolTip": "C:\\Users\\colli\\Documents\\GitHub\\Lyritha.github.io\\scripts\\Main.js",
+              "RelativeToolTip": "scripts\\Main.js",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABkAAABBAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
+              "WhenOpened": "2025-08-05T17:17:37.248Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 21,
               "Title": "pageStyling.css",
               "DocumentMoniker": "C:\\Users\\colli\\Documents\\GitHub\\Lyritha.github.io\\css\\pageStyling.css",
               "RelativeDocumentMoniker": "css\\pageStyling.css",

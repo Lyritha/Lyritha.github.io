@@ -3,14 +3,10 @@
     "",
     "\\css",
     "\\Data",
-    "\\Modules",
-    "\\Modules\\ImageModal",
-    "\\Modules\\InteractiveItems",
-    "\\Modules\\LoadImagesOptimized",
     "\\Modules\\Viewer3D",
     "\\scripts",
     "\\scripts\\Utility"
   ],
-  "SelectedNode": "\\Modules\\Viewer3D\\Viewer3D.js",
+  "SelectedNode": "\\Models",
   "PreviewInSolutionExplorer": false
 }

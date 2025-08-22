@@ -77,10 +77,15 @@
 
 <template id="viewer3D-big">
     <div id="3DViewerModal" class="viewer3D-modal">
-        <div class="viewer3D-overlay" style="position:absolute; z-index: 1000; inset: 10px; pointer-events: none">
-            <button data-function="close-modal" class="button" style="pointer-events: all">
-                <p>Close</p>
-            </button>
+        <div class="viewer3D-overlay">
+            <div class="viewer3D-nav padding-small gap-between">
+                <button data-function="toggle-anim" class="button" style="pointer-events: all">
+                    <img class="icon-small" src="Images/Icons/pause-play.png" alt="Alternate Text" />
+                </button>
+                <button data-function="close-fullscreen" class="button" style="pointer-events: all">
+                    <img class="icon-small" src="Images/Icons/fullscreen.png" alt="Alternate Text" />
+                </button>
+            </div>
         </div>
     </div>
 </template>
@@ -234,7 +239,7 @@
 <template id="project-3DModel">
     <div data-role="section-data" class="overlayed-container-item flex-vertical flex-ratio-1">
         <div class="flex-vertical flex-ratio-1 gap-med">
-            <div data-role="section-scene" class="viewer3D-container flex-horizontal flex-ratio-1 thumbnail3D">
+            <div data-role="section-scene" class="viewer3D-container flex-horizontal thumbnail3D flex-ratio-1">
                 <div class="gpu-warning flex-vertical flex-ratio-1 padding-med gap-between">
                     <div class="flex-vertical gap-med">
                         <h1>GPU Not Supported or Inaccessible</h1>
@@ -263,6 +268,16 @@
 
                     <p class="sub-p text-grey">if your GPU is very old or drivers are outdated, enabling acceleration may not work. Updating your graphics drivers can also help.
                     </p>
+                </div>
+                <div class="viewer3D-overlay">
+                    <div class="viewer3D-nav padding-small gap-between">
+                        <button data-function="toggle-anim" class="button" style="pointer-events: all">
+                            <img class="icon-small" src="Images/Icons/pause-play.png" alt="Alternate Text" />
+                        </button>
+                        <button data-function="fullscreen" class="button" style="pointer-events: all">
+                            <img class="icon-small" src="Images/Icons/fullscreen.png" alt="Alternate Text" />
+                        </button>
+                    </div>
                 </div>
             </div>
 

@@ -230,18 +230,12 @@ function populateTemplate(clone, data) {
             }
 
             if (key.toLowerCase().includes('scene')) {
-                Object.entries(value).forEach(([sceneKey, sceneValue]) => {
-                    element.dataset[sceneKey] = sceneValue;
-                });
-
                 const canOpen = Modules.Viewer3D.canOpen3DViewer(element);
 
                 if (canOpen) {
-                    Modules.Viewer3D.openScene({
-                        modelPath: value.modelPath,
-                        modelBoundsName: value.modelBoundsName,
-                        hdrPathOrHex: value.hdrPathOrHex,
-                        container: element
+                    Modules.Viewer3D.createWindow({
+                        element: element,
+                        scene: value
                     });
                 }
             }
