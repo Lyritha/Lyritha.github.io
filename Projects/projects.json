@@ -149,7 +149,7 @@
         "?section-name": "3D model",
         "?section-icon": "Images/Icons/dimensions.png",
         "section-scene": {
-          "path": "Projects/gun/gun.glb",
+          "path": "Projects/gun/Gun.glb",
           "hdrPathOrHex": "Images/skyboxes/night_sky.hdr",
           "cameraPosition": [ -1.98, 2.29, 5.07 ],
           "cameraRotation": [ -0.27, -0.25, -0.07 ],
