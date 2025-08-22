@@ -2,28 +2,28 @@
   {
     "title": "Towaria",
     "subtitle": "A voxel based tower defense.",
-    "thumbnail": "Images/Projects/Towaria/towaria_preview.png",
+    "thumbnail": "Projects/Towaria/towaria_preview.png",
     "data-filter": "Unity",
     "sections": [
       {
         "?section-name": "about",
         "?section-icon": "Images/Icons/user.png",
         "section-description": "Towaria is a challenging tower defense game where letting enemies reach the end means defeat. \n\nPlace auto-firing towers to eliminate all enemies and advance through waves. Survive the final wave to move on to the next level.",
-        "section-image": "Images/Projects/Towaria/towaria_preview.png"
+        "section-image": "Projects/Towaria/towaria_preview.png"
       },
       {
         "?section-name": "contribution",
         "?section-icon": "Images/Icons/briefcase.png",
         "section-description": "I focused on core game mechanics, like tower placement and stats. \n\nI also contributed to 3D models (ground tiles, a tower, enemies) and helped polish the UI to ensure visual consistency after functionality was implemented.",
-        "section-image": "Images/Projects/Towaria/towaria_preview2.png"
+        "section-image": "Projects/Towaria/towaria_preview2.png"
       },
       {
         "?section-name": "gallery",
         "?section-icon": "Images/Icons/education.png",
         "section-images": [
-          "Images/Projects/Towaria/towaria_preview.png",
-          "Images/Projects/Towaria/towaria_preview2.png",
-          "Images/Projects/Towaria/towaria_3d_models.png"
+          "Projects/Towaria/towaria_preview.png",
+          "Projects/Towaria/towaria_preview2.png",
+          "Projects/Towaria/towaria_3d_models.png"
         ]
       },
       {
@@ -35,7 +35,7 @@
     "links": [
       {
         "name": "Github",
-        "icon": "Images/Socials/Github.png",
+        "icon": "Images/Logos/Github.png",
         "link": "https://github.com/Egg321123/J2P1_microgame/releases/tag/prototype-03"
       },
       {
@@ -48,28 +48,28 @@
   {
     "title": "The Filth",
     "subtitle": "90's desktop bullet hell.",
-    "thumbnail": "Images/Projects/TheFilth/TheFilth_preview.png",
+    "thumbnail": "Projects/TheFilth/TheFilth_preview.png",
     "data-filter": "Unity",
     "sections": [
       {
         "?section-name": "about",
         "?section-icon": "Images/Icons/user.png",
         "section-description": "The Filth is a space shooter-like game made during a gamejam with the theme: \"Making free space\", where you have to shoot at files to destroy them, and survive their attacks. \n\nAs the player you can shoot projectiles to destroy enemies, and also have access to a special attack that hurts multiple enemies.",
-        "section-image": "Images/Projects/TheFilth/TheFilth_preview.png"
+        "section-image": "Projects/TheFilth/TheFilth_preview.png"
       },
       {
         "?section-name": "contribution",
         "?section-icon": "Images/Icons/briefcase.png",
         "section-description": "In this project my role was SCRUM master and lead developer. \n\nI focused on integrating game systems that the other group members made, but also made my own systems like the spawning grid. I also made the UI of the game.",
-        "section-image": "Images/Projects/TheFilth/TheFilth_preview2.png"
+        "section-image": "Projects/TheFilth/TheFilth_preview2.png"
       },
       {
         "?section-name": "gallery",
         "?section-icon": "Images/Icons/education.png",
         "section-images": [
-          "Images/Projects/TheFilth/TheFilth_preview.png",
-          "Images/Projects/TheFilth/TheFilth_sprites.png",
-          "Images/Projects/TheFilth/TheFilth_preview2.png"
+          "Projects/TheFilth/TheFilth_preview.png",
+          "Projects/TheFilth/TheFilth_sprites.png",
+          "Projects/TheFilth/TheFilth_preview2.png"
         ]
       },
       {
@@ -81,12 +81,12 @@
     "links": [
       {
         "name": "Github",
-        "icon": "Images/Socials/Github.png",
+        "icon": "Images/Logos/Github.png",
         "link": "https://github.com/Lyritha/TheFilth/releases/tag/GameJam-Release"
       },
       {
         "name": "UnityPlay",
-        "icon": "Images/Software/unity.png",
+        "icon": "Images/Logos/unity.png",
         "link": "https://play.unity.com/en/games/b90b0494-ef42-4095-bdf8-ac9bbe0ff9be/the-filth"
       }
     ]
@@ -94,33 +94,33 @@
   {
     "title": "Tiny house",
     "subtitle": "A small cozy house",
-    "thumbnail": "Images/Projects/TinyHouse/Hous_Front.png",
+    "thumbnail": "Projects/TinyHouse/Hous_Front.png",
     "data-filter": "Blender",
     "sections": [
       {
         "?section-name": "about",
         "?section-icon": "Images/Icons/user.png",
         "section-description": "A to-scale tiny house created in Blender. Everything in the scene was modeled by me, except for the grass. \n\nThis 3D model was made for a school assignment for my software development degree.",
-        "section-image": "Images/Projects/TinyHouse/Hous_Top.png"
+        "section-image": "Projects/TinyHouse/Hous_Top.png"
       },
       {
         "?section-name": "gallery",
         "?section-icon": "Images/Icons/education.png",
         "section-images": [
-          "Images/Projects/TinyHouse/Hous_Front.png",
-          "Images/Projects/TinyHouse/Hous_Top.png",
-          "Images/Projects/TinyHouse/Hous_Back.png",
-          "Images/Projects/TinyHouse/Hous_BedRoom.png",
-          "Images/Projects/TinyHouse/Hous_Bathroom.png"
+          "Projects/TinyHouse/Hous_Front.png",
+          "Projects/TinyHouse/Hous_Top.png",
+          "Projects/TinyHouse/Hous_Back.png",
+          "Projects/TinyHouse/Hous_BedRoom.png",
+          "Projects/TinyHouse/Hous_Bathroom.png"
         ]
       },
       {
         "?section-name": "3D model",
-        "?section-icon": "Images/Icons/user.png",
+        "?section-icon": "Images/Icons/dimensions.png",
         "section-scene": {
-          "path": "Models/House.glb",
+          "path": "Projects/TinyHouse/House.glb",
           "boundsName": "House",
-          "hdrPathOrHex": "Images/day_sky.hdr",
+          "hdrPathOrHex": "Images/skyboxes/day_sky.hdr",
           "cameraPosition": [ -3.39, 2.52, 3.52 ],
           "cameraRotation": [ -0.4, -0.74, -0.28 ],
           "cameraTarget": [ -0.01, 0.52, 0.01 ],
@@ -136,21 +136,21 @@
   {
     "title": "Cyberpunk gun",
     "subtitle": "model made for fun",
-    "thumbnail": "Images/Projects/gun/weapon.png",
+    "thumbnail": "Projects/gun/weapon.png",
     "data-filter": "Blender",
     "sections": [
       {
         "?section-name": "about",
         "?section-icon": "Images/Icons/user.png",
         "section-description": "I made this model as a side project for myself, I slowly worked on it over the course of around 2 months i spend a bit of time on it every so often.\n\nI used no reference images to make this model as a challenge for myself.",
-        "section-image": "Images/Projects/gun/weapon.png"
+        "section-image": "Projects/gun/weapon.png"
       },
       {
         "?section-name": "3D model",
-        "?section-icon": "Images/Icons/user.png",
+        "?section-icon": "Images/Icons/dimensions.png",
         "section-scene": {
-          "path": "Models/gun.glb",
-          "hdrPathOrHex": "Images/night_sky.hdr",
+          "path": "Projects/gun/gun.glb",
+          "hdrPathOrHex": "Images/skyboxes/night_sky.hdr",
           "cameraPosition": [ -1.98, 2.29, 5.07 ],
           "cameraRotation": [ -0.27, -0.25, -0.07 ],
           "cameraTarget": [ -0.58, 0.82, -0.26 ],

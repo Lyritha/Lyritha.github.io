@@ -3,7 +3,7 @@
     {
       "title": "c#",
       "subtitle": "Advanced",
-      "image": "Images/Languages/c-sharp.png",
+      "image": "Images/Logos/c-sharp.png",
       "style-color": {
         "background-color": "#962C87",
         "outline-color": "#B14796"
@@ -15,7 +15,7 @@
     {
       "title": "Javascript",
       "subtitle": "Average",
-      "image": "Images/Languages/js.png",
+      "image": "Images/Logos/js.png",
       "style-color": {
         "background-color": "#FFDF00",
         "outline-color": "#FFF350"
@@ -27,7 +27,7 @@
     {
       "title": "HTML",
       "subtitle": "Average",
-      "image": "Images/Languages/html-5.png",
+      "image": "Images/Logos/html-5.png",
       "style-color": {
         "background-color": "white",
         "outline-color": "#FF7444"
@@ -39,7 +39,7 @@
     {
       "title": "CSS",
       "subtitle": "Average",
-      "image": "Images/Languages/css-3.png",
+      "image": "Images/Logos/css-3.png",
       "style-color": {
         "background-color": "white",
         "outline-color": "#5EB8FF"
@@ -53,7 +53,7 @@
     {
       "title": "Unity",
       "subtitle": "Advanced",
-      "image": "Images/Software/unity.png",
+      "image": "Images/Logos/unity.png",
       "style-color": {
         "background-color": "white",
         "outline-color": "#000000"
@@ -65,7 +65,7 @@
     {
       "title": "Blender",
       "subtitle": "Advanced",
-      "image": "Images/Software/blender.png",
+      "image": "Images/Logos/blender.png",
       "style-color": {
         "background-color": "white",
         "outline-color": "#e87d0d"
@@ -77,7 +77,7 @@
     {
       "title": "Substance painter",
       "subtitle": "Advanced",
-      "image": "Images/Software/SubstanceP.svg",
+      "image": "Images/Logos/SubstanceP.svg",
       "style-color": {
         "background-color": "#1e3101",
         "outline-color": "#99e83f"
@@ -89,7 +89,7 @@
     {
       "title": "Inkscape",
       "subtitle": "Average",
-      "image": "Images/Software/Inkscape.svg",
+      "image": "Images/Logos/Inkscape.svg",
       "style-color": {
         "background-color": "white",
         "outline-color": "#000000"

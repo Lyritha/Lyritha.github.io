@@ -3,10 +3,14 @@
     "",
     "\\css",
     "\\Data",
-    "\\Modules\\Viewer3D",
+    "\\Images",
+    "\\Projects",
     "\\scripts",
-    "\\scripts\\Utility"
+    "\\scripts\\Modules",
+    "\\scripts\\Modules\\FitParent",
+    "\\scripts\\Modules\\ImageModal",
+    "\\scripts\\Modules\\Viewer3D"
   ],
-  "SelectedNode": "\\Models",
+  "SelectedNode": "\\css\\text.css",
   "PreviewInSolutionExplorer": false
 }

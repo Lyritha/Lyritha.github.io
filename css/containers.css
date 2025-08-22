@@ -75,3 +75,28 @@
 .padding-med {
     padding: var(--spacing-medium);
 }
+
+
+
+@media (max-width: 1100px) {
+
+    .height-400-tablet {
+        min-height: 400px;
+    }
+
+    .height-600-tablet {
+        min-height: 600px;
+    }
+}
+
+
+@media (max-width: 800px) {
+
+    .height-400-tablet-thin {
+        min-height: 400px;
+    }
+
+    .height-600-tablet-thin {
+        min-height: 600px;
+    }
+}

@@ -1,7 +1,7 @@
 import * as TemplateLoader from './Utility/TemplateLoader.js';
 import * as PageNavigator from './PageNavigator.js';
 import * as UrlState from './Utility/UrlState.js';
-import * as Modules from '../Modules/moduleManager.js';
+import * as Modules from './Modules/moduleManager.js';
 
 /** @type {Set<string>} Tags considered as simple text elements for populateTemplate */
 const TEXT_TAGS = new Set(['H1', 'H2', 'H3', 'H4', 'H5', 'H6', 'P', 'SPAN', 'LABEL', 'BUTTON']);

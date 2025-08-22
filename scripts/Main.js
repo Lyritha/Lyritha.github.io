@@ -4,7 +4,7 @@ import * as JsonLoader from './Utility/JsonLoader.js';
 import * as PageNavigator from './PageNavigator.js';
 import * as ProjectHandler from './ProjectHandler.js';
 
-import * as Modules from '../Modules/moduleManager.js'
+import * as Modules from './Modules/moduleManager.js'
 
 export async function initializePage() {
     await Modules.LoadModules();
@@ -14,7 +14,7 @@ export async function initializePage() {
 
     // Load projects
     await ProjectHandler.createAllProjects({
-        projectDataPath: './Data/projects.json',
+        projectDataPath: './Projects/projects.json',
         projectListId: 'projects-list',
         pageContainerId: 'pages',
         navContainerId: 'nav-buttons',
@@ -79,5 +79,6 @@ export async function initializePage() {
     });
 
     Modules.LoadImagesOptimized.initialize();
+    Modules.FitParent.init();
     PageNavigator.handleInitialNavigation();
 }

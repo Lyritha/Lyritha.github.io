@@ -68,7 +68,16 @@
     align-items: flex-end;
     justify-content: flex-end;
     background-image: var(--bg-gradient);
+    pointer-events: all;
 }
+
+    .viewer3D-nav .left {
+    }
+
+    .viewer3D-nav .right {
+        margin-left: auto;
+    }
+
 
 /* desktop-thin: slightly smaller than wide desktop */
 @media (max-width: 1350px) {
@@ -83,10 +92,8 @@
 
 /* tablet-thin: portrait tablets or small landscape phones */
 @media (max-width: 800px) {
-
 }
 
 /* mobile: phones */
 @media (max-width: 550px) {
-
 }

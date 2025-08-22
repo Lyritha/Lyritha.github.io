@@ -1,9 +1,9 @@
 ﻿<template id="project-item-template">
     <div data-role="data-filter" class="projects-item flex-vertical gap-small">
-        <div class="flex-ratio-1">
+        <div class="">
             <img data-role="thumbnail" data-src="" class="projects-img thumbnail" alt="Icons" />
         </div>
-        <div class="flex-vertical flex-ratio-1 gap-small gap-between">
+        <div class="flex-vertical gap-small">
             <div class="flex-vertical">
                 <h1 data-role="title" class=""></h1>
                 <p data-role="subtitle" class="text-grey"></p>
@@ -56,33 +56,35 @@
 
 
 <template id="image-modal">
-    <div id="imageModal">
-        <div id="imageModal-content">
-            <div id="imageModal-nav">
-                <div id="imageModal-nav-container">
-                    <div id="imageModal-nav-left" data-role="nav-hide">
-                        <button data-function="previous-image" class="button"><p>Previous</p></button>
-                        <button data-function="next-image" class="button"><p>Next</p></button>
-                    </div>
-                    <div id="imageModal-nav-right">
-                        <button data-function="close-modal" class="button"><p>Close</p></button>
-                    </div>
+    <div id="imageModal" class="image-modal">
+        <div class="imageModal-overlay">
+            <div class="imageModal-nav padding-small">
+                <div class="left" data-role="nav-hide">
+                    <button data-function="previous-image" class="button">
+                        <img class="icon-small" src="Images/Icons/left-arrow.png" alt="Alternate Text" />
+                    </button>
+                    <button data-function="next-image" class="button">
+                        <img class="icon-small" src="Images/Icons/right-arrow.png" alt="Alternate Text" />
+                    </button>
                 </div>
+                <button data-function="close-modal" class="button right">
+                    <img class="icon-small" src="Images/Icons/close.png" alt="Alternate Text" />
+                </button>
             </div>
-
-            <img data-role="image" data-src="" alt="Image" />
         </div>
+
+        <img data-role="image" data-src="" alt="Image" />
     </div>
 </template>
 
 <template id="viewer3D-big">
     <div id="3DViewerModal" class="viewer3D-modal">
         <div class="viewer3D-overlay">
-            <div class="viewer3D-nav padding-small gap-between">
-                <button data-function="toggle-anim" class="button" style="pointer-events: all">
+            <div class="viewer3D-nav padding-small">
+                <button data-function="toggle-anim" class="button left">
                     <img class="icon-small" src="Images/Icons/pause-play.png" alt="Alternate Text" />
                 </button>
-                <button data-function="close-fullscreen" class="button" style="pointer-events: all">
+                <button data-function="close-fullscreen" class="button right">
                     <img class="icon-small" src="Images/Icons/fullscreen.png" alt="Alternate Text" />
                 </button>
             </div>
@@ -229,8 +231,8 @@
 <template id="project-code">
     <div data-role="section-data" class="overlayed-container-item flex-vertical flex-ratio-1">
         <div class="flex-horizontal flex-ratio-1 gap-med">
-            <div class="text-container flex-vertical flex-ratio-1">
-                <pre class="flex-vertical"><code data-role="section-code" class="code language-csharp flex-ratio-1"></code></pre>
+            <div class="text-container flex-vertical flex-ratio-1 height-600-tablet">
+                <pre class="flex-vertical fit-parent"><code data-role="section-code" class="language-csharp"></code></pre>
             </div>
         </div>
     </div>

@@ -1,0 +1,69 @@
+.thumbnail {
+    cursor: pointer;
+    transition: transform 0.2s ease;
+}
+
+@media (hover: hover) {
+    .thumbnail:hover {
+        transform: scale(1.01);
+    }
+}
+
+.thumbnail-group {
+    /* groups thumbnails under it together so you can cycle between them via the modal */
+}
+
+.imageModal-hide {
+    display: none !important;
+}
+
+.image-modal {
+    position: fixed;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease-in-out;
+}
+
+
+    .image-modal.active {
+        opacity: 1;
+        pointer-events: auto;
+    }
+
+.imageModal-overlay {
+    position: absolute !important;
+    z-index: 1000;
+    inset: 0;
+    display: flex;
+    flex-flow: column;
+    justify-content: flex-end;
+    pointer-events: none
+}
+
+.imageModal-nav {
+    display: flex;
+    flex-flow: row;
+    background-image: var(--bg-gradient);
+    pointer-events: all;
+}
+
+    .imageModal-nav .left {
+    }
+
+    .imageModal-nav .right {
+        margin-left: auto;
+    }
+
+
+.image-modal > img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}

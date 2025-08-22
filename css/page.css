@@ -14,16 +14,12 @@
 
 .nav {
     max-width: 250px;
-    min-height: 520px;
+    min-height: 560px;
 }
 
 .h-spacer {
     height: 6vw;
     min-height: var(--spacing-medium);
-}
-
-.code {
-    max-height: 340px;
 }
 
 /* desktop-thin: slightly smaller than wide desktop */
@@ -35,10 +31,6 @@
     .nav {
         min-height: 450px;
         max-width: 200px;
-    }
-
-    .code {
-        max-height: 290px;
     }
 
     .social-container {
@@ -56,9 +48,5 @@
     .nav {
         max-width: 100%;
         min-height: auto;
-    }
-
-    .code {
-        max-height: 500px;
     }
 }

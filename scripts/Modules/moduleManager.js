@@ -5,6 +5,7 @@ import * as CornerDecorations from './CornerDecorations/CornerDecorations.js'
 import * as TiltCards from './TiltCards/TiltCards.js'
 import * as LoadImagesOptimized from './LoadImagesOptimized/LoadImagesOptimized.js';
 import * as Viewer3D from './Viewer3D/Viewer3D.js';
+import * as FitParent from './FitParent/FitParent.js';
 
 export {
     DynamicFilters,
@@ -13,7 +14,8 @@ export {
     CornerDecorations,
     TiltCards,
     LoadImagesOptimized,
-    Viewer3D
+    Viewer3D,
+    FitParent
 };
 
 const modules = {
@@ -23,7 +25,8 @@ const modules = {
     CornerDecorations,
     TiltCards,
     LoadImagesOptimized,
-    Viewer3D
+    Viewer3D,
+    FitParent
 };
 
 export async function LoadModules() {
@@ -36,7 +39,7 @@ export async function LoadModules() {
 
 
 async function loadCss(moduleName) {
-    const cssUrl = `./Modules/${moduleName}/${moduleName}.css`;
+    const cssUrl = `./scripts/Modules/${moduleName}/${moduleName}.css`;
     try {
         const cssRes = await fetch(cssUrl, { method: 'HEAD' });
         const contentType = cssRes.headers.get('content-type') || '';
