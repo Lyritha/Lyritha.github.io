@@ -14,7 +14,7 @@
     },
     {
       "title": "Javascript",
-      "subtitle": "Average",
+      "subtitle": "Moderate",
       "image": "Images/Logos/js.png",
       "style-color": {
         "background-color": "#FFDF00",
@@ -26,7 +26,7 @@
     },
     {
       "title": "HTML",
-      "subtitle": "Average",
+      "subtitle": "Moderate",
       "image": "Images/Logos/html-5.png",
       "style-color": {
         "background-color": "white",

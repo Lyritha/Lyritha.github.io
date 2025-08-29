@@ -217,6 +217,7 @@ function populateTemplate(clone, data) {
 
             if (tag === 'CODE') {
                 element.textContent = value;
+                element.classList.add(`language-${data["?section-code-language"]}`);
                 Prism.highlightElement(element);
                 return;
             }
@@ -237,6 +238,19 @@ function populateTemplate(clone, data) {
                         element: element,
                         scene: value
                     });
+                }
+            }
+
+            if (key.toLowerCase().includes('shader')) {
+                if (key.toLowerCase().includes('shadertoy')) {
+                    const canOpen = Modules.ShaderViewer.canOpen2DViewer(element);
+
+                    if (canOpen) {
+                        Modules.ShaderViewer.createWindow({
+                            element: element,
+                            fragment: value
+                        });
+                    }
                 }
             }
 

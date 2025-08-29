@@ -57,23 +57,39 @@
 
 <template id="image-modal">
     <div id="imageModal" class="image-modal">
-        <div class="imageModal-overlay">
-            <div class="imageModal-nav padding-small">
-                <div class="left" data-role="nav-hide">
-                    <button data-function="previous-image" class="button">
-                        <img class="icon-small" src="Images/Icons/left-arrow.png" alt="Alternate Text" />
-                    </button>
-                    <button data-function="next-image" class="button">
-                        <img class="icon-small" src="Images/Icons/right-arrow.png" alt="Alternate Text" />
+        <div class="imageModal-container">
+            <img data-role="image" data-src="" alt="Image" />
+            <div class="imageModal-overlay">
+                <div class="imageModal-nav padding-small">
+                    <div class="left" data-role="nav-hide">
+                        <button data-function="previous-image" class="button">
+                            <img class="icon-small" src="Images/Icons/left-arrow.png" alt="Previous" />
+                        </button>
+                        <button data-function="next-image" class="button">
+                            <img class="icon-small" src="Images/Icons/right-arrow.png" alt="Next" />
+                        </button>
+                    </div>
+                    <button data-function="close-modal" class="button right">
+                        <img class="icon-small" src="Images/Icons/close.png" alt="Close" />
                     </button>
                 </div>
-                <button data-function="close-modal" class="button right">
-                    <img class="icon-small" src="Images/Icons/close.png" alt="Alternate Text" />
+            </div>
+        </div>
+    </div>
+</template>
+
+<template id="viewer2D-big">
+    <div id="2DViewerModal" class="viewer3D-modal">
+        <div class="viewer3D-overlay">
+            <div class="viewer3D-nav padding-small">
+                <button data-function="toggle-anim" class="button left">
+                    <img class="icon-small" src="Images/Icons/pause-play.png" alt="Alternate Text" />
+                </button>
+                <button data-function="close-fullscreen" class="button right">
+                    <img class="icon-small" src="Images/Icons/fullscreen.png" alt="Alternate Text" />
                 </button>
             </div>
         </div>
-
-        <img data-role="image" data-src="" alt="Image" />
     </div>
 </template>
 
@@ -232,7 +248,7 @@
     <div data-role="section-data" class="overlayed-container-item flex-vertical flex-ratio-1">
         <div class="flex-horizontal flex-ratio-1 gap-med">
             <div class="text-container flex-vertical flex-ratio-1 height-600-tablet">
-                <pre class="flex-vertical fit-parent"><code data-role="section-code" class="language-csharp"></code></pre>
+                <pre class="flex-vertical fit-parent"><code data-role="section-code" class=""></code></pre>
             </div>
         </div>
     </div>
@@ -287,7 +303,52 @@
     </div>
 </template>
 
+<template id="project-shader-shadertoy">
+    <div data-role="section-data" class="overlayed-container-item flex-vertical flex-ratio-1">
+        <div class="flex-vertical flex-ratio-1 gap-med">
+            <div data-role="section-shader-shadertoy" class="viewer3D-container flex-horizontal thumbnail3D flex-ratio-1">
+                <div class="gpu-warning flex-vertical flex-ratio-1 padding-med gap-between">
+                    <div class="flex-vertical gap-med">
+                        <h1>GPU Not Supported or Inaccessible</h1>
+                        <p>Your browser is not giving access to the GPU. To fix this, you may need to <strong>enable hardware acceleration</strong> in your browser settings.</p>
+                    </div>
 
+                    <ol data-browser="chromium" class="flex-vertical gap-small padding-small">
+                        <li>Open <code>chrome://settings/system</code> in the address bar.</li>
+                        <li>Turn on <strong>“Use hardware acceleration when available”</strong>.</li>
+                        <li>Restart your browser.</li>
+                    </ol>
 
+                    <ol data-browser="firefox">
+                        <li>Open <code>about:preferences#general</code>.</li>
+                        <li>Scroll to <strong>Performance</strong>.</li>
+                        <li>Enable <strong>“Use recommended performance settings”</strong>.</li>
+                        <li>Make sure <strong>“Use hardware acceleration when available”</strong> is checked.</li>
+                        <li>Restart Firefox.</li>
+                    </ol>
 
+                    <ol data-browser="safari">
+                        <li>Go to <strong>Safari &gt; Preferences</strong>.</li>
+                        <li>In the <strong>Advanced</strong> tab, ensure <strong>“Use hardware acceleration”</strong> is enabled (on by default).</li>
+                        <li>Restart Safari if needed.</li>
+                    </ol>
 
+                    <p class="sub-p text-grey">
+                        if your GPU is very old or drivers are outdated, enabling acceleration may not work. Updating your graphics drivers can also help.
+                    </p>
+                </div>
+                <div class="viewer3D-overlay">
+                    <div class="viewer3D-nav padding-small gap-between">
+                        <button data-function="toggle-anim" class="button" style="pointer-events: all">
+                            <img class="icon-small" src="Images/Icons/pause-play.png" alt="Alternate Text" />
+                        </button>
+                        <button data-function="fullscreen" class="button" style="pointer-events: all">
+                            <img class="icon-small" src="Images/Icons/fullscreen.png" alt="Alternate Text" />
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</template>

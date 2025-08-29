@@ -1,3 +1,4 @@
 .fit-parent {
     height: var(--height);
+    width: var(--width);
 }

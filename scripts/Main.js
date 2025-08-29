@@ -11,6 +11,7 @@ export async function initializePage() {
     await TemplateLoader.loadTemplates('./Data/templates.html');
 
     Modules.Viewer3D.init(TemplateLoader.getTemplateClone('viewer3D-big'));
+    Modules.ShaderViewer.init(TemplateLoader.getTemplateClone('viewer2D-big'));
 
     // Load projects
     await ProjectHandler.createAllProjects({
@@ -62,13 +63,13 @@ export async function initializePage() {
 
     // Decorative modules
     Modules.CornerDecorations.create({
-        selector: '.text-container, .image-container, .code-container, .button-location, .viewer3D-container',
+        selector: '.text-container, .image-container, .code-container, .button-location, .viewer3D-container, .default-container',
         imageSource: './Images/Icons/triangle.svg',
         imageSize: 'var(--text-size)'
     });
 
     Modules.TiltCards.create({
-        selector: '.text-container, .image-container, .code-container, .button-location, .button-social, .viewer3D-container',
+        selector: '.text-container, .image-container, .code-container, .button-location, .button-social, .viewer3D-container, .default-container',
         tiltStrength: 1
     });
 

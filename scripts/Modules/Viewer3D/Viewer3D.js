@@ -337,11 +337,27 @@ function resizeToContainer(camera, renderer, container = null, size = null) {
     renderer.setPixelRatio(window.devicePixelRatio);
 }
 
+let lastTime = performance.now();
+let frames = 0;
+let fps = 0;
+let currentResolutionTarget = 1;
+
 // handles updating the scene
 function renderFrame() {
     if (!state.isAnimating) return;
 
     requestAnimationFrame(() => renderFrame());
+
+    const now = performance.now();
+    frames++;
+    if (now >= lastTime + 1000) { // every 1s
+        fps = Math.round((frames * 1000) / (now - lastTime));
+        console.log("FPS:", fps); // or update a DOM element
+        frames = 0;
+        lastTime = now;
+        dynamicResolution();
+    }
+
 
     const delta = clock.getDelta();
     if (state.mixer) state.mixer.update(delta);
@@ -358,4 +374,24 @@ function renderFrame() {
 
     state.controls.update();
     state.renderer.render(state.scene, state.camera);
+}
+
+function dynamicResolution() {
+    const ratio = window.devicePixelRatio;
+    const targetFPS = 90;
+    const minScale = 0.3;  // lowest ratio (30% of devicePixelRatio)
+    const maxScale = 1.0;  // full ratio = devicePixelRatio
+
+    // ratio we should aim for, based on fps/target
+    let newRatio = currentResolutionTarget * (fps / targetFPS);
+
+    // clamp
+    newRatio = Math.max(ratio * minScale, Math.min(ratio * maxScale, newRatio));
+
+    if (Math.abs(newRatio - currentResolutionTarget) > 0.2) {
+        state.renderer.setPixelRatio(newRatio);
+        console.log(`FPS: ${fps}, PixelRatio updated: ${newRatio}`);
+    }
+
+    currentResolutionTarget = newRatio;
 }

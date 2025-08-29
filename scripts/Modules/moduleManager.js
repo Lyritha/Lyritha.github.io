@@ -6,6 +6,7 @@ import * as TiltCards from './TiltCards/TiltCards.js'
 import * as LoadImagesOptimized from './LoadImagesOptimized/LoadImagesOptimized.js';
 import * as Viewer3D from './Viewer3D/Viewer3D.js';
 import * as FitParent from './FitParent/FitParent.js';
+import * as ShaderViewer from './ShaderViewer/ShaderViewer.js';
 
 export {
     DynamicFilters,
@@ -15,7 +16,8 @@ export {
     TiltCards,
     LoadImagesOptimized,
     Viewer3D,
-    FitParent
+    FitParent,
+    ShaderViewer
 };
 
 const modules = {
@@ -26,7 +28,8 @@ const modules = {
     TiltCards,
     LoadImagesOptimized,
     Viewer3D,
-    FitParent
+    FitParent,
+    ShaderViewer
 };
 
 export async function LoadModules() {
