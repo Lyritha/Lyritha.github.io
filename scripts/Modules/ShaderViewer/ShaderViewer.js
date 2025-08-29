@@ -163,8 +163,6 @@ function closeModal() {
 
 // create the scene and renderer
 function createScene() {
-    console.log('scene created');
-
     state.scene = new THREE.Scene();
 
     // Fullscreen orthographic camera

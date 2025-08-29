@@ -18,7 +18,7 @@ export const hasCss = true;
  * @param {string} options.itemsContainerId - ID of the container holding items to be filtered.
  * @param {string} [options.filterDataKey='filter'] - The data attribute key (without 'data-') used on items.
  */
-export function create({ filtersContainerId, filterNames, template, itemsContainerId, filterDataKey = 'filter' }) {
+export function create({ filtersContainerId, template, itemsContainerId, filterDataKey = 'filter' }) {
     const filterContainer = document.getElementById(filtersContainerId);
     const containerToFilter = document.getElementById(itemsContainerId);
 
@@ -28,45 +28,61 @@ export function create({ filtersContainerId, filterNames, template, itemsContain
     }
 
     filterContainer.innerHTML = '';
-
     let activeFilter = 'all'; // track currently active filter
 
-    filterNames.forEach(filterName => {
-        const clone = template.cloneNode(true);
-        const button = clone.querySelector('button');
-        const contentEl = clone.querySelector('[data-role="content"]');
+    const filters = [];
+    const currentItems = Array.from(containerToFilter.children);
 
-        if (contentEl) contentEl.textContent = filterName;
-        if (!button) return;
+    // create a default all filter
+    const allClone = template.cloneNode(true);
+    const allButton = allClone.querySelector('button');
+    const allContentEl = allClone.querySelector('[data-role="content"]');
 
-        const lowerFilterName = filterName.toLowerCase();
+    if (allContentEl) allContentEl.textContent = "All";
+    if (!allButton) return;
 
-        button.addEventListener('click', () => {
-            activeFilter = lowerFilterName;
+    allButton.addEventListener('click', () => {
+        activeFilter = "all";
 
-            filter(containerToFilter, activeFilter, filterDataKey);
-            filterContainer.querySelectorAll('button').forEach(btn => btn.classList.remove('active'));
-            button.classList.add('active');
-        });
+        filter(containerToFilter, activeFilter, filterDataKey);
+        filterContainer.querySelectorAll('button').forEach(btn => btn.classList.remove('active'));
+        allButton.classList.add('active');
+    });
 
-        clone.querySelectorAll('[data-role]').forEach(el => el.removeAttribute('data-role'));
-        filterContainer.appendChild(clone);
+    filterContainer.appendChild(allClone);
+
+    // create the rest of the filters dynamically
+    currentItems.forEach(item => {
+        const targetFilter = item.dataset[filterDataKey];
+
+        if (!filters.includes(targetFilter)) {
+            filters.push(targetFilter);
+
+            const clone = template.cloneNode(true);
+            const button = clone.querySelector('button');
+            const contentEl = clone.querySelector('[data-role="content"]');
+
+            if (contentEl) contentEl.textContent = targetFilter;
+            if (!button) return;
+
+            const lowerFilterName = targetFilter.toLowerCase();
+
+            button.addEventListener('click', () => {
+                activeFilter = lowerFilterName;
+
+                filter(containerToFilter, activeFilter, filterDataKey);
+                filterContainer.querySelectorAll('button').forEach(btn => btn.classList.remove('active'));
+                button.classList.add('active');
+            });
+
+            clone.querySelectorAll('[data-role]').forEach(el => el.removeAttribute('data-role'));
+            filterContainer.appendChild(clone);
+        }
     });
 
     // Trigger click on first button to initialize filtering
     const firstButton = filterContainer.querySelector('button');
     if (firstButton) firstButton.click();
-
-    // Observe container for dynamically added items and filter them automatically
-    const observer = new MutationObserver(mutations => {
-        mutations.forEach(mutation => {
-            if (mutation.type === 'childList' && mutation.addedNodes.length) {
-                filter(containerToFilter, activeFilter, filterDataKey);
-            }
-        });
-    });
-
-    observer.observe(containerToFilter, { childList: true });
 }
 
 function filter(containerToFilter, activeFilter, filterDataKey) {

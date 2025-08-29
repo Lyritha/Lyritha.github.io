@@ -1,4 +1,4 @@
-.viewer3D-container {
+.viewer2D-container {
     position: relative;
     border-radius: var(--outline-radius);
     outline: var(--outline-width-medium) solid var(--border-col);
@@ -7,12 +7,12 @@
 }
 
 @media (hover: hover) {
-    .viewer3D-container:hover {
+    .viewer2D-container:hover {
         outline: var(--outline-width-large) solid var(--border-col-light);
     }
 }
 
-.viewer3D-modal {
+.viewer2D-modal {
     position: fixed;
     inset: 0;
     display: flex;
@@ -26,7 +26,7 @@
     transition: opacity 0.3s ease-in-out;
 }
 
-    .viewer3D-modal.active {
+    .viewer2D-modal.active {
         opacity: 1;
         pointer-events: auto;
     }
@@ -52,7 +52,7 @@
         padding-left: 4rem;
     }
 
-.viewer3D-overlay {
+.viewer2D-overlay {
     position: absolute !important;
     z-index: 1000;
     inset: 0;
@@ -62,7 +62,7 @@
     pointer-events: none
 }
 
-.viewer3D-nav {
+.viewer2D-nav {
     display: flex;
     flex-flow: row;
     align-items: flex-end;
@@ -71,10 +71,10 @@
     pointer-events: all;
 }
 
-    .viewer3D-nav .left {
+    .viewer2D-nav .left {
     }
 
-    .viewer3D-nav .right {
+    .viewer2D-nav .right {
         margin-left: auto;
     }
 
@@ -84,7 +84,7 @@
 }
 
 @media (max-width: 1100px) {
-    .viewer3D-container {
+    .viewer2D-container {
         aspect-ratio: 16 / 9;
         width: 100%;
     }

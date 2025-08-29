@@ -56,3 +56,7 @@
     .imageModal-nav .right {
         margin-left: auto;
     }
+
+.imageModal-hide {
+    display: none !important;
+}

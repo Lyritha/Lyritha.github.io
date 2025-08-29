@@ -94,6 +94,7 @@ function openModal() {
 
     // Hide or show elements based on gallery size
     const hideElements = thumbnails.length <= 1;
+    console.log(hideElements);
     hideWhenSingle.forEach(role => {
         const el = modal.querySelector(`[data-role="${role}"]`);
         if (!el) return;

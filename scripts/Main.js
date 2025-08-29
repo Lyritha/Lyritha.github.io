@@ -31,7 +31,6 @@ export async function initializePage() {
     // Filters
     Modules.DynamicFilters.create({
         filtersContainerId: 'projects-filters',
-        filterNames: ['All', 'Unity', 'Blender', 'Shaders'],
         template: TemplateLoader.getTemplateClone('simple-button'),
         itemsContainerId: 'projects-list',
         filterDataKey: 'filter'
