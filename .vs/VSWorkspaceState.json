@@ -1,7 +1,6 @@
 {
   "ExpandedNodes": [
     "",
-    "\\css",
     "\\Data",
     "\\Images",
     "\\Projects",
@@ -9,8 +8,9 @@
     "\\scripts\\Modules",
     "\\scripts\\Modules\\FitParent",
     "\\scripts\\Modules\\ImageModal",
+    "\\scripts\\Modules\\ShaderViewer",
     "\\scripts\\Modules\\Viewer3D"
   ],
-  "SelectedNode": "\\css\\text.css",
+  "SelectedNode": "\\scripts\\Modules\\ShaderViewer\\ShaderViewer.js",
   "PreviewInSolutionExplorer": false
 }

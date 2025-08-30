@@ -277,8 +277,9 @@ function framesDynamicResolution() {
     if (Math.abs(newRatio - state.currentResolutionTarget) > 0.1) {
         state.renderer.setPixelRatio(newRatio);
         state.uniforms.u_resolution.value.set(state.width * newRatio, state.height * newRatio);
-        console.log(`FPS: ${state.fps}, Ration: ${newRatio}`);
     }
+
+    console.log(`FPS: ${state.fps}, Ration: ${newRatio}`);
 
     state.currentResolutionTarget = newRatio;
 }
