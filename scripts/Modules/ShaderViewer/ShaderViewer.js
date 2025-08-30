@@ -256,7 +256,9 @@ function renderFrame() {
 
 
     // Update uniforms
-    state.uniforms.u_time.value = state.clock.getElapsedTime();
+    state.uniforms.u_time.value = parseFloat(state.clock.getElapsedTime().toFixed(2));
+
+
 
     // Render
     state.renderer.render(state.scene, state.camera);
@@ -270,12 +272,13 @@ function framesDynamicResolution() {
 
     let newRatio = state.currentResolutionTarget * (state.fps / targetFPS);
     newRatio = Math.max(ratio * minScale, Math.min(ratio * maxScale, newRatio));
+    newRatio = Math.max(0.1, Math.min(1, newRatio));
 
     if (Math.abs(newRatio - state.currentResolutionTarget) > 0.1) {
         state.renderer.setPixelRatio(newRatio);
+        state.uniforms.u_resolution.value.set(state.width * newRatio, state.height * newRatio);
+        console.log(`FPS: ${state.fps}, Ration: ${newRatio}`);
     }
 
     state.currentResolutionTarget = newRatio;
-
-    state.uniforms.u_resolution.value.set(state.width * newRatio, state.height * newRatio);
 }
