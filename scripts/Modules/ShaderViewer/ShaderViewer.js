@@ -258,8 +258,6 @@ function renderFrame() {
     // Update uniforms
     state.uniforms.u_time.value = parseFloat(state.clock.getElapsedTime().toFixed(2));
 
-
-
     // Render
     state.renderer.render(state.scene, state.camera);
 }
