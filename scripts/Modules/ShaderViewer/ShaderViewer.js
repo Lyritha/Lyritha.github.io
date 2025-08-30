@@ -3,6 +3,18 @@
 // 3DViewer.js
 import * as THREE from "three";
 
+// Controls object
+const controlsState = {
+    dragging: false,
+    dragMode: null,
+    lastMouse: { x: 0, y: 0 },
+    scrollModifier: 1,
+    rotationSensitivity: 0.002,
+    panSensitivity: 0.01,
+    scrollSensitivity: 0.0001
+};
+
+// Global state
 const state = {
     scene: null,
     camera: null,
@@ -17,7 +29,8 @@ const state = {
     currentResolutionTarget: 1,
     quad: null,
     width: 0,
-    height: 0
+    height: 0,
+    controls: controlsState
 };
 
 export function init(template) {
@@ -109,9 +122,8 @@ export function canOpen2DViewer(element) {
 // enable/disable the viewer when the element isn't visible
 function enableViewer(element, fragmentShader) {
     state.isAnimating = true;
-    if (!state.scene) createScene();
-
-    setContainer(element);
+    if (!state.scene) createScene(element);
+    else setContainer(element);
 
     // Swap shader if provided
     if (fragmentShader && state.quad) {
@@ -162,29 +174,30 @@ function closeModal() {
 }
 
 // create the scene and renderer
-function createScene() {
+function createScene(element) {
     state.scene = new THREE.Scene();
+    state.camera = new THREE.OrthographicCamera(-1, 1, 1, -1, 0.001, 60);
+    state.camera.position.set(0, 0, -3);
 
-    // Fullscreen orthographic camera
-    state.camera = new THREE.OrthographicCamera(-1, 1, 1, -1, 0, 1);
-
-    // Renderer
     state.renderer = new THREE.WebGLRenderer({ antialias: true });
-    state.renderer.setSize(1, 1);
-    state.renderer.setPixelRatio(window.devicePixelRatio);
+    setContainer(element);
 
-    // Fullscreen quad
-    const geometry = new THREE.PlaneGeometry(2, 2);
+    controls(true, false);
 
     // Uniforms
     state.uniforms = {
         u_time: { value: 0.0 },
-        u_resolution: { value: new THREE.Vector2(1, 1) },
+        u_resolution: { value: new THREE.Vector2(state.renderer.domElement.width, state.renderer.domElement.height) },
+        u_camPos: { value: state.camera.position.clone() },
+        u_camRot: { value: state.camera.rotation.clone() },
+        u_camNear: { value: state.camera.near },
+        u_camFar: { value: state.camera.far },
+        u_scrollModifier: { value: 1.0 }
     };
 
     // Default 2D shader
     const defaultShader = `
-        precision mediump float;
+        precision highp float;
         uniform float u_time;
         uniform vec2 u_resolution;
         void main() {
@@ -192,18 +205,141 @@ function createScene() {
             gl_FragColor = vec4(uv.x, uv.y, 0.5 + 0.5*sin(u_time), 1.0);
         }
     `;
+
+    // Fullscreen quad attached to camera
+    const geometry = new THREE.PlaneGeometry(2, 2);
     const material = new THREE.ShaderMaterial({
         fragmentShader: defaultShader,
-        uniforms: state.uniforms
+        uniforms: state.uniforms,
+        depthTest: false,
+        depthWrite: false
     });
-
     const quad = new THREE.Mesh(geometry, material);
     state.scene.add(quad);
-    state.quad = quad; // store for shader swaps
+    quad.position.set(0, 0, 0.05);
+    quad.renderOrder = 999;
+    quad.material.depthTest = false;
+    quad.material.depthWrite = false;
+    state.quad = quad;
 
-    // Start rendering
     renderFrame();
 }
+
+function controls(rotate = true, pan = true) {
+    const dom = state.renderer.domElement;
+    const c = state.controls; // shorthand
+
+    let lastPinchDist = null;
+
+    // --- Mouse controls ---
+    dom.addEventListener('mousedown', e => {
+        c.dragging = true;
+        c.lastMouse.x = e.clientX;
+        c.lastMouse.y = e.clientY;
+        c.dragMode = e.button === 0 ? 'rotate' : e.button === 2 ? 'pan' : null;
+    });
+    window.addEventListener('mouseup', () => c.dragging = false);
+    window.addEventListener('mousemove', e => {
+        if (!c.dragging || !c.dragMode) return;
+        const dx = e.clientX - c.lastMouse.x;
+        const dy = e.clientY - c.lastMouse.y;
+        handleDrag(dx, dy, rotate, pan);
+        c.lastMouse.x = e.clientX;
+        c.lastMouse.y = e.clientY;
+    });
+    dom.addEventListener('wheel', e => {
+        e.preventDefault();
+        c.scrollModifier += e.deltaY * c.scrollSensitivity;
+        state.uniforms.u_scrollModifier.value = c.scrollModifier;
+    });
+
+    // --- Touch controls ---
+    dom.addEventListener('touchstart', e => {
+        if (e.touches.length === 1) {
+            c.dragging = true;
+            c.dragMode = 'rotate';
+            c.lastMouse.x = e.touches[0].clientX;
+            c.lastMouse.y = e.touches[0].clientY;
+        } else if (e.touches.length === 2) {
+            c.dragging = true;
+            c.dragMode = 'pan';
+            lastPinchDist = distanceBetweenTouches(e.touches);
+            const t0 = e.touches[0];
+            const t1 = e.touches[1];
+            c.lastMouse.x = (t0.clientX + t1.clientX) / 2;
+            c.lastMouse.y = (t0.clientY + t1.clientY) / 2;
+        }
+    });
+    dom.addEventListener('touchmove', e => {
+        if (!c.dragging || !c.dragMode) return;
+        e.preventDefault();
+
+        if (e.touches.length === 1 && c.dragMode === 'rotate') {
+            const dx = e.touches[0].clientX - c.lastMouse.x;
+            const dy = e.touches[0].clientY - c.lastMouse.y;
+            handleDrag(dx, dy, rotate, pan);
+            c.lastMouse.x = e.touches[0].clientX;
+            c.lastMouse.y = e.touches[0].clientY;
+        } else if (e.touches.length === 2) {
+            // Pan
+            const t0 = e.touches[0];
+            const t1 = e.touches[1];
+            const cx = (t0.clientX + t1.clientX) / 2;
+            const cy = (t0.clientY + t1.clientY) / 2;
+            const dx = cx - c.lastMouse.x;
+            const dy = cy - c.lastMouse.y;
+            if (c.dragMode === 'pan') handleDrag(dx, dy, rotate, pan);
+            c.lastMouse.x = cx;
+            c.lastMouse.y = cy;
+
+            // Pinch zoom
+            const pinchDist = distanceBetweenTouches(e.touches);
+            if (lastPinchDist != null) {
+                const delta = lastPinchDist - pinchDist;
+                c.scrollModifier += delta * c.scrollSensitivity * 1.5; // adjust factor if needed
+                state.uniforms.u_scrollModifier.value = c.scrollModifier;
+            }
+            lastPinchDist = pinchDist;
+        }
+    });
+    window.addEventListener('touchend', e => {
+        if (e.touches.length === 0) {
+            c.dragging = false;
+            lastPinchDist = null;
+        }
+    });
+
+    // Prevent context menu on right click
+    dom.addEventListener('contextmenu', e => e.preventDefault());
+
+    // --- Helper functions ---
+    function handleDrag(dx, dy, rotate, pan) {
+        if (c.dragMode === 'rotate' && rotate) {
+            state.camera.rotation.y -= dx * c.rotationSensitivity;
+            state.camera.rotation.x -= dy * c.rotationSensitivity;
+            state.camera.rotation.x = Math.max(-Math.PI / 2, Math.min(Math.PI / 2, state.camera.rotation.x));
+        } else if (c.dragMode === 'pan' && pan) {
+            const forward = new THREE.Vector3();
+            const right = new THREE.Vector3();
+            const up = new THREE.Vector3();
+            state.camera.getWorldDirection(forward);
+            right.crossVectors(state.camera.up, forward).normalize();
+            up.copy(state.camera.up).normalize();
+            state.camera.position.addScaledVector(right, -dx * c.panSensitivity);
+            state.camera.position.addScaledVector(up, dy * c.panSensitivity);
+        }
+    }
+
+    function distanceBetweenTouches(touches) {
+        const dx = touches[0].clientX - touches[1].clientX;
+        const dy = touches[0].clientY - touches[1].clientY;
+        return Math.sqrt(dx * dx + dy * dy);
+    }
+}
+
+
+
+
 
 
 // Set the container for the 3D viewer
@@ -216,8 +352,6 @@ function setContainer(container) {
 }
 
 function resizeToContainer(camera, renderer, container = null, size = null) {
-    renderer.setSize(1, 1);
-
     const width = container?.clientWidth ?? size?.width;
     let height = container?.clientHeight ?? size?.height;
 
@@ -228,12 +362,12 @@ function resizeToContainer(camera, renderer, container = null, size = null) {
     camera.aspect = width / height;
     camera.updateProjectionMatrix();
 
-    renderer.setSize(width, height);
     state.width = width;
     state.height = height;
 
     const devicePixels = window.devicePixelRatio;
     state.renderer.setPixelRatio(devicePixels);
+    renderer.setSize(width, height);
     state.uniforms.u_resolution.value.set(state.width * devicePixels, state.height * devicePixels);
     state.renderer.render(state.scene, state.camera);
 }
@@ -254,13 +388,21 @@ function renderFrame() {
         state.lastTime = now;
     }
 
-
     // Update uniforms
-    state.uniforms.u_time.value = parseFloat(state.clock.getElapsedTime().toFixed(2));
+    state.uniforms.u_time.value = state.clock.getElapsedTime();
+    state.uniforms.u_camPos.value.copy(state.camera.position);
+    state.uniforms.u_camRot.value.copy(state.camera.rotation);
+
+    const forward = new THREE.Vector3(0, 0, -1).applyQuaternion(state.camera.quaternion);
+    state.quad.position.copy(state.camera.position).add(forward.multiplyScalar(1));
+    state.quad.quaternion.copy(state.camera.quaternion);
 
     // Render
     state.renderer.render(state.scene, state.camera);
 }
+
+
+
 
 function framesDynamicResolution() {
     const ratio = window.devicePixelRatio;
@@ -276,8 +418,6 @@ function framesDynamicResolution() {
         state.renderer.setPixelRatio(newRatio);
         state.uniforms.u_resolution.value.set(state.width * newRatio, state.height * newRatio);
     }
-
-    console.log(`FPS: ${state.fps}, Ration: ${newRatio}`);
 
     state.currentResolutionTarget = newRatio;
 }
