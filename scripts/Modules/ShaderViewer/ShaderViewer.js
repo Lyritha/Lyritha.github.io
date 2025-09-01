@@ -352,6 +352,8 @@ function setContainer(container) {
 }
 
 function resizeToContainer(camera, renderer, container = null, size = null) {
+    renderer.setSize(1, 1);
+
     const width = container?.clientWidth ?? size?.width;
     let height = container?.clientHeight ?? size?.height;
 
