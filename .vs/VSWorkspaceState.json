@@ -4,13 +4,11 @@
     "\\Data",
     "\\Images",
     "\\Projects",
-    "\\scripts",
+    "\\Projects\\HowlingMoon",
     "\\scripts\\Modules",
-    "\\scripts\\Modules\\FitParent",
-    "\\scripts\\Modules\\ImageModal",
     "\\scripts\\Modules\\ShaderViewer",
     "\\scripts\\Modules\\Viewer3D"
   ],
-  "SelectedNode": "\\scripts\\Modules\\ShaderViewer\\ShaderViewer.js",
+  "SelectedNode": "\\Projects\\HowlingMoon",
   "PreviewInSolutionExplorer": false
 }
