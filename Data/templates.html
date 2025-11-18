@@ -173,6 +173,28 @@
     </div>
 </template>
 
+<template id="project-video">
+    <div data-role="section-data" class="overlayed-container-item flex-vertical">
+        <div data-role="section-images" class="flex-horizontal flex-ratio-1 gap-med">
+            <video data-role="section-video-poster" id="my-video"
+                   class="video-js"
+                   controls
+                   preload="auto"
+                   width="960"
+                   height="270"
+                   poster="Projects/TheFilth/TheFilth_preview.png"
+                   data-setup="{}">
+                <source data-role="section-video" src="Projects/2025-11-15_00-55-33.mp4" type="video/mp4" />
+                <p class="vjs-no-js">
+                    To view this video please enable JavaScript, and consider upgrading to a
+                    web browser that
+                    <a href="https://videojs.com/html5-video-support/" target="_blank">supports HTML5 video</a>
+                </p>
+            </video>
+        </div>
+    </div>
+</template>
+
 <template id="project-gallery">
     <div data-role="section-data" class="overlayed-container-item flex-vertical">
         <div data-role="section-images" class="flex-horizontal flex-ratio-1 gap-med">
@@ -284,7 +306,8 @@
                         <li>Restart Safari if needed.</li>
                     </ol>
 
-                    <p class="sub-p text-grey">if your GPU is very old or drivers are outdated, enabling acceleration may not work. Updating your graphics drivers can also help.
+                    <p class="sub-p text-grey">
+                        if your GPU is very old or drivers are outdated, enabling acceleration may not work. Updating your graphics drivers can also help.
                     </p>
                 </div>
                 <div class="viewer3D-overlay">

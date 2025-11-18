@@ -235,6 +235,13 @@
           "Projects/HowlingMoon/Combat.png",
           "Projects/HowlingMoon/Combat.png"
         ]
+      },
+      {
+        "?section-name": "video",
+        "?section-icon": "Images/Icons/education.png",
+        "section-video": "Projects/2025-11-15_00-55-33.mp4",
+        "section-video-poster": "Projects/HowlingMoon/Thumbnail.png"
+
       }
     ],
     "links": [
