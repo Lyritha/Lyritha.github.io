@@ -173,6 +173,29 @@
     </div>
 </template>
 
+<template id="project-video">
+    <div data-role="section-data" class="overlayed-container-item flex-vertical">
+        <div class="flex-horizontal flex-ratio-1 gap-med image-container">
+            <div class="flex-horizontal flex-vertical-tablet-thin flex-ratio-1 gap-med">
+                <div class="backgroundBlack"></div>
+                <img class="fit-parent backgroundImg" data-role="section-poster" src="" alt="Alternate Text" />
+                <video data-role="section-poster" id="my-video"
+                       class="video-js flex-vertical fit-parent height-400-tablet height-200-phone"
+                       controls
+                       preload="auto"
+                       poster="">
+                    <source data-role="section-video" src="" type="video/mp4" />
+                    <p class="vjs-no-js">
+                        To view this video please enable JavaScript, and consider upgrading to a
+                        web browser that
+                        <a href="https://videojs.com/html5-video-support/" target="_blank">supports HTML5 video</a>
+                    </p>
+                </video>
+            </div>
+        </div>
+    </div>
+</template>
+
 <template id="project-gallery">
     <div data-role="section-data" class="overlayed-container-item flex-vertical">
         <div data-role="section-images" class="flex-horizontal flex-ratio-1 gap-med">

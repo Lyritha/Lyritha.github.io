@@ -93,11 +93,30 @@
 
 @media (max-width: 800px) {
 
+    .height-200-tablet-thin {
+        min-height: 200px;
+    }
+
     .height-400-tablet-thin {
         min-height: 400px;
     }
 
     .height-600-tablet-thin {
+        min-height: 600px;
+    }
+}
+
+@media (max-width: 520px) {
+
+    .height-200-phone {
+        min-height: 200px;
+    }
+
+    .height-400-phone {
+        min-height: 400px;
+    }
+
+    .height-600-phone {
         min-height: 600px;
     }
 }

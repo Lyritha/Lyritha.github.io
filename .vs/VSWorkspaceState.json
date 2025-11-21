@@ -5,10 +5,12 @@
     "\\Images",
     "\\Projects",
     "\\Projects\\HowlingMoon",
+    "\\Projects\\TheFilth",
+    "\\scripts",
     "\\scripts\\Modules",
     "\\scripts\\Modules\\ShaderViewer",
     "\\scripts\\Modules\\Viewer3D"
   ],
-  "SelectedNode": "\\Projects\\HowlingMoon",
+  "SelectedNode": "\\index.html",
   "PreviewInSolutionExplorer": false
 }

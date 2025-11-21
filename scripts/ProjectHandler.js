@@ -215,6 +215,16 @@ function populateTemplate(clone, data) {
                 return;
             }
 
+            if (tag === 'VIDEO') {
+                element.poster = value;
+                return;
+            }
+
+            if (tag === 'SOURCE') {
+                element.src = value;
+                return;
+            }
+
             if (tag === 'CODE') {
                 element.textContent = value;
                 element.classList.add(`language-${data["?section-code-language"]}`);
