@@ -225,13 +225,15 @@ function populateTemplate(clone, data) {
                 return;
             }
 
-            if (tag === 'CODE') {
-                element.textContent = value;
-                element.classList.add(`language-${data["?section-code-language"]}`);
-                Prism.highlightElement(element);
+
+            // code viewer (multiple tab supported)
+            if (key.toLowerCase().includes('scripts') && Array.isArray(value)) {
+                GenerateCodeSection(element, value);
                 return;
             }
 
+
+            // gallery viewer
             if (key.toLowerCase().includes('images') && Array.isArray(value)) {
                 const length = value.length - 1;
                 const children = Array.from(element.children);
@@ -270,6 +272,73 @@ function populateTemplate(clone, data) {
             }
         });
     });
+}
+
+function GenerateCodeSection(element, value) {
+    const buttonElement = element.querySelector('[data-role="script-select"]');
+    const buttonParent = buttonElement.parentNode;
+
+    const codeElement = element.querySelector('[data-role="script-container"]');
+    const codeParent = codeElement.parentNode;
+
+    if (value.length !== 1) {
+
+        // Loop over script entries
+        value.forEach((script, index) => {
+
+            // clone button element
+            const buttonClone = buttonElement.cloneNode(true);
+
+            const scriptName = buttonClone.querySelector('[data-role="script-name"]');
+            scriptName.innerHTML = script["script-name"] || "";
+
+            buttonParent.appendChild(buttonClone);
+
+            // clone code viewer element
+            const codeClone = codeElement.cloneNode(true);
+            const codeContent = codeClone.querySelector('[data-role="script-code"]');
+            codeContent.textContent = script["script-code"] || "";
+
+            codeContent.classList.add(`language-${script["script-language"]}`);
+            Prism.highlightElement(codeContent);
+
+            codeParent.insertBefore(codeClone, codeElement.nextSibling);
+        });
+
+        // Remove the original template button
+        buttonParent.removeChild(buttonElement);
+        codeParent.removeChild(codeElement);
+
+
+        // Add event listeners to buttons
+        const allButtons = buttonParent.querySelectorAll('[data-role="script-select"]');
+        allButtons.forEach((btn, idx) => {
+            btn.addEventListener('click', () => {
+
+                // Hide all code sections
+                const allCodeSections = codeParent.querySelectorAll('[data-role="script-container"]');
+                allCodeSections.forEach(sec => sec.classList.remove('active'));
+                allCodeSections[idx].classList.add('active');
+
+                // Update button active states
+                allButtons.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+            });
+        });
+
+        allButtons[0].click(); // Activate the first button by default
+    }
+    else {
+        codeElement.classList.add('active');
+        buttonParent.classList.add('hide-element');
+
+        const codeContent = codeElement.querySelector('[data-role="script-code"]');
+        codeContent.textContent = value[0]["script-code"] || "";
+        codeContent.classList.add(`language-${value[0]["script-language"]}`);
+
+        // Highlight with Prism
+        Prism.highlightElement(codeContent);
+    }   
 }
 
 /**

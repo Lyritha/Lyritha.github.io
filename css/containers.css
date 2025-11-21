@@ -14,6 +14,21 @@
     }
 }
 
+.code-view {
+    display: none !important;
+}
+
+    .code-view.active {
+        display: revert !important;
+    }
+
+.code-button-container {
+    position: absolute;
+    top: var(--spacing-small);
+    left: var(--spacing-small);
+    z-index: 5;
+}
+
 .text-container {
     gap: var(--spacing-medium);
     padding: var(--spacing-medium);

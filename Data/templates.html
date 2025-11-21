@@ -270,8 +270,14 @@
 <template id="project-code">
     <div data-role="section-data" class="overlayed-container-item flex-vertical flex-ratio-1">
         <div class="flex-horizontal flex-ratio-1 gap-med">
-            <div class="text-container flex-vertical flex-ratio-1 height-600-tablet">
-                <pre class="flex-vertical fit-parent"><code data-role="section-code" class=""></code></pre>
+            <div data-role="section-scripts" class="text-container flex-vertical flex-ratio-1 height-600-tablet fit-parent">
+                <div class="code-button-container flex-horizontal-wrap gap-small">
+                    <button class="code-button" data-role="script-select">
+                        <p data-role="script-name" class="sub-p">script.cs</p>
+                    </button>
+                </div>
+
+                <pre data-role="script-container" class="code-view flex-vertical"><code data-role="script-code" class=""></code></pre>
             </div>
         </div>
     </div>
