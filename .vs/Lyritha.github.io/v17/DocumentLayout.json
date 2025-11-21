@@ -3,48 +3,60 @@
   "WorkspaceRootPath": "C:\\Users\\colli\\Documents\\GitHub\\Lyritha.github.io\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\colli\\Documents\\GitHub\\Lyritha.github.io\\index.html||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:index.html||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\colli\\Documents\\GitHub\\Lyritha.github.io\\staticPageGen\\build.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:staticPageGen\\build.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\colli\\Documents\\GitHub\\Lyritha.github.io\\scripts\\ProjectHandler.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:scripts\\ProjectHandler.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\colli\\Documents\\GitHub\\Lyritha.github.io\\staticPageGen\\components\\JsonLoader.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:staticPageGen\\components\\JsonLoader.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\colli\\Documents\\GitHub\\Lyritha.github.io\\Data\\templates.html||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Data\\templates.html||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\colli\\Documents\\GitHub\\Lyritha.github.io\\staticPageGen\\TemplateLoader.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:staticPageGen\\TemplateLoader.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\colli\\Documents\\GitHub\\Lyritha.github.io\\Projects\\projects.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Projects\\projects.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\colli\\Documents\\GitHub\\Lyritha.github.io\\staticPageGen\\ProjectBuilder.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:staticPageGen\\ProjectBuilder.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\colli\\Documents\\GitHub\\Lyritha.github.io\\.gitignore||{3B902123-F8A7-4915-9F01-361F908088D0}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:.gitignore||{3B902123-F8A7-4915-9F01-361F908088D0}"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\colli\\Documents\\GitHub\\Lyritha.github.io\\staticPage\\scripts\\Main.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:staticPage\\scripts\\Main.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\colli\\Documents\\GitHub\\Lyritha.github.io\\scripts\\Modules\\Viewer3D\\Viewer3D.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:scripts\\Modules\\Viewer3D\\Viewer3D.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\colli\\Documents\\GitHub\\Lyritha.github.io\\staticPageGen\\data\\projects.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:staticPageGen\\data\\projects.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\colli\\Documents\\GitHub\\Lyritha.github.io\\css\\elements.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:css\\elements.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\colli\\Documents\\GitHub\\Lyritha.github.io\\staticPage\\index.html||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:staticPage\\index.html||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\colli\\Documents\\GitHub\\Lyritha.github.io\\scripts\\Modules\\FitParent\\FitParent.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:scripts\\Modules\\FitParent\\FitParent.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\colli\\Documents\\GitHub\\Lyritha.github.io\\dynamicPage\\index.html||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:dynamicPage\\index.html||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\colli\\Documents\\GitHub\\Lyritha.github.io\\css\\page.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:css\\page.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\colli\\Documents\\GitHub\\Lyritha.github.io\\staticPageGen\\Components\\CornerDecorations.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:staticPageGen\\Components\\CornerDecorations.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\colli\\Documents\\GitHub\\Lyritha.github.io\\Modules\\ImageModal\\ImageModal.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Modules\\ImageModal\\ImageModal.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\colli\\Documents\\GitHub\\Lyritha.github.io\\dynamicPage\\scripts\\Main.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:dynamicPage\\scripts\\Main.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\colli\\Documents\\GitHub\\Lyritha.github.io\\Modules\\Viewer3D\\Viewer3D.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Modules\\Viewer3D\\Viewer3D.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\colli\\Documents\\GitHub\\Lyritha.github.io\\staticPageGen\\package.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:staticPageGen\\package.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\colli\\Documents\\GitHub\\Lyritha.github.io\\package.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:package.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\colli\\Documents\\GitHub\\Lyritha.github.io\\dynamicPage\\scripts\\ProjectHandler.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:dynamicPage\\scripts\\ProjectHandler.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\colli\\Documents\\GitHub\\Lyritha.github.io\\dynamicPage\\scripts\\PageNavigator.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:dynamicPage\\scripts\\PageNavigator.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
     }
   ],
   "DocumentGroupContainers": [
@@ -53,9 +65,13 @@
       "VerticalTabListWidth": 256,
       "DocumentGroups": [
         {
-          "DockedWidth": 66,
-          "SelectedChildIndex": 2,
+          "DockedWidth": 155,
+          "SelectedChildIndex": 15,
           "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
+            },
             {
               "$type": "Bookmark",
               "Name": "ST:127419861:0:{83107a3e-496a-485e-b455-16ddb978e55e}"
@@ -66,143 +82,191 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "ProjectHandler.js",
-              "DocumentMoniker": "C:\\Users\\colli\\Documents\\GitHub\\Lyritha.github.io\\scripts\\ProjectHandler.js",
-              "RelativeDocumentMoniker": "scripts\\ProjectHandler.js",
-              "ToolTip": "C:\\Users\\colli\\Documents\\GitHub\\Lyritha.github.io\\scripts\\ProjectHandler.js",
-              "RelativeToolTip": "scripts\\ProjectHandler.js",
-              "ViewState": "AgIAAMQAAAAAAAAAAAAAwNkAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
-              "WhenOpened": "2025-11-19T11:59:59.939Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "projects.json",
-              "DocumentMoniker": "C:\\Users\\colli\\Documents\\GitHub\\Lyritha.github.io\\Projects\\projects.json",
-              "RelativeDocumentMoniker": "Projects\\projects.json",
-              "ToolTip": "C:\\Users\\colli\\Documents\\GitHub\\Lyritha.github.io\\Projects\\projects.json",
-              "RelativeToolTip": "Projects\\projects.json",
-              "ViewState": "AgIAANgAAAAAAAAAAAAAAPIAAAA6AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2025-08-22T13:39:00.224Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "templates.html",
-              "DocumentMoniker": "C:\\Users\\colli\\Documents\\GitHub\\Lyritha.github.io\\Data\\templates.html",
-              "RelativeDocumentMoniker": "Data\\templates.html",
-              "ToolTip": "C:\\Users\\colli\\Documents\\GitHub\\Lyritha.github.io\\Data\\templates.html",
-              "RelativeToolTip": "Data\\templates.html",
-              "ViewState": "AgIAAKsAAAAAAAAAAAAuwAkBAAALAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001512|",
-              "WhenOpened": "2025-08-14T16:03:29.828Z",
-              "EditorCaption": ""
-            }
-          ]
-        },
-        {
-          "DockedWidth": 158,
-          "SelectedChildIndex": 1,
-          "Children": [
-            {
-              "$type": "Document",
               "DocumentIndex": 4,
-              "Title": ".gitignore",
-              "DocumentMoniker": "C:\\Users\\colli\\Documents\\GitHub\\Lyritha.github.io\\.gitignore",
-              "RelativeDocumentMoniker": ".gitignore",
-              "ToolTip": "C:\\Users\\colli\\Documents\\GitHub\\Lyritha.github.io\\.gitignore",
-              "RelativeToolTip": ".gitignore",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
-              "WhenOpened": "2025-11-18T12:46:09.534Z"
+              "Title": "Main.js",
+              "DocumentMoniker": "C:\\Users\\colli\\Documents\\GitHub\\Lyritha.github.io\\staticPage\\scripts\\Main.js",
+              "RelativeDocumentMoniker": "staticPage\\scripts\\Main.js",
+              "ToolTip": "C:\\Users\\colli\\Documents\\GitHub\\Lyritha.github.io\\staticPage\\scripts\\Main.js",
+              "RelativeToolTip": "staticPage\\scripts\\Main.js",
+              "ViewState": "AgIAABgAAAAAAAAAAAAAADwAAAAHAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
+              "WhenOpened": "2025-11-21T19:49:04.269Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
+              "Title": "JsonLoader.js",
+              "DocumentMoniker": "C:\\Users\\colli\\Documents\\GitHub\\Lyritha.github.io\\staticPageGen\\components\\JsonLoader.js",
+              "RelativeDocumentMoniker": "staticPageGen\\components\\JsonLoader.js",
+              "ToolTip": "C:\\Users\\colli\\Documents\\GitHub\\Lyritha.github.io\\staticPageGen\\components\\JsonLoader.js",
+              "RelativeToolTip": "staticPageGen\\components\\JsonLoader.js",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAAoAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
+              "WhenOpened": "2025-11-21T19:48:38.213Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
               "Title": "index.html",
-              "DocumentMoniker": "C:\\Users\\colli\\Documents\\GitHub\\Lyritha.github.io\\index.html",
-              "RelativeDocumentMoniker": "index.html",
-              "ToolTip": "C:\\Users\\colli\\Documents\\GitHub\\Lyritha.github.io\\index.html",
-              "RelativeToolTip": "index.html",
-              "ViewState": "AgIAABsAAAAAAAAAAADwvyoAAABFAAAAAAAAAA==",
+              "DocumentMoniker": "C:\\Users\\colli\\Documents\\GitHub\\Lyritha.github.io\\staticPage\\index.html",
+              "RelativeDocumentMoniker": "staticPage\\index.html",
+              "ToolTip": "C:\\Users\\colli\\Documents\\GitHub\\Lyritha.github.io\\staticPage\\index.html",
+              "RelativeToolTip": "staticPage\\index.html",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAvAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001512|",
-              "WhenOpened": "2024-09-07T09:20:17.042Z",
+              "WhenOpened": "2025-11-21T19:38:47.921Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "CornerDecorations.js",
+              "DocumentMoniker": "C:\\Users\\colli\\Documents\\GitHub\\Lyritha.github.io\\staticPageGen\\components\\CornerDecorations.js",
+              "RelativeDocumentMoniker": "staticPageGen\\components\\CornerDecorations.js",
+              "ToolTip": "C:\\Users\\colli\\Documents\\GitHub\\Lyritha.github.io\\staticPageGen\\components\\CornerDecorations.js",
+              "RelativeToolTip": "staticPageGen\\components\\CornerDecorations.js",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
+              "WhenOpened": "2025-11-21T19:35:49.644Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "package.json",
+              "DocumentMoniker": "C:\\Users\\colli\\Documents\\GitHub\\Lyritha.github.io\\staticPageGen\\package.json",
+              "RelativeDocumentMoniker": "staticPageGen\\package.json",
+              "ToolTip": "C:\\Users\\colli\\Documents\\GitHub\\Lyritha.github.io\\staticPageGen\\package.json",
+              "RelativeToolTip": "staticPageGen\\package.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2025-11-21T19:22:50.714Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "package.json",
+              "DocumentMoniker": "C:\\Users\\colli\\Documents\\GitHub\\Lyritha.github.io\\package.json",
+              "RelativeDocumentMoniker": "package.json",
+              "ToolTip": "C:\\Users\\colli\\Documents\\GitHub\\Lyritha.github.io\\package.json",
+              "RelativeToolTip": "package.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2025-11-21T19:20:57.73Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 5,
-              "Title": "Viewer3D.js",
-              "DocumentMoniker": "C:\\Users\\colli\\Documents\\GitHub\\Lyritha.github.io\\scripts\\Modules\\Viewer3D\\Viewer3D.js",
-              "RelativeDocumentMoniker": "scripts\\Modules\\Viewer3D\\Viewer3D.js",
-              "ToolTip": "C:\\Users\\colli\\Documents\\GitHub\\Lyritha.github.io\\scripts\\Modules\\Viewer3D\\Viewer3D.js",
-              "RelativeToolTip": "scripts\\Modules\\Viewer3D\\Viewer3D.js",
-              "ViewState": "AgIAADsBAAAAAAAAAAAswEMBAAAAAAAAAAAAAA==",
+              "Title": "projects.json",
+              "DocumentMoniker": "C:\\Users\\colli\\Documents\\GitHub\\Lyritha.github.io\\staticPageGen\\data\\projects.json",
+              "RelativeDocumentMoniker": "staticPageGen\\data\\projects.json",
+              "ToolTip": "C:\\Users\\colli\\Documents\\GitHub\\Lyritha.github.io\\staticPageGen\\data\\projects.json",
+              "RelativeToolTip": "staticPageGen\\data\\projects.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABkAAAAzAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2025-11-21T19:16:51.87Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "ProjectBuilder.js",
+              "DocumentMoniker": "C:\\Users\\colli\\Documents\\GitHub\\Lyritha.github.io\\staticPageGen\\ProjectBuilder.js",
+              "RelativeDocumentMoniker": "staticPageGen\\ProjectBuilder.js",
+              "ToolTip": "C:\\Users\\colli\\Documents\\GitHub\\Lyritha.github.io\\staticPageGen\\ProjectBuilder.js",
+              "RelativeToolTip": "staticPageGen\\ProjectBuilder.js",
+              "ViewState": "AgIAABgAAAAAAAAAAAAAADgAAAAlAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
-              "WhenOpened": "2025-08-22T13:49:38.209Z"
+              "WhenOpened": "2025-11-21T19:02:57.144Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "elements.css",
-              "DocumentMoniker": "C:\\Users\\colli\\Documents\\GitHub\\Lyritha.github.io\\css\\elements.css",
-              "RelativeDocumentMoniker": "css\\elements.css",
-              "ToolTip": "C:\\Users\\colli\\Documents\\GitHub\\Lyritha.github.io\\css\\elements.css",
-              "RelativeToolTip": "css\\elements.css",
-              "ViewState": "AgIAACoAAAAAAAAAAAAAAEoAAAARAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
-              "WhenOpened": "2025-08-22T14:34:03.038Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "FitParent.js",
-              "DocumentMoniker": "C:\\Users\\colli\\Documents\\GitHub\\Lyritha.github.io\\scripts\\Modules\\FitParent\\FitParent.js",
-              "RelativeDocumentMoniker": "scripts\\Modules\\FitParent\\FitParent.js",
-              "ToolTip": "C:\\Users\\colli\\Documents\\GitHub\\Lyritha.github.io\\scripts\\Modules\\FitParent\\FitParent.js",
-              "RelativeToolTip": "scripts\\Modules\\FitParent\\FitParent.js",
-              "ViewState": "AgIAAAIAAAAAAAAAAAAxwBoAAAAAAAAAAAAAAA==",
+              "DocumentIndex": 13,
+              "Title": "PageNavigator.js",
+              "DocumentMoniker": "C:\\Users\\colli\\Documents\\GitHub\\Lyritha.github.io\\dynamicPage\\scripts\\PageNavigator.js",
+              "RelativeDocumentMoniker": "dynamicPage\\scripts\\PageNavigator.js",
+              "ToolTip": "C:\\Users\\colli\\Documents\\GitHub\\Lyritha.github.io\\dynamicPage\\scripts\\PageNavigator.js",
+              "RelativeToolTip": "dynamicPage\\scripts\\PageNavigator.js",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
-              "WhenOpened": "2025-08-22T13:48:00.644Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "page.css",
-              "DocumentMoniker": "C:\\Users\\colli\\Documents\\GitHub\\Lyritha.github.io\\css\\page.css",
-              "RelativeDocumentMoniker": "css\\page.css",
-              "ToolTip": "C:\\Users\\colli\\Documents\\GitHub\\Lyritha.github.io\\css\\page.css",
-              "RelativeToolTip": "css\\page.css",
-              "ViewState": "AgIAAAUAAAAAAAAAAAAYwDIAAAAFAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
-              "WhenOpened": "2025-08-22T13:46:40.529Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 10,
-              "Title": "Viewer3D.css",
-              "DocumentMoniker": "C:\\Users\\colli\\Documents\\GitHub\\Lyritha.github.io\\Modules\\Viewer3D\\Viewer3D.css",
-              "RelativeDocumentMoniker": "Modules\\Viewer3D\\Viewer3D.css",
-              "ToolTip": "C:\\Users\\colli\\Documents\\GitHub\\Lyritha.github.io\\Modules\\Viewer3D\\Viewer3D.css",
-              "RelativeToolTip": "Modules\\Viewer3D\\Viewer3D.css",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
-              "WhenOpened": "2025-08-20T15:35:58.545Z"
+              "WhenOpened": "2025-11-21T18:59:26.351Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 9,
-              "Title": "ImageModal.css",
-              "DocumentMoniker": "C:\\Users\\colli\\Documents\\GitHub\\Lyritha.github.io\\Modules\\ImageModal\\ImageModal.css",
-              "RelativeDocumentMoniker": "Modules\\ImageModal\\ImageModal.css",
-              "ToolTip": "C:\\Users\\colli\\Documents\\GitHub\\Lyritha.github.io\\Modules\\ImageModal\\ImageModal.css",
-              "RelativeToolTip": "Modules\\ImageModal\\ImageModal.css",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
-              "WhenOpened": "2025-08-20T15:46:37.095Z"
+              "Title": "Main.js",
+              "DocumentMoniker": "C:\\Users\\colli\\Documents\\GitHub\\Lyritha.github.io\\dynamicPage\\scripts\\Main.js",
+              "RelativeDocumentMoniker": "dynamicPage\\scripts\\Main.js",
+              "ToolTip": "C:\\Users\\colli\\Documents\\GitHub\\Lyritha.github.io\\dynamicPage\\scripts\\Main.js",
+              "RelativeToolTip": "dynamicPage\\scripts\\Main.js",
+              "ViewState": "AgIAAB4AAAAAAAAAAAAAAD8AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
+              "WhenOpened": "2025-11-21T18:58:53.005Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "ProjectHandler.js",
+              "DocumentMoniker": "C:\\Users\\colli\\Documents\\GitHub\\Lyritha.github.io\\dynamicPage\\scripts\\ProjectHandler.js",
+              "RelativeDocumentMoniker": "dynamicPage\\scripts\\ProjectHandler.js",
+              "ToolTip": "C:\\Users\\colli\\Documents\\GitHub\\Lyritha.github.io\\dynamicPage\\scripts\\ProjectHandler.js",
+              "RelativeToolTip": "dynamicPage\\scripts\\ProjectHandler.js",
+              "ViewState": "AgIAAIEAAAAAAAAAAAAowAAAAAAaAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
+              "WhenOpened": "2025-11-21T18:58:28.542Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "TemplateLoader.js",
+              "DocumentMoniker": "C:\\Users\\colli\\Documents\\GitHub\\Lyritha.github.io\\staticPageGen\\TemplateLoader.js",
+              "RelativeDocumentMoniker": "staticPageGen\\TemplateLoader.js",
+              "ToolTip": "C:\\Users\\colli\\Documents\\GitHub\\Lyritha.github.io\\staticPageGen\\TemplateLoader.js",
+              "RelativeToolTip": "staticPageGen\\TemplateLoader.js",
+              "ViewState": "AgIAAA8AAAAAAAAAAAAAAAEAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
+              "WhenOpened": "2025-11-21T18:54:57.26Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "build.js",
+              "DocumentMoniker": "C:\\Users\\colli\\Documents\\GitHub\\Lyritha.github.io\\staticPageGen\\build.js",
+              "RelativeDocumentMoniker": "staticPageGen\\build.js",
+              "ToolTip": "C:\\Users\\colli\\Documents\\GitHub\\Lyritha.github.io\\staticPageGen\\build.js",
+              "RelativeToolTip": "staticPageGen\\build.js",
+              "ViewState": "AgIAABgAAAAAAAAAAAAAADwAAAALAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
+              "WhenOpened": "2025-11-21T18:18:59.287Z",
+              "EditorCaption": ""
+            }
+          ]
+        },
+        {
+          "DockedWidth": 69,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "index.html",
+              "DocumentMoniker": "C:\\Users\\colli\\Documents\\GitHub\\Lyritha.github.io\\dynamicPage\\index.html",
+              "RelativeDocumentMoniker": "dynamicPage\\index.html",
+              "ToolTip": "C:\\Users\\colli\\Documents\\GitHub\\Lyritha.github.io\\dynamicPage\\index.html",
+              "RelativeToolTip": "dynamicPage\\index.html",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABUAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001512|",
+              "WhenOpened": "2024-09-07T09:20:17.042Z",
+              "EditorCaption": ""
             }
           ]
         }

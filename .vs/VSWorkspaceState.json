@@ -1,16 +1,13 @@
 {
   "ExpandedNodes": [
     "",
-    "\\Data",
-    "\\Images",
-    "\\Projects",
-    "\\Projects\\HowlingMoon",
-    "\\Projects\\TheFilth",
-    "\\scripts",
-    "\\scripts\\Modules",
-    "\\scripts\\Modules\\ShaderViewer",
-    "\\scripts\\Modules\\Viewer3D"
+    "\\dynamicPage",
+    "\\staticPageGen\\Components",
+    "\\staticPageGen\\data",
+    "\\staticPage\\scripts",
+    "\\staticPage\\scripts\\Modules",
+    "\\staticPage\\scripts\\Modules\\InteractiveItems"
   ],
-  "SelectedNode": "\\index.html",
+  "SelectedNode": "\\staticPage",
   "PreviewInSolutionExplorer": false
 }
