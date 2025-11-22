@@ -1,11 +1,11 @@
 import * as PageNavigator from './PageNavigator.js';
-import * as LazyLoadImages from './LazyLoadImages.js';
 import * as TiltCards from './TiltCards.js';
 import * as FitParent from './FitParent.js';
 import * as ImageModal from './ImageModal.js';
+import * as viewer from './viewer.js';
 
 export async function initializePage() {
-    LazyLoadImages.init();
+    initLazyLoading();
 
     PageNavigator.bindAllNavButtons();
 
@@ -19,7 +19,7 @@ export async function initializePage() {
     PageNavigator.handleInitialNavigation();
 
     FitParent.init();
-
+        
     TiltCards.init({
         selector: '.tiltCards',
         tiltStrength: 1
@@ -35,6 +35,13 @@ export async function initializePage() {
     initScripts();
 }
 
+/**
+ * Initializes script switching behavior for elements using `data-script`.
+ *
+ * - Clicking a button activates its associated script container.
+ * - All other buttons and containers are deactivated.
+ * - Automatically activates the first script button on load.
+ */
 function initScripts() {
     const scriptButtons = document.querySelectorAll('button[data-script]');
     const scriptContainers = document.querySelectorAll('[data-script]:not(button)');
@@ -43,7 +50,7 @@ function initScripts() {
         button.addEventListener('click', () => {
             const scriptName = button.dataset.script;
 
-            // Activate the clicked button, deactivate others
+            // Activate clicked button, deactivate others
             scriptButtons.forEach(btn =>
                 btn.classList.toggle('active', btn === button)
             );
@@ -52,7 +59,9 @@ function initScripts() {
             scriptContainers.forEach(c => c.classList.remove('active'));
 
             // Activate the matching container
-            const codeContainer = document.querySelector(`[data-script="${scriptName}"]:not(button)`);
+            const codeContainer = document.querySelector(
+                `[data-script="${scriptName}"]:not(button)`
+            );
             if (codeContainer) codeContainer.classList.add('active');
         });
     });
@@ -61,6 +70,18 @@ function initScripts() {
 }
 
 
+/**
+ * Initializes a dynamic filtering system for DOM elements.
+ *
+ * @param {Object} options
+ * @param {string} options.filtersContainerId - The ID of the container holding filter buttons.
+ * @param {string} options.itemsContainerId   - The ID of the container whose child items will be filtered.
+ *
+ * Behavior:
+ * - Clicking a filter button shows only items with the matching `data-filter` value.
+ * - Items that don't match are given the class `dynamicFilters-hide`.
+ * - Automatically applies the first filter on load.
+ */
 function initFilters({ filtersContainerId, itemsContainerId }) {
     const filterContainer = document.getElementById(filtersContainerId);
     const containerToFilter = document.getElementById(itemsContainerId);
@@ -85,6 +106,37 @@ function initFilters({ filtersContainerId, itemsContainerId }) {
     });
 
     filterButtons[0]?.click();
+}
+
+
+/**
+ * Lazily loads images that use a `data-src` attribute.
+ *
+ * Behavior:
+ * - If the image's `.overlayed-container-item` parent is already `.active`, the image loads immediately.
+ * - Otherwise, it waits until the container gains the `.active` class, detected via MutationObserver.
+ * - Replaces `data-src` with `src` and removes the lazy-loading attribute after loading.
+ *
+ * Intended for deferred loading of images inside tabbed or overlayed UI elements.
+ */
+export function initLazyLoading() {
+    const load = (img) => (img.src = img.dataset.src, img.removeAttribute('data-src'));
+
+    document.querySelectorAll('img[data-src]').forEach(img => {
+        const container = img.closest('.overlayed-container-item');
+        if (!container) return;
+
+        if (container.classList.contains('active')) return load(img);
+
+        const observer = new MutationObserver(() => {
+            if (container.classList.contains('active')) {
+                load(img);
+                observer.disconnect();
+            }
+        });
+
+        observer.observe(container, { attributes: true });
+    });
 }
 
 

@@ -12,8 +12,7 @@
     <link href="css/modules/CornerDecorations.css" rel="stylesheet">
     <link href="css/modules/DynamicFilters.css" rel="stylesheet">
     <link href="css/modules/ImageModal.css" rel="stylesheet">
-    <link href="css/modules/ShaderViewer.css" rel="stylesheet">
-    <link href="css/modules/Viewer3D.css" rel="stylesheet">
+    <link href="css/modules/viewer.css" rel="stylesheet">
     <link href="css/buttons.css" rel="stylesheet">
     <link href="css/containers.css" rel="stylesheet">
     <link href="css/elements.css" rel="stylesheet">
@@ -401,21 +400,6 @@ My passion for programming started as a hobby but I wanted to get more in-depth 
             </button>
         </div>
     </div>
-
-    <div data-role="data-filter" class="projects-item flex-vertical gap-small" data-filter="Unity">
-        <div class="">
-            <img data-role="thumbnail" data-src="projects/HowlingMoon/Thumbnail.png" class="projects-img thumbnail" alt="Icons">
-        </div>
-        <div class="flex-vertical gap-small">
-            <div class="flex-vertical">
-                <h1 data-role="title" class="">Howling moon</h1>
-                <p data-role="subtitle" class="text-grey">Dark toon card game</p>
-            </div>
-            <button data-function="button" class="button" data-page="Howlingmoon" data-section="about">
-                <p class="sub-p">Read more</p>
-            </button>
-        </div>
-    </div>
 </div>
                                     <div class="cornerDecorations-container"><img src="images/Icons/triangle.svg" class="cornerDecorations-corner cornerDecorations-top-left" style="--cornerDecorations-rotation: 0deg; --cornerDecorations-size: var(--text-size);"><img src="images/Icons/triangle.svg" class="cornerDecorations-corner cornerDecorations-top-right" style="--cornerDecorations-rotation: 90deg; --cornerDecorations-size: var(--text-size);"><img src="images/Icons/triangle.svg" class="cornerDecorations-corner cornerDecorations-bottom-left" style="--cornerDecorations-rotation: 270deg; --cornerDecorations-size: var(--text-size);"><img src="images/Icons/triangle.svg" class="cornerDecorations-corner cornerDecorations-bottom-right" style="--cornerDecorations-rotation: 180deg; --cornerDecorations-size: var(--text-size);"></div></div>
                                 </div>
@@ -643,8 +627,8 @@ I used no reference images to make this model as a challenge for myself.</p>
     </div>
 
     <div data-role="section-data" class="overlayed-container-item flex-vertical flex-ratio-1" data-page="Cyberpunkgun" data-section="3D model">
-        <div class="flex-vertical flex-ratio-1 gap-med tiltCards-parent">
-            <div data-role="section-scene" class="viewer3D-container flex-horizontal thumbnail3D flex-ratio-1 cornerDecorations tiltCards" style="position: relative;">
+        <div data-role="section-viewer" class="flex-vertical flex-ratio-1 gap-med tiltCards-parent" data-scene="scene">
+            <div data-role="section-viewerData" class="viewer-container flex-horizontal thumbnailViewer flex-ratio-1 cornerDecorations tiltCards" data-scene="[object Object]" style="position: relative;">
                 <div class="gpu-warning flex-vertical flex-ratio-1 padding-med gap-between">
                     <div class="flex-vertical gap-med">
                         <h1>GPU Not Supported or Inaccessible</h1>
@@ -671,11 +655,12 @@ I used no reference images to make this model as a challenge for myself.</p>
                         <li>Restart Safari if needed.</li>
                     </ol>
 
-                    <p class="sub-p text-grey">if your GPU is very old or drivers are outdated, enabling acceleration may not work. Updating your graphics drivers can also help.
+                    <p class="sub-p text-grey">
+                        if your GPU is very old or drivers are outdated, enabling acceleration may not work. Updating your graphics drivers can also help.
                     </p>
                 </div>
-                <div class="viewer3D-overlay">
-                    <div class="viewer3D-nav padding-small gap-between">
+                <div class="viewer-overlay">
+                    <div class="viewer-nav padding-small gap-between">
                         <button data-function="toggle-anim" class="button" style="pointer-events: all">
                             <img class="icon-small" src="images/Icons/pause-play.png" alt="Alternate Text">
                         </button>
@@ -1024,8 +1009,49 @@ The original shader was made to work within Shadertoy but had to be slightly mod
     </div>
 
     <div data-role="section-data" class="overlayed-container-item flex-vertical flex-ratio-1" data-page="SDFshader" data-section="Shader">
-        <div class="flex-vertical flex-ratio-1 gap-med tiltCards-parent">
-            <div data-role="section-shader-shadertoy" class="viewer3D-container flex-horizontal thumbnail3D flex-ratio-1 cornerDecorations tiltCards" style="position: relative;">
+        <div data-role="section-viewer" class="flex-vertical flex-ratio-1 gap-med tiltCards-parent" data-scene="shader">
+            <div data-role="section-viewerData" class="viewer-container flex-horizontal thumbnailViewer flex-ratio-1 cornerDecorations tiltCards" data-scene="precision mediump float;
+
+uniform float u_time;
+uniform vec2 u_resolution;
+
+vec3 palette(float t)
+{
+    vec3 a = vec3(1.088, 0.928, 0.928);
+    vec3 b = vec3(0.478, 0.848, 0.638);
+    vec3 c = vec3(0.903, 0.668, 0.608);
+    vec3 d = vec3(1.067, 0.797, 0.528);
+
+    return a + b * cos(6.283185 * (c * t + d));
+}
+
+void main() {
+    vec2 uv = (gl_FragCoord.xy * 2.0 - u_resolution.xy) / u_resolution.y;
+    vec2 uv0 = uv;
+    vec3 finalColor = vec3(0.0);
+
+    for(int i = 0; i < 3; i++) {
+        float fi = float(i);
+        vec3 col = vec3(0.0);
+
+        if(mod(fi, 2.0) == 0.0) col = palette(length(uv0) + fi * 0.4 + u_time / 2.0);
+        else col = palette(length(uv0) + fi * 0.4 - u_time / 2.0);
+
+        uv = fract(uv * 1.7) - 0.5;
+        float dist = length(uv);
+        float frequency = 10.0;
+
+        if(mod(fi, 2.0) == 0.0) dist = sin(dist * frequency + u_time) / frequency;
+        else dist = sin(dist * frequency - u_time) / frequency;
+
+        dist = abs(dist);
+        dist = 0.005 / dist;
+
+        finalColor += col * dist;
+    }
+
+    gl_FragColor = vec4(finalColor, 1.0);
+}" style="position: relative;">
                 <div class="gpu-warning flex-vertical flex-ratio-1 padding-med gap-between">
                     <div class="flex-vertical gap-med">
                         <h1>GPU Not Supported or Inaccessible</h1>
@@ -1056,8 +1082,8 @@ The original shader was made to work within Shadertoy but had to be slightly mod
                         if your GPU is very old or drivers are outdated, enabling acceleration may not work. Updating your graphics drivers can also help.
                     </p>
                 </div>
-                <div class="viewer3D-overlay">
-                    <div class="viewer3D-nav padding-small gap-between">
+                <div class="viewer-overlay">
+                    <div class="viewer-nav padding-small gap-between">
                         <button data-function="toggle-anim" class="button" style="pointer-events: all">
                             <img class="icon-small" src="images/Icons/pause-play.png" alt="Alternate Text">
                         </button>
@@ -1186,8 +1212,8 @@ This 3D model was made for a school assignment for my software development degre
     </div>
 
     <div data-role="section-data" class="overlayed-container-item flex-vertical flex-ratio-1" data-page="Tinyhouse" data-section="3D model">
-        <div class="flex-vertical flex-ratio-1 gap-med tiltCards-parent">
-            <div data-role="section-scene" class="viewer3D-container flex-horizontal thumbnail3D flex-ratio-1 cornerDecorations tiltCards" style="position: relative;">
+        <div data-role="section-viewer" class="flex-vertical flex-ratio-1 gap-med tiltCards-parent" data-scene="scene">
+            <div data-role="section-viewerData" class="viewer-container flex-horizontal thumbnailViewer flex-ratio-1 cornerDecorations tiltCards" data-scene="[object Object]" style="position: relative;">
                 <div class="gpu-warning flex-vertical flex-ratio-1 padding-med gap-between">
                     <div class="flex-vertical gap-med">
                         <h1>GPU Not Supported or Inaccessible</h1>
@@ -1214,11 +1240,12 @@ This 3D model was made for a school assignment for my software development degre
                         <li>Restart Safari if needed.</li>
                     </ol>
 
-                    <p class="sub-p text-grey">if your GPU is very old or drivers are outdated, enabling acceleration may not work. Updating your graphics drivers can also help.
+                    <p class="sub-p text-grey">
+                        if your GPU is very old or drivers are outdated, enabling acceleration may not work. Updating your graphics drivers can also help.
                     </p>
                 </div>
-                <div class="viewer3D-overlay">
-                    <div class="viewer3D-nav padding-small gap-between">
+                <div class="viewer-overlay">
+                    <div class="viewer-nav padding-small gap-between">
                         <button data-function="toggle-anim" class="button" style="pointer-events: all">
                             <img class="icon-small" src="images/Icons/pause-play.png" alt="Alternate Text">
                         </button>
@@ -1266,8 +1293,207 @@ I made a lot of changes to the shader to work with Three.js, in addition i impro
     </div>
 
     <div data-role="section-data" class="overlayed-container-item flex-vertical flex-ratio-1" data-page="RayMarching" data-section="Shader">
-        <div class="flex-vertical flex-ratio-1 gap-med tiltCards-parent">
-            <div data-role="section-shader-shadertoy" class="viewer3D-container flex-horizontal thumbnail3D flex-ratio-1 cornerDecorations tiltCards" style="position: relative;">
+        <div data-role="section-viewer" class="flex-vertical flex-ratio-1 gap-med tiltCards-parent" data-scene="shader">
+            <div data-role="section-viewerData" class="viewer-container flex-horizontal thumbnailViewer flex-ratio-1 cornerDecorations tiltCards" data-scene="precision highp float;
+
+// variables passed from the scene manager
+uniform float u_time;
+uniform vec2 u_resolution;
+uniform vec3 u_camPos;
+uniform vec3 u_camRot;
+uniform float u_camNear;
+uniform float u_camFar;
+uniform float u_scrollModifier;
+
+// basic structure to save data about an object
+struct Transform {
+    vec3 position;
+    vec3 rotation;
+    vec3 scale;
+};
+
+Transform defaultTransform() {
+    Transform t;
+    t.position = vec3(0.0);
+    t.rotation = vec3(0.0);
+    t.scale = vec3(1.0);
+    return t;
+}
+
+// logic handling object rotation
+vec3 rotateX(vec3 p, float angle) {
+    float c = cos(angle);
+    float s = sin(angle);
+    return vec3(p.x, c*p.y - s*p.z, s*p.y + c*p.z);
+}
+
+vec3 rotateY(vec3 p, float angle) {
+    float c = cos(angle);
+    float s = sin(angle);
+    return vec3(c*p.x + s*p.z, p.y, -s*p.x + c*p.z);
+}
+
+vec3 rotateZ(vec3 p, float angle) {
+    float c = cos(angle);
+    float s = sin(angle);
+    return vec3(c*p.x - s*p.y, s*p.x + c*p.y, p.z);
+}
+
+vec3 rot3D(vec3 p, vec3 rot) {
+    p = rotateX(p, rot.x);
+    p = rotateY(p, rot.y);
+    p = rotateZ(p, rot.z);
+    return p;
+}
+
+vec3 applyTransform(vec3 pos, Transform t) {
+    pos -= t.position;
+    pos = rot3D(pos, t.rotation);
+    pos /= t.scale;
+    return pos;
+}
+
+// SDF's for specific shapes
+float sdSphere(vec3 p, float s) {
+    return length(p) - s;
+}
+
+float sdBox(vec3 p, vec3 b) {
+    vec3 q = abs(p) - b;
+    return length(max(q,0.0)) + min(max(q.x,max(q.y,q.z)),0.0);
+}
+
+// operators to combine 2 objects
+float opSmoothUnion(float d1, float d2, float k) {
+    float h = clamp(0.5 + 0.5*(d2-d1)/k, 0.0, 1.0);
+    return mix(d2, d1, h) - k*h*(1.0-h);
+}
+
+// color pallete
+vec3 palette(float t) {
+    vec3 a = vec3(0.681, 0.768, 0.968);
+    vec3 b = vec3(0.245, 0.764, 0.721);
+    vec3 c = vec3(1.202, 0.362, 0.660);
+    vec3 d = vec3(0.481, 3.592, 5.705);
+    return a + b*cos(6.283185*(c*t + d));
+}
+
+
+// returns the local position inside the cell (centered around 0)
+// and outputs the integer cell ID
+vec3 fractCell(vec3 worldPos, float cellSize, out vec3 cellId) {
+    vec3 scaledPos = worldPos / cellSize;
+    cellId = floor(scaledPos);
+    return fract(scaledPos) * cellSize - cellSize * 0.5;
+}
+
+
+// Helper to get a random value based on a position
+float randomValue(vec3 cellId) {
+    cellId = fract(cellId * 0.3183099 + 0.1);
+    cellId *= 17.0;
+    return fract(cellId.x * cellId.y * cellId.z * (cellId.x + cellId.y + cellId.z));
+}
+
+// create the object that is repeated across the scene
+float cubeSphere(vec3 worldPos) {
+    Transform boxTransform = defaultTransform();
+    vec3 cellId;
+    float cellSize = 2.0 * u_scrollModifier;
+
+    // get repeated local position and cell id
+    vec3 repeatedPos = fractCell(worldPos + vec3(0.0, 0.0, u_time), cellSize, cellId);
+
+    // random size per cell
+    float randSize = randomValue(cellId);
+    float size = 0.4 + randSize * 0.1;
+
+    // random rotation per cell
+    boxTransform.rotation = vec3(
+        u_time + randSize * 2.0,
+        u_time + randSize * 2.0,
+        u_time + randSize * 2.0
+    );
+
+    vec3 localPos = applyTransform(repeatedPos, boxTransform);
+    float box = sdBox(localPos, vec3(size));
+    float sphere = sdSphere(localPos, size);
+
+    // smooth saw tooth sine
+    float sine = sin(u_time * 6.283185 / 8.0);
+    float y = tanh(sine * 5.0) * 0.5 + 0.5;
+    
+    return mix(box, sphere, y);
+}
+
+// holds the entire scene to do raymarching on
+float scene(vec3 worldPos) {
+    Transform sphereTransform = defaultTransform();
+    float sphere = sdSphere(applyTransform(worldPos, sphereTransform), 1.0);
+
+    float cubeSphere = cubeSphere(worldPos); 
+
+    return opSmoothUnion(sphere, cubeSphere, 0.4);
+}
+
+// Estimate gradient (normal) of the SDF at a point within the scene
+vec3 estimateNormal(vec3 p) {
+    float eps = 0.001;
+    float dx = scene(p + vec3(eps, 0.0, 0.0)) - scene(p - vec3(eps, 0.0, 0.0));
+    float dy = scene(p + vec3(0.0, eps, 0.0)) - scene(p - vec3(0.0, eps, 0.0));
+    float dz = scene(p + vec3(0.0, 0.0, eps)) - scene(p - vec3(0.0, 0.0, eps));
+    return normalize(vec3(dx, dy, dz));
+}
+
+// handles the shading of the scene, in a toony style
+vec3 shadeScene(vec3 sceneColor, vec3 hitPos, vec3 rayDir, float rayDistance) {
+    vec3 normal = vec3(0.0);
+    vec3 lightDir = normalize(vec3(-1.0, 1.0, -1.0));
+    float lighting = 1.0;
+
+    bool hit = (rayDistance < u_camFar);
+    if(hit) {
+        normal = estimateNormal(hitPos);
+
+        // Lambertian shading
+        float diffuse = clamp(dot(normal, lightDir), 0.0, 1.0);
+
+        int steps = 3;
+        diffuse = floor(diffuse * float(steps)) / float(steps);
+
+        // Add ambient
+        float ambient = 0.7;
+        lighting = ambient + (1.0 - ambient) * diffuse;
+    }
+
+    return hit ? sceneColor * lighting : sceneColor;
+}
+
+void main() {
+    vec2 uv = (gl_FragCoord.xy * 2.0 - u_resolution.xy) / u_resolution.y;
+    vec3 col = vec3(0.0);
+
+    Transform cameraTransform = defaultTransform();
+    cameraTransform.position = u_camPos;
+    vec3 rayDir = rot3D(normalize(vec3(uv, 1.0)), u_camRot);
+
+    // the actual raymarching
+    float rayDistance = 0.0;
+    vec3 hitPos;
+    int i;
+    for(i = 0; i < 100; i++){
+        hitPos = cameraTransform.position + rayDir * rayDistance;
+        float distance = scene(hitPos);
+        rayDistance += distance;
+        if(distance < u_camNear || rayDistance > u_camFar) break;
+    }
+
+    // Base color from depth, and add shading
+    col = palette(rayDistance / u_camFar * 2.5);
+    col = shadeScene(col, hitPos, rayDir, rayDistance);
+
+    gl_FragColor = vec4(col, 1.0);
+}" style="position: relative;">
                 <div class="gpu-warning flex-vertical flex-ratio-1 padding-med gap-between">
                     <div class="flex-vertical gap-med">
                         <h1>GPU Not Supported or Inaccessible</h1>
@@ -1298,8 +1524,8 @@ I made a lot of changes to the shader to work with Three.js, in addition i impro
                         if your GPU is very old or drivers are outdated, enabling acceleration may not work. Updating your graphics drivers can also help.
                     </p>
                 </div>
-                <div class="viewer3D-overlay">
-                    <div class="viewer3D-nav padding-small gap-between">
+                <div class="viewer-overlay">
+                    <div class="viewer-nav padding-small gap-between">
                         <button data-function="toggle-anim" class="button" style="pointer-events: all">
                             <img class="icon-small" src="images/Icons/pause-play.png" alt="Alternate Text">
                         </button>
@@ -1528,511 +1754,6 @@ Transform <span class="token function">defaultTransform</span><span class="token
 </div>
         </div>
     </div>
-
-    <div data-role="project-data" class="overlayed-container-item flex-ratio-1 flex-vertical" data-page="Howlingmoon">
-        <div class="flex-vertical gap-med padding-small flex-ratio-1 tiltCards-parent">
-            <div class="text-container flex-horizontal flex-vertical-tablet-thin flex-center-items gap-between cornerDecorations tiltCards" style="position: relative;">
-                <h1 data-role="project-title">Howling moon</h1>
-                <div class="flex-horizontal-wrap flex-allign-center gap-small">
-                    <button data-function="random-project" class="button">
-                        <p>Random Project</p>
-                    </button>
-                    <button data-function="projects" class="button" data-page="main" data-section="projects">
-                        <p>Projects</p>
-                    </button>
-                </div>
-            <div class="cornerDecorations-container"><img src="images/Icons/triangle.svg" class="cornerDecorations-corner cornerDecorations-top-left" style="--cornerDecorations-rotation: 0deg; --cornerDecorations-size: var(--text-size);"><img src="images/Icons/triangle.svg" class="cornerDecorations-corner cornerDecorations-top-right" style="--cornerDecorations-rotation: 90deg; --cornerDecorations-size: var(--text-size);"><img src="images/Icons/triangle.svg" class="cornerDecorations-corner cornerDecorations-bottom-left" style="--cornerDecorations-rotation: 270deg; --cornerDecorations-size: var(--text-size);"><img src="images/Icons/triangle.svg" class="cornerDecorations-corner cornerDecorations-bottom-right" style="--cornerDecorations-rotation: 180deg; --cornerDecorations-size: var(--text-size);"></div></div>
-            <div data-role="section-container" class="overlayed-container flex-ratio-1">
-    <div data-role="section-data" class="overlayed-container-item flex-vertical" data-page="Howlingmoon" data-section="about">
-        <div class="flex-horizontal flex-vertical-tablet-thin flex-ratio-1 gap-med tiltCards-parent">
-            <div class="text-container flex-vertical flex-ratio-2 cornerDecorations tiltCards" style="position: relative;">
-                <h1 data-role="section-name">about</h1>
-                <p data-role="section-description" class="text-grey">Howling moon is a solo school project i worked on for ~3 weeks, i made the game logic, all 3D assets and more.
-
-The goal of the game is to fight, gather stronger cards by summoning them with currency.
-
-The main game functions were done by the end of the project, but balancing and refining the loop to feel more rewarding weren't achievable.</p>
-            <div class="cornerDecorations-container"><img src="images/Icons/triangle.svg" class="cornerDecorations-corner cornerDecorations-top-left" style="--cornerDecorations-rotation: 0deg; --cornerDecorations-size: var(--text-size);"><img src="images/Icons/triangle.svg" class="cornerDecorations-corner cornerDecorations-top-right" style="--cornerDecorations-rotation: 90deg; --cornerDecorations-size: var(--text-size);"><img src="images/Icons/triangle.svg" class="cornerDecorations-corner cornerDecorations-bottom-left" style="--cornerDecorations-rotation: 270deg; --cornerDecorations-size: var(--text-size);"><img src="images/Icons/triangle.svg" class="cornerDecorations-corner cornerDecorations-bottom-right" style="--cornerDecorations-rotation: 180deg; --cornerDecorations-size: var(--text-size);"></div></div>
-            <div class="flex-vertical flex-ratio-3 tiltCards-parent">
-                <div class="image-container flex-ratio-1 cornerDecorations tiltCards" style="position: relative;">
-                    <img data-role="section-image" data-src="projects/HowlingMoon/Thumbnail.png" class="thumbnail" alt="Icons">
-                <div class="cornerDecorations-container"><img src="images/Icons/triangle.svg" class="cornerDecorations-corner cornerDecorations-top-left" style="--cornerDecorations-rotation: 0deg; --cornerDecorations-size: var(--text-size);"><img src="images/Icons/triangle.svg" class="cornerDecorations-corner cornerDecorations-top-right" style="--cornerDecorations-rotation: 90deg; --cornerDecorations-size: var(--text-size);"><img src="images/Icons/triangle.svg" class="cornerDecorations-corner cornerDecorations-bottom-left" style="--cornerDecorations-rotation: 270deg; --cornerDecorations-size: var(--text-size);"><img src="images/Icons/triangle.svg" class="cornerDecorations-corner cornerDecorations-bottom-right" style="--cornerDecorations-rotation: 180deg; --cornerDecorations-size: var(--text-size);"></div></div>
-            </div>
-        </div>
-    </div>
-
-    <div data-role="section-data" class="overlayed-container-item flex-vertical" data-page="Howlingmoon" data-section="gallery">
-        <div data-role="section-images" class="flex-horizontal flex-ratio-1 gap-med">
-            
-            
-            <div id="gallery-3" class="thumbnail-group flex-horizontal flex-vertical-tablet-thin flex-ratio-1 gap-med tiltCards-parent">
-                <div class="image-container flex-ratio-1 cornerDecorations tiltCards" style="position: relative;">
-                    <img data-src="projects/HowlingMoon/Thumbnail.png" class="thumbnail" alt="Icons">
-                <div class="cornerDecorations-container"><img src="images/Icons/triangle.svg" class="cornerDecorations-corner cornerDecorations-top-left" style="--cornerDecorations-rotation: 0deg; --cornerDecorations-size: var(--text-size);"><img src="images/Icons/triangle.svg" class="cornerDecorations-corner cornerDecorations-top-right" style="--cornerDecorations-rotation: 90deg; --cornerDecorations-size: var(--text-size);"><img src="images/Icons/triangle.svg" class="cornerDecorations-corner cornerDecorations-bottom-left" style="--cornerDecorations-rotation: 270deg; --cornerDecorations-size: var(--text-size);"><img src="images/Icons/triangle.svg" class="cornerDecorations-corner cornerDecorations-bottom-right" style="--cornerDecorations-rotation: 180deg; --cornerDecorations-size: var(--text-size);"></div></div>
-                <div class="image-container flex-ratio-1 cornerDecorations tiltCards" style="position: relative;">
-                    <img data-src="projects/HowlingMoon/Summoning.png" class="thumbnail" alt="Icons">
-                <div class="cornerDecorations-container"><img src="images/Icons/triangle.svg" class="cornerDecorations-corner cornerDecorations-top-left" style="--cornerDecorations-rotation: 0deg; --cornerDecorations-size: var(--text-size);"><img src="images/Icons/triangle.svg" class="cornerDecorations-corner cornerDecorations-top-right" style="--cornerDecorations-rotation: 90deg; --cornerDecorations-size: var(--text-size);"><img src="images/Icons/triangle.svg" class="cornerDecorations-corner cornerDecorations-bottom-left" style="--cornerDecorations-rotation: 270deg; --cornerDecorations-size: var(--text-size);"><img src="images/Icons/triangle.svg" class="cornerDecorations-corner cornerDecorations-bottom-right" style="--cornerDecorations-rotation: 180deg; --cornerDecorations-size: var(--text-size);"></div></div>
-                <div class="image-container flex-ratio-1 cornerDecorations tiltCards" style="position: relative;">
-                    <img data-src="projects/HowlingMoon/Combat.png" class="thumbnail" alt="Icons">
-                <div class="cornerDecorations-container"><img src="images/Icons/triangle.svg" class="cornerDecorations-corner cornerDecorations-top-left" style="--cornerDecorations-rotation: 0deg; --cornerDecorations-size: var(--text-size);"><img src="images/Icons/triangle.svg" class="cornerDecorations-corner cornerDecorations-top-right" style="--cornerDecorations-rotation: 90deg; --cornerDecorations-size: var(--text-size);"><img src="images/Icons/triangle.svg" class="cornerDecorations-corner cornerDecorations-bottom-left" style="--cornerDecorations-rotation: 270deg; --cornerDecorations-size: var(--text-size);"><img src="images/Icons/triangle.svg" class="cornerDecorations-corner cornerDecorations-bottom-right" style="--cornerDecorations-rotation: 180deg; --cornerDecorations-size: var(--text-size);"></div></div>
-            </div>
-            
-            
-        </div>
-    </div>
-
-    <div data-role="section-data" class="overlayed-container-item flex-vertical tiltCards-parent" data-page="Howlingmoon" data-section="video">
-        <div class="flex-horizontal flex-ratio-1 gap-med image-container cornerDecorations tiltCards" style="position: relative;">
-            <div class="flex-horizontal flex-vertical-tablet-thin flex-ratio-1 gap-med">
-                <div class="backgroundBlack"></div>
-                <img class="fit-parent backgroundImg" data-role="section-poster" src="" alt="Alternate Text" data-src="projects/Combat.png">
-                <video data-role="section-poster" id="my-video" class="video-js flex-vertical fit-parent height-400-tablet height-200-phone" controls="" preload="auto" poster="projects/Combat.png">
-                    <source data-role="section-video" src="projects/2025-11-15_00-55-33.mp4" type="video/mp4">
-                    <p class="vjs-no-js">
-                        To view this video please enable JavaScript, and consider upgrading to a
-                        web browser that
-                        <a href="https://videojs.com/html5-video-support/" target="_blank">supports HTML5 video</a>
-                    </p>
-                </video>
-            </div>
-        <div class="cornerDecorations-container"><img src="images/Icons/triangle.svg" class="cornerDecorations-corner cornerDecorations-top-left" style="--cornerDecorations-rotation: 0deg; --cornerDecorations-size: var(--text-size);"><img src="images/Icons/triangle.svg" class="cornerDecorations-corner cornerDecorations-top-right" style="--cornerDecorations-rotation: 90deg; --cornerDecorations-size: var(--text-size);"><img src="images/Icons/triangle.svg" class="cornerDecorations-corner cornerDecorations-bottom-left" style="--cornerDecorations-rotation: 270deg; --cornerDecorations-size: var(--text-size);"><img src="images/Icons/triangle.svg" class="cornerDecorations-corner cornerDecorations-bottom-right" style="--cornerDecorations-rotation: 180deg; --cornerDecorations-size: var(--text-size);"></div></div>
-    </div>
-
-    <div data-role="section-data" class="overlayed-container-item flex-vertical flex-ratio-1" data-page="Howlingmoon" data-section="code">
-        <div class="flex-horizontal flex-ratio-1 gap-med tiltCards-parent">
-            <div data-role="section-scripts" class="text-container flex-vertical flex-ratio-1 height-600-tablet fit-parent cornerDecorations tiltCards" style="position: relative;">
-                <div class="code-button-container flex-horizontal-wrap gap-small">
-                    
-                <button class="code-button" data-role="script-select" data-script="HowlingmoonMain.glsl">
-                        <p data-role="script-name" class="sub-p">Main.glsl</p>
-                    </button><button class="code-button" data-role="script-select" data-script="HowlingmoonEnemyMovement.cs">
-                        <p data-role="script-name" class="sub-p">EnemyMovement.cs</p>
-                    </button></div>
-
-                
-            <pre data-role="script-container" class="code-view flex-vertical language-glsl" data-script="HowlingmoonMain.glsl" tabindex="0"><code data-role="script-code" class="language-glsl"><span class="token keyword">precision</span> <span class="token keyword">highp</span> <span class="token keyword">float</span><span class="token punctuation">;</span>
-
-<span class="token comment">// variables passed from the scene manager</span>
-<span class="token keyword">uniform</span> <span class="token keyword">float</span> u_time<span class="token punctuation">;</span>
-<span class="token keyword">uniform</span> <span class="token keyword">vec2</span> u_resolution<span class="token punctuation">;</span>
-<span class="token keyword">uniform</span> <span class="token keyword">vec3</span> u_camPos<span class="token punctuation">;</span>
-<span class="token keyword">uniform</span> <span class="token keyword">vec3</span> u_camRot<span class="token punctuation">;</span>
-<span class="token keyword">uniform</span> <span class="token keyword">float</span> u_camNear<span class="token punctuation">;</span>
-<span class="token keyword">uniform</span> <span class="token keyword">float</span> u_camFar<span class="token punctuation">;</span>
-<span class="token keyword">uniform</span> <span class="token keyword">float</span> u_scrollModifier<span class="token punctuation">;</span>
-
-<span class="token comment">// basic structure to save data about an object</span>
-<span class="token keyword">struct</span> <span class="token class-name">Transform</span> <span class="token punctuation">{</span>
-    <span class="token keyword">vec3</span> position<span class="token punctuation">;</span>
-    <span class="token keyword">vec3</span> rotation<span class="token punctuation">;</span>
-    <span class="token keyword">vec3</span> scale<span class="token punctuation">;</span>
-<span class="token punctuation">}</span><span class="token punctuation">;</span>
-
-Transform <span class="token function">defaultTransform</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-    Transform t<span class="token punctuation">;</span>
-    t<span class="token punctuation">.</span>position <span class="token operator">=</span> <span class="token keyword">vec3</span><span class="token punctuation">(</span><span class="token number">0.0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    t<span class="token punctuation">.</span>rotation <span class="token operator">=</span> <span class="token keyword">vec3</span><span class="token punctuation">(</span><span class="token number">0.0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    t<span class="token punctuation">.</span>scale <span class="token operator">=</span> <span class="token keyword">vec3</span><span class="token punctuation">(</span><span class="token number">1.0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token keyword">return</span> t<span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-
-<span class="token comment">// logic handling object rotation</span>
-<span class="token keyword">vec3</span> <span class="token function">rotateX</span><span class="token punctuation">(</span><span class="token keyword">vec3</span> p<span class="token punctuation">,</span> <span class="token keyword">float</span> angle<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-    <span class="token keyword">float</span> c <span class="token operator">=</span> <span class="token function">cos</span><span class="token punctuation">(</span>angle<span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token keyword">float</span> s <span class="token operator">=</span> <span class="token function">sin</span><span class="token punctuation">(</span>angle<span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token keyword">return</span> <span class="token keyword">vec3</span><span class="token punctuation">(</span>p<span class="token punctuation">.</span>x<span class="token punctuation">,</span> c<span class="token operator">*</span>p<span class="token punctuation">.</span>y <span class="token operator">-</span> s<span class="token operator">*</span>p<span class="token punctuation">.</span>z<span class="token punctuation">,</span> s<span class="token operator">*</span>p<span class="token punctuation">.</span>y <span class="token operator">+</span> c<span class="token operator">*</span>p<span class="token punctuation">.</span>z<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-
-<span class="token keyword">vec3</span> <span class="token function">rotateY</span><span class="token punctuation">(</span><span class="token keyword">vec3</span> p<span class="token punctuation">,</span> <span class="token keyword">float</span> angle<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-    <span class="token keyword">float</span> c <span class="token operator">=</span> <span class="token function">cos</span><span class="token punctuation">(</span>angle<span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token keyword">float</span> s <span class="token operator">=</span> <span class="token function">sin</span><span class="token punctuation">(</span>angle<span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token keyword">return</span> <span class="token keyword">vec3</span><span class="token punctuation">(</span>c<span class="token operator">*</span>p<span class="token punctuation">.</span>x <span class="token operator">+</span> s<span class="token operator">*</span>p<span class="token punctuation">.</span>z<span class="token punctuation">,</span> p<span class="token punctuation">.</span>y<span class="token punctuation">,</span> <span class="token operator">-</span>s<span class="token operator">*</span>p<span class="token punctuation">.</span>x <span class="token operator">+</span> c<span class="token operator">*</span>p<span class="token punctuation">.</span>z<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-
-<span class="token keyword">vec3</span> <span class="token function">rotateZ</span><span class="token punctuation">(</span><span class="token keyword">vec3</span> p<span class="token punctuation">,</span> <span class="token keyword">float</span> angle<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-    <span class="token keyword">float</span> c <span class="token operator">=</span> <span class="token function">cos</span><span class="token punctuation">(</span>angle<span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token keyword">float</span> s <span class="token operator">=</span> <span class="token function">sin</span><span class="token punctuation">(</span>angle<span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token keyword">return</span> <span class="token keyword">vec3</span><span class="token punctuation">(</span>c<span class="token operator">*</span>p<span class="token punctuation">.</span>x <span class="token operator">-</span> s<span class="token operator">*</span>p<span class="token punctuation">.</span>y<span class="token punctuation">,</span> s<span class="token operator">*</span>p<span class="token punctuation">.</span>x <span class="token operator">+</span> c<span class="token operator">*</span>p<span class="token punctuation">.</span>y<span class="token punctuation">,</span> p<span class="token punctuation">.</span>z<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-
-<span class="token keyword">vec3</span> <span class="token function">rot3D</span><span class="token punctuation">(</span><span class="token keyword">vec3</span> p<span class="token punctuation">,</span> <span class="token keyword">vec3</span> rot<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-    p <span class="token operator">=</span> <span class="token function">rotateX</span><span class="token punctuation">(</span>p<span class="token punctuation">,</span> rot<span class="token punctuation">.</span>x<span class="token punctuation">)</span><span class="token punctuation">;</span>
-    p <span class="token operator">=</span> <span class="token function">rotateY</span><span class="token punctuation">(</span>p<span class="token punctuation">,</span> rot<span class="token punctuation">.</span>y<span class="token punctuation">)</span><span class="token punctuation">;</span>
-    p <span class="token operator">=</span> <span class="token function">rotateZ</span><span class="token punctuation">(</span>p<span class="token punctuation">,</span> rot<span class="token punctuation">.</span>z<span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token keyword">return</span> p<span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-
-<span class="token keyword">vec3</span> <span class="token function">applyTransform</span><span class="token punctuation">(</span><span class="token keyword">vec3</span> pos<span class="token punctuation">,</span> Transform t<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-    pos <span class="token operator">-=</span> t<span class="token punctuation">.</span>position<span class="token punctuation">;</span>
-    pos <span class="token operator">=</span> <span class="token function">rot3D</span><span class="token punctuation">(</span>pos<span class="token punctuation">,</span> t<span class="token punctuation">.</span>rotation<span class="token punctuation">)</span><span class="token punctuation">;</span>
-    pos <span class="token operator">/=</span> t<span class="token punctuation">.</span>scale<span class="token punctuation">;</span>
-    <span class="token keyword">return</span> pos<span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-
-<span class="token comment">// SDF's for specific shapes</span>
-<span class="token keyword">float</span> <span class="token function">sdSphere</span><span class="token punctuation">(</span><span class="token keyword">vec3</span> p<span class="token punctuation">,</span> <span class="token keyword">float</span> s<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-    <span class="token keyword">return</span> <span class="token function">length</span><span class="token punctuation">(</span>p<span class="token punctuation">)</span> <span class="token operator">-</span> s<span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-
-<span class="token keyword">float</span> <span class="token function">sdBox</span><span class="token punctuation">(</span><span class="token keyword">vec3</span> p<span class="token punctuation">,</span> <span class="token keyword">vec3</span> b<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-    <span class="token keyword">vec3</span> q <span class="token operator">=</span> <span class="token function">abs</span><span class="token punctuation">(</span>p<span class="token punctuation">)</span> <span class="token operator">-</span> b<span class="token punctuation">;</span>
-    <span class="token keyword">return</span> <span class="token function">length</span><span class="token punctuation">(</span><span class="token function">max</span><span class="token punctuation">(</span>q<span class="token punctuation">,</span><span class="token number">0.0</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token function">min</span><span class="token punctuation">(</span><span class="token function">max</span><span class="token punctuation">(</span>q<span class="token punctuation">.</span>x<span class="token punctuation">,</span><span class="token function">max</span><span class="token punctuation">(</span>q<span class="token punctuation">.</span>y<span class="token punctuation">,</span>q<span class="token punctuation">.</span>z<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">,</span><span class="token number">0.0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-
-<span class="token comment">// operators to combine 2 objects</span>
-<span class="token keyword">float</span> <span class="token function">opSmoothUnion</span><span class="token punctuation">(</span><span class="token keyword">float</span> d1<span class="token punctuation">,</span> <span class="token keyword">float</span> d2<span class="token punctuation">,</span> <span class="token keyword">float</span> k<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-    <span class="token keyword">float</span> h <span class="token operator">=</span> <span class="token function">clamp</span><span class="token punctuation">(</span><span class="token number">0.5</span> <span class="token operator">+</span> <span class="token number">0.5</span><span class="token operator">*</span><span class="token punctuation">(</span>d2<span class="token operator">-</span>d1<span class="token punctuation">)</span><span class="token operator">/</span>k<span class="token punctuation">,</span> <span class="token number">0.0</span><span class="token punctuation">,</span> <span class="token number">1.0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token keyword">return</span> <span class="token function">mix</span><span class="token punctuation">(</span>d2<span class="token punctuation">,</span> d1<span class="token punctuation">,</span> h<span class="token punctuation">)</span> <span class="token operator">-</span> k<span class="token operator">*</span>h<span class="token operator">*</span><span class="token punctuation">(</span><span class="token number">1.0</span><span class="token operator">-</span>h<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-
-<span class="token comment">// color pallete</span>
-<span class="token keyword">vec3</span> <span class="token function">palette</span><span class="token punctuation">(</span><span class="token keyword">float</span> t<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-    <span class="token keyword">vec3</span> a <span class="token operator">=</span> <span class="token keyword">vec3</span><span class="token punctuation">(</span><span class="token number">0.681</span><span class="token punctuation">,</span> <span class="token number">0.768</span><span class="token punctuation">,</span> <span class="token number">0.968</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token keyword">vec3</span> b <span class="token operator">=</span> <span class="token keyword">vec3</span><span class="token punctuation">(</span><span class="token number">0.245</span><span class="token punctuation">,</span> <span class="token number">0.764</span><span class="token punctuation">,</span> <span class="token number">0.721</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token keyword">vec3</span> c <span class="token operator">=</span> <span class="token keyword">vec3</span><span class="token punctuation">(</span><span class="token number">1.202</span><span class="token punctuation">,</span> <span class="token number">0.362</span><span class="token punctuation">,</span> <span class="token number">0.660</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token keyword">vec3</span> d <span class="token operator">=</span> <span class="token keyword">vec3</span><span class="token punctuation">(</span><span class="token number">0.481</span><span class="token punctuation">,</span> <span class="token number">3.592</span><span class="token punctuation">,</span> <span class="token number">5.705</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token keyword">return</span> a <span class="token operator">+</span> b<span class="token operator">*</span><span class="token function">cos</span><span class="token punctuation">(</span><span class="token number">6.283185</span><span class="token operator">*</span><span class="token punctuation">(</span>c<span class="token operator">*</span>t <span class="token operator">+</span> d<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-
-
-<span class="token comment">// returns the local position inside the cell (centered around 0)</span>
-<span class="token comment">// and outputs the integer cell ID</span>
-<span class="token keyword">vec3</span> <span class="token function">fractCell</span><span class="token punctuation">(</span><span class="token keyword">vec3</span> worldPos<span class="token punctuation">,</span> <span class="token keyword">float</span> cellSize<span class="token punctuation">,</span> <span class="token keyword">out</span> <span class="token keyword">vec3</span> cellId<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-    <span class="token keyword">vec3</span> scaledPos <span class="token operator">=</span> worldPos <span class="token operator">/</span> cellSize<span class="token punctuation">;</span>
-    cellId <span class="token operator">=</span> <span class="token function">floor</span><span class="token punctuation">(</span>scaledPos<span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token keyword">return</span> <span class="token function">fract</span><span class="token punctuation">(</span>scaledPos<span class="token punctuation">)</span> <span class="token operator">*</span> cellSize <span class="token operator">-</span> cellSize <span class="token operator">*</span> <span class="token number">0.5</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-
-
-<span class="token comment">// Helper to get a random value based on a position</span>
-<span class="token keyword">float</span> <span class="token function">randomValue</span><span class="token punctuation">(</span><span class="token keyword">vec3</span> cellId<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-    cellId <span class="token operator">=</span> <span class="token function">fract</span><span class="token punctuation">(</span>cellId <span class="token operator">*</span> <span class="token number">0.3183099</span> <span class="token operator">+</span> <span class="token number">0.1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    cellId <span class="token operator">*=</span> <span class="token number">17.0</span><span class="token punctuation">;</span>
-    <span class="token keyword">return</span> <span class="token function">fract</span><span class="token punctuation">(</span>cellId<span class="token punctuation">.</span>x <span class="token operator">*</span> cellId<span class="token punctuation">.</span>y <span class="token operator">*</span> cellId<span class="token punctuation">.</span>z <span class="token operator">*</span> <span class="token punctuation">(</span>cellId<span class="token punctuation">.</span>x <span class="token operator">+</span> cellId<span class="token punctuation">.</span>y <span class="token operator">+</span> cellId<span class="token punctuation">.</span>z<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-
-<span class="token comment">// create the object that is repeated across the scene</span>
-<span class="token keyword">float</span> <span class="token function">cubeSphere</span><span class="token punctuation">(</span><span class="token keyword">vec3</span> worldPos<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-    Transform boxTransform <span class="token operator">=</span> <span class="token function">defaultTransform</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token keyword">vec3</span> cellId<span class="token punctuation">;</span>
-    <span class="token keyword">float</span> cellSize <span class="token operator">=</span> <span class="token number">2.0</span> <span class="token operator">*</span> u_scrollModifier<span class="token punctuation">;</span>
-
-    <span class="token comment">// get repeated local position and cell id</span>
-    <span class="token keyword">vec3</span> repeatedPos <span class="token operator">=</span> <span class="token function">fractCell</span><span class="token punctuation">(</span>worldPos <span class="token operator">+</span> <span class="token keyword">vec3</span><span class="token punctuation">(</span><span class="token number">0.0</span><span class="token punctuation">,</span> <span class="token number">0.0</span><span class="token punctuation">,</span> u_time<span class="token punctuation">)</span><span class="token punctuation">,</span> cellSize<span class="token punctuation">,</span> cellId<span class="token punctuation">)</span><span class="token punctuation">;</span>
-
-    <span class="token comment">// random size per cell</span>
-    <span class="token keyword">float</span> randSize <span class="token operator">=</span> <span class="token function">randomValue</span><span class="token punctuation">(</span>cellId<span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token keyword">float</span> size <span class="token operator">=</span> <span class="token number">0.4</span> <span class="token operator">+</span> randSize <span class="token operator">*</span> <span class="token number">0.1</span><span class="token punctuation">;</span>
-
-    <span class="token comment">// random rotation per cell</span>
-    boxTransform<span class="token punctuation">.</span>rotation <span class="token operator">=</span> <span class="token keyword">vec3</span><span class="token punctuation">(</span>
-        u_time <span class="token operator">+</span> randSize <span class="token operator">*</span> <span class="token number">2.0</span><span class="token punctuation">,</span>
-        u_time <span class="token operator">+</span> randSize <span class="token operator">*</span> <span class="token number">2.0</span><span class="token punctuation">,</span>
-        u_time <span class="token operator">+</span> randSize <span class="token operator">*</span> <span class="token number">2.0</span>
-    <span class="token punctuation">)</span><span class="token punctuation">;</span>
-
-    <span class="token keyword">vec3</span> localPos <span class="token operator">=</span> <span class="token function">applyTransform</span><span class="token punctuation">(</span>repeatedPos<span class="token punctuation">,</span> boxTransform<span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token keyword">float</span> box <span class="token operator">=</span> <span class="token function">sdBox</span><span class="token punctuation">(</span>localPos<span class="token punctuation">,</span> <span class="token keyword">vec3</span><span class="token punctuation">(</span>size<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token keyword">float</span> sphere <span class="token operator">=</span> <span class="token function">sdSphere</span><span class="token punctuation">(</span>localPos<span class="token punctuation">,</span> size<span class="token punctuation">)</span><span class="token punctuation">;</span>
-
-    <span class="token comment">// smooth saw tooth sine</span>
-    <span class="token keyword">float</span> sine <span class="token operator">=</span> <span class="token function">sin</span><span class="token punctuation">(</span>u_time <span class="token operator">*</span> <span class="token number">6.283185</span> <span class="token operator">/</span> <span class="token number">8.0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token keyword">float</span> y <span class="token operator">=</span> <span class="token function">tanh</span><span class="token punctuation">(</span>sine <span class="token operator">*</span> <span class="token number">5.0</span><span class="token punctuation">)</span> <span class="token operator">*</span> <span class="token number">0.5</span> <span class="token operator">+</span> <span class="token number">0.5</span><span class="token punctuation">;</span>
-    
-    <span class="token keyword">return</span> <span class="token function">mix</span><span class="token punctuation">(</span>box<span class="token punctuation">,</span> sphere<span class="token punctuation">,</span> y<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-
-<span class="token comment">// holds the entire scene to do raymarching on</span>
-<span class="token keyword">float</span> <span class="token function">scene</span><span class="token punctuation">(</span><span class="token keyword">vec3</span> worldPos<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-    Transform sphereTransform <span class="token operator">=</span> <span class="token function">defaultTransform</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token keyword">float</span> sphere <span class="token operator">=</span> <span class="token function">sdSphere</span><span class="token punctuation">(</span><span class="token function">applyTransform</span><span class="token punctuation">(</span>worldPos<span class="token punctuation">,</span> sphereTransform<span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token number">1.0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-
-    <span class="token keyword">float</span> cubeSphere <span class="token operator">=</span> <span class="token function">cubeSphere</span><span class="token punctuation">(</span>worldPos<span class="token punctuation">)</span><span class="token punctuation">;</span> 
-
-    <span class="token keyword">return</span> <span class="token function">opSmoothUnion</span><span class="token punctuation">(</span>sphere<span class="token punctuation">,</span> cubeSphere<span class="token punctuation">,</span> <span class="token number">0.4</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-
-<span class="token comment">// Estimate gradient (normal) of the SDF at a point within the scene</span>
-<span class="token keyword">vec3</span> <span class="token function">estimateNormal</span><span class="token punctuation">(</span><span class="token keyword">vec3</span> p<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-    <span class="token keyword">float</span> eps <span class="token operator">=</span> <span class="token number">0.001</span><span class="token punctuation">;</span>
-    <span class="token keyword">float</span> dx <span class="token operator">=</span> <span class="token function">scene</span><span class="token punctuation">(</span>p <span class="token operator">+</span> <span class="token keyword">vec3</span><span class="token punctuation">(</span>eps<span class="token punctuation">,</span> <span class="token number">0.0</span><span class="token punctuation">,</span> <span class="token number">0.0</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token operator">-</span> <span class="token function">scene</span><span class="token punctuation">(</span>p <span class="token operator">-</span> <span class="token keyword">vec3</span><span class="token punctuation">(</span>eps<span class="token punctuation">,</span> <span class="token number">0.0</span><span class="token punctuation">,</span> <span class="token number">0.0</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token keyword">float</span> dy <span class="token operator">=</span> <span class="token function">scene</span><span class="token punctuation">(</span>p <span class="token operator">+</span> <span class="token keyword">vec3</span><span class="token punctuation">(</span><span class="token number">0.0</span><span class="token punctuation">,</span> eps<span class="token punctuation">,</span> <span class="token number">0.0</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token operator">-</span> <span class="token function">scene</span><span class="token punctuation">(</span>p <span class="token operator">-</span> <span class="token keyword">vec3</span><span class="token punctuation">(</span><span class="token number">0.0</span><span class="token punctuation">,</span> eps<span class="token punctuation">,</span> <span class="token number">0.0</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token keyword">float</span> dz <span class="token operator">=</span> <span class="token function">scene</span><span class="token punctuation">(</span>p <span class="token operator">+</span> <span class="token keyword">vec3</span><span class="token punctuation">(</span><span class="token number">0.0</span><span class="token punctuation">,</span> <span class="token number">0.0</span><span class="token punctuation">,</span> eps<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token operator">-</span> <span class="token function">scene</span><span class="token punctuation">(</span>p <span class="token operator">-</span> <span class="token keyword">vec3</span><span class="token punctuation">(</span><span class="token number">0.0</span><span class="token punctuation">,</span> <span class="token number">0.0</span><span class="token punctuation">,</span> eps<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token keyword">return</span> <span class="token function">normalize</span><span class="token punctuation">(</span><span class="token keyword">vec3</span><span class="token punctuation">(</span>dx<span class="token punctuation">,</span> dy<span class="token punctuation">,</span> dz<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-
-<span class="token comment">// handles the shading of the scene, in a toony style</span>
-<span class="token keyword">vec3</span> <span class="token function">shadeScene</span><span class="token punctuation">(</span><span class="token keyword">vec3</span> sceneColor<span class="token punctuation">,</span> <span class="token keyword">vec3</span> hitPos<span class="token punctuation">,</span> <span class="token keyword">vec3</span> rayDir<span class="token punctuation">,</span> <span class="token keyword">float</span> rayDistance<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-    <span class="token keyword">vec3</span> normal <span class="token operator">=</span> <span class="token keyword">vec3</span><span class="token punctuation">(</span><span class="token number">0.0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token keyword">vec3</span> lightDir <span class="token operator">=</span> <span class="token function">normalize</span><span class="token punctuation">(</span><span class="token keyword">vec3</span><span class="token punctuation">(</span><span class="token operator">-</span><span class="token number">1.0</span><span class="token punctuation">,</span> <span class="token number">1.0</span><span class="token punctuation">,</span> <span class="token operator">-</span><span class="token number">1.0</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token keyword">float</span> lighting <span class="token operator">=</span> <span class="token number">1.0</span><span class="token punctuation">;</span>
-
-    <span class="token keyword">bool</span> hit <span class="token operator">=</span> <span class="token punctuation">(</span>rayDistance <span class="token operator">&lt;</span> u_camFar<span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token keyword">if</span><span class="token punctuation">(</span>hit<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        normal <span class="token operator">=</span> <span class="token function">estimateNormal</span><span class="token punctuation">(</span>hitPos<span class="token punctuation">)</span><span class="token punctuation">;</span>
-
-        <span class="token comment">// Lambertian shading</span>
-        <span class="token keyword">float</span> diffuse <span class="token operator">=</span> <span class="token function">clamp</span><span class="token punctuation">(</span><span class="token function">dot</span><span class="token punctuation">(</span>normal<span class="token punctuation">,</span> lightDir<span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token number">0.0</span><span class="token punctuation">,</span> <span class="token number">1.0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-
-        <span class="token keyword">int</span> steps <span class="token operator">=</span> <span class="token number">3</span><span class="token punctuation">;</span>
-        diffuse <span class="token operator">=</span> <span class="token function">floor</span><span class="token punctuation">(</span>diffuse <span class="token operator">*</span> <span class="token keyword">float</span><span class="token punctuation">(</span>steps<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token operator">/</span> <span class="token keyword">float</span><span class="token punctuation">(</span>steps<span class="token punctuation">)</span><span class="token punctuation">;</span>
-
-        <span class="token comment">// Add ambient</span>
-        <span class="token keyword">float</span> ambient <span class="token operator">=</span> <span class="token number">0.7</span><span class="token punctuation">;</span>
-        lighting <span class="token operator">=</span> ambient <span class="token operator">+</span> <span class="token punctuation">(</span><span class="token number">1.0</span> <span class="token operator">-</span> ambient<span class="token punctuation">)</span> <span class="token operator">*</span> diffuse<span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
-
-    <span class="token keyword">return</span> hit <span class="token operator">?</span> sceneColor <span class="token operator">*</span> lighting <span class="token operator">:</span> sceneColor<span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-
-<span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-    <span class="token keyword">vec2</span> uv <span class="token operator">=</span> <span class="token punctuation">(</span>gl_FragCoord<span class="token punctuation">.</span>xy <span class="token operator">*</span> <span class="token number">2.0</span> <span class="token operator">-</span> u_resolution<span class="token punctuation">.</span>xy<span class="token punctuation">)</span> <span class="token operator">/</span> u_resolution<span class="token punctuation">.</span>y<span class="token punctuation">;</span>
-    <span class="token keyword">vec3</span> col <span class="token operator">=</span> <span class="token keyword">vec3</span><span class="token punctuation">(</span><span class="token number">0.0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-
-    Transform cameraTransform <span class="token operator">=</span> <span class="token function">defaultTransform</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    cameraTransform<span class="token punctuation">.</span>position <span class="token operator">=</span> u_camPos<span class="token punctuation">;</span>
-    <span class="token keyword">vec3</span> rayDir <span class="token operator">=</span> <span class="token function">rot3D</span><span class="token punctuation">(</span><span class="token function">normalize</span><span class="token punctuation">(</span><span class="token keyword">vec3</span><span class="token punctuation">(</span>uv<span class="token punctuation">,</span> <span class="token number">1.0</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">,</span> u_camRot<span class="token punctuation">)</span><span class="token punctuation">;</span>
-
-    <span class="token comment">// the actual raymarching</span>
-    <span class="token keyword">float</span> rayDistance <span class="token operator">=</span> <span class="token number">0.0</span><span class="token punctuation">;</span>
-    <span class="token keyword">vec3</span> hitPos<span class="token punctuation">;</span>
-    <span class="token keyword">int</span> i<span class="token punctuation">;</span>
-    <span class="token keyword">for</span><span class="token punctuation">(</span>i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> <span class="token number">100</span><span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
-        hitPos <span class="token operator">=</span> cameraTransform<span class="token punctuation">.</span>position <span class="token operator">+</span> rayDir <span class="token operator">*</span> rayDistance<span class="token punctuation">;</span>
-        <span class="token keyword">float</span> distance <span class="token operator">=</span> <span class="token function">scene</span><span class="token punctuation">(</span>hitPos<span class="token punctuation">)</span><span class="token punctuation">;</span>
-        rayDistance <span class="token operator">+=</span> distance<span class="token punctuation">;</span>
-        <span class="token keyword">if</span><span class="token punctuation">(</span>distance <span class="token operator">&lt;</span> u_camNear <span class="token operator">||</span> rayDistance <span class="token operator">&gt;</span> u_camFar<span class="token punctuation">)</span> <span class="token keyword">break</span><span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
-
-    <span class="token comment">// Base color from depth, and add shading</span>
-    col <span class="token operator">=</span> <span class="token function">palette</span><span class="token punctuation">(</span>rayDistance <span class="token operator">/</span> u_camFar <span class="token operator">*</span> <span class="token number">2.5</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    col <span class="token operator">=</span> <span class="token function">shadeScene</span><span class="token punctuation">(</span>col<span class="token punctuation">,</span> hitPos<span class="token punctuation">,</span> rayDir<span class="token punctuation">,</span> rayDistance<span class="token punctuation">)</span><span class="token punctuation">;</span>
-
-    gl_FragColor <span class="token operator">=</span> <span class="token keyword">vec4</span><span class="token punctuation">(</span>col<span class="token punctuation">,</span> <span class="token number">1.0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span></code></pre><pre data-role="script-container" class="code-view flex-vertical language-csharp" data-script="HowlingmoonEnemyMovement.cs" tabindex="0"><code data-role="script-code" class="language-csharp"><span class="token comment">/// This script manages the movement of every enemy.  </span>
-<span class="token comment">/// Add an enemy to the list if you want it to be controlled by this script,  </span>
-<span class="token comment">/// remove it when you want it to stop being controlled by this script.</span>
-
-<span class="token keyword">using</span> <span class="token namespace">UnityEngine</span><span class="token punctuation">;</span>
-<span class="token keyword">using</span> <span class="token namespace">Unity<span class="token punctuation">.</span>Jobs</span><span class="token punctuation">;</span>
-<span class="token keyword">using</span> <span class="token namespace">Unity<span class="token punctuation">.</span>Burst</span><span class="token punctuation">;</span>
-<span class="token keyword">using</span> <span class="token namespace">Unity<span class="token punctuation">.</span>Collections</span><span class="token punctuation">;</span>
-<span class="token keyword">using</span> <span class="token namespace">UnityEngine<span class="token punctuation">.</span>Jobs</span><span class="token punctuation">;</span>
-<span class="token keyword">using</span> <span class="token namespace">System<span class="token punctuation">.</span>Collections<span class="token punctuation">.</span>Generic</span><span class="token punctuation">;</span>
-
-<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">EnemyMovementSystem</span> <span class="token punctuation">:</span> <span class="token type-list"><span class="token class-name">MonoBehaviour</span></span>
-<span class="token punctuation">{</span>
-    <span class="token comment">// Enemies hold all enemies. enemiesToUpdate is a list of all enemies used in the current job,</span>
-    <span class="token comment">// to avoid shifting list issues.</span>
-    <span class="token keyword">private</span> <span class="token keyword">readonly</span> <span class="token class-name">List<span class="token punctuation">&lt;</span>EnemyBase<span class="token punctuation">&gt;</span></span> enemies <span class="token operator">=</span> <span class="token keyword">new</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token keyword">private</span> <span class="token class-name">List<span class="token punctuation">&lt;</span>EnemyBase<span class="token punctuation">&gt;</span></span> enemiesToUpdate <span class="token operator">=</span> <span class="token keyword">new</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-
-    <span class="token comment">// Store some values to avoid having to call pathCreator more than needed.</span>
-    <span class="token keyword">public</span> <span class="token return-type class-name">Vector3</span> PathStart <span class="token punctuation">{</span> <span class="token keyword">get</span><span class="token punctuation">;</span> <span class="token keyword">private</span> <span class="token keyword">set</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
-    <span class="token keyword">private</span> <span class="token class-name"><span class="token keyword">int</span></span> pathReachedEndIndex<span class="token punctuation">;</span>
-
-    <span class="token comment">// Data to pass on to job. Native arrays are required when using jobs (multithreading).</span>
-    <span class="token keyword">private</span> <span class="token class-name">TransformAccessArray</span> enemyTransforms<span class="token punctuation">;</span>
-    <span class="token keyword">private</span> <span class="token class-name">NativeArray<span class="token punctuation">&lt;</span>Vector3<span class="token punctuation">&gt;</span></span> pathNodes<span class="token punctuation">;</span>
-    <span class="token keyword">private</span> <span class="token class-name">NativeArray<span class="token punctuation">&lt;</span><span class="token keyword">float</span><span class="token punctuation">&gt;</span></span> speeds<span class="token punctuation">;</span>
-    <span class="token keyword">private</span> <span class="token class-name">NativeArray<span class="token punctuation">&lt;</span>Vector3<span class="token punctuation">&gt;</span></span> offsets<span class="token punctuation">;</span>
-    <span class="token keyword">private</span> <span class="token class-name">NativeArray<span class="token punctuation">&lt;</span><span class="token keyword">int</span><span class="token punctuation">&gt;</span></span> targetNodeIndices<span class="token punctuation">;</span>
-    <span class="token keyword">private</span> <span class="token class-name">CreateAIPath</span> pathCreator<span class="token punctuation">;</span>
-    <span class="token comment">// Stores a reference to the job itself.</span>
-    <span class="token keyword">private</span> <span class="token class-name">JobHandle</span> jobHandle<span class="token punctuation">;</span>
-    <span class="token keyword">private</span> <span class="token class-name"><span class="token keyword">bool</span></span> jobAlreadyCompleted <span class="token operator">=</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
-
-    <span class="token comment">// Allow enemy to add and remove itself to the movement job.</span>
-    <span class="token keyword">public</span> <span class="token return-type class-name"><span class="token keyword">void</span></span> <span class="token function">AddEnemy</span><span class="token punctuation">(</span><span class="token class-name">EnemyBase</span> enemy<span class="token punctuation">)</span> <span class="token operator">=&gt;</span> enemies<span class="token punctuation">.</span><span class="token function">Add</span><span class="token punctuation">(</span>enemy<span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token keyword">public</span> <span class="token return-type class-name"><span class="token keyword">void</span></span> <span class="token function">RemoveEnemy</span><span class="token punctuation">(</span><span class="token class-name">EnemyBase</span> enemy<span class="token punctuation">)</span> <span class="token operator">=&gt;</span> enemies<span class="token punctuation">.</span><span class="token function">Remove</span><span class="token punctuation">(</span>enemy<span class="token punctuation">)</span><span class="token punctuation">;</span>
-
-    <span class="token keyword">private</span> <span class="token return-type class-name"><span class="token keyword">void</span></span> <span class="token function">Start</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
-    <span class="token punctuation">{</span>
-        pathCreator <span class="token operator">=</span> <span class="token generic-method"><span class="token function">FindFirstObjectByType</span><span class="token generic class-name"><span class="token punctuation">&lt;</span>CreateAIPath<span class="token punctuation">&gt;</span></span></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        pathCreator<span class="token punctuation">.</span>RegeneratedPaths <span class="token operator">+=</span> InitializePathNodes<span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
-
-    <span class="token keyword">public</span> <span class="token return-type class-name"><span class="token keyword">void</span></span> <span class="token function">InitializePathNodes</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
-    <span class="token punctuation">{</span>
-        PathStart <span class="token operator">=</span> pathCreator<span class="token punctuation">.</span>Path<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
-        pathReachedEndIndex <span class="token operator">=</span> pathCreator<span class="token punctuation">.</span>Path<span class="token punctuation">.</span>Count<span class="token punctuation">;</span>
-
-        <span class="token comment">// Dispose the pathNodes if it has already been created.</span>
-        <span class="token keyword">if</span> <span class="token punctuation">(</span>pathNodes<span class="token punctuation">.</span>IsCreated<span class="token punctuation">)</span>
-        <span class="token punctuation">{</span>
-            jobHandle<span class="token punctuation">.</span><span class="token function">Complete</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-            pathNodes<span class="token punctuation">.</span><span class="token function">Dispose</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token punctuation">}</span>
-
-        pathNodes <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token constructor-invocation class-name">NativeArray<span class="token punctuation">&lt;</span>Vector3<span class="token punctuation">&gt;</span></span><span class="token punctuation">(</span>pathCreator<span class="token punctuation">.</span>Path<span class="token punctuation">.</span><span class="token function">ToArray</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> Allocator<span class="token punctuation">.</span>Persistent<span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
-
-    <span class="token comment">// Called after update functions have been called.</span>
-    <span class="token keyword">private</span> <span class="token return-type class-name"><span class="token keyword">void</span></span> <span class="token function">Update</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
-    <span class="token punctuation">{</span>
-        <span class="token comment">// If the job is completed, complete the job,</span>
-        <span class="token comment">// write some data to the AI and create a new job.</span>
-        <span class="token keyword">if</span> <span class="token punctuation">(</span>jobHandle<span class="token punctuation">.</span>IsCompleted<span class="token punctuation">)</span>
-        <span class="token punctuation">{</span>
-            <span class="token comment">// Force job to complete.</span>
-            jobHandle<span class="token punctuation">.</span><span class="token function">Complete</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-
-            <span class="token comment">// If this is the first time this job has been marked as completed, run this code,</span>
-            <span class="token comment">// to avoid unnecessary repeated writing to the enemies.</span>
-            <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>jobAlreadyCompleted<span class="token punctuation">)</span>
-            <span class="token punctuation">{</span>
-                <span class="token comment">// Mark this job as already completed once.</span>
-                jobAlreadyCompleted <span class="token operator">=</span> <span class="token boolean">true</span><span class="token punctuation">;</span>
-
-                <span class="token comment">// Check if the enemy count is greater than 0,</span>
-                <span class="token comment">// and if all the arrays are created (by checking the main one).</span>
-                <span class="token keyword">if</span> <span class="token punctuation">(</span>enemiesToUpdate<span class="token punctuation">.</span>Count <span class="token operator">&gt;</span> <span class="token number">0</span> <span class="token operator">&amp;&amp;</span> enemyTransforms<span class="token punctuation">.</span>isCreated<span class="token punctuation">)</span>
-                <span class="token punctuation">{</span>
-                    <span class="token comment">// Update target indices of the enemies using information from the job.</span>
-                    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token class-name"><span class="token keyword">int</span></span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> enemiesToUpdate<span class="token punctuation">.</span>Count<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span>
-                    <span class="token punctuation">{</span>
-                        enemiesToUpdate<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">.</span>TargetNodeIndex <span class="token operator">=</span> targetNodeIndices<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">;</span>
-                        <span class="token keyword">if</span> <span class="token punctuation">(</span>enemiesToUpdate<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">.</span>TargetNodeIndex <span class="token operator">&gt;=</span> pathReachedEndIndex<span class="token punctuation">)</span>
-                        <span class="token punctuation">{</span>
-                            enemiesToUpdate<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token function">HasReachedEnd</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-                        <span class="token punctuation">}</span>
-                    <span class="token punctuation">}</span>
-                <span class="token punctuation">}</span>
-
-                <span class="token comment">// Dispose of the data that changes between jobs to free up space.</span>
-                <span class="token function">DisposeMost</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-            <span class="token punctuation">}</span>
-
-            <span class="token comment">// Create and run a new job only if there are enemies present.</span>
-            <span class="token keyword">if</span> <span class="token punctuation">(</span>enemies<span class="token punctuation">.</span>Count <span class="token operator">&gt;</span> <span class="token number">0</span><span class="token punctuation">)</span>
-            <span class="token punctuation">{</span>
-                jobAlreadyCompleted <span class="token operator">=</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
-                jobHandle <span class="token operator">=</span> <span class="token function">CreateJobData</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">Schedule</span><span class="token punctuation">(</span>enemyTransforms<span class="token punctuation">)</span><span class="token punctuation">;</span>
-            <span class="token punctuation">}</span>
-        <span class="token punctuation">}</span>
-    <span class="token punctuation">}</span>
-
-    <span class="token keyword">public</span> <span class="token return-type class-name">EnemyMoveJob</span> <span class="token function">CreateJobData</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
-    <span class="token punctuation">{</span>
-        enemiesToUpdate <span class="token operator">=</span> <span class="token keyword">new</span><span class="token punctuation">(</span>enemies<span class="token punctuation">)</span><span class="token punctuation">;</span>
-
-        <span class="token comment">// Create new native arrays with the length of enemies.</span>
-        enemyTransforms <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token constructor-invocation class-name">TransformAccessArray</span><span class="token punctuation">(</span>enemiesToUpdate<span class="token punctuation">.</span>Count<span class="token punctuation">)</span><span class="token punctuation">;</span>
-        speeds <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token constructor-invocation class-name">NativeArray<span class="token punctuation">&lt;</span><span class="token keyword">float</span><span class="token punctuation">&gt;</span></span><span class="token punctuation">(</span>enemiesToUpdate<span class="token punctuation">.</span>Count<span class="token punctuation">,</span> Allocator<span class="token punctuation">.</span>Persistent<span class="token punctuation">)</span><span class="token punctuation">;</span>
-        offsets <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token constructor-invocation class-name">NativeArray<span class="token punctuation">&lt;</span>Vector3<span class="token punctuation">&gt;</span></span><span class="token punctuation">(</span>enemiesToUpdate<span class="token punctuation">.</span>Count<span class="token punctuation">,</span> Allocator<span class="token punctuation">.</span>Persistent<span class="token punctuation">)</span><span class="token punctuation">;</span>
-        targetNodeIndices <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token constructor-invocation class-name">NativeArray<span class="token punctuation">&lt;</span><span class="token keyword">int</span><span class="token punctuation">&gt;</span></span><span class="token punctuation">(</span>enemiesToUpdate<span class="token punctuation">.</span>Count<span class="token punctuation">,</span> Allocator<span class="token punctuation">.</span>Persistent<span class="token punctuation">)</span><span class="token punctuation">;</span>
-
-        <span class="token comment">// Fill all the native arrays in a single for loop,</span>
-        <span class="token comment">// skip hasReachedEnd because we fill it with false for every enemy.</span>
-        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token class-name"><span class="token keyword">int</span></span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> enemiesToUpdate<span class="token punctuation">.</span>Count<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span>
-        <span class="token punctuation">{</span>
-            <span class="token class-name">EnemyBase</span> enemy <span class="token operator">=</span> enemiesToUpdate<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">;</span>
-            enemyTransforms<span class="token punctuation">.</span><span class="token function">Add</span><span class="token punctuation">(</span>enemy<span class="token punctuation">.</span>transform<span class="token punctuation">)</span><span class="token punctuation">;</span>
-            speeds<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> enemy<span class="token punctuation">.</span>Speed<span class="token punctuation">;</span>
-            offsets<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> enemy<span class="token punctuation">.</span>RandomOffset<span class="token punctuation">;</span>
-            targetNodeIndices<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> enemy<span class="token punctuation">.</span>TargetNodeIndex<span class="token punctuation">;</span>
-        <span class="token punctuation">}</span>
-
-        <span class="token comment">// Return the data as an EnemyMoveJob struct,</span>
-        <span class="token comment">// this needs to be filled in fully, otherwise the job gets angry.</span>
-        <span class="token keyword">return</span> <span class="token keyword">new</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
-        <span class="token punctuation">{</span>
-            DeltaTime <span class="token operator">=</span> Time<span class="token punctuation">.</span>deltaTime<span class="token punctuation">,</span>
-            PathNodes <span class="token operator">=</span> pathNodes<span class="token punctuation">,</span>
-            Speeds <span class="token operator">=</span> speeds<span class="token punctuation">,</span>
-            Offsets <span class="token operator">=</span> offsets<span class="token punctuation">,</span>
-            TargetNodeIndices <span class="token operator">=</span> targetNodeIndices<span class="token punctuation">,</span>
-        <span class="token punctuation">}</span><span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
-
-    <span class="token comment">// Dispose of everything when this object is destroyed,</span>
-    <span class="token comment">// otherwise unnecessary memory is used.</span>
-    <span class="token keyword">private</span> <span class="token return-type class-name"><span class="token keyword">void</span></span> <span class="token function">OnDestroy</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
-    <span class="token punctuation">{</span>
-        jobHandle<span class="token punctuation">.</span><span class="token function">Complete</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token function">DisposeMost</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token keyword">if</span> <span class="token punctuation">(</span>pathNodes<span class="token punctuation">.</span>IsCreated<span class="token punctuation">)</span> pathNodes<span class="token punctuation">.</span><span class="token function">Dispose</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
-
-    <span class="token comment">/// &lt;summary&gt;</span>
-    <span class="token comment">/// Dispose of data that changes between jobs to free up space.</span>
-    <span class="token comment">/// Garbage collection doesn't happen automatically on native arrays;</span>
-    <span class="token comment">/// you have to dispose of them yourself, otherwise you will get a memory leak.</span>
-    <span class="token comment">/// &lt;/summary&gt;</span>
-    <span class="token keyword">private</span> <span class="token return-type class-name"><span class="token keyword">void</span></span> <span class="token function">DisposeMost</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
-    <span class="token punctuation">{</span>
-        <span class="token keyword">if</span> <span class="token punctuation">(</span>enemyTransforms<span class="token punctuation">.</span>isCreated<span class="token punctuation">)</span> enemyTransforms<span class="token punctuation">.</span><span class="token function">Dispose</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token keyword">if</span> <span class="token punctuation">(</span>speeds<span class="token punctuation">.</span>IsCreated<span class="token punctuation">)</span> speeds<span class="token punctuation">.</span><span class="token function">Dispose</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token keyword">if</span> <span class="token punctuation">(</span>offsets<span class="token punctuation">.</span>IsCreated<span class="token punctuation">)</span> offsets<span class="token punctuation">.</span><span class="token function">Dispose</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token keyword">if</span> <span class="token punctuation">(</span>targetNodeIndices<span class="token punctuation">.</span>IsCreated<span class="token punctuation">)</span> targetNodeIndices<span class="token punctuation">.</span><span class="token function">Dispose</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
-<span class="token punctuation">}</span>
-
-<span class="token comment">// Burst compiler, very efficient, but limited Unity functions.</span>
-<span class="token comment">// Also garbage collection needs to be done by yourself.</span>
-<span class="token punctuation">[</span><span class="token attribute"><span class="token class-name">BurstCompile</span></span><span class="token punctuation">]</span>
-<span class="token keyword">public</span> <span class="token keyword">struct</span> <span class="token class-name">EnemyMoveJob</span> <span class="token punctuation">:</span> <span class="token type-list"><span class="token class-name">IJobParallelForTransform</span></span>
-<span class="token punctuation">{</span>
-    <span class="token comment">// Data as a struct. When you don't want a job to modify data,</span>
-    <span class="token comment">// make sure it's set to readonly.</span>
-    <span class="token punctuation">[</span><span class="token attribute"><span class="token class-name">ReadOnly</span></span><span class="token punctuation">]</span> <span class="token keyword">public</span> <span class="token class-name"><span class="token keyword">float</span></span> DeltaTime<span class="token punctuation">;</span>
-    <span class="token punctuation">[</span><span class="token attribute"><span class="token class-name">ReadOnly</span></span><span class="token punctuation">]</span> <span class="token keyword">public</span> <span class="token class-name">NativeArray<span class="token punctuation">&lt;</span>Vector3<span class="token punctuation">&gt;</span></span> PathNodes<span class="token punctuation">;</span>
-    <span class="token punctuation">[</span><span class="token attribute"><span class="token class-name">ReadOnly</span></span><span class="token punctuation">]</span> <span class="token keyword">public</span> <span class="token class-name">NativeArray<span class="token punctuation">&lt;</span><span class="token keyword">float</span><span class="token punctuation">&gt;</span></span> Speeds<span class="token punctuation">;</span>
-    <span class="token punctuation">[</span><span class="token attribute"><span class="token class-name">ReadOnly</span></span><span class="token punctuation">]</span> <span class="token keyword">public</span> <span class="token class-name">NativeArray<span class="token punctuation">&lt;</span>Vector3<span class="token punctuation">&gt;</span></span> Offsets<span class="token punctuation">;</span>
-    <span class="token keyword">public</span> <span class="token class-name">NativeArray<span class="token punctuation">&lt;</span><span class="token keyword">int</span><span class="token punctuation">&gt;</span></span> TargetNodeIndices<span class="token punctuation">;</span>
-
-    <span class="token comment">// Move every object with its own data.</span>
-    <span class="token keyword">public</span> <span class="token return-type class-name"><span class="token keyword">void</span></span> <span class="token function">Execute</span><span class="token punctuation">(</span><span class="token class-name"><span class="token keyword">int</span></span> index<span class="token punctuation">,</span> <span class="token class-name">TransformAccess</span> transform<span class="token punctuation">)</span>
-    <span class="token punctuation">{</span>
-        <span class="token comment">// If target index is too big, just don't.</span>
-        <span class="token keyword">if</span> <span class="token punctuation">(</span>TargetNodeIndices<span class="token punctuation">[</span>index<span class="token punctuation">]</span> <span class="token operator">&gt;=</span> PathNodes<span class="token punctuation">.</span>Length<span class="token punctuation">)</span>
-        <span class="token punctuation">{</span>
-            Debug<span class="token punctuation">.</span><span class="token function">LogWarning</span><span class="token punctuation">(</span><span class="token interpolation-string"><span class="token string">$"Target index of enemy </span><span class="token interpolation"><span class="token punctuation">{</span><span class="token expression language-csharp">index</span><span class="token punctuation">}</span></span><span class="token string"> was out of range of the path."</span></span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-            <span class="token keyword">return</span><span class="token punctuation">;</span>
-        <span class="token punctuation">}</span>
-
-        <span class="token comment">// Get the information for this specific index.</span>
-        <span class="token class-name"><span class="token keyword">float</span></span> speed <span class="token operator">=</span> Speeds<span class="token punctuation">[</span>index<span class="token punctuation">]</span><span class="token punctuation">;</span>
-        <span class="token class-name">Vector3</span> offset <span class="token operator">=</span> Offsets<span class="token punctuation">[</span>index<span class="token punctuation">]</span><span class="token punctuation">;</span>
-        <span class="token class-name"><span class="token keyword">int</span></span> targetNodeIndex <span class="token operator">=</span> TargetNodeIndices<span class="token punctuation">[</span>index<span class="token punctuation">]</span><span class="token punctuation">;</span>
-
-        <span class="token comment">// If target index is 0 (at the start of the path),</span>
-        <span class="token comment">// position at the beginning and increment the target position.</span>
-        <span class="token keyword">if</span> <span class="token punctuation">(</span>targetNodeIndex <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">)</span>
-        <span class="token punctuation">{</span>
-            transform<span class="token punctuation">.</span><span class="token function">SetPositionAndRotation</span><span class="token punctuation">(</span>PathNodes<span class="token punctuation">[</span>targetNodeIndex<span class="token punctuation">]</span><span class="token punctuation">,</span> Quaternion<span class="token punctuation">.</span>identity<span class="token punctuation">)</span><span class="token punctuation">;</span>
-            targetNodeIndex<span class="token operator">++</span><span class="token punctuation">;</span>
-            TargetNodeIndices<span class="token punctuation">[</span>index<span class="token punctuation">]</span> <span class="token operator">=</span> targetNodeIndex<span class="token punctuation">;</span>
-        <span class="token punctuation">}</span>
-
-        <span class="token comment">// Save the current and target position.</span>
-        <span class="token class-name">Vector3</span> currentPosition <span class="token operator">=</span> transform<span class="token punctuation">.</span>position<span class="token punctuation">;</span>
-        <span class="token class-name">Vector3</span> targetPosition <span class="token operator">=</span> PathNodes<span class="token punctuation">[</span>targetNodeIndex<span class="token punctuation">]</span> <span class="token operator">+</span> offset<span class="token punctuation">;</span>
-
-        <span class="token comment">// Update the transform based on the distance you need to go.</span>
-        transform<span class="token punctuation">.</span>position <span class="token operator">=</span> Vector3<span class="token punctuation">.</span><span class="token function">MoveTowards</span><span class="token punctuation">(</span>currentPosition<span class="token punctuation">,</span> targetPosition<span class="token punctuation">,</span> speed <span class="token operator">*</span> DeltaTime<span class="token punctuation">)</span><span class="token punctuation">;</span>
-
-        <span class="token comment">// Check if needs to be rotated, if so rotate.</span>
-        <span class="token class-name">Vector3</span> direction <span class="token operator">=</span> <span class="token punctuation">(</span>targetPosition <span class="token operator">-</span> currentPosition<span class="token punctuation">)</span><span class="token punctuation">.</span>normalized<span class="token punctuation">;</span>
-        <span class="token comment">// If there's a valid direction, rotate smoothly.</span>
-        <span class="token keyword">if</span> <span class="token punctuation">(</span>direction<span class="token punctuation">.</span>sqrMagnitude <span class="token operator">&gt;</span> <span class="token number">0.0001f</span><span class="token punctuation">)</span> <span class="token comment">// Avoid division by zero and insignificant values.</span>
-        <span class="token punctuation">{</span>
-            <span class="token comment">// Get the target rotation based on the direction.</span>
-            <span class="token class-name">Quaternion</span> targetRotation <span class="token operator">=</span> Quaternion<span class="token punctuation">.</span><span class="token function">LookRotation</span><span class="token punctuation">(</span>direction<span class="token punctuation">)</span><span class="token punctuation">;</span>
-            <span class="token comment">// Smoothly rotate from current rotation to target rotation.</span>
-            transform<span class="token punctuation">.</span>rotation <span class="token operator">=</span> Quaternion<span class="token punctuation">.</span><span class="token function">Slerp</span><span class="token punctuation">(</span>transform<span class="token punctuation">.</span>rotation<span class="token punctuation">,</span> targetRotation<span class="token punctuation">,</span> <span class="token number">5</span> <span class="token operator">*</span> DeltaTime<span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token punctuation">}</span>
-
-        <span class="token comment">// Check if enemy has reached the target node with a tolerance.</span>
-        <span class="token keyword">if</span> <span class="token punctuation">(</span>Vector3<span class="token punctuation">.</span><span class="token function">Distance</span><span class="token punctuation">(</span>transform<span class="token punctuation">.</span>position<span class="token punctuation">,</span> targetPosition<span class="token punctuation">)</span> <span class="token operator">&lt;=</span> <span class="token number">0.01f</span><span class="token punctuation">)</span> TargetNodeIndices<span class="token punctuation">[</span>index<span class="token punctuation">]</span><span class="token operator">++</span><span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
-<span class="token punctuation">}</span>
-</code></pre><div class="cornerDecorations-container"><img src="images/Icons/triangle.svg" class="cornerDecorations-corner cornerDecorations-top-left" style="--cornerDecorations-rotation: 0deg; --cornerDecorations-size: var(--text-size);"><img src="images/Icons/triangle.svg" class="cornerDecorations-corner cornerDecorations-top-right" style="--cornerDecorations-rotation: 90deg; --cornerDecorations-size: var(--text-size);"><img src="images/Icons/triangle.svg" class="cornerDecorations-corner cornerDecorations-bottom-left" style="--cornerDecorations-rotation: 270deg; --cornerDecorations-size: var(--text-size);"><img src="images/Icons/triangle.svg" class="cornerDecorations-corner cornerDecorations-bottom-right" style="--cornerDecorations-rotation: 180deg; --cornerDecorations-size: var(--text-size);"></div></div>
-        </div>
-    </div>
-</div>
-        </div>
-    </div>
 </div>
                 </div>
                 <div class="flex-vertical flex-horizontal-tablet order-1 order-0-tablet gap-med padding-small nav tiltCards-parent">
@@ -2151,26 +1872,6 @@ Transform <span class="token function">defaultTransform</span><span class="token
         <img data-role="section-icon" class="icon-small" alt="Icons" data-src="images/Icons/coding.png">
         <p data-role="section-name">code</p>
     </button>
-</div><div class="overlayed-container-item flex-ratio-1 flex-vertical gap-small flex-horizontal-wrap-tablet flex-allign-center-tablet" data-page="Howlingmoon">
-    <button class="button" data-page="Howlingmoon" data-section="about">
-        <img data-role="section-icon" class="icon-small" alt="Icons" data-src="images/Icons/user.png">
-        <p data-role="section-name">about</p>
-    </button>
-
-    <button class="button" data-page="Howlingmoon" data-section="gallery">
-        <img data-role="section-icon" class="icon-small" alt="Icons" data-src="images/Icons/education.png">
-        <p data-role="section-name">gallery</p>
-    </button>
-
-    <button class="button" data-page="Howlingmoon" data-section="video">
-        <img data-role="section-icon" class="icon-small" alt="Icons" data-src="images/Icons/video.png">
-        <p data-role="section-name">video</p>
-    </button>
-
-    <button class="button" data-page="Howlingmoon" data-section="code">
-        <img data-role="section-icon" class="icon-small" alt="Icons" data-src="images/Icons/coding.png">
-        <p data-role="section-name">code</p>
-    </button>
 </div></div>
                         <p class="sub-p text-grey hide-element-tablet">
                             Fun fact:
@@ -2268,28 +1969,23 @@ Transform <span class="token function">defaultTransform</span><span class="token
             <div class="cornerDecorations-container"><img src="images/Icons/triangle.svg" class="cornerDecorations-corner cornerDecorations-top-left" style="--cornerDecorations-rotation: 0deg; --cornerDecorations-size: var(--text-size);"><img src="images/Icons/triangle.svg" class="cornerDecorations-corner cornerDecorations-top-right" style="--cornerDecorations-rotation: 90deg; --cornerDecorations-size: var(--text-size);"><img src="images/Icons/triangle.svg" class="cornerDecorations-corner cornerDecorations-bottom-left" style="--cornerDecorations-rotation: 270deg; --cornerDecorations-size: var(--text-size);"><img src="images/Icons/triangle.svg" class="cornerDecorations-corner cornerDecorations-bottom-right" style="--cornerDecorations-rotation: 180deg; --cornerDecorations-size: var(--text-size);"></div></div>
         </div>
     </div>
-
-    <div data-role="project-data" class="overlayed-container-item flex-horizontal gap-med flex-ratio-1" data-page="Howlingmoon">
-        <div class="flex-vertical gap-med padding-small flex-ratio-1 tiltCards-parent">
-            <div class="flex-horizontal text-container gap-between flex-ratio-1 flex-center-items flex-vertical-tablet-thin cornerDecorations tiltCards" style="position: relative;">
-                <h1>Downloads</h1>
-                <div data-role="link-container" class="gap-small flex-horizontal-wrap flex-allign-center">
-    <button class="button">
-        <img data-role="section-icon" class="icon-small" alt="Icons" src="images/Logos/itchio.svg">
-        <p data-role="section-name">Itch.io</p>
-    </button>
-</div>
-            <div class="cornerDecorations-container"><img src="images/Icons/triangle.svg" class="cornerDecorations-corner cornerDecorations-top-left" style="--cornerDecorations-rotation: 0deg; --cornerDecorations-size: var(--text-size);"><img src="images/Icons/triangle.svg" class="cornerDecorations-corner cornerDecorations-top-right" style="--cornerDecorations-rotation: 90deg; --cornerDecorations-size: var(--text-size);"><img src="images/Icons/triangle.svg" class="cornerDecorations-corner cornerDecorations-bottom-left" style="--cornerDecorations-rotation: 270deg; --cornerDecorations-size: var(--text-size);"><img src="images/Icons/triangle.svg" class="cornerDecorations-corner cornerDecorations-bottom-right" style="--cornerDecorations-rotation: 180deg; --cornerDecorations-size: var(--text-size);"></div></div>
-        </div>
-    </div>
 </div>
         </section>
     </main>
 
+    <script type="importmap">
+        {
+          "imports": {
+            "three": "https://cdn.jsdelivr.net/npm/three@0.158.0/build/three.module.js",
+            "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.158.0/examples/jsm/"
+          }
+        }
+    </script>
+
     <script type="module">
         import * as main from './scripts/Main.js';
         document.addEventListener('DOMContentLoaded', () => {
-        main.initializePage();
+            main.initializePage();
         });
     </script>
 
@@ -2315,22 +2011,9 @@ Transform <span class="token function">defaultTransform</span><span class="token
         </div>
     </div>
 
-    <div id="3DViewerModal" class="viewer3D-modal">
-        <div class="viewer3D-overlay">
-            <div class="viewer3D-nav padding-small">
-                <button data-function="toggle-anim" class="button left">
-                    <img class="icon-small" src="images/Icons/pause-play.png" alt="Alternate Text">
-                </button>
-                <button data-function="close-fullscreen" class="button right">
-                    <img class="icon-small" src="images/Icons/fullscreen.png" alt="Alternate Text">
-                </button>
-            </div>
-        </div>
-    </div>
-
-    <div id="2DViewerModal" class="viewer2D-modal">
-        <div class="viewer2D-overlay">
-            <div class="viewer2D-nav padding-small">
+    <div id="ViewerModal" class="viewer-modal">
+        <div class="viewer-overlay">
+            <div class="viewer-nav padding-small">
                 <button data-function="toggle-anim" class="button left">
                     <img class="icon-small" src="images/Icons/pause-play.png" alt="Alternate Text">
                 </button>
