@@ -34,15 +34,20 @@ pre[class*="language-"], pre[class*="language-"]::-webkit-scrollbar-track, pre[c
     font-size: var(--sub-text-size);
 }
 
-    pre[class*="language-"]::-webkit-scrollbar {
-        width: var(--spacing-small);
-        height: var(--spacing-small);
-    }
+.scrollable-code-container::-webkit-scrollbar-track, .scrollable-code-container::-webkit-scrollbar-corner {
+    background: none;
+    font-size: var(--sub-text-size);
+}
 
-    pre[class*="language-"]::-webkit-scrollbar-thumb {
-        background-color: var(--highlight-color);
-        border-radius: var(--outline-radius);
-    }
+.scrollable-code-container::-webkit-scrollbar {
+    width: var(--spacing-small);
+    height: var(--spacing-small);
+}
+
+.scrollable-code-container::-webkit-scrollbar-thumb {
+    background-color: var(--highlight-color);
+    border-radius: var(--outline-radius);
+}
 
 .token.comment, .token.prolog, .token.doctype, .token.cdata, .token.keyword,
 .token.string, .token.function, .token.class-name, .token.operator {
