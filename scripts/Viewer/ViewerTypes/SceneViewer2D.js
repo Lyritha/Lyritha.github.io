@@ -14,7 +14,7 @@ export class SceneViewer2D extends SceneViewerBase {
         this.controls = {
             dragging: false,
             lastMouse: { x: 0, y: 0 },
-            rotationSensitivity: 0.005,
+            rotationSensitivity: 0.001,
             scrollSensitivity: 0.0001,
             scrollModifier: 1.0
         };
