@@ -1,0 +1,52 @@
+/* all elements that require set sizing */
+
+.bento {
+    width: 100%;
+    max-width: 1400px;
+    padding: 0 var(--spacing-medium);
+    box-sizing: border-box;
+    justify-content: center;
+}
+
+.social-container {
+    height: 105px;
+}
+
+.nav {
+    max-width: 250px;
+    min-height: 560px;
+}
+
+.h-spacer {
+    height: 6vw;
+    min-height: var(--spacing-medium);
+}
+
+/* desktop-thin: slightly smaller than wide desktop */
+@media (max-width: 1350px) {
+    .h-spacer {
+        height: 4vw;
+    }
+
+    .nav {
+        min-height: 450px;
+        max-width: 200px;
+    }
+
+    .social-container {
+        height: 83px;
+    }
+}
+
+/* tablet: landscape tablets, large phones in landscape */
+@media (max-width: 1100px) {
+    /* Styles for tablets or small laptops */
+    .h-spacer {
+        height: 2vw;
+    }
+
+    .nav {
+        max-width: 100%;
+        min-height: auto;
+    }
+}
