@@ -22,6 +22,30 @@
     outline-width: var(--outline-width-medium);
 }
 
+.code-button {
+    display: inline-flex;
+    align-items: center;
+    outline: var(--outline-width-small) solid var(--highlight-color);
+    padding: var(--spacing-small);
+    border-radius: var(--outline-radius);
+    gap: var(--spacing-small);
+    background: rgba(224, 68, 71, 0.2);
+    transition: background 200ms ease-in-out, outline-width 100ms ease-in-out;
+    align-self: flex-start;
+}
+
+@media (hover: hover) {
+    .code-button:hover {
+        background: rgba(224, 68, 71, 0.8);
+        outline-width: var(--outline-width-medium);
+    }
+}
+
+.code-button.active {
+    background: rgba(224, 68, 71, 1);
+    outline-width: var(--outline-width-medium);
+}
+
 /* location button styling */
 .button-location {
     outline-color: var(--highlight-color) !important;

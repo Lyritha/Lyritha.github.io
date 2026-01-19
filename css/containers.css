@@ -14,6 +14,21 @@
     }
 }
 
+.code-view {
+    display: none !important;
+}
+
+    .code-view.active {
+        display: revert !important;
+    }
+
+.code-button-container {
+    position: absolute;
+    top: var(--spacing-small);
+    left: var(--spacing-small);
+    z-index: 5;
+}
+
 .text-container {
     gap: var(--spacing-medium);
     padding: var(--spacing-medium);
@@ -93,11 +108,30 @@
 
 @media (max-width: 800px) {
 
+    .height-200-tablet-thin {
+        min-height: 200px;
+    }
+
     .height-400-tablet-thin {
         min-height: 400px;
     }
 
     .height-600-tablet-thin {
+        min-height: 600px;
+    }
+}
+
+@media (max-width: 520px) {
+
+    .height-200-phone {
+        min-height: 200px;
+    }
+
+    .height-400-phone {
+        min-height: 400px;
+    }
+
+    .height-600-phone {
         min-height: 600px;
     }
 }
