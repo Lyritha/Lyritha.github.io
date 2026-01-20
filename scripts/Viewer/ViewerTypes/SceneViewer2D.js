@@ -37,30 +37,29 @@ export class SceneViewer2D extends SceneViewerBase {
             depthWrite: false
         });
 
-        const quad = new THREE.Mesh(
-            new THREE.PlaneGeometry(2, 2),
-            material
-        );
-
+        const quad = new THREE.Mesh(new THREE.PlaneGeometry(2, 2), material);
         quad.renderOrder = 999;
 
         this.scene.add(quad);
         this.quad = quad;
 
+        // Initialize listener tracking
+        this._listeners = [];
+
         this.initControls(true, false);
     }
 
     renderFrame(dt) {
-        if (!this.scene || !this.camera) return; // safety
+        if (!this.scene || !this.camera) return;
 
         // update time
         this.uniforms.u_time.value += dt;
 
-        // copy camera uniforms
+        // update camera uniforms
         this.uniforms.u_camPos.value.copy(this.camera.position);
         this.uniforms.u_camRot.value.copy(this.camera.rotation);
 
-        // position quad 1 unit in front of camera
+        // position quad in front of camera
         const forward = new THREE.Vector3(0, 0, -1).applyQuaternion(this.camera.quaternion);
         this.quad.position.copy(this.camera.position).add(forward.multiplyScalar(1));
         this.quad.quaternion.copy(this.camera.quaternion);
@@ -77,20 +76,26 @@ export class SceneViewer2D extends SceneViewerBase {
 
         let lastPinchDist = null;
 
+        // Helper to track listeners
+        const addListener = (target, type, handler, options) => {
+            target.addEventListener(type, handler, options);
+            this._listeners.push({ target, type, handler, options });
+        };
+
         // ---------- Mouse ----------
-        dom.addEventListener("mousedown", e => {
+        addListener(dom, "mousedown", e => {
             c.dragging = true;
             c.lastMouse.x = e.clientX;
             c.lastMouse.y = e.clientY;
             c.dragMode = e.button === 0 ? "rotate" : null;
         });
 
-        window.addEventListener("mouseup", () => {
+        addListener(window, "mouseup", () => {
             c.dragging = false;
             c.dragMode = null;
         });
 
-        window.addEventListener("mousemove", e => {
+        addListener(window, "mousemove", e => {
             if (!c.dragging || c.dragMode !== "rotate" || !rotate) return;
 
             const dx = e.clientX - c.lastMouse.x;
@@ -99,17 +104,13 @@ export class SceneViewer2D extends SceneViewerBase {
             camera.rotation.y -= dx * c.rotationSensitivity;
             camera.rotation.x -= dy * c.rotationSensitivity;
 
-            // Clamp pitch
-            camera.rotation.x = Math.max(
-                -Math.PI / 2,
-                Math.min(Math.PI / 2, camera.rotation.x)
-            );
+            camera.rotation.x = Math.max(-Math.PI / 2, Math.min(Math.PI / 2, camera.rotation.x));
 
             c.lastMouse.x = e.clientX;
             c.lastMouse.y = e.clientY;
         });
 
-        dom.addEventListener("wheel", e => {
+        addListener(dom, "wheel", e => {
             e.preventDefault();
             c.scrollModifier += e.deltaY * c.scrollSensitivity;
             c.scrollModifier = Math.max(0.1, c.scrollModifier);
@@ -117,7 +118,7 @@ export class SceneViewer2D extends SceneViewerBase {
         }, { passive: false });
 
         // ---------- Touch ----------
-        dom.addEventListener("touchstart", e => {
+        addListener(dom, "touchstart", e => {
             if (e.touches.length === 1) {
                 c.dragging = true;
                 c.dragMode = "rotate";
@@ -128,7 +129,7 @@ export class SceneViewer2D extends SceneViewerBase {
             }
         }, { passive: false });
 
-        dom.addEventListener("touchmove", e => {
+        addListener(dom, "touchmove", e => {
             if (!c.dragging) return;
             e.preventDefault();
 
@@ -138,17 +139,12 @@ export class SceneViewer2D extends SceneViewerBase {
 
                 camera.rotation.y -= dx * c.rotationSensitivity;
                 camera.rotation.x -= dy * c.rotationSensitivity;
-
-                camera.rotation.x = Math.max(
-                    -Math.PI / 2,
-                    Math.min(Math.PI / 2, camera.rotation.x)
-                );
+                camera.rotation.x = Math.max(-Math.PI / 2, Math.min(Math.PI / 2, camera.rotation.x));
 
                 c.lastMouse.x = e.touches[0].clientX;
                 c.lastMouse.y = e.touches[0].clientY;
             }
 
-            // Pinch zoom
             if (e.touches.length === 2) {
                 const pinchDist = distanceBetweenTouches(e.touches);
                 if (lastPinchDist !== null) {
@@ -161,13 +157,13 @@ export class SceneViewer2D extends SceneViewerBase {
             }
         }, { passive: false });
 
-        window.addEventListener("touchend", () => {
+        addListener(window, "touchend", () => {
             c.dragging = false;
             c.dragMode = null;
             lastPinchDist = null;
         });
 
-        dom.addEventListener("contextmenu", e => e.preventDefault());
+        addListener(dom, "contextmenu", e => e.preventDefault());
 
         // ---------- Helpers ----------
         function distanceBetweenTouches(touches) {
@@ -177,4 +173,26 @@ export class SceneViewer2D extends SceneViewerBase {
         }
     }
 
+    dispose() {
+        // Dispose quad
+        if (this.quad) {
+            if (this.quad.geometry) this.quad.geometry.dispose();
+            if (this.quad.material) this.quad.material.dispose();
+            this.scene.remove(this.quad);
+            this.quad = null;
+        }
+
+        // Remove scene and camera references
+        this.scene = null;
+        this.camera = null;
+        this.uniforms = null;
+
+        // Remove all tracked listeners
+        if (this._listeners) {
+            for (const { target, type, handler, options } of this._listeners) {
+                target.removeEventListener(type, handler, options);
+            }
+            this._listeners = [];
+        }
+    }
 }

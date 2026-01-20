@@ -88,4 +88,49 @@ export class SceneViewer3D extends SceneViewerBase {
         this.controls?.update();
         this.app.renderer.render(this.scene, this.camera);
     }
+
+    dispose() {
+        // Dispose mixer
+        if (this.mixer) {
+            this.mixer.stopAllAction();
+            if (this.model) this.mixer.uncacheRoot(this.model);
+            this.mixer = null;
+            this.actions = null;
+        }
+
+        // Dispose GLTF model
+        if (this.model) {
+            this.model.traverse(obj => {
+                if (obj.geometry) obj.geometry.dispose();
+                if (obj.material) {
+                    if (Array.isArray(obj.material)) {
+                        obj.material.forEach(m => m.dispose());
+                    } else {
+                        obj.material.dispose();
+                    }
+                }
+            });
+            this.scene.remove(this.model);
+            this.model = null;
+        }
+
+        // Dispose lights
+        this.scene?.traverse(obj => {
+            if (obj.isLight) this.scene.remove(obj);
+        });
+
+        // Remove controls
+        if (this.controls) {
+            this.controls.dispose();
+            this.controls = null;
+        }
+
+        // Dispose HDR environment if any
+        if (this.scene?.environment?.dispose) this.scene.environment.dispose();
+        if (this.scene?.background?.dispose) this.scene.background.dispose();
+
+        this.scene = null;
+        this.camera = null;
+    }
+
 }

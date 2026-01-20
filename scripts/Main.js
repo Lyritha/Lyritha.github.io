@@ -18,7 +18,6 @@ export async function initializePage() {
 
     PageNavigator.handleInitialNavigation();
 
-    FitParent.init();
         
     TiltCards.init({
         selector: '.tiltCards',
@@ -35,6 +34,8 @@ export async function initializePage() {
     initScripts();
     initTimelines();
     viewer.init();
+
+    FitParent.init();
 }
 
 /**
@@ -166,16 +167,3 @@ function initTimelines() {
     // initialize first timeline in each parent
     parents.forEach(parent => parent.querySelector('.timeline-item')?.click());
 }
-
-/*
-
-export async function initializePage() {
-
-    Modules.Viewer3D.init(TemplateLoader.getTemplateClone('viewer3D-big'));
-    Modules.ShaderViewer.init(TemplateLoader.getTemplateClone('viewer2D-big'));
-
-
-
-    // Filters
-
-}*/

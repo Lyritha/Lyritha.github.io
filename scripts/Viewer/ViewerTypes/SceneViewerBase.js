@@ -5,4 +5,5 @@ export class SceneViewerBase {
 
     createScene() { }
     renderFrame() { }
+    dispose() { }
 }

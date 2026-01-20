@@ -78,6 +78,10 @@ class ViewerInstance {
         setContainer(this.element);
         resizeToContainer(this.element);
 
+        app.pixelRatioTarget = window.devicePixelRatio; // max res
+        app.frames = 0;
+        app.lastTime = performance.now();
+
         this.viewer.renderFrame(0);
     }
 
@@ -88,7 +92,14 @@ class ViewerInstance {
             app.isAnimating = false;
             app.activeInstance = null;
         }
+
+        if (this.viewer) {
+            this.viewer.dispose(); // safely calls the viewer-specific cleanup
+            this.viewer = null;
+        }
     }
+
+
 
     render(dt) {
         this.viewer?.renderFrame(dt);
@@ -162,7 +173,7 @@ function initAnimationLoop() {
     function animate() {
         requestAnimationFrame(animate);
 
-        if (!app.activeInstance) return;
+        if (app.activeInstance === null || app.activeInstance === undefined) return;
 
         let dt = 0;
         if (app.isAnimating) dt = app.clock.getDelta();
@@ -181,7 +192,7 @@ function setContainer(container) {
 }
 
 function resizeToContainer(container) {
-    app.renderer.setSize(1, 1); // reset size to avoid issues when shrinking
+    app.renderer.setSize(1, 1); // reset size
 
     const instance = app.activeInstance;
     if (!instance) return;
@@ -199,16 +210,20 @@ function resizeToContainer(container) {
     viewer.camera.aspect = w / h;
     viewer.camera.updateProjectionMatrix();
 
-    const devicePixels = window.devicePixelRatio;
+    // use app.pixelRatioTarget instead of window.devicePixelRatio
     app.renderer.setSize(w, h);
-    app.renderer.setPixelRatio(devicePixels);
+    app.renderer.setPixelRatio(app.pixelRatioTarget);
 
     if (viewer?.camera?.isOrthographicCamera)
-        viewer.uniforms.u_resolution.value.set(w * devicePixels, h * devicePixels);
+        viewer.uniforms.u_resolution.value.set(
+            w * app.pixelRatioTarget,
+            h * app.pixelRatioTarget
+        );
 
     const dt = app.clock.getDelta();
     app.activeInstance.render(dt);
 }
+
 
 window.addEventListener("resize", () => {
     if (app.activeInstance) {
@@ -228,6 +243,7 @@ function dynamicResolution() {
 
     if (now >= app.lastTime + 1000) {
         app.fps = Math.round((app.frames * 1000) / (now - app.lastTime));
+
         app.frames = 0;
         app.lastTime = now;
 

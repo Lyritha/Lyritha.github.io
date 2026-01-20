@@ -59,14 +59,17 @@
     height: 100%;
     opacity: 0;
     pointer-events: none;
+}
+
+.has-navigated .overlayed-container-item {
     transition: opacity 0.5s ease;
 }
 
-    .overlayed-container-item.active {
-        position: relative;
-        opacity: 1;
-        pointer-events: auto;
-    }
+.overlayed-container-item.active {
+    position: relative;
+    opacity: 1;
+    pointer-events: auto;
+}
 
 .gap-small {
     gap: var(--spacing-small);

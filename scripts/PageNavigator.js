@@ -47,7 +47,12 @@ export function randomProjectNavigation(dataKey = 'page') {
 
 export function handleInitialNavigation() {
     let { page = 'main', section = 'about' } = getPage();
-    navigateToSection({ page, section});
+    navigateToSection({ page, section });
+
+    // Enable animations AFTER first navigation
+    requestAnimationFrame(() => {
+        document.documentElement.classList.add('has-navigated');
+    });
 }
 
 function navigateToSection({ page, section}) {

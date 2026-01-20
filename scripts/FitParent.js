@@ -1,20 +1,33 @@
 export function init() {
-    // Initial resize for any currently active containers
-    requestAnimationFrame(() => resizeToContainer());
-
-    // Resize on window resize
-    window.addEventListener("resize", resizeToContainer);
-
     // Observe class changes on all overlayed-container-item elements
     const containers = document.querySelectorAll('.overlayed-container-item');
+
+    // Initial resize for all containers
+    requestAnimationFrame(() => {
+        containers.forEach(container => {
+            resizeToContainer(container)
+        })
+    });
+
+    // fixes situations where the page scrolling doesn't recognize the new sizing
+    requestAnimationFrame(() => {
+        containers.forEach(container => {
+            resizeToContainer(container)
+        })
+    });
+
+    // Resize on window resize
+    window.addEventListener("resize", () => {
+        const containers = document.querySelectorAll('.overlayed-container-item.active');
+        containers.forEach(container => resizeToContainer(container));
+    });
 
     const observer = new MutationObserver(mutations => {
         mutations.forEach(mutation => {
             if (mutation.type === 'attributes' && mutation.attributeName === 'class') {
                 const target = mutation.target;
                 if (target.classList.contains('active')) {
-                    // Only resize elements inside the newly active container
-                    resizeToContainer();
+                    resizeToContainer(target);
                 }
             }
         });
@@ -25,8 +38,8 @@ export function init() {
     });
 }
 
-function resizeToContainer() {
-    const elementsToResize = document.querySelectorAll('.fit-parent');
+function resizeToContainer(container) {
+    const elementsToResize = container.querySelectorAll('.fit-parent');
 
     elementsToResize.forEach(el => {
         const parent = el.parentElement;
