@@ -88,11 +88,10 @@ function openModal() {
 
     // Hide or show elements based on gallery size
     const hideElements = thumbnails.length <= 1;
-    console.log(hideElements);
     hideWhenSingle.forEach(role => {
         const el = modal.querySelector(`[data-role="${role}"]`);
         if (!el) return;
-        el.classList.toggle('imageModal-hide', hideElements);
+        el.classList.toggle('hide-element', hideElements);
     });
 
     // Show selected image

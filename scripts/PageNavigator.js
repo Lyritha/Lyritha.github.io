@@ -1,11 +1,27 @@
 export function bindAllNavButtons() {
     document.querySelectorAll('button[data-page][data-section]').forEach(button => {
+        const { page, section } = button.dataset;
+
+        // lazy load tag adding
+        const selector =`.overlayed-container-item[data-page="${page}"][data-section="${section}"]`;
+        const setHovering = (on) => {
+            document.querySelectorAll(selector).forEach(el => el.classList.toggle('hovering', on));
+        };
+
+        button.addEventListener('mouseenter', () => setHovering(true));
+        button.addEventListener('mouseleave', () => setHovering(false));
+        button.addEventListener('focus', () => setHovering(true));
+        button.addEventListener('blur', () => setHovering(false));
+        button.addEventListener('touchstart', () => setHovering(true), { passive: true });
+
+        // nav
         button.addEventListener('click', () => {
-            const { page, section } = button.dataset;
+            setHovering(false);
             navigateToSection({ page, section });
         });
     });
 }
+
 
 export function randomProjectNavigation(dataKey = 'page') {
     const currentPage = getPage().page;

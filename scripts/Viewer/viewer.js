@@ -41,9 +41,7 @@ export function init() {
 
     const viewers = document.querySelectorAll('[data-role="section-scene"]');
     viewers.forEach(el => {
-        if (canOpenViewer(el)) {
-            createViewer({ element: el });
-        }
+        createViewer({ element: el });
     });
 }
 
@@ -268,35 +266,6 @@ function dynamicResolution() {
             }
         }
     }
-}
-
-// utils
-function canOpenViewer(element) {
-    const canvas = document.createElement("canvas");
-    const gl = canvas.getContext("webgl") || canvas.getContext("experimental-webgl");
-
-    const result = !!gl && (() => {
-        const info = gl.getExtension("WEBGL_debug_renderer_info");
-        if (!info) return true;
-        const renderer = gl.getParameter(info.UNMASKED_RENDERER_WEBGL);
-        return !(/swiftshader|software/i.test(renderer));
-    })();
-
-    if (!result) {
-        const agent = navigator.userAgent.toLowerCase();
-        const browser =
-            agent.includes("edg") || (agent.includes("chrome") && !agent.includes("opr")) ? "chromium" :
-                agent.includes("firefox") ? "firefox" :
-                    agent.includes("safari") && !agent.includes("chrome") ? "safari" :
-                        "unknown";
-
-        element.querySelectorAll(".gpu-warning").forEach(d => d.classList.add("active"));
-        element.querySelectorAll(".gpu-warning ol").forEach(d =>
-            d.dataset.browser !== browser ? d.remove() : (d.open = true)
-        );
-    }
-
-    return result;
 }
 
 async function GetSceneData(element) {

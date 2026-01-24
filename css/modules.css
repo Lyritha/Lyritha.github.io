@@ -1,0 +1,205 @@
+
+/* #region corner decoration */
+
+    .cornerDecorations { --cornerDecorations-inset: -10px; --cornerDecorations-scale-opacity: 0; }
+    .cornerDecorations-container { position: absolute; inset: 0; pointer-events: none; }
+
+    @media (hover: hover) { .cornerDecorations:hover { --cornerDecorations-inset: 5px; --cornerDecorations-scale-opacity: 1; }}
+
+    .cornerDecorations-corner { 
+        position: absolute; 
+        width: var(--cornerDecorations-size); 
+        height: var(--cornerDecorations-size); 
+        opacity: var(--cornerDecorations-scale-opacity); 
+        transform: scale(var(--cornerDecorations-scale-opacity)) rotate(var(--cornerDecorations-rotation)); 
+        transition: all 0.3s ease; 
+        pointer-events: none; 
+    }
+
+    .cornerDecorations-top-left, .cornerDecorations-top-right { top: var(--cornerDecorations-inset); }
+    .cornerDecorations-bottom-left, .cornerDecorations-bottom-right { bottom: var(--cornerDecorations-inset); }
+    .cornerDecorations-top-left, .cornerDecorations-bottom-left { left: var(--cornerDecorations-inset); }
+    .cornerDecorations-top-right, .cornerDecorations-bottom-right { right: var(--cornerDecorations-inset); }
+
+/* #endregion */
+
+/* #region tilt card effect */
+    @media (hover: hover) {
+        .tiltCards-parent {
+            position: relative;
+            perspective: 800px;
+            z-index: 1;
+        }
+
+            /* Enable tilt on hover-capable devices (including touchscreen laptops) */
+
+            .tiltCards-parent:hover,
+            .tiltCards:hover {
+                z-index: 2;
+            }
+
+        .tiltCards {
+            position: relative;
+            transform-style: preserve-3d;
+            z-index: 1;
+            transition: transform 1s ease;
+            transform: rotateX(var(--tiltCards-rotate-x, 0deg)) rotateY(var(--tiltCards-rotate-y, 0deg));
+            box-shadow: var(--tiltCards-shadow-x, 0px) var(--tiltCards-shadow-y, 0px) var(--tiltCards-shadow-blur) rgba(0, 0, 0, 0.7);
+        }
+
+            .tiltCards::before {
+                content: "";
+                position: absolute;
+                inset: 0;
+                background-image: var(--bg-gradient-hover);
+                background-position: var(--tiltCards-position);
+                background-size: 200%;
+                background-repeat: no-repeat;
+                opacity: 0;
+                transition: opacity 0.5s ease;
+                pointer-events: none;
+                z-index: 10;
+            }
+
+            .tiltCards:hover::before {
+                opacity: 1;
+            }
+    }
+/* #endregion */
+
+/* #region image modal */
+    .image-modal {
+        position: fixed;
+        inset: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 10;
+        width: 100%;
+        height: 100%;
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.3s ease-in-out;
+        background: rgba(0,0,0,0.8);
+    }
+
+        .image-modal.active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+    /* new container to size to image */
+    .imageModal-container {
+        position: relative;
+        display: inline-flex;
+        max-width: 100%;
+        max-height: 100%;
+    }
+
+        /* image fills container while maintaining aspect ratio */
+        .imageModal-container > img {
+            display: block;
+            max-width: 100%;
+            max-height: 100%;
+            width: auto;
+            height: auto;
+            object-fit: contain;
+        }
+
+    /* overlay follows image bounds */
+    .imageModal-overlay {
+        position: absolute;
+        inset: 0;
+        display: flex;
+        flex-flow: column;
+        justify-content: flex-end;
+        pointer-events: none;
+    }
+
+    .imageModal-nav {
+        display: flex;
+        flex-flow: row;
+        background-image: var(--bg-gradient);
+        pointer-events: all;
+    }
+
+        .imageModal-nav .right {
+            margin-left: auto;
+        }
+
+/* #endregion */
+
+/* #region viewer modal / container */
+    .viewer-container {
+        position: relative;
+        border-radius: var(--outline-radius);
+        outline: var(--outline-width-medium) solid var(--border-col);
+        background-image: var(--bg-gradient);
+        transition: outline-color 0.3s ease;
+    }
+
+    @media (hover: hover) {
+        .viewer-container:hover {
+            outline: var(--outline-width-large) solid var(--border-col-light);
+        }
+    }
+
+    .viewer-modal {
+        position: fixed;
+        inset: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 10;
+        width: 100%;
+        height: 100%;
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.3s ease-in-out;
+    }
+
+        .viewer-modal.active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+    .viewer-overlay {
+        position: absolute !important;
+        z-index: 1000;
+        inset: 0;
+        display: flex;
+        flex-flow: column;
+        justify-content: flex-end;
+        pointer-events: none
+    }
+
+    .viewer-nav {
+        display: flex;
+        flex-flow: row;
+        align-items: flex-end;
+        justify-content: flex-end;
+        background-image: var(--bg-gradient);
+        pointer-events: none;
+    }
+
+    .viewer-modal.active .viewer-nav {
+        pointer-events: all;
+    }
+
+    .viewer-nav .right {
+        margin-left: auto;
+    }
+
+    @media (max-width: 1100px) {
+        .viewer-container {
+            aspect-ratio: 16 / 9;
+            width: 100%;
+        }
+    }
+/* #endregion */
+
+/* allows the fit parent script to manipulate an element*/
+.fit-parent {
+    height: var(--height);
+    width: var(--width);
+}

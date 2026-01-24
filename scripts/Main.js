@@ -1,4 +1,4 @@
-import * as PageNavigator from './PageNavigator.js';
+﻿import * as PageNavigator from './PageNavigator.js';
 import * as TiltCards from './TiltCards.js';
 import * as FitParent from './FitParent.js';
 import * as ImageModal from './ImageModal.js';
@@ -74,15 +74,6 @@ function initScripts() {
 
 /**
  * Initializes a dynamic filtering system for DOM elements.
- *
- * @param {Object} options
- * @param {string} options.filtersContainerId - The ID of the container holding filter buttons.
- * @param {string} options.itemsContainerId   - The ID of the container whose child items will be filtered.
- *
- * Behavior:
- * - Clicking a filter button shows only items with the matching `data-filter` value.
- * - Items that don't match are given the class `dynamicFilters-hide`.
- * - Automatically applies the first filter on load.
  */
 function initFilters({ filtersContainerId, itemsContainerId }) {
     const filterContainer = document.getElementById(filtersContainerId);
@@ -94,7 +85,7 @@ function initFilters({ filtersContainerId, itemsContainerId }) {
         Array.from(containerToFilter.children).forEach(item => {
             const itemType = (item.dataset.filter?.toLowerCase()) || '';
             const match = activeFilter === 'all' || itemType === activeFilter;
-            item.classList.toggle('dynamicFilters-hide', !match);
+            item.classList.toggle('hide-element', !match);
         });
     };
 
@@ -122,22 +113,34 @@ function initFilters({ filtersContainerId, itemsContainerId }) {
  * Intended for deferred loading of images inside tabbed or overlayed UI elements.
  */
 function initLazyLoading() {
-    const load = (img) => (img.src = img.dataset.src, img.removeAttribute('data-src'));
+    const load = (img) => {
+        img.src = img.dataset.src;
+        img.removeAttribute('data-src');
+    };
 
     document.querySelectorAll('img[data-src]').forEach(img => {
         const container = img.closest('.overlayed-container-item');
         if (!container) return;
 
-        if (container.classList.contains('active')) return load(img);
+        const isReady = () => container.classList.contains('active') || container.classList.contains('hovering');
+
+        // Load immediately if already active (page load case)
+        if (isReady()) {
+            load(img);
+            return;
+        }
 
         const observer = new MutationObserver(() => {
-            if (container.classList.contains('active')) {
+            if (isReady()) {
                 load(img);
                 observer.disconnect();
             }
         });
 
-        observer.observe(container, { attributes: true });
+        observer.observe(container, {
+            attributes: true,
+            attributeFilter: ['class']
+        });
     });
 }
 
