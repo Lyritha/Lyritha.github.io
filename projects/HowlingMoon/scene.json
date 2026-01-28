@@ -1,0 +1,15 @@
+{
+  "type": "3DModel",
+  "path": "projects/HowlingMoon/NewMoon.glb",
+  "boundsName": "Bounds",
+  "hdrPathOrHex": "#410007",
+  "isPixelArt": true,
+  "cameraPosition": [ -0.6, 0.6, 0 ],
+  "cameraRotation": [ -1.642, -1.361, -1.644 ],
+  "cameraTarget": [ 0, 0.4, 0 ],
+  "cameraZoom": {
+    "min": 0.1,
+    "max": 2,
+    "current": 1
+  }
+}

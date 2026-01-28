@@ -1492,6 +1492,464 @@ The main game functions were done by the end of the project, but balancing and r
             
         </div>
     </div>
+
+    <div data-role="section-data" class="overlayed-container-item flex-vertical flex-ratio-1" data-page="Howlingmoon" data-section="3D model">
+        <div class="flex-vertical flex-ratio-1 gap-med tiltCards-parent">
+            <div data-role="section-scene" class="viewer-container flex-horizontal thumbnailViewer flex-ratio-1 cornerDecorations tiltCards" data-scene="projects/HowlingMoon/scene.json" style="position: relative;">
+                <div class="viewer-overlay">
+                    <div class="viewer-nav padding-small gap-between">
+                        <button data-function="toggle-anim" class="button" style="pointer-events: all">
+                            <img class="icon-small" src="images/Icons/pause-play.png" alt="Alternate Text">
+                        </button>
+                        <button data-function="fullscreen" class="button" style="pointer-events: all">
+                            <img class="icon-small" src="images/Icons/fullscreen.png" alt="Alternate Text">
+                        </button>
+                    </div>
+                </div>
+            <div class="cornerDecorations-container"><img src="images/Icons/triangle.svg" class="cornerDecorations-corner cornerDecorations-top-left" style="--cornerDecorations-rotation: 0deg; --cornerDecorations-size: var(--text-size);"><img src="images/Icons/triangle.svg" class="cornerDecorations-corner cornerDecorations-top-right" style="--cornerDecorations-rotation: 90deg; --cornerDecorations-size: var(--text-size);"><img src="images/Icons/triangle.svg" class="cornerDecorations-corner cornerDecorations-bottom-left" style="--cornerDecorations-rotation: 270deg; --cornerDecorations-size: var(--text-size);"><img src="images/Icons/triangle.svg" class="cornerDecorations-corner cornerDecorations-bottom-right" style="--cornerDecorations-rotation: 180deg; --cornerDecorations-size: var(--text-size);"></div></div>
+        </div>
+    </div>
+
+    <div data-role="section-data" class="overlayed-container-item flex-vertical flex-ratio-1" data-page="Howlingmoon" data-section="code">
+        <div class="flex-horizontal flex-ratio-1 gap-med tiltCards-parent">
+            <div data-role="section-scripts" class="text-container flex-vertical flex-ratio-1 height-600-tablet fit-parent cornerDecorations tiltCards" style="position: relative;">
+                <div class="code-button-container flex-horizontal-wrap gap-small">
+                    
+                <button class="code-button" data-role="script-select" data-script="HowlingmoonGameloop.cs">
+                        <p data-role="script-name" class="sub-p">Gameloop.cs</p>
+                    </button><button class="code-button" data-role="script-select" data-script="HowlingmoonPlayField_Deck.cs">
+                        <p data-role="script-name" class="sub-p">PlayField_Deck.cs</p>
+                    </button><button class="code-button" data-role="script-select" data-script="HowlingmoonPlayField_User.cs">
+                        <p data-role="script-name" class="sub-p">PlayField_User.cs</p>
+                    </button></div>
+
+                
+            <div data-role="script-container" class="scrollable-code-container code-view" style="overflow:auto;" data-script="HowlingmoonGameloop.cs">
+                    <div class="spacer" style="height: 30px"></div>
+                    <div class="code-description">
+                        <p data-role="script-description" class="sub-p">Handles the main game loop, disables all player actions until it's actually the players turn, Also triggers the cards to attack each other or the player/enemy depending on the playfield states.</p>
+                    </div>
+                    <pre class="language-js" tabindex="0"><code data-role="script-code" class="language-js">using System<span class="token punctuation">.</span>Collections<span class="token punctuation">;</span>
+using UnityEngine<span class="token punctuation">;</span>
+
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">GameLoop</span> <span class="token operator">:</span> MonoBehaviour
+<span class="token punctuation">{</span>
+    int playerHealth <span class="token operator">=</span> <span class="token number">3</span><span class="token punctuation">;</span>
+    int AIHealth <span class="token operator">=</span> <span class="token number">3</span><span class="token punctuation">;</span>
+
+    bool hasPlayerEndedTurn <span class="token operator">=</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
+    bool hasAIEndedTurn <span class="token operator">=</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
+
+    <span class="token punctuation">[</span>SerializeField<span class="token punctuation">]</span> <span class="token keyword">private</span> <span class="token constant">AI</span> ai<span class="token punctuation">;</span>
+    <span class="token punctuation">[</span>SerializeField<span class="token punctuation">]</span> <span class="token keyword">private</span> AIDialouge_Tutorial dialouge<span class="token punctuation">;</span>
+
+    <span class="token punctuation">[</span><span class="token function">Header</span><span class="token punctuation">(</span><span class="token string">"Decks"</span><span class="token punctuation">)</span><span class="token punctuation">]</span>
+    <span class="token punctuation">[</span>SerializeField<span class="token punctuation">]</span> <span class="token keyword">private</span> PlayField_Deck playerDeck<span class="token punctuation">;</span>
+    <span class="token punctuation">[</span>SerializeField<span class="token punctuation">]</span> <span class="token keyword">private</span> PlayField_Deck aiDeck<span class="token punctuation">;</span>
+
+    <span class="token punctuation">[</span><span class="token function">Header</span><span class="token punctuation">(</span><span class="token string">"Playfields"</span><span class="token punctuation">)</span><span class="token punctuation">]</span>
+    <span class="token punctuation">[</span>SerializeField<span class="token punctuation">]</span> <span class="token keyword">private</span> PlayField_User_Player playerUser<span class="token punctuation">;</span>
+    <span class="token punctuation">[</span>SerializeField<span class="token punctuation">]</span> <span class="token keyword">private</span> PlayField_User_AI aiUser<span class="token punctuation">;</span>
+
+    <span class="token keyword">private</span> <span class="token keyword">void</span> <span class="token function">Start</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        <span class="token function">StartCoroutine</span><span class="token punctuation">(</span><span class="token function">Loop</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">private</span> <span class="token keyword">void</span> <span class="token function">OnDisable</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        <span class="token function">StopAllCoroutines</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">private</span> IEnumerator <span class="token function">Loop</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        <span class="token keyword">while</span> <span class="token punctuation">(</span><span class="token function">CheckGameState</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">)</span>
+        <span class="token punctuation">{</span>
+            <span class="token keyword">yield</span> <span class="token keyword">return</span> <span class="token function">StartCoroutine</span><span class="token punctuation">(</span><span class="token function">Round</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+
+        <span class="token keyword">switch</span><span class="token punctuation">(</span><span class="token function">CheckGameState</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+        <span class="token punctuation">{</span>
+            <span class="token keyword">case</span> <span class="token number">1</span><span class="token operator">:</span> <span class="token function">print</span><span class="token punctuation">(</span><span class="token string">"Game is a tie"</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token keyword">break</span><span class="token punctuation">;</span>
+            <span class="token keyword">case</span> <span class="token number">2</span><span class="token operator">:</span> <span class="token function">print</span><span class="token punctuation">(</span><span class="token string">"Player Won"</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token keyword">break</span><span class="token punctuation">;</span>
+            <span class="token keyword">case</span> <span class="token number">3</span><span class="token operator">:</span> <span class="token function">print</span><span class="token punctuation">(</span><span class="token string">"AI Won"</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token keyword">break</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">private</span> IEnumerator <span class="token function">Round</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        <span class="token keyword">yield</span> <span class="token keyword">return</span> <span class="token function">StartCoroutine</span><span class="token punctuation">(</span><span class="token function">PlayerRound</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">yield</span> <span class="token keyword">return</span> <span class="token function">StartCoroutine</span><span class="token punctuation">(</span><span class="token function">AIRound</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">yield</span> <span class="token keyword">return</span> <span class="token function">StartCoroutine</span><span class="token punctuation">(</span><span class="token function">Battle</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">private</span> IEnumerator <span class="token function">Battle</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        <span class="token keyword">yield</span> <span class="token keyword">return</span> <span class="token function">StartCoroutine</span><span class="token punctuation">(</span><span class="token function">Fight</span><span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">yield</span> <span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token class-name">WaitForSeconds</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">yield</span> <span class="token keyword">return</span> <span class="token function">StartCoroutine</span><span class="token punctuation">(</span><span class="token function">Fight</span><span class="token punctuation">(</span><span class="token number">4</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">private</span> IEnumerator <span class="token function">Fight</span><span class="token punctuation">(</span><span class="token parameter">int slot</span><span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        <span class="token comment">// if both slots are occupied</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>playerUser<span class="token punctuation">.</span>AllCardSlots<span class="token punctuation">[</span>slot<span class="token punctuation">]</span><span class="token punctuation">.</span>IsOccupied <span class="token operator">&amp;&amp;</span> aiUser<span class="token punctuation">.</span>AllCardSlots<span class="token punctuation">[</span>slot<span class="token punctuation">]</span><span class="token punctuation">.</span>IsOccupied<span class="token punctuation">)</span>
+        <span class="token punctuation">{</span>
+            <span class="token comment">// get both cards</span>
+            CardData playerCard <span class="token operator">=</span> playerUser<span class="token punctuation">.</span>AllCardSlots<span class="token punctuation">[</span>slot<span class="token punctuation">]</span><span class="token punctuation">.</span>Card<span class="token punctuation">;</span>
+            CardData aiCard <span class="token operator">=</span> aiUser<span class="token punctuation">.</span>AllCardSlots<span class="token punctuation">[</span>slot<span class="token punctuation">]</span><span class="token punctuation">.</span>Card<span class="token punctuation">;</span>
+
+            <span class="token comment">// both cards damage eachother</span>
+            playerCard<span class="token punctuation">.</span>cardHealth <span class="token operator">-=</span> aiCard<span class="token punctuation">.</span>cardDamage<span class="token punctuation">;</span>
+            aiCard<span class="token punctuation">.</span>cardHealth <span class="token operator">-=</span> playerCard<span class="token punctuation">.</span>cardDamage<span class="token punctuation">;</span>
+
+            <span class="token comment">// animate the damage effect</span>
+            playerUser<span class="token punctuation">.</span>AllCardSlots<span class="token punctuation">[</span>slot<span class="token punctuation">]</span><span class="token punctuation">.</span>CardObj<span class="token punctuation">.</span>GetComponent<span class="token operator">&lt;</span>Animator<span class="token operator">&gt;</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">SetBool</span><span class="token punctuation">(</span><span class="token string">"TakeDamage"</span><span class="token punctuation">,</span> <span class="token boolean">true</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            aiUser<span class="token punctuation">.</span>AllCardSlots<span class="token punctuation">[</span>slot<span class="token punctuation">]</span><span class="token punctuation">.</span>CardObj<span class="token punctuation">.</span>GetComponent<span class="token operator">&lt;</span>Animator<span class="token operator">&gt;</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">SetBool</span><span class="token punctuation">(</span><span class="token string">"TakeDamage"</span><span class="token punctuation">,</span> <span class="token boolean">true</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token keyword">yield</span> <span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token class-name">WaitForSeconds</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">.</span>1f<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            playerUser<span class="token punctuation">.</span>AllCardSlots<span class="token punctuation">[</span>slot<span class="token punctuation">]</span><span class="token punctuation">.</span>CardObj<span class="token punctuation">.</span>GetComponent<span class="token operator">&lt;</span>Animator<span class="token operator">&gt;</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">SetBool</span><span class="token punctuation">(</span><span class="token string">"TakeDamage"</span><span class="token punctuation">,</span> <span class="token boolean">false</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            aiUser<span class="token punctuation">.</span>AllCardSlots<span class="token punctuation">[</span>slot<span class="token punctuation">]</span><span class="token punctuation">.</span>CardObj<span class="token punctuation">.</span>GetComponent<span class="token operator">&lt;</span>Animator<span class="token operator">&gt;</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">SetBool</span><span class="token punctuation">(</span><span class="token string">"TakeDamage"</span><span class="token punctuation">,</span> <span class="token boolean">false</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+            <span class="token comment">// update ui</span>
+            playerUser<span class="token punctuation">.</span>AllCardSlots<span class="token punctuation">[</span>slot<span class="token punctuation">]</span><span class="token punctuation">.</span>CardObj<span class="token punctuation">.</span>GetComponent<span class="token operator">&lt;</span>CardUI<span class="token operator">&gt;</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">SetCardValues</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            aiUser<span class="token punctuation">.</span>AllCardSlots<span class="token punctuation">[</span>slot<span class="token punctuation">]</span><span class="token punctuation">.</span>CardObj<span class="token punctuation">.</span>GetComponent<span class="token operator">&lt;</span>CardUI<span class="token operator">&gt;</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">SetCardValues</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+
+            <span class="token comment">// if player card died</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span>playerCard<span class="token punctuation">.</span>cardHealth <span class="token operator">&lt;=</span> <span class="token number">0</span><span class="token punctuation">)</span>
+            <span class="token punctuation">{</span>
+                playerUser<span class="token punctuation">.</span>AllCardSlots<span class="token punctuation">[</span>slot<span class="token punctuation">]</span><span class="token punctuation">.</span>Card <span class="token operator">=</span> <span class="token keyword">null</span><span class="token punctuation">;</span>
+                playerUser<span class="token punctuation">.</span><span class="token function">GenerateObjects</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+
+
+            <span class="token comment">// if ai card died</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span>aiCard<span class="token punctuation">.</span>cardHealth <span class="token operator">&lt;=</span> <span class="token number">0</span><span class="token punctuation">)</span>
+            <span class="token punctuation">{</span>
+                Player<span class="token punctuation">.</span>Instance<span class="token punctuation">.</span>PlayerData<span class="token punctuation">.</span>currency <span class="token operator">+=</span> <span class="token number">5</span><span class="token punctuation">;</span>
+                aiUser<span class="token punctuation">.</span>AllCardSlots<span class="token punctuation">[</span>slot<span class="token punctuation">]</span><span class="token punctuation">.</span>Card <span class="token operator">=</span> <span class="token keyword">null</span><span class="token punctuation">;</span>
+                aiUser<span class="token punctuation">.</span><span class="token function">GenerateObjects</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span>
+
+        <span class="token comment">// only player card</span>
+        <span class="token keyword">else</span> <span class="token keyword">if</span> <span class="token punctuation">(</span>playerUser<span class="token punctuation">.</span>AllCardSlots<span class="token punctuation">[</span>slot<span class="token punctuation">]</span><span class="token punctuation">.</span>IsOccupied <span class="token operator">&amp;&amp;</span> <span class="token operator">!</span>aiUser<span class="token punctuation">.</span>AllCardSlots<span class="token punctuation">[</span>slot<span class="token punctuation">]</span><span class="token punctuation">.</span>IsOccupied<span class="token punctuation">)</span>
+            AIHealth<span class="token operator">--</span><span class="token punctuation">;</span>
+
+        <span class="token comment">// only ai card</span>
+        <span class="token keyword">else</span> <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>playerUser<span class="token punctuation">.</span>AllCardSlots<span class="token punctuation">[</span>slot<span class="token punctuation">]</span><span class="token punctuation">.</span>IsOccupied <span class="token operator">&amp;&amp;</span> aiUser<span class="token punctuation">.</span>AllCardSlots<span class="token punctuation">[</span>slot<span class="token punctuation">]</span><span class="token punctuation">.</span>IsOccupied<span class="token punctuation">)</span>
+            playerHealth<span class="token operator">--</span><span class="token punctuation">;</span>
+
+        <span class="token keyword">yield</span> <span class="token keyword">return</span> <span class="token keyword">null</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">private</span> IEnumerator <span class="token function">PlayerRound</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        playerUser<span class="token punctuation">.</span>IsAllowedToPlace <span class="token operator">=</span> <span class="token boolean">true</span><span class="token punctuation">;</span>
+
+        <span class="token comment">// allow the player to grab the cards</span>
+        playerDeck<span class="token punctuation">.</span>CanGrab <span class="token operator">=</span> <span class="token boolean">true</span><span class="token punctuation">;</span>
+
+        <span class="token comment">// wait until the player has grabbed a card</span>
+        <span class="token keyword">yield</span> <span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token class-name">WaitUntil</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> playerDeck<span class="token punctuation">.</span>HasGrabbed<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        <span class="token comment">// disable the deck</span>
+        playerDeck<span class="token punctuation">.</span>CanGrab <span class="token operator">=</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
+        playerDeck<span class="token punctuation">.</span>HasGrabbed <span class="token operator">=</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
+
+        <span class="token comment">// wait until player has finished turn, once done, reset value</span>
+        hasPlayerEndedTurn <span class="token operator">=</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
+        <span class="token keyword">yield</span> <span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token class-name">WaitUntil</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> hasPlayerEndedTurn<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        hasPlayerEndedTurn <span class="token operator">=</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
+
+        <span class="token comment">// tutorial logic</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>AIDialouge_Tutorial<span class="token punctuation">.</span>Instance<span class="token punctuation">.</span>HasFinishedTutorial<span class="token punctuation">)</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span>AIDialouge_Tutorial<span class="token punctuation">.</span>Instance<span class="token punctuation">.</span>TutorialStep <span class="token operator">==</span> <span class="token number">7</span><span class="token punctuation">)</span>
+                AIDialouge_Tutorial<span class="token punctuation">.</span>Instance<span class="token punctuation">.</span>TutorialStep<span class="token operator">++</span><span class="token punctuation">;</span>
+
+        playerUser<span class="token punctuation">.</span>IsAllowedToPlace <span class="token operator">=</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
+
+        <span class="token keyword">yield</span> <span class="token keyword">return</span> <span class="token keyword">null</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">private</span> IEnumerator <span class="token function">AIRound</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        <span class="token keyword">yield</span> <span class="token keyword">return</span> <span class="token function">StartCoroutine</span><span class="token punctuation">(</span>ai<span class="token punctuation">.</span><span class="token function">GrabCard</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">yield</span> <span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token class-name">WaitForSeconds</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">.</span>5f<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">yield</span> <span class="token keyword">return</span> <span class="token function">StartCoroutine</span><span class="token punctuation">(</span>ai<span class="token punctuation">.</span><span class="token function">TakeTurn</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">private</span> int <span class="token function">CheckGameState</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        <span class="token comment">// defaults to 0, sadly never got to the point of making a win condition</span>
+        <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
+
+        <span class="token comment">// return 1 if the game is a tie,</span>
+        <span class="token comment">// 2 if the player won,</span>
+        <span class="token comment">// 3 if the AI won,</span>
+        <span class="token comment">// 0 if no one won yet.</span>
+
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>playerHealth <span class="token operator">&lt;=</span> <span class="token number">0</span> <span class="token operator">&amp;&amp;</span> AIHealth <span class="token operator">&lt;=</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token keyword">return</span> <span class="token number">1</span><span class="token punctuation">;</span>
+        <span class="token keyword">else</span> <span class="token keyword">if</span> <span class="token punctuation">(</span>playerHealth <span class="token operator">&gt;</span> <span class="token number">0</span> <span class="token operator">&amp;&amp;</span> AIHealth <span class="token operator">&lt;=</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token keyword">return</span> <span class="token number">2</span><span class="token punctuation">;</span>
+        <span class="token keyword">else</span> <span class="token keyword">if</span> <span class="token punctuation">(</span>playerHealth <span class="token operator">&lt;=</span> <span class="token number">0</span> <span class="token operator">&amp;&amp;</span> AIHealth <span class="token operator">&gt;</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token keyword">return</span> <span class="token number">3</span><span class="token punctuation">;</span>
+        <span class="token keyword">else</span> <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">public</span> bool HasPlayerEndedTurn <span class="token punctuation">{</span> set <span class="token punctuation">{</span> hasPlayerEndedTurn <span class="token operator">=</span> value<span class="token punctuation">;</span> <span class="token punctuation">}</span> <span class="token punctuation">}</span>
+
+    <span class="token keyword">public</span> bool HasAIEndedTurn <span class="token punctuation">{</span> set <span class="token punctuation">{</span> hasAIEndedTurn <span class="token operator">=</span> value<span class="token punctuation">;</span> <span class="token punctuation">}</span> <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+                </div><div data-role="script-container" class="scrollable-code-container code-view" style="overflow:auto;" data-script="HowlingmoonPlayField_Deck.cs">
+                    <div class="spacer" style="height: 30px"></div>
+                    <div class="code-description">
+                        <p data-role="script-description" class="sub-p">Handles the decks of both the player and ai (both have an inherited version with extra methods for their own use). Creates a physical pile within the scene based on the deck size, also handles the hovering animation.</p>
+                    </div>
+                    <pre class="language-js" tabindex="0"><code data-role="script-code" class="language-js">using UnityEngine<span class="token punctuation">;</span>
+
+<span class="token keyword">public</span> abstract <span class="token keyword">class</span> <span class="token class-name">PlayField_Deck</span> <span class="token operator">:</span> MonoBehaviour<span class="token punctuation">,</span> IInteractable
+<span class="token punctuation">{</span>
+    <span class="token punctuation">[</span><span class="token function">Header</span><span class="token punctuation">(</span><span class="token string">"Hover effect"</span><span class="token punctuation">)</span><span class="token punctuation">]</span>
+    <span class="token punctuation">[</span>SerializeField<span class="token punctuation">]</span> <span class="token keyword">protected</span> Animator animator<span class="token punctuation">;</span>
+
+    <span class="token punctuation">[</span><span class="token function">Header</span><span class="token punctuation">(</span><span class="token string">"Card stack size changing"</span><span class="token punctuation">)</span><span class="token punctuation">]</span>
+    <span class="token punctuation">[</span>SerializeField<span class="token punctuation">]</span> <span class="token keyword">protected</span> GameObject<span class="token punctuation">[</span><span class="token punctuation">]</span> cards<span class="token punctuation">;</span>
+
+    <span class="token keyword">protected</span> bool canGrab <span class="token operator">=</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
+    <span class="token keyword">protected</span> bool hasGrabbed <span class="token operator">=</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
+
+    <span class="token keyword">protected</span> CardData<span class="token punctuation">[</span><span class="token punctuation">]</span> deck<span class="token punctuation">;</span>
+    <span class="token punctuation">[</span>SerializeField<span class="token punctuation">]</span> <span class="token keyword">protected</span> Hand hand<span class="token punctuation">;</span>
+
+    <span class="token keyword">private</span> <span class="token keyword">void</span> <span class="token function">Start</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        <span class="token function">UpdateDeck</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">public</span> virtual <span class="token keyword">void</span> <span class="token function">UpdateDeck</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        <span class="token comment">//disable all cards</span>
+        <span class="token function">foreach</span> <span class="token punctuation">(</span>GameObject card <span class="token keyword">in</span> cards<span class="token punctuation">)</span> card<span class="token punctuation">.</span><span class="token function">SetActive</span><span class="token punctuation">(</span><span class="token boolean">false</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        cards<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token function">SetActive</span><span class="token punctuation">(</span><span class="token boolean">true</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">for</span> <span class="token punctuation">(</span>int i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> deck<span class="token punctuation">.</span>Length<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span>
+        <span class="token punctuation">{</span>
+            cards<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token function">SetActive</span><span class="token punctuation">(</span><span class="token boolean">true</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+
+
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">OnInteract</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        <span class="token comment">// tutorial logic</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>AIDialouge_Tutorial<span class="token punctuation">.</span>Instance<span class="token punctuation">.</span>HasFinishedTutorial<span class="token punctuation">)</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span>AIDialouge_Tutorial<span class="token punctuation">.</span>Instance<span class="token punctuation">.</span>TutorialStep <span class="token operator">==</span> <span class="token number">4</span><span class="token punctuation">)</span>
+                AIDialouge_Tutorial<span class="token punctuation">.</span>Instance<span class="token punctuation">.</span>TutorialStep<span class="token operator">++</span><span class="token punctuation">;</span>
+
+        <span class="token function">GrabFromDeck</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">GrabFromDeck</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>canGrab <span class="token operator">&amp;&amp;</span> <span class="token operator">!</span>hasGrabbed<span class="token punctuation">)</span>
+        <span class="token punctuation">{</span>
+
+            <span class="token function">UpdateDeck</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+            <span class="token keyword">if</span> <span class="token punctuation">(</span>deck<span class="token punctuation">.</span>Length <span class="token operator">!=</span> <span class="token number">0</span> <span class="token operator">&amp;&amp;</span> hand<span class="token punctuation">.</span>Cards<span class="token punctuation">.</span>Count <span class="token operator">&lt;</span> <span class="token number">19</span><span class="token punctuation">)</span>
+            <span class="token punctuation">{</span>
+                int randomIndex <span class="token operator">=</span> Random<span class="token punctuation">.</span><span class="token function">Range</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> deck<span class="token punctuation">.</span>Length<span class="token punctuation">)</span><span class="token punctuation">;</span>
+                hand<span class="token punctuation">.</span><span class="token function">AddToHand</span><span class="token punctuation">(</span>deck<span class="token punctuation">[</span>randomIndex<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+
+            hasGrabbed <span class="token operator">=</span> <span class="token boolean">true</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">public</span> bool CanGrab
+    <span class="token punctuation">{</span>
+        get <span class="token punctuation">{</span> <span class="token keyword">return</span> canGrab<span class="token punctuation">;</span> <span class="token punctuation">}</span> set <span class="token punctuation">{</span> canGrab <span class="token operator">=</span> value<span class="token punctuation">;</span> <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">public</span> bool HasGrabbed
+    <span class="token punctuation">{</span>
+        get <span class="token punctuation">{</span> <span class="token keyword">return</span> hasGrabbed<span class="token punctuation">;</span> <span class="token punctuation">}</span> set <span class="token punctuation">{</span> hasGrabbed <span class="token operator">=</span> value<span class="token punctuation">;</span><span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token comment">// hover effect</span>
+    <span class="token keyword">public</span> virtual <span class="token keyword">void</span> <span class="token function">OnMouseEnter</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>canGrab<span class="token punctuation">)</span>
+        <span class="token punctuation">{</span>
+            animator<span class="token punctuation">.</span><span class="token function">SetBool</span><span class="token punctuation">(</span><span class="token string">"Hover"</span><span class="token punctuation">,</span> <span class="token boolean">true</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">public</span> virtual <span class="token keyword">void</span> <span class="token function">OnMouseExit</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        animator<span class="token punctuation">.</span><span class="token function">SetBool</span><span class="token punctuation">(</span><span class="token string">"Hover"</span><span class="token punctuation">,</span> <span class="token boolean">false</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+                </div><div data-role="script-container" class="scrollable-code-container code-view" style="overflow:auto;" data-script="HowlingmoonPlayField_User.cs">
+                    <div class="spacer" style="height: 30px"></div>
+                    <div class="code-description">
+                        <p data-role="script-description" class="sub-p">Keeps track on which playfield slots are available for both player and ai (both have an inherited version with extra methods for their own use). Creates the physical cards and also handles the hovering/selection behavior when interacting with both an empty slot and filled slot.</p>
+                    </div>
+                    <pre class="language-js" tabindex="0"><code data-role="script-code" class="language-js">using System<span class="token punctuation">;</span>
+using UnityEngine<span class="token punctuation">;</span>
+
+<span class="token keyword">public</span> abstract <span class="token keyword">class</span> <span class="token class-name">PlayField_User</span> <span class="token operator">:</span> MonoBehaviour
+<span class="token punctuation">{</span>
+    <span class="token punctuation">[</span>SerializeField<span class="token punctuation">]</span> <span class="token keyword">private</span> GameObject card<span class="token punctuation">;</span>
+
+    <span class="token punctuation">[</span><span class="token function">Header</span><span class="token punctuation">(</span><span class="token string">"Slots"</span><span class="token punctuation">)</span><span class="token punctuation">]</span>
+    <span class="token punctuation">[</span>SerializeField<span class="token punctuation">]</span> <span class="token keyword">private</span> CardSlot<span class="token punctuation">[</span><span class="token punctuation">]</span> allCardSlots<span class="token punctuation">;</span>
+    <span class="token punctuation">[</span>SerializeField<span class="token punctuation">]</span> <span class="token keyword">protected</span> Hand hand<span class="token punctuation">;</span>
+
+    <span class="token keyword">private</span> bool isAllowedToPlace <span class="token operator">=</span> <span class="token boolean">true</span><span class="token punctuation">;</span>
+    <span class="token keyword">private</span> CardSlot selectedSlot<span class="token punctuation">;</span>
+
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">InteractWithField</span><span class="token punctuation">(</span><span class="token parameter">int slotIndex</span><span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>isAllowedToPlace<span class="token punctuation">)</span> <span class="token keyword">return</span><span class="token punctuation">;</span>
+
+        <span class="token comment">// grab the slot</span>
+        CardSlot slot <span class="token operator">=</span> allCardSlots<span class="token punctuation">[</span>slotIndex<span class="token punctuation">]</span><span class="token punctuation">;</span>
+
+        <span class="token comment">// reset selected slot if the slot is already in use</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>slot<span class="token punctuation">.</span>IsOccupied <span class="token operator">&amp;&amp;</span> selectedSlot <span class="token operator">!=</span> <span class="token keyword">null</span> <span class="token operator">&amp;&amp;</span> selectedSlot<span class="token punctuation">.</span>CardObj <span class="token operator">!=</span> <span class="token keyword">null</span><span class="token punctuation">)</span>
+        <span class="token punctuation">{</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span>selectedSlot<span class="token punctuation">.</span>CardObj<span class="token punctuation">.</span><span class="token function">TryGetComponent</span><span class="token punctuation">(</span>out Animator animator<span class="token punctuation">)</span><span class="token punctuation">)</span>
+                animator<span class="token punctuation">.</span><span class="token function">SetBool</span><span class="token punctuation">(</span><span class="token string">"Selected"</span><span class="token punctuation">,</span> <span class="token boolean">false</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+            selectedSlot <span class="token operator">=</span> <span class="token keyword">null</span><span class="token punctuation">;</span>
+
+            <span class="token keyword">return</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+
+        <span class="token comment">// if there is a card in your hand, else try to run move</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>hand<span class="token punctuation">.</span>SelectedCard <span class="token operator">!=</span> <span class="token keyword">null</span> <span class="token operator">&amp;&amp;</span> <span class="token operator">!</span>slot<span class="token punctuation">.</span>IsActive<span class="token punctuation">)</span> <span class="token function">PlaceCard</span><span class="token punctuation">(</span>slot<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">else</span> <span class="token keyword">if</span> <span class="token punctuation">(</span>selectedSlot <span class="token operator">!=</span> <span class="token keyword">null</span> <span class="token operator">&amp;&amp;</span> selectedSlot<span class="token punctuation">.</span>IsOccupied<span class="token punctuation">)</span> <span class="token function">MoveCard</span><span class="token punctuation">(</span>slot<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">PlaceCard</span><span class="token punctuation">(</span><span class="token parameter">CardSlot slot</span><span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        <span class="token comment">// tutorial logic</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>AIDialouge_Tutorial<span class="token punctuation">.</span>Instance<span class="token punctuation">.</span>HasFinishedTutorial<span class="token punctuation">)</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span>AIDialouge_Tutorial<span class="token punctuation">.</span>Instance<span class="token punctuation">.</span>TutorialStep <span class="token operator">==</span> <span class="token number">5</span><span class="token punctuation">)</span>
+                AIDialouge_Tutorial<span class="token punctuation">.</span>Instance<span class="token punctuation">.</span>TutorialStep<span class="token operator">++</span><span class="token punctuation">;</span>
+
+        selectedSlot <span class="token operator">=</span> <span class="token keyword">null</span><span class="token punctuation">;</span>
+
+        <span class="token comment">// get the selected card</span>
+        CardData cardData <span class="token operator">=</span> hand<span class="token punctuation">.</span>SelectedCard<span class="token punctuation">.</span>CardData<span class="token punctuation">;</span>
+        cardData<span class="token punctuation">.</span>cardCorruption<span class="token operator">++</span><span class="token punctuation">;</span>
+
+        <span class="token comment">// copy the card data into the slot</span>
+        slot<span class="token punctuation">.</span>Card <span class="token operator">=</span> cardData<span class="token punctuation">.</span><span class="token function">Copy</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        <span class="token comment">// remove the selected card from the hand</span>
+        hand<span class="token punctuation">.</span><span class="token function">RemoveFromHand</span><span class="token punctuation">(</span>cardData<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        <span class="token comment">// unassign the card from the hand</span>
+        hand<span class="token punctuation">.</span><span class="token function">RemoveSelected</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        <span class="token function">GenerateObjects</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">MoveCard</span><span class="token punctuation">(</span><span class="token parameter">CardSlot slot</span><span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        <span class="token comment">// tutorial logic</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>AIDialouge_Tutorial<span class="token punctuation">.</span>Instance<span class="token punctuation">.</span>HasFinishedTutorial<span class="token punctuation">)</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span>AIDialouge_Tutorial<span class="token punctuation">.</span>Instance<span class="token punctuation">.</span>TutorialStep <span class="token operator">==</span> <span class="token number">6</span><span class="token punctuation">)</span>
+                AIDialouge_Tutorial<span class="token punctuation">.</span>Instance<span class="token punctuation">.</span>TutorialStep<span class="token operator">++</span><span class="token punctuation">;</span>
+
+        <span class="token comment">// move the data to the active slot</span>
+        slot<span class="token punctuation">.</span>Card <span class="token operator">=</span> selectedSlot<span class="token punctuation">.</span>Card<span class="token punctuation">;</span>
+
+        <span class="token comment">// clear the inactive slot info</span>
+        selectedSlot<span class="token punctuation">.</span>Card <span class="token operator">=</span> <span class="token keyword">null</span><span class="token punctuation">;</span>
+
+        <span class="token function">GenerateObjects</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">SelectSlot</span><span class="token punctuation">(</span><span class="token parameter">CardUI_PlayField card</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token function">SelectSlot</span><span class="token punctuation">(</span>card<span class="token punctuation">.</span>slot<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">SelectSlot</span><span class="token punctuation">(</span><span class="token parameter">CardSlot slot</span><span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        <span class="token function">foreach</span> <span class="token punctuation">(</span>CardSlot cardSlot <span class="token keyword">in</span> allCardSlots<span class="token punctuation">)</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span>cardSlot<span class="token punctuation">.</span>IsOccupied<span class="token punctuation">)</span>
+                cardSlot<span class="token punctuation">.</span>CardObj<span class="token punctuation">.</span>GetComponent<span class="token operator">&lt;</span>Animator<span class="token operator">&gt;</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">SetBool</span><span class="token punctuation">(</span><span class="token string">"Selected"</span><span class="token punctuation">,</span> <span class="token boolean">false</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>slot <span class="token operator">!=</span> selectedSlot<span class="token punctuation">)</span>
+        <span class="token punctuation">{</span>
+            slot<span class="token punctuation">.</span>CardObj<span class="token punctuation">.</span>GetComponent<span class="token operator">&lt;</span>Animator<span class="token operator">&gt;</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">SetBool</span><span class="token punctuation">(</span><span class="token string">"Selected"</span><span class="token punctuation">,</span> <span class="token boolean">true</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            selectedSlot <span class="token operator">=</span> slot<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+
+        <span class="token keyword">else</span>
+        <span class="token punctuation">{</span>
+            slot<span class="token punctuation">.</span>CardObj<span class="token punctuation">.</span>GetComponent<span class="token operator">&lt;</span>Animator<span class="token operator">&gt;</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">SetBool</span><span class="token punctuation">(</span><span class="token string">"Selected"</span><span class="token punctuation">,</span> <span class="token boolean">false</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            selectedSlot <span class="token operator">=</span> <span class="token keyword">null</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">GenerateObjects</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        <span class="token comment">// first clear the game objects, then regenerate the slots</span>
+        <span class="token function">foreach</span> <span class="token punctuation">(</span><span class="token parameter">CardSlot slot <span class="token keyword">in</span> allCardSlots</span><span class="token punctuation">)</span>
+        <span class="token punctuation">{</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span>slot<span class="token punctuation">.</span>CardObj <span class="token operator">!=</span> <span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token function">Destroy</span><span class="token punctuation">(</span>slot<span class="token punctuation">.</span>CardObj<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+            <span class="token comment">// check if there is data, if not skip</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span>slot<span class="token punctuation">.</span>Card <span class="token operator">!=</span> <span class="token keyword">null</span><span class="token punctuation">)</span>
+            <span class="token punctuation">{</span>
+                slot<span class="token punctuation">.</span>CardObj <span class="token operator">=</span> <span class="token function">Instantiate</span><span class="token punctuation">(</span>card<span class="token punctuation">,</span> slot<span class="token punctuation">.</span>target<span class="token punctuation">.</span>position<span class="token punctuation">,</span> slot<span class="token punctuation">.</span>target<span class="token punctuation">.</span>rotation<span class="token punctuation">)</span><span class="token punctuation">;</span>
+                slot<span class="token punctuation">.</span>CardObj<span class="token punctuation">.</span>transform<span class="token punctuation">.</span><span class="token function">SetParent</span><span class="token punctuation">(</span>slot<span class="token punctuation">.</span>target<span class="token punctuation">,</span> <span class="token boolean">true</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                CardUI_PlayField script <span class="token operator">=</span> slot<span class="token punctuation">.</span>CardObj<span class="token punctuation">.</span>GetComponent<span class="token operator">&lt;</span>CardUI_PlayField<span class="token operator">&gt;</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                script<span class="token punctuation">.</span><span class="token function">SetCardValues</span><span class="token punctuation">(</span>slot<span class="token punctuation">.</span>Card<span class="token punctuation">)</span><span class="token punctuation">;</span>
+                script<span class="token punctuation">.</span>slot <span class="token operator">=</span> slot<span class="token punctuation">;</span>
+                script<span class="token punctuation">.</span>interact <span class="token operator">+=</span> SelectSlot<span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">public</span> CardSlot<span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token parameter">AllCardSlots</span> <span class="token operator">=&gt;</span> allCardSlots<span class="token punctuation">;</span>
+
+    <span class="token keyword">public</span> bool IsAllowedToPlace
+    <span class="token punctuation">{</span>
+        get <span class="token punctuation">{</span> <span class="token keyword">return</span> isAllowedToPlace<span class="token punctuation">;</span> <span class="token punctuation">}</span>
+        set <span class="token punctuation">{</span> isAllowedToPlace <span class="token operator">=</span> value<span class="token punctuation">;</span> <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token punctuation">[</span>Serializable<span class="token punctuation">]</span>
+<span class="token keyword">public</span> record CardSlot
+<span class="token punctuation">{</span>
+    <span class="token keyword">public</span> Transform target<span class="token punctuation">;</span>
+    <span class="token keyword">public</span> bool IsActive<span class="token punctuation">;</span>
+    <span class="token keyword">private</span> CardData cardData<span class="token punctuation">;</span>
+    <span class="token keyword">private</span> GameObject cardObj<span class="token punctuation">;</span>
+    <span class="token keyword">public</span> bool IsOccupied
+    <span class="token punctuation">{</span>
+        <span class="token parameter"><span class="token keyword">get</span></span> <span class="token operator">=&gt;</span> cardData <span class="token operator">!=</span> <span class="token keyword">null</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">public</span> GameObject CardObj
+    <span class="token punctuation">{</span>
+        <span class="token parameter"><span class="token keyword">get</span></span> <span class="token operator">=&gt;</span> cardObj<span class="token punctuation">;</span>
+        <span class="token parameter"><span class="token keyword">set</span></span> <span class="token operator">=&gt;</span> cardObj <span class="token operator">=</span> value<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">public</span> CardData Card
+    <span class="token punctuation">{</span>
+        <span class="token parameter"><span class="token keyword">get</span></span> <span class="token operator">=&gt;</span> cardData<span class="token punctuation">;</span>
+        <span class="token parameter"><span class="token keyword">set</span></span> <span class="token operator">=&gt;</span> cardData <span class="token operator">=</span> value<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+                </div><div class="cornerDecorations-container"><img src="images/Icons/triangle.svg" class="cornerDecorations-corner cornerDecorations-top-left" style="--cornerDecorations-rotation: 0deg; --cornerDecorations-size: var(--text-size);"><img src="images/Icons/triangle.svg" class="cornerDecorations-corner cornerDecorations-top-right" style="--cornerDecorations-rotation: 90deg; --cornerDecorations-size: var(--text-size);"><img src="images/Icons/triangle.svg" class="cornerDecorations-corner cornerDecorations-bottom-left" style="--cornerDecorations-rotation: 270deg; --cornerDecorations-size: var(--text-size);"><img src="images/Icons/triangle.svg" class="cornerDecorations-corner cornerDecorations-bottom-right" style="--cornerDecorations-rotation: 180deg; --cornerDecorations-size: var(--text-size);"></div></div>
+        </div>
+    </div>
 </div>
         </div>
     </div>
@@ -1622,6 +2080,16 @@ The main game functions were done by the end of the project, but balancing and r
     <button class="button" data-page="Howlingmoon" data-section="gallery">
         <img data-role="section-icon" class="icon-small" alt="Icons" data-src="images/Icons/education.png">
         <p data-role="section-name">gallery</p>
+    </button>
+
+    <button class="button" data-page="Howlingmoon" data-section="3D model">
+        <img data-role="section-icon" class="icon-small" alt="Icons" data-src="images/Icons/dimensions.png">
+        <p data-role="section-name">3D model</p>
+    </button>
+
+    <button class="button" data-page="Howlingmoon" data-section="code">
+        <img data-role="section-icon" class="icon-small" alt="Icons" data-src="images/Icons/coding.png">
+        <p data-role="section-name">code</p>
     </button>
 </div></div>
                         <p class="sub-p text-grey hide-element-tablet">

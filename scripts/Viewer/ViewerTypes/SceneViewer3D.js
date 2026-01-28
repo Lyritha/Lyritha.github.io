@@ -19,8 +19,8 @@ export class SceneViewer3D extends SceneViewerBase {
             }
         }
 
-        this.camera = new THREE.PerspectiveCamera(75, 1, 0.1, 100);
-        if (sceneData.cameraPosition) 
+        this.camera = new THREE.PerspectiveCamera(75, 1, 0.1, 400);
+        if (sceneData.cameraPosition)
             this.camera.position.fromArray(sceneData.cameraPosition);
         if (sceneData.cameraRotation)
             this.camera.rotation.fromArray(sceneData.cameraRotation);
@@ -30,6 +30,8 @@ export class SceneViewer3D extends SceneViewerBase {
             this.camera,
             this.app.renderer.domElement
         );
+
+
 
         if (sceneData.cameraTarget)
             this.controls.target.fromArray(sceneData.cameraTarget);
@@ -56,12 +58,31 @@ export class SceneViewer3D extends SceneViewerBase {
         this.model = gltf.scene;
         this.scene.add(this.model);
 
-        if (sceneData.boundsName) {
-            const boundsObject = this.model.getObjectByName(sceneData.boundsName);
-            if (boundsObject) {
-                this.boundingBox = new THREE.Box3().setFromObject(boundsObject);
-            }
+        if (sceneData.isPixelArt) {
+            this.model.traverse(obj => {
+                if (!obj.isMesh) return;
+
+                const materials = Array.isArray(obj.material) ? obj.material : [obj.material];
+
+                materials.forEach(mat => {
+                    if (!mat.map) return;
+
+                    const tex = mat.map;
+
+                    tex.magFilter = THREE.NearestFilter;
+                    tex.minFilter = THREE.NearestFilter;
+                    tex.generateMipmaps = false;
+
+                    tex.needsUpdate = true;
+
+                    mat.needsUpdate = true;
+                });
+            });
         }
+
+        // create bounding for cam
+        const boundsObject = sceneData.boundsName ? this.model.getObjectByName(sceneData.boundsName) : null;
+        this.boundingBox = new THREE.Box3().setFromObject(boundsObject || this.model);
 
         // Animation mixer
         if (gltf.animations && gltf.animations.length) {
@@ -75,6 +96,7 @@ export class SceneViewer3D extends SceneViewerBase {
                 this.actions.push(action);
             });
         }
+
     }
 
     renderFrame(dt) {
@@ -85,7 +107,27 @@ export class SceneViewer3D extends SceneViewerBase {
             this.mixer.update(dt);
         }
 
-        this.controls?.update();
+        if (this.controls) {
+            this.controls.update();
+
+            if (this.boundingBox) {
+                // get camera pos based on orbit sphere
+                const offset = new THREE.Vector3().subVectors(this.camera.position, this.controls.target);
+                const spherical = new THREE.Spherical().setFromVector3(offset);
+
+                this.clampVectorToBox(this.controls.target, this.boundingBox);
+
+                // set camera pos back based on info before clamp
+                offset.setFromSpherical(spherical);
+                this.camera.position.copy(this.controls.target).add(offset);
+                this.camera.lookAt(this.controls.target);
+            }
+        }
+
+        //console.log('Camera pos:', this.camera.position);
+        //console.log('Camera rot:', this.camera.rotation);
+        //console.log('Controls target:', this.controls.target);
+
         this.app.renderer.render(this.scene, this.camera);
     }
 
@@ -131,6 +173,13 @@ export class SceneViewer3D extends SceneViewerBase {
 
         this.scene = null;
         this.camera = null;
+    }
+
+    clampVectorToBox(vec, box) {
+        vec.x = Math.max(box.min.x, Math.min(box.max.x, vec.x));
+        vec.y = Math.max(box.min.y, Math.min(box.max.y, vec.y));
+        vec.z = Math.max(box.min.z, Math.min(box.max.z, vec.z));
+        return vec;
     }
 
 }
